@@ -1,0 +1,24 @@
+{
+  "name": "rice-and-stripes",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "serve dist"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "sass": "^1.91.0",
+    "sass-embedded": "^1.91.0",
+    "serve": "^14.2.4",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "@builder.io/qwik": "^1.15.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8"
+  }
+}

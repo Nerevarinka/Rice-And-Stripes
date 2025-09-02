@@ -1,0 +1,160 @@
+/* body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.sidebar {
+  width: 260px;
+  background: #f9f9f9;
+  border-right: 1px solid #e5e5e5;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-nav a {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar-nav a:hover {
+  background: #eee;
+}
+
+.sidebar-nav a.active {
+  background: #333;
+  color: white;
+}
+
+Контент
+.content {
+  margin-left: 260px;
+  padding: 2rem;
+  flex: 1;
+}
+
+Адаптив
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 220px;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 100;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
+Навбар
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: white;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: #42b883;
+      text-decoration: none;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar .nav-links a {
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .navbar .nav-links a:hover {
+      background: #f5f5f5;
+    }
+
+    Чтобы контент не залезал под фиксированный navbar
+    .content {
+      padding-top: 70px;
+      max-width: 800px;
+      margin: 0 auto;
+    } */
+$color-primary: #000000;
+
+
+html {
+  height: 100vh;
+}
+
+body,
+#app,
+.main {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  display: flex;
+
+
+  #app {
+    width: 100%;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  width: 100%;
+
+  column-gap: 1rem;
+
+  .content {
+    flex-grow: 1;
+  }
+}
