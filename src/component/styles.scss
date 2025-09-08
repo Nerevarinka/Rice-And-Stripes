@@ -121,15 +121,14 @@
       max-width: 800px;
       margin: 0 auto;
     } */
-$color-primary: #000000;
-
 
 html {
   height: 100vh;
+  overflow: hidden;
 }
 
 body,
-#app,
+#root,
 .main {
   height: 100%;
 }
@@ -140,7 +139,7 @@ body {
   display: flex;
 
 
-  #app {
+  #root {
     width: 100%;
   }
 }
@@ -156,5 +155,7 @@ body {
 
   .content {
     flex-grow: 1;
+        height: 100%;
+    overflow: auto;
   }
 }

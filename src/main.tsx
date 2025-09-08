@@ -1,9 +1,14 @@
-import '@builder.io/qwik/qwikloader.js'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './component'
+import { BrowserRouter } from 'react-router'
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-import { render } from '@builder.io/qwik'
-import { App } from './component';
-
-
-render(document.getElementById('app') as HTMLElement, <App />)
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
