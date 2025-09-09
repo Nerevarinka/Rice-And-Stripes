@@ -1,17 +1,13 @@
 import type { FC } from "react";
 
-import "./styles.css";
+import "./styles.scss";
 
-const AnatomyPage: FC = () => {
+const AnatomiyaIFiziologiya: FC = () => {
     return (
-        <main>
-            <div className="spinner-grow my-test-class" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
+        <div>
 
-            <button>sss</button>
-        </main>
+        </div>
     );
 };
 
-export default AnatomyPage;
+export default AnatomiyaIFiziologiya;

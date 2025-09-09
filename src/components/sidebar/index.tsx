@@ -32,7 +32,12 @@ const Sidebar: FC = () => {
 
                             <div className="sidebar-item">
                                 <img src=".\img\zebra_finch_icon.webp" className="finch-hidden-icon" />
-                                <a href="#" className="sidebar-link">Полезные</a>
+                                <Link
+                                    className="sidebar-link"
+                                    to="/useful"
+                                >
+                                    Полезные
+                                </Link>
                             </div>
 
                             <div className="sidebar-item">
@@ -64,7 +69,7 @@ const Sidebar: FC = () => {
                     </a>
 
                     <span className="link-icon">
-                        <img src=".\img\tg-Logo.svg" /> 
+                        <img src=".\img\tg-Logo.svg" />
                     </span>
 
                     <span className="link-icon">
