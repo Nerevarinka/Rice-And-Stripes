@@ -11,5 +11,5 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-  base: "/rice-and-stripes/",
+  base: "/Rice-And-Stripes/",
 });
