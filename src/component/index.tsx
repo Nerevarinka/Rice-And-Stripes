@@ -1,22 +1,42 @@
-import { component$ } from '@builder.io/qwik'
+import type { FC } from "react";
+import { Navigate, Route, Routes } from "react-router";
 
 import "./styles.scss";
 
 // import { Navbar } from '../components/navbar';
-import { Sidebar } from '../components/sidebar';
-import { Home } from '../components/home';
+import Sidebar from '../components/sidebar';
 
-export const App = component$(
-    () => {
-        return (
-            <main class="main">
-                {/* <Navbar /> */}
+import { routes } from "../routes";
 
-                <Sidebar />
+const App: FC = () => {
+    return (
+        <main className="main">
+            {/* <Navbar /> */}
 
-                <div class="content">
-                    <Home />
-                </div>
-            </main>
-        );
-    });
+            <Sidebar />
+
+            <div className="content">
+                <Routes>
+                    <Route
+                        path="*"
+                        element={
+                            <Navigate
+                                to="/"
+                                replace
+                            />}
+                    />
+                    {routes.map(x =>
+                        <Route
+                            key={x.link}
+
+                            path={x.link}
+                            element={x.component}
+                        />
+                    )}
+                </Routes>
+            </div>
+        </main>
+    );
+};
+
+export default App;

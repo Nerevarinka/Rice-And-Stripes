@@ -1,0 +1,17 @@
+.klopik-container {
+    position: absolute;
+    z-index: 0;
+
+    right: 0;
+    bottom: -2.75rem;
+
+    text-align: center;
+    cursor: pointer;
+
+    transition: transform 0.05s linear;
+
+    img {
+        height: auto;
+        width: 10rem;
+    }
+}

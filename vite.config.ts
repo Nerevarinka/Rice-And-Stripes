@@ -1,11 +1,15 @@
-import { defineConfig } from 'vite'
-import { qwikVite } from '@builder.io/qwik/optimizer'
+import { defineConfig } from "vite";
 
-// https://vite.dev/config/
+import react from "@vitejs/plugin-react-swc";
+import tsconfigPaths from "vite-tsconfig-paths";
+
 export default defineConfig({
   plugins: [
-    qwikVite({
-      csr: true,
-    }),
+    react(),
+    tsconfigPaths(),
   ],
-})
+  build: {
+    sourcemap: true,
+  },
+  base: "/rice-and-stripes/",
+});

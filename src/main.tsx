@@ -1,9 +1,17 @@
-import '@builder.io/qwik/qwikloader.js'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { HashRouter } from "react-router";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./component";
 
-import { render } from '@builder.io/qwik'
-import { App } from './component';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-
-render(document.getElementById('app') as HTMLElement, <App />)
+createRoot(
+	document.getElementById("root")!
+).render(
+	<StrictMode>
+		<HashRouter>
+			<App />
+		</HashRouter>
+	</StrictMode>,
+);
