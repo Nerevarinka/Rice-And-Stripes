@@ -1,7 +1,7 @@
 import type { FC } from "react";
+import { Link } from "react-router";
 
 import "./styles.scss";
-import { Link } from "react-router";
 
 const Home: FC = () => {
     return (
@@ -16,10 +16,13 @@ const Home: FC = () => {
 
             <div className="home-page-picture-container">
                 <img src=".\img\pages\home\home_page_picture.png" className="home-page-picture-team" alt="Банда" />
-                <p className="home-page-picture-description"><i>Наша команда вдохновителей. Подробнее о ней можно узнать в разделе&nbsp;
-                    <Link to="/our-band">
-                        "Наши амадинки"
-                    </Link></i>
+                <p className="home-page-picture-description">
+                    <span className="is-italic">
+                        Наша команда вдохновителей. Подробнее о ней можно узнать в разделе&nbsp;
+                        <Link to="/our-band">
+                            "Наши амадинки"
+                        </Link>
+                    </span>
                 </p>
             </div>
 

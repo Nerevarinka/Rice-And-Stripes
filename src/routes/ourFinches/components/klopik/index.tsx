@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type FC } from "react";
 
-
 import "./styles.scss";
 
 const Klopik: FC = () => {

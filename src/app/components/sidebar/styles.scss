@@ -74,14 +74,12 @@
     }
 
     &-link {
-        // color: #67676c;
         color: #492700;
         text-decoration: none;
         padding: 0.25rem 0;
 
         &:hover {
             text-decoration: underline;
-            // color: #5a9210;
             color: #753105;
         }
 
@@ -119,19 +117,6 @@
         gap: 1rem;
         margin-bottom: 1rem;
 
-        a {
-            display: flex;
-            font-size: 2rem;
-            align-self: center;
-            color: #67676c;
-            text-decoration: none;
-            transition: 0.125s ease-in-out all;
-
-            &:hover {
-                color: #24A1DE;
-            }
-        }
-
         .link-icon {
             display: flex;
             height: 2rem;
@@ -151,26 +136,6 @@
                 }
             }
         }
-
-        // .link-icon svg,
-        // .link-icon img {
-        //     display: flex;
-        //     height: 2rem;
-
-        //     * {
-        //         filter: grayscale(1);
-        //         transition: 0.125s ease-in-out all;
-        //     }
-
-        //     &:hover * {
-        //         filter: grayscale(0);
-
-        //         &.icon-core {
-        //             fill: white !important;
-        //         }
-        //     }
-        // }
-
     }
 }
 

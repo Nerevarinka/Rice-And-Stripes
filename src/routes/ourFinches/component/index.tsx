@@ -1,7 +1,6 @@
 import type { FC } from "react";
-import Klopik from '../../components/klopik';
 
-import "./styles.scss";
+import Klopik from "../components/klopik";
 
 const OurFinches: FC = () => {
     return (

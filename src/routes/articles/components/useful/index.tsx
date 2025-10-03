@@ -1,14 +1,21 @@
 import type { FC } from "react";
-
-import "./styles.scss";
 import { Link } from "react-router";
 
-const Useful: FC = () => {
+import "./styles.scss";
+
+/** Компонент модуля "Полезные статьи" */
+const UsefulArticles: FC = () => {
     return (
         <div className="content-wrapper">
-            <h3 className="page-title">Полезные статьи для владельцев</h3>
+            <h3 className="page-title">
+                Полезные статьи для владельцев
+            </h3>
+
             <div className="card-group">
-                <Link to="/useful/anatomiya-i-fiziologiya" className="card-link">
+                <Link
+                    to="/articles/useful/anatomiya-i-fiziologiya"
+                    className="card-link"
+                >
                     <div className="card">
                         <img src=".\img\pages\useful\anatomiya-i-fiziologiya.jpg" className="card-img"></img>
                         <div className="card-body">
@@ -18,20 +25,21 @@ const Useful: FC = () => {
                         </div>
                     </div>
                 </Link>
-                <Link to="/useful/vybor-kletki" className="card-link">
-                <div className="card">
-                    <img src=".\img\pages\useful\vybor-kletki.jpg" className="card-img"></img>
-                    <div className="card-body">
-                        <div className="card-title">
-                            Выбор клетки для амадин – головная боль владельца</div>
-                        <div className="card-description">На что обратить внимание при выборе жилища для птиц.</div>
-                        <div className="card-date">12.02.2025</div>
+
+                <Link to="/articles/useful/vybor-kletki" className="card-link">
+                    <div className="card">
+                        <img src=".\img\pages\useful\vybor-kletki.jpg" className="card-img"></img>
+                        <div className="card-body">
+                            <div className="card-title">
+                                Выбор клетки для амадин – головная боль владельца</div>
+                            <div className="card-description">На что обратить внимание при выборе жилища для птиц.</div>
+                            <div className="card-date">12.02.2025</div>
+                        </div>
                     </div>
-                </div>
                 </Link>
             </div>
         </div>
     );
 };
 
-export default Useful;
+export default UsefulArticles;

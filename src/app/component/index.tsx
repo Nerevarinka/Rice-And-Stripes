@@ -3,16 +3,12 @@ import { Navigate, Route, Routes } from "react-router";
 
 import "./styles.scss";
 
-// import { Navbar } from '../components/navbar';
-import Sidebar from '../components/sidebar';
-
-import { routes } from "../routes";
+import Sidebar from "../components/sidebar";
+import { sideBarMenu } from "@app/shared";
 
 const App: FC = () => {
     return (
         <main className="main">
-            {/* <Navbar /> */}
-
             <Sidebar />
 
             <div className="content">
@@ -25,7 +21,7 @@ const App: FC = () => {
                                 replace
                             />}
                     />
-                    {routes.map(x =>
+                    {sideBarMenu.map(x =>
                         <Route
                             key={x.link}
 

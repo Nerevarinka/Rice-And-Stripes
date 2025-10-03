@@ -1,8 +1,6 @@
 import type { FC } from "react";
 
-import "./styles.scss";
-
-const VyborKletki: FC = () => {
+const CageSelection: FC = () => {
     return (
         <div>
 
@@ -10,4 +8,4 @@ const VyborKletki: FC = () => {
     );
 };
 
-export default VyborKletki;
+export default CageSelection;
