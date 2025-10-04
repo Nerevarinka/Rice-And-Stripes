@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import tgLogo from "@app/assets/sidebar/tgLogo.svg";
+
 /* Компонент ссылок сайдбара */
 const SidebarLinks: FC = () => {
     return (
@@ -11,7 +13,7 @@ const SidebarLinks: FC = () => {
                 href="https://t.me/rice_and_stripes"
             >
                 <span className="link-icon">
-                    <img src=".\img\tg-Logo.svg" />
+                    <img src={tgLogo} />
                 </span>
             </a>
 

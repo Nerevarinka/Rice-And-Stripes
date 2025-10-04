@@ -2,6 +2,8 @@ import type { FC } from "react";
 import { Link } from "react-router";
 
 import { sideBarMenu } from "@app/shared";
+import logo from "@app/assets/sidebar/mainLogo.png";
+import sidebarItemIcon from "@app/assets/sidebar/zebraFinchIcon.webp";
 
 import "./styles.scss";
 
@@ -17,7 +19,7 @@ const Sidebar: FC = () => {
 				<div className="main-logo-container">
 					<Link to="/">
 						<img
-							src=".\img\main_logo.png"
+							src={logo}
 							className="sidebar-logo"
 							title="Будто логотип кофейни"
 						/>
@@ -38,8 +40,8 @@ const Sidebar: FC = () => {
 								className="sidebar-item"
 							>
 								<img
+									src={sidebarItemIcon}
 									className="finch-hidden-icon"
-									src=".\img\zebra_finch_icon.webp"
 								/>
 								<Link
 									to={x.link}

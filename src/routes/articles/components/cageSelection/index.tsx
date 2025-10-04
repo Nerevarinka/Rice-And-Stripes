@@ -1,10 +1,16 @@
 import type { FC } from "react";
 
+import cover from "@app/assets/pages/articles/cageSelection/cover.jpg";
+
 const CageSelection: FC = () => {
     return (
-        <div>
+        <h3>
+            Статья: Выбор клетки
 
-        </div>
+            <img
+                src={cover}
+            />
+        </h3>
     );
 };
 

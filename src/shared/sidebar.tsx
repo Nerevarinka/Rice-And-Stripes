@@ -8,7 +8,7 @@ import CageSelection from "@app/pages/articles/components/cageSelection";
 import UsefulArticles from "@app/pages/articles/components/useful";
 
 import NotesModule from "@app/pages/notes";
-import AnatomiyaIFiziologiya from "@app/pages/articles/components/anatomiya-i-fiziologiya";
+import Anatomy from "@app/pages/articles/components/anatomy";
 
 /** Список элементов меню сайдбара */
 export const sideBarMenu: Array<SidebarItem> = [
@@ -58,8 +58,8 @@ export const sideBarMenu: Array<SidebarItem> = [
         isGroup: false,
         visible: false,
         caption: "",
-        component: <AnatomiyaIFiziologiya />,
-        link: "/articles/useful/anatomiya-i-fiziologiya",
+        component: <Anatomy />,
+        link: "/articles/useful/anatomy",
     },
     {
         isGroup: true,

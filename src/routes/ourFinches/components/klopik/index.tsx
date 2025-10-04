@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type FC } from "react";
 
+import klopik from "@app/assets/pages/ourFinches/klopik.png";
+
 import "./styles.scss";
 
 const Klopik: FC = () => {
@@ -21,7 +23,7 @@ const Klopik: FC = () => {
             }}
             title="Почеши меня около ушка!"
         >
-            <img src="./img/klopik.png" />
+            <img src={klopik} />
         </div>
     );
 };
@@ -80,4 +82,4 @@ const useSmoothHoverMoveUpDown = (
             }
         };
     }, [active, maxValue, minValue, setTop, top]);
-}
+};
