@@ -1,7 +1,10 @@
 import type { FC } from "react";
+import { Link } from "react-router";
+
+import jumbo from "@app/assets/pages/home/jumbo.png";
+import getUp from "@app/assets/pages/home/getUp.png";
 
 import "./styles.scss";
-import { Link } from "react-router";
 
 const Home: FC = () => {
     return (
@@ -15,16 +18,27 @@ const Home: FC = () => {
             </p>
 
             <div className="home-page-picture-container">
-                <img src=".\img\pages\home\home_page_picture.png" className="home-page-picture-team" alt="Банда" />
-                <p className="home-page-picture-description"><i>Наша команда вдохновителей. Подробнее о ней можно узнать в разделе&nbsp;
-                    <Link to="/our-band">
-                        "Наши амадинки"
-                    </Link></i>
+                <img
+                    src={jumbo}
+                    alt="Банда"
+                    className="home-page-picture-team"
+                />
+                <p className="home-page-picture-description">
+                    <span className="is-italic">
+                        Наша команда вдохновителей. Подробнее о ней можно узнать в разделе&nbsp;
+                        <Link to="/our-band">
+                            "Наши амадинки"
+                        </Link>
+                    </span>
                 </p>
             </div>
 
             <p className="home-page-p">
-                <b>Rice & Stripes</b> – отсылка к двум видам амадин, которые появились у нас первыми: <i>rice</i> (рис) – рисовые, <i>stripes</i> (полоски) – зебровые. Мы относимся к питомцам, как к членам семьи - ведь у каждой птички есть свои характер, привычки и особенности, которые мы учитываем при уходе.
+                <b>Rice & Stripes</b> – отсылка к двум видам амадин, которые появились у нас первыми: <i>
+                    rice
+                </i> (рис) – рисовые, <i>
+                    stripes
+                </i> (полоски) – зебровые. Мы относимся к питомцам, как к членам семьи - ведь у каждой птички есть свои характер, привычки и особенности, которые мы учитываем при уходе.
             </p>
             <p className="home-page-p">
                 В блог будут добавляться статьи о содержании амадин, их жизни в природе и исследованиях, связанными с ними. Мы стремимся не полагаться на "так принято" и мнение авторитетов без обоснований. Нам нравится анализировать и структурировать информацию, и мы стараемся отвечать на вопросы "почему", "зачем" и "как", чтобы каждый владелец мог осознанно принимать решения для своих амадин. Если вам близка эта позиция - добро пожаловать!
@@ -32,8 +46,17 @@ const Home: FC = () => {
 
 
             <div className="home-page-picture-container">
-                <img src=".\img\pages\home\get_up.png" className="home-page-picture-meme" alt="Вставай" />
-                <p className="home-page-picture-description"><i>Мы любим точность и детали, но не забываем и про чувство юмора: ведь наши питомцы сами постоянно напоминают, что все слишком серьезно воспринимать не стоит</i></p>
+                <img
+                    src={getUp}
+                    alt="Вставай"
+                    className="home-page-picture-meme"
+                />
+
+                <p className="home-page-picture-description">
+                    <i>
+                        Мы любим точность и детали, но не забываем и про чувство юмора: ведь наши питомцы сами постоянно напоминают, что все слишком серьезно воспринимать не стоит
+                    </i>
+                </p>
             </div>
 
             <p className="home-page-p ending">
