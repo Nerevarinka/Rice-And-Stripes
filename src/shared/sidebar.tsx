@@ -1,14 +1,14 @@
+import React from "react";
 import type { SidebarItem } from "@app/models";
 
 import Home from "@app/pages/home";
 import OurFinches from "@app/pages/ourFinches";
 
 import ArticlesModule from "@app/pages/articles";
-import CageSelection from "@app/pages/articles/components/cageSelection";
 import UsefulArticles from "@app/pages/articles/components/useful";
 
 import NotesModule from "@app/pages/notes";
-import Anatomy from "@app/pages/articles/components/anatomy";
+import { articles, articleComponents } from "./articleList";
 
 /** Список элементов меню сайдбара */
 export const sideBarMenu: Array<SidebarItem> = [
@@ -47,20 +47,15 @@ export const sideBarMenu: Array<SidebarItem> = [
         component: <NotesModule />,
         link: "/notes",
     },
-    {
+
+    ...articles.map(article => ({
         isGroup: false,
         visible: false,
         caption: "",
-        component: <CageSelection />,
-        link: "/articles/useful/cageSelection",
-    },
-    {
-        isGroup: false,
-        visible: false,
-        caption: "",
-        component: <Anatomy />,
-        link: "/articles/useful/anatomy",
-    },
+        component: React.createElement(articleComponents[article.link]),
+        link: article.link,
+    })),
+
     {
         isGroup: true,
         visible: true,
