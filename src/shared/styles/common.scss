@@ -1,0 +1,49 @@
+@use "variables" as *;
+
+// Переиспользуемые классы
+.content-wrapper {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.page-title {
+	font-size: 1.75rem;
+	margin: auto 0;
+	padding-bottom: 2rem;
+}
+
+.text-muted {
+	color: $text-muted;
+}
+
+.link {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&-default {
+		color: $link-color;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&-primary {
+		color: $primary-brown;
+
+		&:hover {
+			text-decoration: underline;
+			color: $link-color;
+		}
+	}
+}
+
+.centered-content {
+	align-self: center;
+	text-align: center;
+}

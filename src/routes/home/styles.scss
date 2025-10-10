@@ -1,41 +1,36 @@
-.content-wrapper {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
+@use "@styles/variables" as *;
+@use "@styles/common.scss" as *;
 
 .home-page-picture-team {
-    width: 60rem;
-    align-self: center;
-    padding-top: 0.5rem;
+	width: 60rem;
+	align-self: center;
+	padding-top: 0.5rem;
 }
 
 .home-page-picture-description {
-    color: #67676c;
+	@extend .text-muted;
 }
 
 .home-page-p {
-    text-align: left;
+	text-align: left;
 }
 
 .home-page-title {
-    font-size: 1.75rem;
-    margin: auto 0;
+	font-size: 1.75rem;
+	margin: auto 0;
 }
 
 .home-page-picture-container {
-    align-self: center;
-    text-align: center;
+	@extend .centered-content;
 }
 
 .home-page-picture-meme {
-    height: 40rem;
-    align-self: center;
-    padding-top: 0.5rem;
+	height: 40rem;
+	align-self: center;
+	padding-top: 0.5rem;
 }
 
 .ending {
-    align-self: center;
-    font-size: 1.5rem;
+	align-self: center;
+	font-size: 1.5rem;
 }
