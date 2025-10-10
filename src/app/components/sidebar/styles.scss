@@ -9,6 +9,8 @@
 	padding: 1rem;
 	flex-shrink: 0;
 
+	--bulma-hr-background-color: #{$border-gray};
+
 	&-wrapper {
 		height: 100%;
 		display: flex;
