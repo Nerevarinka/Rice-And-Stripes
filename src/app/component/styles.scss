@@ -1,12 +1,13 @@
 html {
 	height: 100vh;
-	overflow: hidden;
 }
 
+html,
 body,
 #root,
 .main {
-	height: 100%;
+	overflow: hidden !important;
+	height: 100% !important;
 }
 
 body {
@@ -22,13 +23,7 @@ body {
 }
 
 .main {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-
 	width: 100%;
-
-	column-gap: 1rem;
 
 	.content {
 		flex-grow: 1;

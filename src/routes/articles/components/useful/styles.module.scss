@@ -1,0 +1,38 @@
+@use "@styles/variables" as *;
+@use "@styles/common.scss" as *;
+
+.m-card {
+	background-color: var(--bulma-scheme-main);
+	border-color: var(--bulma-border);
+	border-radius: var(--bulma-radius-large);
+	border-style: solid;
+	border-width: 1px;
+
+	transition-duration: var(--bulma-duration);
+	transition-property: border-color, box-shadow, transform;
+
+	--theme-h: var(--bulma-warning-h);
+	--theme-s: var(--bulma-warning-s);
+	--theme-l: var(--bulma-warning-l);
+	--theme-color: hsl(var(--theme-h), var(--theme-s), var(--theme-l));
+
+	--h: var(--theme-h);
+	--s: var(--theme-s);
+	--l: 60%;
+	--a: 0.1;
+	--color: var(--theme-color);
+
+	&:hover {
+		--a: 0.05;
+		border-color: var(--color);
+		box-shadow:
+			0 1em 2em 0 hsla(var(--h), var(--s), var(--l), var(--a)),
+			0 2em 4em 0 hsla(var(--h), var(--s), var(--l), var(--a));
+		transform: translateY(-0.5em);
+	}
+
+	[class*="image"] img {
+		width: 25rem;
+		aspect-ratio: 16 / 9;
+	}
+}
