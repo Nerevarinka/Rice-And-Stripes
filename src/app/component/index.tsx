@@ -8,28 +8,30 @@ import { sideBarMenu } from "@app/shared";
 
 const App: FC = () => {
     return (
-        <main className="main">
+        <main className="main is-flex">
             <Sidebar />
 
-            <div className="content">
-                <Routes>
-                    <Route
-                        path="*"
-                        element={
-                            <Navigate
-                                to="/"
-                                replace
-                            />}
-                    />
-                    {sideBarMenu.map(x =>
+            <div className="content pl-6 py-3">
+                <div className="mr-5">
+                    <Routes>
                         <Route
-                            key={x.link}
-
-                            path={x.link}
-                            element={x.component}
+                            path="*"
+                            element={
+                                <Navigate
+                                    to="/"
+                                    replace
+                                />}
                         />
-                    )}
-                </Routes>
+                        {sideBarMenu.map(x =>
+                            <Route
+                                key={x.link}
+
+                                path={x.link}
+                                element={x.component}
+                            />
+                        )}
+                    </Routes>
+                </div>
             </div>
         </main>
     );

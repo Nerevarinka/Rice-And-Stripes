@@ -4,6 +4,7 @@ import { HashRouter } from "react-router";
 
 import App from "./app";
 
+import "bulma/bulma.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 createRoot(
