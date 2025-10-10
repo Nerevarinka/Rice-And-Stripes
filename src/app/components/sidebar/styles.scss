@@ -77,9 +77,11 @@
 
 	&-link {
 		@extend .link-primary;
+		text-decoration: none;
 		padding: 0.25rem 0;
 
 		&-group-text {
+			text-decoration: none;
 			display: flex;
 			flex-direction: column;
 			font-weight: bold;
