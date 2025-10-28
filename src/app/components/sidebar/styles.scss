@@ -4,7 +4,7 @@
 .sidebar {
 	width: 15rem;
 	border-right: 1px solid $border-light;
-	background-color: $background-beige;
+	background-color: var(--color-accent);
 	height: 100%;
 	padding: 1rem;
 	flex-shrink: 0;
@@ -38,13 +38,11 @@
 		padding-top: 0.35rem;
 
 		&-hr {
-			color: $primary-brown;
 			width: 10rem;
 			margin: 2rem auto;
 		}
 
 		&-title {
-			color: $primary-brown;
 			font-size: 1.5rem;
 			font-weight: 400;
 			text-decoration: none;
@@ -52,7 +50,6 @@
 
 			&:hover {
 				text-decoration: underline;
-				color: $link-color;
 			}
 		}
 
@@ -147,10 +144,5 @@
 
 .sidebar-gh-icon {
 	font-size: 1.2rem;
-	@extend .text-muted;
 	transition: $transition-fast;
-
-	&:hover {
-		color: #000000;
-	}
 }

@@ -7,7 +7,6 @@ import { articles } from "@app/shared";
 
 import styles from "./styles.module.scss";
 
-
 /** Компонент модуля "Полезные статьи" */
 const UsefulArticles: FC = () => {
     return (

@@ -13,14 +13,12 @@
 
 	--theme-h: var(--bulma-warning-h);
 	--theme-s: var(--bulma-warning-s);
-	--theme-l: var(--bulma-warning-l);
-	--theme-color: hsl(var(--theme-h), var(--theme-s), var(--theme-l));
 
 	--h: var(--theme-h);
 	--s: var(--theme-s);
 	--l: 60%;
 	--a: 0.1;
-	--color: var(--theme-color);
+	--color: var(--color-primary);
 
 	&:hover {
 		--a: 0.05;
