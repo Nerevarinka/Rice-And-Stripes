@@ -3,18 +3,22 @@ import type { FC } from "react";
 
 import { anatomy } from "@app/pages/articles/components/anatomy/article";
 import { cageSelection } from "@app/pages/articles/components/cageSelection/article";
+import { topTenMistakes } from "@app/pages/articles/components/topTenMistakes/article";
 
 import Anatomy from "@app/pages/articles/components/anatomy";
 import CageSelection from "@app/pages/articles/components/cageSelection";
+import TopTenMistakes from "@app/pages/articles/components/topTenMistakes";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
     anatomy,
     cageSelection,
+    topTenMistakes,
 ];
 
 /** Словарь сопоставления статей к компонентам для отображения */
 export const articleComponents: Record<string, FC> = {
     [anatomy.link]: Anatomy,
     [cageSelection.link]: CageSelection,
+    [topTenMistakes.link]: TopTenMistakes,
 };
