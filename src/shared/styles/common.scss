@@ -1,5 +1,24 @@
 @use "variables" as *;
 
+html {
+	color: var(--color-primary-text);
+	background-color: var(--color-background);
+
+	--bulma-link-text: var(--color-primary-text);
+}
+
+a {
+	--bulma-link-text: var(--color-primary-text);
+}
+
+.bi {
+	color: rgba(var(--color-primary-text), 0.75);
+
+	&:hover {
+		color: var(--color-primary-text);
+	}
+}
+
 // Переиспользуемые классы
 .content-wrapper {
 	padding: 2rem;
