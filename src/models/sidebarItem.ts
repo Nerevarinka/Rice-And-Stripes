@@ -9,9 +9,6 @@ export type SidebarItem = {
     /** Является группой */
     isGroup: boolean;
 
-    /** Компонент для отображения */
-    component: React.ReactNode;
-
-    /** Отображать в меню */
-    visible: boolean;
+    /** Вложенные элементы (для групп) */
+    children?: Array<{ caption: string; link: string }>;
 };
