@@ -1,3 +1,5 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+
 /** Тип для элемента статьи */
 export type Article = {
     /** Заголовок статьи */
@@ -7,7 +9,7 @@ export type Article = {
     link: string;
 
     /** Обложка статьи */
-    cover: string;
+    cover: StaticImport;
 
     /** Описание статьи */
     description: string;

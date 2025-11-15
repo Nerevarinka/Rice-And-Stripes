@@ -1,0 +1,63 @@
+@use "../../shared/styles/variables" as *;
+
+.content-with-toc {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+
+    &__content {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+.table-of-contents {
+    position: sticky;
+    top: 2rem;
+    width: 20rem;
+    max-height: calc(100vh - 4rem);
+    border-left: 1px solid $border-light-gray;
+    overflow-y: auto;
+    flex-shrink: 0;
+    padding: 1rem;
+    margin-left: 2rem;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding-left: 1rem;
+    }
+
+    &__item {
+        margin-bottom: 0.5rem;
+    }
+
+    &__link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: $text-muted;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: $transition-fast;
+        font-size: 0.9rem;
+        line-height: 1.4;
+
+        &:hover {
+            color: $primary-brown;
+            background-color: $background-beige;
+        }
+
+        &--active {
+            color: $link-color;
+            background-color: $background-beige;
+            font-weight: 500;
+            border-left: 3px solid $color-primary-light;
+            padding-left: calc(0.75rem - 3px);
+        }
+    }
+}

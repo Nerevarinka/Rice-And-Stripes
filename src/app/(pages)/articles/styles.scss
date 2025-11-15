@@ -1,0 +1,110 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/common" as *;
+
+.m-card {
+	background-color: var(--bulma-scheme-main);
+	border-color: var(--bulma-border);
+	border-radius: var(--bulma-radius-large);
+	border-style: solid;
+	border-width: 1px;
+
+	transition-duration: var(--bulma-duration);
+	transition-property: border-color, box-shadow, transform;
+
+	--theme-h: var(--bulma-warning-h);
+	--theme-s: var(--bulma-warning-s);
+
+	--h: var(--theme-h);
+	--s: var(--theme-s);
+	--l: 60%;
+	--a: 0.1;
+	--color: var(--color-primary);
+
+	&:hover {
+		--a: 0.05;
+		border-color: var(--color);
+		box-shadow:
+			0 1em 2em 0 hsla(var(--h), var(--s), var(--l), var(--a)),
+			0 2em 4em 0 hsla(var(--h), var(--s), var(--l), var(--a));
+		transform: translateY(-0.5em);
+	}
+
+	[class*="image"] img {
+		width: 25rem;
+		aspect-ratio: 16 / 9;
+	}
+}
+
+.back-button {
+	position: absolute;
+	top: 2rem;
+	display: none;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.25rem;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: $transition-fast;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: $text-muted;
+	z-index: 100;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+	@media (min-width: 768px) {
+		display: flex;
+	}
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 1);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		transform: translateY(-1px);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}
+
+.article-content {
+	width: 70%;
+
+	margin: 0 auto;
+	position: relative;
+
+	&-wrapper {
+		padding-top: 2rem;
+		padding-bottom: 3rem;
+	}
+}
+
+.source-link {
+	margin-left: 0.25rem;
+	@extend .link-default;
+}
+
+.set-of-pictures-container {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 1.5rem;
+
+	// Все изображения внутри контейнера будут иметь одинаковую высоту
+	.image-with-caption {
+		flex: 0 1 auto;
+		max-width: 100%;
+
+		&__image-wrapper {
+			height: 400px;
+
+			img {
+				height: 100%;
+				width: auto;
+				max-width: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+}
