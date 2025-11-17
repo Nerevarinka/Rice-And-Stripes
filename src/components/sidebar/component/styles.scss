@@ -113,6 +113,18 @@
 	&-item {
 		padding: 0.25rem 0;
 		position: relative;
+
+		.finch-hidden-icon {
+			width: 30px;
+			margin-right: 8px;
+			opacity: 0;
+			vertical-align: middle;
+		}
+
+		&:hover .finch-hidden-icon {
+			opacity: 1;
+			transition: $transition-fast;
+		}
 	}
 
 	&-links {
@@ -132,23 +144,11 @@
 				opacity: 1;
 
 				svg {
-				filter: grayscale(0);
+					filter: grayscale(0);
 				}
 			}
 		}
 	}
-}
-
-.sidebar-item .finch-hidden-icon {
-	width: 30px;
-	margin-right: 8px;
-	opacity: 0;
-	vertical-align: middle;
-}
-
-.sidebar-item:hover .finch-hidden-icon {
-	opacity: 1;
-	transition: $transition-fast;
 }
 
 .sidebar-gh-icon {

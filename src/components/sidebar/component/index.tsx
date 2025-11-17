@@ -10,10 +10,10 @@ import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
 import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 
 import "./styles.scss";
+import { sideBarMenu } from "./items";
 
 import SidebarHeader from "../components/sidebarHeader";
 import SidebarLinks from "../components/sidebarLinks";
-import { sideBarMenu } from "./items";
 
 const today = new Date();
 
@@ -31,7 +31,7 @@ export default function Sidebar() {
 	}, [pathname]);
 
 	return (
-		<aside className="sidebar is-flex-shrink-0" style={{ overflowY: 'auto' }}>
+		<aside className="sidebar is-flex-shrink-0" style={{ overflowY: "auto" }}>
 			<div className="sidebar-wrapper is-flex is-flex-direction-column">
 				<div className="is-flex is-justify-content-center">
 					<Link href="/">
@@ -77,13 +77,12 @@ export default function Sidebar() {
 											.filter(child => pathname === child.link)
 											.map(child => (
 												<div key={child.link} className="sidebar-nested-item">
-													<Link
-														href={child.link}
+													<span
 														className="sidebar-nested-link sidebar-nested-link--active"
 														title={child.caption}
 													>
 														{child.caption.length > 20 ? child.caption.slice(0, 20) + '...' : child.caption}
-													</Link>
+													</span>
 												</div>
 											))}
 									</div>
