@@ -12,6 +12,7 @@ export const articleInfo: Article = {
     cover: articleCover,
     description: "Вопрос, открывающий портал в ад. Разбираем все за и против полетов амадин по комнате: опасности, меры безопасности, влияние на психику и физическое здоровье птиц.",
     publishDate: new Date(2025, 2, 23),
+    tags: ["содержание", "здоровье"],
 };
 
 export const metadata: Metadata = createArticleMetadata(
