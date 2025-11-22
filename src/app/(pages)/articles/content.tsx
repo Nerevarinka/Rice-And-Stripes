@@ -16,6 +16,17 @@ export default function ArticlesContainer() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedTags, setSelectedTags] = useState<ArticleTag[]>([]);
 
+    // Получаем все уникальные теги из статей
+    const availableTags = useMemo(() => {
+        const tagsSet = new Set<ArticleTag>();
+
+        articles.forEach(article => {
+            article.tags.forEach(tag => tagsSet.add(tag));
+        });
+
+        return Array.from(tagsSet);
+    }, []);
+
     const filteredArticles = useMemo(() => {
         let result = [...articles];
 
@@ -56,38 +67,13 @@ export default function ArticlesContainer() {
                 Статьи для владельцев
             </h2>
 
-            <div className="field pb-4 mb-0 search-field">
-                <div className="control">
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="Поиск по названию статьи..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                </div>
-                {selectedTags.length > 0 && (
-                    <div className="mt-2">
-                        <span className="has-text-weight-semibold mr-2">Фильтр по тегам:</span>
-                        {selectedTags.map(tag => (
-                            <span
-                                key={tag}
-                                className="tag is-medium mr-1"
-                                style={{
-                                    backgroundColor: ArticleTagColors[tag].background,
-                                    color: ArticleTagColors[tag].text
-                                }}
-                            >
-                                {tag}
-                                <button
-                                    className="delete is-small ml-2"
-                                    onClick={() => setSelectedTags(prev => prev.filter(t => t !== tag))}
-                                />
-                            </span>
-                        ))}
-                    </div>
-                )}
-            </div>
+            <SearchAndFilterPanel
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                selectedTags={selectedTags}
+                setSelectedTags={setSelectedTags}
+                availableTags={availableTags}
+            />
 
             <div className="card-group py-4 pr-3 mt-2 pl-1">
                 {filteredArticles.map(x =>
@@ -108,7 +94,10 @@ export default function ArticlesContainer() {
                                             {x.caption}
                                         </p>
                                         <p className="mb-3">
-                                            {x.description}
+                                            {x.description.length > 150 
+                                                ? `${x.description.substring(0, 150)}..` 
+                                                : x.description
+                                            }
                                         </p>
                                     </div>
                                     <div className="article-tags mb-2">
@@ -120,7 +109,10 @@ export default function ArticlesContainer() {
                                             />
                                         ))}
                                     </div>
-                                    <time className="has-text-grey is-size-7 article-date">
+                                    <time 
+                                        className="has-text-grey is-size-7 article-date"
+                                        title="Дата публикации статьи"
+                                    >
                                         {formatDate(x.publishDate, "dd.MM.yyyy")}
                                     </time>
                                 </div>
@@ -136,5 +128,83 @@ export default function ArticlesContainer() {
                 </div>
             )}
         </section>
+    );
+}
+
+interface SearchAndFilterPanelProps {
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
+    selectedTags: ArticleTag[];
+    setSelectedTags: React.Dispatch<React.SetStateAction<ArticleTag[]>>;
+    availableTags: ArticleTag[];
+}
+
+function SearchAndFilterPanel({
+    searchQuery,
+    setSearchQuery,
+    selectedTags,
+    setSelectedTags,
+    availableTags
+}: SearchAndFilterPanelProps) {
+    return (
+        <div className="field pb-4 mb-0 search-field">
+            <div className="control">
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Поиск по названию статьи..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
+
+            <div className="mt-3 is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: '0.75rem' }}>
+                <div className="is-flex is-align-items-center">
+                    <label className="label mb-0 mr-2">Фильтр по тегам:</label>
+                    <div className="select">
+                        <select
+                            value=""
+                            onChange={(e) => {
+                                const tag = e.target.value as ArticleTag;
+                                if (tag && !selectedTags.includes(tag)) {
+                                    setSelectedTags(prev => [...prev, tag]);
+                                }
+                            }}
+                        >
+                            <option value="">Выберите тег...</option>
+                            {availableTags
+                                .filter(tag => !selectedTags.includes(tag))
+                                .map(tag => (
+                                    <option key={tag} value={tag}>
+                                        {tag}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                {selectedTags.length > 0 && (
+                    <div className="is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: '0.5rem' }}>
+                        {selectedTags.map(tag => (
+                            <span
+                                key={tag}
+                                className="tag is-medium"
+                                style={{
+                                    backgroundColor: ArticleTagColors[tag].background,
+                                    color: ArticleTagColors[tag].text
+                                }}
+                            >
+                                {tag}
+                                <button
+                                    className="delete is-small ml-2"
+                                    onClick={() => setSelectedTags(prev => prev.filter(t => t !== tag))}
+                                />
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </div>
+        </div>
     );
 }
