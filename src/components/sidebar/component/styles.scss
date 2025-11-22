@@ -1,6 +1,8 @@
 @use "../../../shared/styles/variables" as *;
 @use "../../../shared/styles/common" as *;
 
+@use "sass:color";
+
 .sidebar {
 	width: 15rem;
 	border-right: 1px solid $border-light;
@@ -118,10 +120,19 @@
 			width: 30px;
 			margin-right: 8px;
 			opacity: 0;
-			vertical-align: middle;
 		}
 
-		&:hover .finch-hidden-icon {
+		&.is-active {
+			a {
+				color: $link-color;
+			}
+
+			.finch-hidden-icon {
+				opacity: 0.95;
+			}
+		}
+
+		&:not(.is-active):hover .finch-hidden-icon {
 			opacity: 1;
 			transition: $transition-fast;
 		}

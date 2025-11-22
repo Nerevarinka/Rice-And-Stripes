@@ -56,7 +56,7 @@ export default function Sidebar() {
 					<nav className="is-flex is-flex-direction-column">
 						{sideBarMenu.map(x => (
 							<div key={x.link}>
-								<div className="sidebar-item is-flex is-align-items-center">
+								<div className={`sidebar-item is-flex is-align-items-center${pathname.startsWith(x.link) ? ' is-active' : ''}`}>
 									<Image
 										src={sidebarItemIcon}
 										alt="Sidebar item icon"
