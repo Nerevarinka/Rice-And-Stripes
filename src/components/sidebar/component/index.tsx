@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { siGithub } from "simple-icons";
 
 import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
@@ -20,6 +20,14 @@ const today = new Date();
 export default function Sidebar() {
 	const pathname = usePathname();
 	const [showNested, setShowNested] = useState(false);
+
+	// Check if we're on 404 page (any path that doesn't match our routes)
+	const isValidRoute = useMemo(() => sideBarMenu.some(item =>
+		pathname === item.link ||
+		(pathname.startsWith(item.link + '/') &&
+			(item.children && item.children.some(child => pathname === child.link))
+		)
+	), [pathname]);
 
 	useEffect(() => {
 		const hideTimer = setTimeout(() => setShowNested(false), 0);
@@ -56,7 +64,7 @@ export default function Sidebar() {
 					<nav className="is-flex is-flex-direction-column">
 						{sideBarMenu.map(x => (
 							<div key={x.link}>
-								<div className={`sidebar-item is-flex is-align-items-center${pathname.startsWith(x.link) ? ' is-active' : ''}`}>
+								<div className={`sidebar-item is-flex is-align-items-center${isValidRoute && pathname.startsWith(x.link) ? ' is-active' : ''}`}>
 									<Image
 										src={sidebarItemIcon}
 										alt="Sidebar item icon"
