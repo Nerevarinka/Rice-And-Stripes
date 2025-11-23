@@ -20,6 +20,12 @@
 		width: 10rem;
 		border: 1px solid $border-gray;
 		border-radius: 50%;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+		&:hover {
+			transform: scale(1.05) rotate(5deg);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		}
 	}
 
 	&-header {
@@ -35,9 +41,13 @@
 			font-weight: 400;
 			text-decoration: none;
 			padding: 0.25rem 0;
+			transition: color 0.3s ease, transform 0.2s ease;
+			display: inline-block;
 
 			&:hover {
 				text-decoration: underline;
+				color: $primary-brown;
+				transform: translateX(5px);
 			}
 		}
 

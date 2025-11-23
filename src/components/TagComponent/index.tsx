@@ -1,11 +1,11 @@
-import { ArticleTag, ArticleTagColors } from "@/models/article";
+import { MediaItemTag, MediaItemTagColors } from "@/models";
 
 interface TagComponentProps {
     /** Тег для отображения */
-    tag: ArticleTag;
+    tag: MediaItemTag;
 
     /** Обработчик клика по тегу */
-    onClick?: (tag: ArticleTag, e: React.MouseEvent) => void;
+    onClick?: (tag: MediaItemTag, e: React.MouseEvent) => void;
 }
 
 /**
@@ -16,8 +16,8 @@ const TagComponent: React.FC<TagComponentProps> = ({ tag, onClick }) => {
         <span
             className="tag is-light mr-1"
             style={{
-                backgroundColor: ArticleTagColors[tag].background,
-                color: ArticleTagColors[tag].text,
+                backgroundColor: MediaItemTagColors[tag].background,
+                color: MediaItemTagColors[tag].text,
                 cursor: onClick ? 'pointer' : 'default'
             }}
             onClick={onClick ? (e) => onClick(tag, e) : undefined}

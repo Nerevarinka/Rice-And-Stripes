@@ -4,17 +4,15 @@ import type { FC, PropsWithChildren } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
-import "./styles.scss";
-
-const ArticlesLayout: FC<PropsWithChildren> = ({ children }) => {
+const NotesLayout: FC<PropsWithChildren> = ({ children }) => {
 	const router = useRouter();
 	const pathname = usePathname();
 
-	const isArticlePage = pathname !== "/articles" && pathname.startsWith("/articles/");
+	const isNotePage = pathname !== "/notes" && pathname.startsWith("/notes/");
 
 	return (
 		<>
-			{isArticlePage && (
+			{isNotePage && (
 				<button className="back-button" onClick={() => router.back()} aria-label="Вернуться назад">
 					<ArrowLeft size={20} />
 					<span>Назад</span>
@@ -25,4 +23,4 @@ const ArticlesLayout: FC<PropsWithChildren> = ({ children }) => {
 	);
 };
 
-export default ArticlesLayout;
+export default NotesLayout;

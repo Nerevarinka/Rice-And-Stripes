@@ -1,0 +1,9 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/common" as *;
+
+.search-field {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	border-radius: var(--bulma-radius);
+	background-color: var(--bulma-scheme-main);
+}

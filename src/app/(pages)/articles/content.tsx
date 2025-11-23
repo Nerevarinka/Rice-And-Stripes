@@ -7,18 +7,17 @@ import Link from "next/link";
 import { formatDate } from "@bodynarf/utils";
 
 import { articles } from "@/shared/articles";
-import { ArticleTagColors, ArticleTag } from "@/models/article";
+import { MediaItemTagColors, MediaItemTag } from "@/models";
 import TagComponent from "@/components/TagComponent";
 
 import "./styles.scss";
 
 export default function ArticlesContainer() {
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedTags, setSelectedTags] = useState<ArticleTag[]>([]);
+    const [selectedTags, setSelectedTags] = useState<MediaItemTag[]>([]);
 
-    // Получаем все уникальные теги из статей
     const availableTags = useMemo(() => {
-        const tagsSet = new Set<ArticleTag>();
+        const tagsSet = new Set<MediaItemTag>();
 
         articles.forEach(article => {
             article.tags.forEach(tag => tagsSet.add(tag));
@@ -51,7 +50,7 @@ export default function ArticlesContainer() {
         return result;
     }, [searchQuery, selectedTags]);
 
-    const handleTagClick = (tag: ArticleTag, e: React.MouseEvent) => {
+    const handleTagClick = (tag: MediaItemTag, e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
         setSelectedTags(prev =>
@@ -134,9 +133,9 @@ export default function ArticlesContainer() {
 interface SearchAndFilterPanelProps {
     searchQuery: string;
     setSearchQuery: (query: string) => void;
-    selectedTags: ArticleTag[];
-    setSelectedTags: React.Dispatch<React.SetStateAction<ArticleTag[]>>;
-    availableTags: ArticleTag[];
+    selectedTags: MediaItemTag[];
+    setSelectedTags: React.Dispatch<React.SetStateAction<MediaItemTag[]>>;
+    availableTags: MediaItemTag[];
 }
 
 function SearchAndFilterPanel({
@@ -165,7 +164,7 @@ function SearchAndFilterPanel({
                         <select
                             value=""
                             onChange={(e) => {
-                                const tag = e.target.value as ArticleTag;
+                                const tag = e.target.value as MediaItemTag;
                                 if (tag && !selectedTags.includes(tag)) {
                                     setSelectedTags(prev => [...prev, tag]);
                                 }
@@ -191,8 +190,8 @@ function SearchAndFilterPanel({
                                 key={tag}
                                 className="tag is-medium"
                                 style={{
-                                    backgroundColor: ArticleTagColors[tag].background,
-                                    color: ArticleTagColors[tag].text
+                                    backgroundColor: MediaItemTagColors[tag].background,
+                                    color: MediaItemTagColors[tag].text
                                 }}
                             >
                                 {tag}
