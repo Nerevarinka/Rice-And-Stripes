@@ -11,7 +11,8 @@ export const articleInfo: Article = {
     link: "/articles/zebraFinchesNatureDiet",
     cover: articleCover,
     description: "Что, где, когда и как едят зебровые амадины в естественных условиях.",
-    publishDate: new Date(2025, 4, 8)
+    publishDate: new Date(2025, 4, 8),
+    tags: ["питание", "познавательное"],
 };
 
 export const metadata: Metadata = createArticleMetadata(

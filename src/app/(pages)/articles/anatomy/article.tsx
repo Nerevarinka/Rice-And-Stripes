@@ -3,7 +3,7 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
 
 import cover from "@/shared/assets/articles/anatomy/cover.jpg";
 import secondImage from "@/shared/assets/articles/anatomy/2.jpg";

@@ -9,7 +9,8 @@ export const articleInfo: Article = {
 	link: "/articles/cageSelection",
 	cover: articleCover,
 	description: "На что обратить внимание при выборе жилища для птиц. Разбираем важные характеристики клеток: размеры, материалы, конструкция, безопасность для амадин.",
-	publishDate: new Date(2025, 1, 12)
+	publishDate: new Date(2025, 1, 12),
+	tags: ["содержание"],
 };
 
 export const metadata: Metadata = createArticleMetadata(

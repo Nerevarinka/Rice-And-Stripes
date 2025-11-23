@@ -1,4 +1,5 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { MediaItemTag } from "./mediaItemTag";
 
 /** Тип для элемента статьи */
 export type Article = {
@@ -16,4 +17,7 @@ export type Article = {
 
     /** Дата публикации */
     publishDate: Date;
+
+    /** Теги статьи */
+    tags: MediaItemTag[];
 };

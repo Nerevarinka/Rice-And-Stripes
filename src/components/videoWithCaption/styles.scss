@@ -1,6 +1,6 @@
 @import "../../shared/styles/variables";
 
-.image-with-caption {
+.video-with-caption {
     display: flex;
     flex-direction: column;
     margin: 1.5rem 0;
@@ -17,15 +17,14 @@
         align-items: flex-end;
     }
 
-    &__image-wrapper {
+    &__video-wrapper {
         position: relative;
         display: inline-block;
     }
 
-    &__image {
+    &__video {
         height: auto;
         border-radius: 4px;
-        cursor: pointer;
         transition: $transition-fast;
 
         &--small {
@@ -38,20 +37,6 @@
 
         &--big {
             max-width: 50rem;
-        }
-
-        &:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .image-with-caption__image-wrapper--not-expandable & {
-            cursor: default;
-
-            &:hover {
-                opacity: 1;
-                box-shadow: none;
-            }
         }
     }
 
@@ -94,15 +79,15 @@
         padding: 2rem;
         color: #ffffff;
 
-        .image-with-caption__image-wrapper--small & {
+        .video-with-caption__video-wrapper--small & {
             font-size: 0.875rem;
         }
 
-        .image-with-caption__image-wrapper--medium & {
+        .video-with-caption__video-wrapper--medium & {
             font-size: 1rem;
         }
 
-        .image-with-caption__image-wrapper--big & {
+        .video-with-caption__video-wrapper--big & {
             font-size: 1.125rem;
         }
     }
@@ -112,12 +97,12 @@
         margin-bottom: 0.75rem;
         animation: pulse 2s ease-in-out infinite;
 
-        .image-with-caption__image-wrapper--medium & {
+        .video-with-caption__video-wrapper--medium & {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .image-with-caption__image-wrapper--big & {
+        .video-with-caption__video-wrapper--big & {
             font-size: 3rem;
             margin-bottom: 1.25rem;
         }
@@ -130,12 +115,12 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
 
-        .image-with-caption__image-wrapper--medium & {
+        .video-with-caption__video-wrapper--medium & {
             font-size: 1.125rem;
             margin-bottom: 1rem;
         }
 
-        .image-with-caption__image-wrapper--big & {
+        .video-with-caption__video-wrapper--big & {
             font-size: 1.25rem;
             margin-bottom: 1.25rem;
         }
@@ -149,12 +134,12 @@
         display: inline-block;
         transition: all 0.2s ease;
 
-        .image-with-caption__image-wrapper--medium & {
+        .video-with-caption__video-wrapper--medium & {
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
 
-        .image-with-caption__image-wrapper--big & {
+        .video-with-caption__video-wrapper--big & {
             font-size: 1rem;
             padding: 0.6rem 1.2rem;
         }
@@ -169,55 +154,4 @@
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
-}
-
-.image-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    cursor: pointer;
-    padding: 2rem;
-
-    &__content {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        background-color: var(--color-background);
-        padding: 4px;
-        border-radius: 8px;
-    }
-
-    &__image {
-        object-fit: contain;
-        max-width: calc(90vw - 8px);
-        max-height: calc(90vh - 8px);
-        width: auto !important;
-        height: auto !important;
-        position: relative !important;
-    }
-
-    &__caption {
-        color: #fff;
-        text-align: center;
-        background-color: #000c;
-        border-radius: 4px;
-        max-width: 80%;
-        padding: 1rem 1.5rem;
-        font-size: 0.875rem;
-        font-style: italic;
-        position: fixed;
-        bottom: 1rem;
-    }
 }

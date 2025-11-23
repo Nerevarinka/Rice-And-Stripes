@@ -3,23 +3,31 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { siGithub } from "simple-icons";
 
 import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
 import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 
 import "./styles.scss";
+import { sideBarMenu } from "./items";
 
 import SidebarHeader from "../components/sidebarHeader";
 import SidebarLinks from "../components/sidebarLinks";
-import { sideBarMenu } from "./items";
 
 const today = new Date();
 
 export default function Sidebar() {
 	const pathname = usePathname();
 	const [showNested, setShowNested] = useState(false);
+
+	// Check if we're on 404 page (any path that doesn't match our routes)
+	const isValidRoute = useMemo(() => sideBarMenu.some(item =>
+		pathname === item.link ||
+		(pathname.startsWith(item.link + '/') &&
+			(item.children && item.children.some(child => pathname === child.link))
+		)
+	), [pathname]);
 
 	useEffect(() => {
 		const hideTimer = setTimeout(() => setShowNested(false), 0);
@@ -31,7 +39,7 @@ export default function Sidebar() {
 	}, [pathname]);
 
 	return (
-		<aside className="sidebar is-flex-shrink-0" style={{ overflowY: 'auto' }}>
+		<aside className="sidebar is-flex-shrink-0" style={{ overflowY: "auto" }}>
 			<div className="sidebar-wrapper is-flex is-flex-direction-column">
 				<div className="is-flex is-justify-content-center">
 					<Link href="/">
@@ -56,7 +64,7 @@ export default function Sidebar() {
 					<nav className="is-flex is-flex-direction-column">
 						{sideBarMenu.map(x => (
 							<div key={x.link}>
-								<div className="sidebar-item is-flex is-align-items-center">
+								<div className={`sidebar-item is-flex is-align-items-center${isValidRoute && pathname.startsWith(x.link) ? ' is-active' : ''}`}>
 									<Image
 										src={sidebarItemIcon}
 										alt="Sidebar item icon"
@@ -77,13 +85,12 @@ export default function Sidebar() {
 											.filter(child => pathname === child.link)
 											.map(child => (
 												<div key={child.link} className="sidebar-nested-item">
-													<Link
-														href={child.link}
+													<span
 														className="sidebar-nested-link sidebar-nested-link--active"
 														title={child.caption}
 													>
 														{child.caption.length > 20 ? child.caption.slice(0, 20) + '...' : child.caption}
-													</Link>
+													</span>
 												</div>
 											))}
 									</div>

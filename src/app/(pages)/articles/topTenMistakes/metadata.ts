@@ -11,7 +11,8 @@ export const articleInfo: Article = {
     link: "/articles/topTenMistakes",
     cover: articleCover,
     description: "Что неправильно делают начинающие владельцы и как это исправить.",
-    publishDate: new Date(2025, 3, 1)
+    publishDate: new Date(2025, 3, 1),
+    tags: ["познавательное"],
 };
 
 export const metadata: Metadata = createArticleMetadata(

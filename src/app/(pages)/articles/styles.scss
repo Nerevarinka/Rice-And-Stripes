@@ -1,37 +1,127 @@
 @use "../../../shared/styles/variables" as *;
 @use "../../../shared/styles/common" as *;
 
-.m-card {
+.search-field {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	border-radius: var(--bulma-radius);
 	background-color: var(--bulma-scheme-main);
-	border-color: var(--bulma-border);
-	border-radius: var(--bulma-radius-large);
-	border-style: solid;
-	border-width: 1px;
+}
 
-	transition-duration: var(--bulma-duration);
-	transition-property: border-color, box-shadow, transform;
+.card-group {
+	max-height: calc(100vh - 15rem);
+	overflow-y: auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
 
-	--theme-h: var(--bulma-warning-h);
-	--theme-s: var(--bulma-warning-s);
+	.card-wrapper {
+		width: 22rem;
+		display: flex;
 
-	--h: var(--theme-h);
-	--s: var(--theme-s);
-	--l: 60%;
-	--a: 0.1;
-	--color: var(--color-primary);
-
-	&:hover {
-		--a: 0.05;
-		border-color: var(--color);
-		box-shadow:
-			0 1em 2em 0 hsla(var(--h), var(--s), var(--l), var(--a)),
-			0 2em 4em 0 hsla(var(--h), var(--s), var(--l), var(--a));
-		transform: translateY(-0.5em);
+		a {
+			display: flex;
+			flex: 1;
+		}
 	}
 
-	[class*="image"] img {
-		width: 25rem;
-		aspect-ratio: 16 / 9;
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--bulma-scheme-main);
+		border-radius: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--bulma-border);
+		border-radius: 4px;
+
+		&:hover {
+			background: var(--bulma-text-weak);
+		}
+	}
+}
+
+.m-card {
+	transition-duration: var(--bulma-duration);
+	transition-property: box-shadow, transform;
+	overflow: hidden;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&:hover {
+		box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+			0 0px 0 1px rgba(10, 10, 10, 0.02);
+		transform: translateY(-0.25em);
+	}
+
+	.card-image {
+		overflow: hidden;
+		max-height: 225px;
+
+		.image {
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.3s ease;
+			}
+		}
+	}
+
+	&:hover .card-image img {
+		transform: scale(1.05);
+	}
+
+	.card-content {
+		padding: 1rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.content {
+			flex: 1;
+		}
+
+		.article-date {
+			align-self: flex-end;
+			margin-top: auto;
+		}
+
+		.title {
+			color: var(--bulma-text-strong);
+			transition: color 0.2s ease;
+			font-size: 1.1rem;
+		}
+
+		.content p:not(.title) {
+			font-size: 0.9rem;
+			line-height: 1.4;
+		}
+	}
+
+	&:hover .card-content .title {
+		color: var(--bulma-link);
+	}
+}
+
+.article-tags {
+	.tag {
+		transition: transform 0.2s ease, opacity 0.2s ease;
+
+		&:hover {
+			transform: scale(1.1);
+			opacity: 0.8;
+		}
+
+		&.is-active {
+			box-shadow: 0 0 0 2px currentColor;
+			transform: scale(1.05);
+		}
 	}
 }
 
