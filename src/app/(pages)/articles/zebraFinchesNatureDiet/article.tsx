@@ -3,8 +3,8 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
-import ImageCarousel from "@/components/ImageCarousel";
+import ImageWithCaption from "@/components/imageWithCaption";
+import ImageCarousel from "@/components/imageCarousel";
 
 import cover from "@/shared/assets/articles/zebraFinchesNatureDiet/cover.jpg";
 import firstImage from "@/shared/assets/articles/zebraFinchesNatureDiet/1.jpg";

@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useCallback, useState, type FC } from "react";
+import { useCallback, useState, useEffect, type FC } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import "./styles.scss";
@@ -57,6 +57,32 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
         e.stopPropagation();
         goToNext();
     }, [goToNext]);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (!isModalOpen) return;
+
+            if (e.key === "Escape") {
+                closeModal();
+            } else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+                goToPrevious();
+            } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+                goToNext();
+            }
+        };
+
+        if (isModalOpen) {
+            document.addEventListener("keydown", handleKeyDown);
+            // Prevent scrolling when modal is open
+            document.body.style.overflow = "hidden";
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            // Restore scrolling when modal is closed
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen, closeModal, goToPrevious, goToNext]);
 
     if (images.length === 0) {
         return null;
@@ -132,33 +158,33 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
                             fill
                             style={{ objectFit: "contain" }}
                         />
-                        {images.length > 1 && (
-                            <>
-                                <button
-                                    className="image-modal__button image-modal__button--prev"
-                                    onClick={handleModalPrevious}
-                                    aria-label="Предыдущее изображение"
-                                >
-                                    <ChevronLeft size={48} />
-                                </button>
-                                <button
-                                    className="image-modal__button image-modal__button--next"
-                                    onClick={handleModalNext}
-                                    aria-label="Следующее изображение"
-                                >
-                                    <ChevronRight size={48} />
-                                </button>
-                                <div className="image-modal__counter">
-                                    {currentIndex + 1} / {images.length}
-                                </div>
-                            </>
-                        )}
-                        {currentCaption && (
-                            <div className="image-modal__caption">
-                                {currentCaption}
-                            </div>
-                        )}
                     </div>
+                    {images.length > 1 && (
+                        <>
+                            <button
+                                className="image-modal__button image-modal__button--prev"
+                                onClick={handleModalPrevious}
+                                aria-label="Предыдущее изображение"
+                            >
+                                <ChevronLeft size={48} />
+                            </button>
+                            <button
+                                className="image-modal__button image-modal__button--next"
+                                onClick={handleModalNext}
+                                aria-label="Следующее изображение"
+                            >
+                                <ChevronRight size={48} />
+                            </button>
+                            <div className="image-modal__counter">
+                                {currentIndex + 1} / {images.length}
+                            </div>
+                        </>
+                    )}
+                    {currentCaption && (
+                        <div className="image-modal__caption">
+                            {currentCaption}
+                        </div>
+                    )}
                 </div>
             )}
         </>

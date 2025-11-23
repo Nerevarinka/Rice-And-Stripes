@@ -8,7 +8,7 @@ import { formatDate } from "@bodynarf/utils";
 
 import { articles } from "@/shared/articles";
 import { MediaItemTagColors, MediaItemTag } from "@/models";
-import TagComponent from "@/components/TagComponent";
+import TagComponent from "@/components/tagComponent";
 
 import "./styles.scss";
 

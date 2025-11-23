@@ -17,7 +17,7 @@ import twelveImage from "@/shared/assets/articles/cageSelection/12.jpg";
 import thirteenImage from "@/shared/assets/articles/cageSelection/13.jpg";
 import fourteenImage from "@/shared/assets/articles/cageSelection/14.jpg";
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/VideoWithCaption";
 
 const SECTIONS = {

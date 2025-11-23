@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useState, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import "./styles.scss";
@@ -86,6 +86,26 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
     };
 
     const handleCloseModal = () => setIsModalOpen(false);
+
+    useEffect(() => {
+        const handleEscKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape" && isModalOpen) {
+                handleCloseModal();
+            }
+        };
+
+        if (isModalOpen) {
+            document.addEventListener("keydown", handleEscKey);
+            // Prevent scrolling when modal is open
+            document.body.style.overflow = "hidden";
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleEscKey);
+            // Restore scrolling when modal is closed
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen]);
 
     return (
         <>

@@ -3,7 +3,7 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
 
 import firstImage from "@/shared/assets/articles/letFinchesFly/1.jpg";
 import secondImage from "@/shared/assets/articles/letFinchesFly/2.jpg";

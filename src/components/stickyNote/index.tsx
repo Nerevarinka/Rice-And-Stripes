@@ -2,7 +2,7 @@ import Link from "next/link";
 import { formatDate } from "@bodynarf/utils";
 
 import { Note, MediaItemTag } from "@/models";
-import TagComponent from "@/components/TagComponent";
+import TagComponent from "@/components/tagComponent";
 
 import "./styles.scss";
 
@@ -17,11 +17,14 @@ interface StickyNoteProps {
 /**
  * Компонент для отображения заметки в виде sticky-note
  */
-const StickyNote: React.FC<StickyNoteProps> = ({ note, onTagClick }) => {
-    // Выбираем случайный цвет для стикера на основе хеша ссылки
+const StickyNote: React.FC<StickyNoteProps> = ({
+    note,
+    onTagClick
+}) => {
     const getColorClass = () => {
         const colors = ["yellow", "pink", "blue", "green", "purple", "orange"];
         const hash = note.link.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+
         return colors[hash % colors.length];
     };
 
