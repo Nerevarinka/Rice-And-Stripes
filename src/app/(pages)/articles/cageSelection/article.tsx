@@ -18,7 +18,7 @@ import thirteenImage from "@/shared/assets/articles/cageSelection/13.jpg";
 import fourteenImage from "@/shared/assets/articles/cageSelection/14.jpg";
 import TableOfContents from "@/components/tableOfContents";
 import ImageWithCaption from "@/components/imageWithCaption";
-import VideoWithCaption from "@/components/VideoWithCaption";
+import VideoWithCaption from "@/components/videoWithCaption";
 
 const SECTIONS = {
     HIGHT_AND_LENGTH: "hight-and-length",
@@ -66,7 +66,7 @@ const Article: FC = () => {
                         size="big"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.HIGHT_AND_LENGTH}>Высота больше длины</h3>
+                    <h3 className="title is-3" id={SECTIONS.HIGHT_AND_LENGTH}>1. Высота больше длины</h3>
                     <p>Таких клеток полно. Возможно, производители подстраиваются под спрос незнающих владельцев – клетка же большая (значит, птица обрадуется), при этом много площади в квартире не занимает. Но птицы летают в большей степени по горизонтали, а не вверх-вниз.</p>
 
                     <ImageWithCaption
@@ -75,7 +75,7 @@ const Article: FC = () => {
                         alt="Китайская клетка с Озона. Высота 90 см"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.VERTICAL_BARS}>Вертикальные прутья</h3>
+                    <h3 className="title is-3" id={SECTIONS.VERTICAL_BARS}>2. Вертикальные прутья</h3>
                     <p>Проблематично поставить жердочки и повесить кормушки – приходится подгонять их расположение под горизонтальные перекрестные прутики. Птицам тоже не очень удобно – если прыгают на стенку, то сползают по ним вниз.</p>
 
                     <ImageWithCaption
@@ -85,7 +85,7 @@ const Article: FC = () => {
                     />
 
                     <h3 className="title is-3" id={SECTIONS.GUILLOTINE_DOORS}>
-                        Дверцы-гильотины
+                        3. Дверцы-гильотины
                     </h3>
                     <p>
                         Мы выпускаем птиц гулять по комнате, и такую дверь нельзя просто открыть – надо еще чем-то закрепить, и достаточно крепко, чтобы никого не пришибло. Многие попугаи их успешно открывают, амадины вряд ли смогут, хотя мы уже не уверены насчет наших рисовых дебоширов (погреметь ими точно не откажутся).
@@ -97,7 +97,7 @@ const Article: FC = () => {
                         size="medium"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.DOORS_OPENING_UP}>Дверцы, открывающиеся вверх</h3>
+                    <h3 className="title is-3" id={SECTIONS.DOORS_OPENING_UP}>4. Дверцы, открывающиеся вверх</h3>
                     <p>Проблема, как выше – нужно закрепить их, если хочешь держать открытыми. Мешают ставить купалки.</p>
 
                     <ImageWithCaption
@@ -106,7 +106,7 @@ const Article: FC = () => {
                         alt=""
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.NO_PALLET}>Отсутствие выдвижного поддона</h3>
+                    <h3 className="title is-3" id={SECTIONS.NO_PALLET}>5. Отсутствие выдвижного поддона</h3>
                     <p>Затрудняет частую уборку. Если птицы пугливые (особенно, если недавно у вас появились), то отстегивание поддона сильно их потревожит.</p>
 
                     <ImageWithCaption
@@ -115,7 +115,7 @@ const Article: FC = () => {
                         alt="В IMAC Cova 55 цельный отстегивающийся поддон"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.LOW_PALLET_WALLS}>Низкие борта поддона</h3>
+                    <h3 className="title is-3" id={SECTIONS.LOW_PALLET_WALLS}>6. Низкие борта поддона</h3>
                     <p>Совсем не препятствуют выходу легкого мусора (шелухи) со дна за пределы клетки.</p>
 
                     <ImageWithCaption
@@ -124,7 +124,7 @@ const Article: FC = () => {
                         alt="Triol 504-К"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.PALLET_SIDES_DOWNWARDS}>Борта поддона, сужающиеся книзу (трапецией)</h3>
+                    <h3 className="title is-3" id={SECTIONS.PALLET_SIDES_DOWNWARDS}>7. Борта поддона, сужающиеся книзу (трапецией)</h3>
                     <p>Такое, похоже, у всех клеток с пластиковым низом, но выраженно в разной степени. Непонятно, почему нельзя сделать просто прямые стенки. Если птицы сидят вплотную к решетке (наши любят так спать), помет падает не вниз в подстилку, а на бортики.</p>
 
                     <ImageWithCaption
@@ -133,7 +133,7 @@ const Article: FC = () => {
                         alt="Безымянная китайская клетка с Озона. Бортики сильно скошены"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.FANCY_TOP}>Фигурный верх</h3>
+                    <h3 className="title is-3" id={SECTIONS.FANCY_TOP}>8. Фигурный верх</h3>
                     <p>Бывает, что клетка в целом хорошей прямоугольной формы, но верх аркой или с еще какой-нибудь дизайнерской задумкой. На такую уже не поставишь другую клетку или стенд.</p>
 
                     <ImageWithCaption
@@ -144,7 +144,7 @@ const Article: FC = () => {
 
                     <p>Здесь на всякий случай отметим давно известный факт – круглые клетки ни для каких птиц не подходят: в них тяжело ориентироваться (птицы, которые долго жили в таких клетках, могут иметь привычку вертеть головой). Для чувства защищенности нужен уголок.</p>
 
-                    <h3 className="title is-3" id={SECTIONS.COLORED_BARS}>Цветные прутья</h3>
+                    <h3 className="title is-3" id={SECTIONS.COLORED_BARS}>9. Цветные прутья</h3>
                     <p>Не знаем, влияет ли на психику птицы яркий цвет клетки, это больше про нашу вкусовщину. Черные превращают клетку в гробину, особенно если она большая, а помещение маленькое. Мы предпочитаем белые прутья или хотя бы просто металлические, без эмали.</p>
                     <ImageWithCaption
                         image={tenImage}
@@ -160,7 +160,7 @@ const Article: FC = () => {
                         alt="Barbie world (для птицы скорее hell). Безымянный Китай с Озона"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.NO_FEEDERS}>Отсутствие кормушек с доступом снаружи</h3>
+                    <h3 className="title is-3" id={SECTIONS.NO_FEEDERS}>10. Отсутствие кормушек с доступом снаружи</h3>
                     <p>Такой тип кормушек позволяет менять корм, не засовывая руки в клетку. Это особенно важно, если вы хотите наладить доверительные отношения с птицей.</p>
 
                     <ImageWithCaption
@@ -169,7 +169,7 @@ const Article: FC = () => {
                         alt="Конструкция клетки PetTails предусматривает только внутренние кормушки"
                     />
 
-                    <h3 className="title is-3" id={SECTIONS.FRAGILE_PLASTIC}>Хрупкий пластик</h3>
+                    <h3 className="title is-3" id={SECTIONS.FRAGILE_PLASTIC}>11. Хрупкий пластик</h3>
                     <p>Таким грешит как минимум Ferplast. За такую цену мог бы и получше сделать. Наши зебры сейчас живут в клетке Voltrega, и пластик у поддонов более гибкий, а значит его сложнее разбить при случайном падении.</p>
 
                     <p>Сейчас рисовки живут в Ferplast Piano 6 старой версии, и мы ее очень бережем. У нее хорошие пропорции - длина преобладает над высотой, при этом не плоская - можно сделать два яруса.</p>
