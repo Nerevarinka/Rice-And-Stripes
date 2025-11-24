@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState, type FC, type ReactNode } from "react";
+import { List } from "lucide-react";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
 import "./styles.scss";
 
 export type TableOfContentsItem = {
@@ -28,6 +30,8 @@ export type TableOfContentsProps = {
  */
 const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className }) => {
     const [activeId, setActiveId] = useState<string>("");
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -67,6 +71,11 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
             behavior: "smooth",
             block: "start",
         });
+
+        // Close mobile menu after navigation
+        if (isMobile) {
+            setIsMobileMenuOpen(false);
+        }
     };
 
     const containerClassName = ["content-with-toc", "mr-4", className]
@@ -75,11 +84,26 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
 
     return (
         <div className={containerClassName}>
+            {isMobile && (
+                <button
+                    className="toc-toggle"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle table of contents"
+                >
+                    <List size={24} />
+                </button>
+            )}
+            {isMobile && isMobileMenuOpen && (
+                <div
+                    className="toc-overlay"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+            )}
             <div className="content-with-toc__content">
                 {children}
             </div>
 
-            <nav className="table-of-contents">
+            <nav className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
                 <ul className="table-of-contents__list pl-2">
                     {items.map(({ caption, elementId }) => (
                         <li key={elementId} className="table-of-contents__item">

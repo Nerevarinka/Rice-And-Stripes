@@ -3,6 +3,8 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import ImageWithCaption from "@/components/imageWithCaption";
 
 import cover from "@/shared/assets/articles/topTenMistakes/cover.jpg";
@@ -325,6 +327,7 @@ const Article: FC = () => {
                     <p>
                         Надеемся, что этот небольшой разбор поможет вам сделать жизнь ваших пернатых лучше ✨
                     </p>
+                    <ArticleNavigation {...getArticleNavigation("/articles/topTenMistakes")} />
                 </div>
             </div>
         </TableOfContents>

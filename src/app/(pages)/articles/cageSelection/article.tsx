@@ -2,6 +2,9 @@
 
 import { type FC } from "react";
 
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
+
 import cover from "@/shared/assets/articles/cageSelection/cover.jpg";
 import firstImage from "@/shared/assets/articles/cageSelection/1.jpg";
 import secondImage from "@/shared/assets/articles/cageSelection/2.jpg";
@@ -201,6 +204,7 @@ const Article: FC = () => {
                     <p>В-четвертых - дверцы. Мы были уже согласны взять эту клетку, несмотря на остальные минусы, но вовремя заметили, что все они открываются вверх (в старой модели такие только с торцов). Но, что более важно, вместо двух небольших дверей спереди производитель сделал одну огромную по центру. Как повесить стандартную купалку? Вот так бы купили, а потом пришлось бы на помойку нести :))</p>
 
                     <p>В общем, сделали для себя вывод: хочешь идеальную клетку - сделай ее сам.</p>
+                    <ArticleNavigation {...getArticleNavigation("/articles/cageSelection")} />
                 </div>
             </div>
         </TableOfContents>
