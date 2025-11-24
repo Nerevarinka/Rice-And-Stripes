@@ -4,6 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import { useCallback, useState, useEffect, type FC } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
 import "./styles.scss";
 
 export type CarouselImage = {
@@ -36,6 +37,9 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const isMobile = useIsMobile();
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
     const currentImage = images[currentIndex];
     const currentSrc = currentImage.image || currentImage.src;
@@ -45,7 +49,17 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
 
     const goToPrevious = useCallback(() => setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1)), [images.length]);
     const goToNext = useCallback(() => setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1)), [images.length]);
-    const openModal = useCallback(() => setIsModalOpen(true), []);
+    const openModal = useCallback(() => {
+        if (isMobile) {
+            // On mobile, open current image in new tab
+            const src = currentImage.image?.src || currentImage.src;
+            if (src) {
+                window.open(src, "_blank");
+            }
+        } else {
+            setIsModalOpen(true);
+        }
+    }, [isMobile, currentImage]);
     const closeModal = useCallback(() => setIsModalOpen(false), []);
 
     const handleModalPrevious = useCallback((e: React.MouseEvent) => {
@@ -57,6 +71,32 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
         e.stopPropagation();
         goToNext();
     }, [goToNext]);
+
+    // Minimum swipe distance (in px)
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            goToNext();
+        } else if (isRightSwipe) {
+            goToPrevious();
+        }
+    };
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -92,7 +132,12 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
         <>
             <div className="image-carousel">
                 <div className="image-carousel__content">
-                    <div className="image-carousel__image-wrapper">
+                    <div
+                        className="image-carousel__image-wrapper"
+                        onTouchStart={isMobile ? onTouchStart : undefined}
+                        onTouchMove={isMobile ? onTouchMove : undefined}
+                        onTouchEnd={isMobile ? onTouchEnd : undefined}
+                    >
                         <Image
                             src={currentSrc!}
                             className="image-carousel__image"

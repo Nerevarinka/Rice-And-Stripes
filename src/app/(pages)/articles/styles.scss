@@ -164,9 +164,19 @@
 	margin: 0 auto;
 	position: relative;
 
+	@media (max-width: 768px) {
+		width: 95%;
+		padding: 0 0.5rem;
+	}
+
 	&-wrapper {
 		padding-top: 2rem;
 		padding-bottom: 3rem;
+
+		@media (max-width: 768px) {
+			padding-top: 1rem;
+			padding-bottom: 2rem;
+		}
 	}
 }
 
@@ -181,6 +191,11 @@
 	align-items: flex-start;
 	gap: 1.5rem;
 
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
 	// Все изображения внутри контейнера будут иметь одинаковую высоту
 	.image-with-caption {
 		flex: 0 1 auto;
@@ -189,11 +204,21 @@
 		&__image-wrapper {
 			height: 400px;
 
+			@media (max-width: 768px) {
+				height: auto;
+				max-height: 300px;
+			}
+
 			img {
 				height: 100%;
 				width: auto;
 				max-width: 100%;
 				object-fit: contain;
+
+				@media (max-width: 768px) {
+					height: auto;
+					width: 100%;
+				}
 			}
 		}
 	}
