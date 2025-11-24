@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
 import { siGithub } from "simple-icons";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
+
 import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
 import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 
@@ -20,11 +22,13 @@ const today = new Date();
 export default function Sidebar() {
 	const pathname = usePathname();
 	const [showNested, setShowNested] = useState(false);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const isMobile = useIsMobile();
 
 	// Check if we're on 404 page (any path that doesn't match our routes)
 	const isValidRoute = useMemo(() => sideBarMenu.some(item =>
 		pathname === item.link ||
-		(pathname.startsWith(item.link + '/') &&
+		(pathname.startsWith(item.link + "/") &&
 			(item.children && item.children.some(child => pathname === child.link))
 		)
 	), [pathname]);
@@ -38,9 +42,33 @@ export default function Sidebar() {
 		};
 	}, [pathname]);
 
+	const handleLinkClick = () => {
+		if (isMobile) {
+			setIsMobileMenuOpen(false);
+		}
+	};
+
 	return (
-		<aside className="sidebar is-flex-shrink-0" style={{ overflowY: "auto" }}>
-			<div className="sidebar-wrapper is-flex is-flex-direction-column">
+		<>
+			{isMobile && (
+				<button
+					className={`sidebar-burger${isMobileMenuOpen ? ' sidebar-burger--open' : ''}`}
+					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+					aria-label="Toggle menu"
+				>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			)}
+			{isMobile && isMobileMenuOpen && (
+				<div
+					className="sidebar-overlay"
+					onClick={() => setIsMobileMenuOpen(false)}
+				/>
+			)}
+			<aside className={`sidebar is-flex-shrink-0${isMobile && isMobileMenuOpen ? ' sidebar--mobile-open' : ''}${isMobile ? ' sidebar--mobile' : ''}`} style={{ overflowY: "auto" }}>
+				<div className="sidebar-wrapper is-flex is-flex-direction-column">
 				<div className="is-flex is-justify-content-center">
 					<Link href="/">
 						<Image
@@ -75,6 +103,7 @@ export default function Sidebar() {
 									<Link
 										href={x.link}
 										className={x.isGroup ? "sidebar-link-group-text is-flex is-flex-direction-column" : "sidebar-link"}
+										onClick={handleLinkClick}
 									>
 										{x.caption}
 									</Link>
@@ -130,8 +159,9 @@ export default function Sidebar() {
 						</svg>
 					</a>
 				</footer>
-			</div>
-		</aside>
+				</div>
+			</aside>
+		</>
 	);
 }
 

@@ -13,3 +13,49 @@ body {
 		"Noto Color Emoji";
 }
 
+.main-content {
+	@media (max-width: 768px) {
+		padding: 1rem 0.75rem !important;
+	}
+}
+
+.container {
+	@media (max-width: 768px) {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+
+.content {
+	@media (max-width: 768px) {
+		font-size: 0.95rem;
+		
+		h3.title {
+			font-size: 1.5rem !important;
+			margin-bottom: 1rem;
+		}
+		
+		p {
+			margin-bottom: 1rem;
+		}
+		
+		figure.image {
+			margin: 1.5rem 0 !important;
+			
+			img {
+				max-width: 100% !important;
+				height: auto !important;
+			}
+			
+			figcaption {
+				font-size: 0.85rem;
+				padding: 0 0.5rem;
+			}
+		}
+		
+		.is-size-5 {
+			font-size: 1rem !important;
+		}
+	}
+}
+
