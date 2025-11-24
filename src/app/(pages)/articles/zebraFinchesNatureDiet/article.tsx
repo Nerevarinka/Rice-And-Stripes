@@ -3,6 +3,8 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import ImageWithCaption from "@/components/imageWithCaption";
 import ImageCarousel from "@/components/imageCarousel";
 
@@ -771,6 +773,7 @@ const Article: FC = () => {
                         caption="С кольчатым астрильдом на водопое."
                         source="https://macaulaylibrary.org/asset/620661588"
                     />
+                    <ArticleNavigation {...getArticleNavigation("/articles/zebraFinchesNatureDiet")} />
                 </div>
             </div>
         </TableOfContents>

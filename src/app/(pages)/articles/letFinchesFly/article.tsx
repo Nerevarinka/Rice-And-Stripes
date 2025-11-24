@@ -3,6 +3,8 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import ImageWithCaption from "@/components/imageWithCaption";
 
 import firstImage from "@/shared/assets/articles/letFinchesFly/1.jpg";
@@ -488,6 +490,7 @@ const Article: FC = () => {
                     <p>
                         Спасибо дошедшим до этой строки и удачи.
                     </p>
+                    <ArticleNavigation {...getArticleNavigation("/articles/letFinchesFly")} />
                 </div>
             </div>
         </TableOfContents>
