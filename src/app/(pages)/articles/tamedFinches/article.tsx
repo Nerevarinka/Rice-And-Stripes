@@ -18,8 +18,10 @@ import nineteenImage from "@/shared/assets/articles/tamedFinches/19.jpg";
 import twentyImage from "@/shared/assets/articles/tamedFinches/20.jpg";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/videoWithCaption";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 
 // ID разделов для оглавления
 const SECTIONS = {
@@ -377,6 +379,8 @@ const Article: FC = () => {
                     </blockquote>
 
                     <p>Амадины, как и другие птицы - красивые и крайне интересные создания в первую очередь для наблюдения, а не физического контакта, и способность сидеть у вас на плече не определяет их ценность.</p>
+                    
+                    <ArticleNavigation {...getArticleNavigation("/articles/tamedFinches")} />
                 </div>
             </div>
         </TableOfContents >

@@ -3,7 +3,9 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
+import ImageWithCaption from "@/components/imageWithCaption";
 
 import cover from "@/shared/assets/articles/topTenMistakes/cover.jpg";
 import firstImage from "@/shared/assets/articles/topTenMistakes/1.jpg";
@@ -19,7 +21,7 @@ import tenImage from "@/shared/assets/articles/topTenMistakes/10.jpg";
 import elevenImage from "@/shared/assets/articles/topTenMistakes/11.png";
 import twelveImage from "@/shared/assets/articles/topTenMistakes/12.jpg";
 import thirteenImage from "@/shared/assets/articles/topTenMistakes/13.jpg";
-import ImageCarousel from "@/components/ImageCarousel";
+import ImageCarousel from "@/components/imageCarousel";
 
 // ID разделов для оглавления
 const SECTIONS = {
@@ -338,6 +340,7 @@ const Article: FC = () => {
                     <p>
                         Надеемся, что этот небольшой разбор поможет вам сделать жизнь ваших пернатых лучше ✨
                     </p>
+                    <ArticleNavigation {...getArticleNavigation("/articles/topTenMistakes")} />
                 </div>
             </div>
         </TableOfContents>

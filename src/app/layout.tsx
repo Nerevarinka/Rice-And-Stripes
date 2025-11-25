@@ -27,7 +27,7 @@ export default function RootLayout({
 			>
 				<div className="is-flex is-clipped" style={{ height: '100vh' }}>
 					<Sidebar />
-					<main className="is-flex-grow-1 pt-2 pl-4" style={{ overflowY: 'auto' }}>
+					<main className="is-flex-grow-1 pt-2 pl-4 main-content" style={{ overflowY: 'auto' }}>
 						{children}
 					</main>
 				</div>

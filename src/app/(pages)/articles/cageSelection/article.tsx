@@ -2,6 +2,9 @@
 
 import { type FC } from "react";
 
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
+
 import cover from "@/shared/assets/articles/cageSelection/cover.jpg";
 import firstImage from "@/shared/assets/articles/cageSelection/1.jpg";
 import secondImage from "@/shared/assets/articles/cageSelection/2.jpg";
@@ -18,7 +21,7 @@ import thirteenImage from "@/shared/assets/articles/cageSelection/13.jpg";
 import fourteenImage from "@/shared/assets/articles/cageSelection/14.jpg";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/videoWithCaption";
 
 const SECTIONS = {
@@ -290,6 +293,7 @@ const Article: FC = () => {
                     <p>
                         В общем, сделали для себя вывод: хочешь идеальную клетку - сделай ее сам.
                     </p>
+                    <ArticleNavigation {...getArticleNavigation("/articles/cageSelection")} />
                 </div>
             </div>
         </TableOfContents>

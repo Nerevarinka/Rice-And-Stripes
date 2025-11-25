@@ -3,8 +3,10 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
-import ImageCarousel from "@/components/ImageCarousel";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
+import ImageWithCaption from "@/components/imageWithCaption";
+import ImageCarousel from "@/components/imageCarousel";
 
 import firstImage from "@/shared/assets/articles/zebraFinchesNatureDiet/1.jpg";
 import secondImage from "@/shared/assets/articles/zebraFinchesNatureDiet/2.jpg";
@@ -1050,6 +1052,7 @@ const Article: FC = () => {
                         source="https://macaulaylibrary.org/asset/620661588"
                         size="big"
                     />
+                    <ArticleNavigation {...getArticleNavigation("/articles/zebraFinchesNatureDiet")} />
                 </div>
             </div>
         </TableOfContents>

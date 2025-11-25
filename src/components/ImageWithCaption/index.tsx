@@ -4,6 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import { useEffect, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
 import "./styles.scss";
 
 export type ImagePosition = "left" | "center" | "right";
@@ -54,6 +55,7 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSpoilerVisible, setIsSpoilerVisible] = useState(!!spoiler);
+    const isMobile = useIsMobile();
 
     const containerClassName = [
         "image-with-caption",
@@ -76,7 +78,13 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
 
     const handleImageClick = () => {
         if (!isSpoilerVisible && expandable) {
-            setIsModalOpen(true);
+            if (isMobile) {
+                // On mobile, open image in new tab
+                window.open(image.src, "_blank");
+            } else {
+                // On desktop, open modal
+                setIsModalOpen(true);
+            }
         }
     };
 

@@ -3,7 +3,9 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/ImageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaption";
+import ArticleNavigation from "@/components/articleNavigation";
+import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 
 import cover from "@/shared/assets/articles/anatomy/cover.jpg";
 import secondImage from "@/shared/assets/articles/anatomy/2.jpg";
@@ -860,6 +862,8 @@ const Article: FC = () => {
 
                         <li>[7] Kumar, P., Redel, U., Lang, T., Korsching, S. I., & Behrens, M. (2023). Bitter taste receptors of the zebra finch (Taeniopygia guttata). Frontiers in Physiology, 13, 1233711. doi: 10.3389/fphys.2023.1233711</li>
                     </ul>
+
+                    <ArticleNavigation {...getArticleNavigation("/articles/anatomy")} />
                 </div>
             </div>
         </TableOfContents>
