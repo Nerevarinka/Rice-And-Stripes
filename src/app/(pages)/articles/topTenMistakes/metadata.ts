@@ -10,9 +10,9 @@ export const articleInfo: Article = {
     caption: "Топ-10 раздражающих ошибок новичков",
     link: "/articles/topTenMistakes",
     cover: articleCover,
-    description: "Что неправильно делают начинающие владельцы и как это исправить.",
-    publishDate: new Date(2025, 3, 1),
-    tags: ["познавательное"],
+    description: "Что неправильно делают начинающие владельцы и как это исправить",
+    publishDate: new Date(2025, 2, 1),
+    tags: ["содержание"],
 };
 
 export const metadata: Metadata = createArticleMetadata(

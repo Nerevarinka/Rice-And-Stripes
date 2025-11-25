@@ -5,6 +5,7 @@ import { articleInfo as cageSelection } from "@/app/(pages)/articles/cageSelecti
 import { articleInfo as letFinchesFly } from "@/app/(pages)/articles/letFinchesFly/metadata";
 import { articleInfo as topTenMistakes } from "@/app/(pages)/articles/topTenMistakes/metadata";
 import { articleInfo as zebraFinchesNatureDiet } from "@/app/(pages)/articles/zebraFinchesNatureDiet/metadata";
+import { articleInfo as tamedFinches } from "@/app/(pages)/articles/tamedFinches/metadata";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
@@ -13,4 +14,5 @@ export const articles: Array<Article> = [
     letFinchesFly,
     topTenMistakes,
     zebraFinchesNatureDiet,
+    tamedFinches
 ];

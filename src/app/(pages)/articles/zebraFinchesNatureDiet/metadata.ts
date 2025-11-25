@@ -5,13 +5,13 @@ import { createArticleMetadata } from "@/shared/metadata";
 
 import articleCover from "@/shared/assets/articles/zebraFinchesNatureDiet/cover.jpg";
 
-/** Данные о статье "Некоторые аспекты анатомии и физиологии птиц, которые стоит знать владельцу" */
+/** Данные о статье "Питание зебровых амадин в природе" */
 export const articleInfo: Article = {
     caption: "Питание зебровых амадин в природе",
     link: "/articles/zebraFinchesNatureDiet",
     cover: articleCover,
-    description: "Что, где, когда и как едят зебровые амадины в естественных условиях.",
-    publishDate: new Date(2025, 4, 8),
+    description: "Что, где, когда и как едят зебровые амадины в естественных условиях",
+    publishDate: new Date(2025, 3, 8),
     tags: ["питание", "познавательное"],
 };
 
@@ -20,10 +20,12 @@ export const metadata: Metadata = createArticleMetadata(
     [
         "питание",
         "зебровые амадины",
-        "диета",
+        "диета амадин",
         "семена",
         "птицы",
         "природа",
-        "автралия",
+        "австралия",
+        "что едят амадины в природе",
+        "чем питаются амадины в природе"
     ]
 );

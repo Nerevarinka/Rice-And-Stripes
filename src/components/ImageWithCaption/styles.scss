@@ -27,17 +27,21 @@
         border-radius: 4px;
         cursor: pointer;
         transition: $transition-fast;
+        object-fit: scale-down;
 
         &--small {
-            max-width: 25rem;
+            max-width: 20rem;
+            max-height: 20rem;
         }
-
+        
         &--medium {
             max-width: 35rem;
+            max-height: 35rem;
         }
-
+        
         &--big {
             max-width: 50rem;
+            max-height: 50rem;
         }
 
         &:hover {
@@ -167,8 +171,15 @@
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .image-modal {
