@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { formatDate } from "@bodynarf/utils";
+import { formatDate } from "@bodynarf/utils/date/format";
 
 import { articles } from "@/shared/articles";
 import { MediaItemTagColors, MediaItemTag } from "@/models";
