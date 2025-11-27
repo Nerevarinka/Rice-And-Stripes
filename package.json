@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build": "next build",
+    "export": "next export"
   },
   "dependencies": {
     "@bodynarf/utils": "^1.7.3",
