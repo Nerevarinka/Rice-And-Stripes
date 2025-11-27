@@ -1,0 +1,79 @@
+@use "variables" as *;
+
+html {
+	color: var(--color-primary-text);
+	background-color: var(--color-background);
+
+	--bulma-link-text: var(--color-primary-text);
+}
+
+a {
+	--bulma-link-text: var(--color-primary-text);
+}
+
+.bi {
+	color: var(--color-primary-text);
+	opacity: 0.75;
+
+	&:hover {
+		color: var(--color-primary-text);
+		opacity: 1;
+	}
+}
+
+// Переиспользуемые классы
+.content-wrapper {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.page-title {
+	font-size: 1.75rem;
+	margin: auto 0;
+	padding-bottom: 2rem;
+}
+
+.text-muted {
+	color: $text-muted;
+}
+
+.link {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&-default {
+		color: $link-color;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&-primary {
+		color: $primary-brown;
+
+		&:hover {
+			text-decoration: underline;
+			color: $link-color;
+		}
+	}
+}
+
+.centered-content {
+	align-self: center;
+	text-align: center;
+}
+
+h1:not(:first-child),
+h2:not(:first-child),
+h3:not(:first-child),
+h4:not(:first-child),
+h5:not(:first-child),
+h6:not(:first-child) {
+	margin-top: 1.5rem;
+}

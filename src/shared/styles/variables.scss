@@ -1,0 +1,46 @@
+$color-primary-light: #f3a321;
+$color-secondary-light: #e4f87b;
+$color-primary-text-light: #0a0701;
+$color-accent-light: #e9e3d8;
+$color-background-light: #fffdf9;
+
+$color-primary-dark: #df8e0c;
+$color-secondary-dark: #6e8307;
+$color-primary-text-dark: #fefbf6;
+$color-accent-dark: #272116;
+$color-background-dark: #050300;
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-primary: #{$color-primary-light};
+        --color-secondary: #{$color-secondary-light};
+        --color-primary-text: #{$color-primary-text-light};
+        --color-accent: #{$color-accent-light};
+        --color-background: #{$color-background-light};
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #{$color-primary-dark};
+        --color-secondary: #{$color-secondary-dark};
+        --color-primary-text: #{$color-primary-text-dark};
+        --color-accent: #{$color-accent-dark};
+        --color-background: #{$color-background-dark};
+    }
+}
+
+// Цветовая палитра
+$text-muted: #67676c;
+$link-color: #753105;
+$link-in-text-color: #a54d12;
+$primary-brown: #492700;
+$border-light: #e5e5e5;
+$border-gray: #cbcbcb;
+$border-light-gray: #ddd;
+$background-beige: #e8e2d7;
+$shadow-light: rgba(0, 0, 0, 0.125);
+$shadow-medium: rgba(0, 0, 0, 0.25);
+
+// Анимации и переходы
+$transition-fast: 0.125s ease-in-out all;
+$transition-very-fast: 0.05s linear;

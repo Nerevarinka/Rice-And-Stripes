@@ -1,0 +1,13 @@
+@use "../../../shared/styles/variables" as *;
+@use "../../../shared/styles/common" as *;
+
+.container#home {
+    a {
+		color: $link-in-text-color;
+		text-decoration: underline;
+
+		&:hover {
+			color: $link-color;
+		}
+	}
+}
