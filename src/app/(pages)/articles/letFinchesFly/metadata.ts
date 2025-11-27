@@ -12,7 +12,7 @@ export const articleInfo: Article = {
     cover: articleCover,
     description: "Вопрос, открывающий портал в ад...",
     publishDate: new Date(2025, 1, 23),
-    tags: ["содержание", "здоровье"],
+    tags: ["содержание"],
 };
 
 export const metadata: Metadata = createArticleMetadata(

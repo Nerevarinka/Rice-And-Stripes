@@ -6,12 +6,12 @@ import TableOfContents from "@/components/tableOfContents";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import ImageWithCaption from "@/components/imageWithCaption";
+import ImageCarousel from "@/components/imageCarousel";
 
 import cover from "@/shared/assets/articles/topTenMistakes/cover.jpg";
 import firstImage from "@/shared/assets/articles/topTenMistakes/1.jpg";
 import secondImage from "@/shared/assets/articles/topTenMistakes/2.jpg";
 import thirdImage from "@/shared/assets/articles/topTenMistakes/3.jpg";
-import fourthImage from "@/shared/assets/articles/topTenMistakes/4.jpg";
 import fiveImage from "@/shared/assets/articles/topTenMistakes/5.jpg";
 import sixImage from "@/shared/assets/articles/topTenMistakes/6.jpg";
 import sevenImage from "@/shared/assets/articles/topTenMistakes/7.jpg";
@@ -21,7 +21,6 @@ import tenImage from "@/shared/assets/articles/topTenMistakes/10.jpg";
 import elevenImage from "@/shared/assets/articles/topTenMistakes/11.png";
 import twelveImage from "@/shared/assets/articles/topTenMistakes/12.jpg";
 import thirteenImage from "@/shared/assets/articles/topTenMistakes/13.jpg";
-import ImageCarousel from "@/components/imageCarousel";
 
 // ID разделов для оглавления
 const SECTIONS = {
@@ -57,7 +56,7 @@ const Article: FC = () => {
                 <div className="article-content">
                     <h2 className="title is-2">
                         Топ-10 раздражающих ошибок новичков
-                        </h2>
+                    </h2>
 
                     <p>
                         Из раза в раз у начинающих владельцев выявляются одни и те же косяки. Часто - несколько одновременно. Мы собрали их в одном месте.
@@ -87,9 +86,11 @@ const Article: FC = () => {
                         Объявление:
                     </p>
 
-                    <blockquote>
-                        <i>«Готовая пара, регулярно приносящая потомство. Продаются только вместе.»</i>
-                    </blockquote>
+                    <div className="content">
+                        <blockquote>
+                            <i>«Готовая пара, регулярно приносящая потомство. Продаются только вместе.»</i>
+                        </blockquote>
+                    </div>
 
                     <p>
                         Такой тандем провоцирует половое поведение, самка будет нести яйца как на птицефабрике. В конце концов это приводит к ее истощению и гибели.
@@ -118,7 +119,11 @@ const Article: FC = () => {
                         size="medium"
                     />
 
-                    <blockquote><i>Птицам не нужны птенцы «для здоровья», напротив, это создает нагрузку на организм, особенно самки. Решать, нужно ли потомство, должен хозяин. При этом он должен знать генетику своих питомцев, чтобы не скрещивать близкородственных или склонных к заболеваниям особей. Родителей необходимо обследовать перед началом разведения.</i></blockquote>
+                    <div className="message is-warning">
+                        <blockquote className="message-body">
+                            <i>Птицам не нужны птенцы «для здоровья», напротив, это создает нагрузку на организм, особенно самки. Решать, нужно ли потомство, должен хозяин. При этом он должен знать генетику своих питомцев, чтобы не скрещивать близкородственных или склонных к заболеваниям особей. Родителей необходимо обследовать перед началом разведения.</i>
+                        </blockquote>
+                    </div>
 
                     <h3 className="title is-3" id={SECTIONS.BAD_CAGE}>
                         3. Клетка-карцер и/или неприемлемой формы 📦
@@ -134,7 +139,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={secondImage}
-                        caption="Пример тесной клетки для амадин"
+                        caption=""
                         alt="Пример тесной клетки для амадин"
                         size="medium"
                     />
@@ -161,8 +166,8 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={thirdImage}
-                        caption="Амадины на неудобных жердочках"
-                        alt="Амадины на неудобных жердочках"
+                        caption=""
+                        alt="Амадина на пластиковых жердочках"
                         size="medium"
                     />
 
@@ -208,7 +213,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={sixImage}
-                        caption="Шпроты в банке"
+                        caption=""
                         alt="Слишком много амадин в одной клетке"
                         size="medium"
                     />
@@ -219,7 +224,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={sevenImage}
-                        caption="Одинокая амадина в клетке"
+                        caption=""
                         alt="Одинокая амадина в клетке"
                         size="medium"
                     />
@@ -242,7 +247,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={eightImage}
-                        caption=""
+                        caption="Зачем покупать гнездо, если можно использовать банку из-под майонеза?"
                         alt="Грязная клетка с амадинами"
                         size="medium"
                     />
@@ -285,14 +290,14 @@ const Article: FC = () => {
                     <h3 className="title is-3" id={SECTIONS.SEED_STICKS}>
                         10. Зерновые палки 🥖
                     </h3>
-                    
+
                     <p>
                         Такие палочки часто называют медовыми, но в них не обязательно присутствует сахар.
                     </p>
 
                     <ImageWithCaption
                         image={tenImage}
-                        caption="Зерновая палочка для птиц"
+                        caption=""
                         alt="Зерновая палочка для птиц"
                         size="medium"
                     />
@@ -319,7 +324,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={elevenImage}
-                        caption="Альтернатива зерновым палочкам для амадин"
+                        caption=""
                         alt="Альтернатива зерновым палочкам для амадин"
                         size="medium"
                     />
@@ -340,6 +345,7 @@ const Article: FC = () => {
                     <p>
                         Надеемся, что этот небольшой разбор поможет вам сделать жизнь ваших пернатых лучше ✨
                     </p>
+
                     <ArticleNavigation {...getArticleNavigation("/articles/topTenMistakes")} />
                 </div>
             </div>

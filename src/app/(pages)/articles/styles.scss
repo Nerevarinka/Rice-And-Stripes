@@ -55,7 +55,7 @@
 	&:hover {
 		box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
 			0 0px 0 1px rgba(10, 10, 10, 0.02);
-		transform: translateY(-0.25em);
+		// transform: translateY(-0.25em);
 	}
 
 	.card-image {
@@ -103,10 +103,6 @@
 			line-height: 1.4;
 		}
 	}
-
-	&:hover .card-content .title {
-		color: var(--bulma-link);
-	}
 }
 
 .article-tags {
@@ -114,7 +110,6 @@
 		transition: transform 0.2s ease, opacity 0.2s ease;
 
 		&:hover {
-			transform: scale(1.1);
 			opacity: 0.8;
 		}
 
@@ -131,30 +126,11 @@
 	display: none;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.75rem 1.25rem;
-	background-color: rgba(255, 255, 255, 0.9);
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 4px;
-	cursor: pointer;
 	transition: $transition-fast;
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: $text-muted;
 	z-index: 100;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 	@media (min-width: 768px) {
 		display: flex;
-	}
-
-	&:hover {
-		background-color: rgba(255, 255, 255, 1);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-		transform: translateY(-1px);
-	}
-
-	&:active {
-		transform: translateY(0);
 	}
 }
 
@@ -178,6 +154,34 @@
 			padding-bottom: 2rem;
 		}
 	}
+
+	p,
+	ul,
+	ol {
+		margin-top: 1.5rem;
+	}
+
+	ul,
+	ol {
+		margin-left: 1rem;
+	}
+
+	p a {
+		text-decoration: underline;
+	}
+
+
+	a {
+		color: $link-in-text-color;
+
+		&:hover {
+			color: $link-color;
+		}
+	}
+}
+
+.message {
+	padding-top: 1.5rem;
 }
 
 .source-link {

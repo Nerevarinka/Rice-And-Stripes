@@ -17,5 +17,11 @@ export const articleInfo: Article = {
 
 export const metadata: Metadata = createArticleMetadata(
     articleInfo,
-    []
+    [
+        "Содержание амадин",
+        "Здоровье амадин",
+        "Можно ли содержать двух самцов амадин",
+        "Ощипывание амадин",
+        "Амадины дерутся",   
+    ]
 );

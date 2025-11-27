@@ -4,6 +4,10 @@ import { type FC } from "react";
 
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
+import TableOfContents from "@/components/tableOfContents";
+import ImageWithCaption from "@/components/imageWithCaption";
+import VideoWithCaption from "@/components/videoWithCaption";
+import ImageCarousel from "@/components/imageCarousel";
 
 import cover from "@/shared/assets/articles/cageSelection/cover.jpg";
 import firstImage from "@/shared/assets/articles/cageSelection/1.jpg";
@@ -19,10 +23,11 @@ import elevenImage from "@/shared/assets/articles/cageSelection/11.jpg";
 import twelveImage from "@/shared/assets/articles/cageSelection/12.jpg";
 import thirteenImage from "@/shared/assets/articles/cageSelection/13.jpg";
 import fourteenImage from "@/shared/assets/articles/cageSelection/14.jpg";
-
-import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/imageWithCaption";
-import VideoWithCaption from "@/components/videoWithCaption";
+import fifteenImage from "@/shared/assets/articles/cageSelection/15.png";
+import sixteenImage from "@/shared/assets/articles/cageSelection/16.png";
+import seventeenImage from "@/shared/assets/articles/cageSelection/17.jpg";
+import eighteenImage from "@/shared/assets/articles/cageSelection/18.jpg";
+import nineteenImage from "@/shared/assets/articles/cageSelection/19.jpg";
 
 const SECTIONS = {
     HIGHT_AND_LENGTH: "hight-and-length",
@@ -36,6 +41,8 @@ const SECTIONS = {
     COLORED_BARS: "colored-bars",
     NO_FEEDERS: "no-feeders",
     FRAGILE_PLASTIC: "fragile-plastic",
+    BAD_COATING: "bad-coating",
+    CAGE_BOX_AVIARY: "cage-box-aviary",
 } as const;
 
 const tableOfContents = [
@@ -50,6 +57,8 @@ const tableOfContents = [
     { caption: "9. Цветные прутья", elementId: SECTIONS.COLORED_BARS, },
     { caption: "10. Отсутствие кормушек с доступом снаружи", elementId: SECTIONS.NO_FEEDERS, },
     { caption: "11. Хрупкий пластик", elementId: SECTIONS.FRAGILE_PLASTIC, },
+    { caption: "12. Некачественное покрытие", elementId: SECTIONS.BAD_COATING, },
+    { caption: "13. Клетка, бокс или авиарий?", elementId: SECTIONS.CAGE_BOX_AVIARY, },
 ];
 
 const Article: FC = () => {
@@ -66,11 +75,10 @@ const Article: FC = () => {
                         Написать эту статью сподвигли муки поиска новой клетки для наших рисовок. Хотели бы поделиться нашими недовольствами по пунктам. Часть минусов может быть субъективна. Но, возможно, кто-то при прочтении подумает «Как жизненно!».
                     </p>
 
-
                     <ImageWithCaption
                         image={cover}
                         caption=""
-                        alt="Выбор клетки для амадин – головная боль владельца"
+                        alt="Амадина думает, где она будет жить"
                         size="big"
                     />
 
@@ -101,7 +109,7 @@ const Article: FC = () => {
                         image={secondImage}
                         caption="Сам производитель ставит жердочки не как попало, а на горизонтальные прутья-опоры (Pirrura с Озона)"
                         alt="Сам производитель ставит жердочки не как попало, а на горизонтальные прутья-опоры (Pirrura с Озона)"
-                        size="medium"
+                        size="small"
                     />
 
                     <h3 className="title is-3" id={SECTIONS.GUILLOTINE_DOORS}>
@@ -115,7 +123,7 @@ const Article: FC = () => {
                     <VideoWithCaption
                         src="/assets/articles/cageSelection/3.mp4"
                         caption="Вскрытие дверей. Недорого. Громко. Видео с ютуб-канала RMVideos_Jukin"
-                        size="medium"
+                        size="small"
                     />
 
                     <h3 className="title is-3" id={SECTIONS.DOORS_OPENING_UP}>
@@ -232,7 +240,7 @@ const Article: FC = () => {
 
                     <ImageWithCaption
                         image={elevenImage}
-                        caption="Конструкция клетки PetTails предусматривает только внутренние кормушки"
+                        caption="Конструкция клетки PetTails предусматривает только внутренние кормушки. У этой фирмы есть еще очень серьезный недостаток - см. п.12"
                         alt="Конструкция клетки PetTails предусматривает только внутренние кормушки"
                         size="medium"
                     />
@@ -245,8 +253,93 @@ const Article: FC = () => {
                         Таким грешит как минимум Ferplast. За такую цену мог бы и получше сделать. Наши зебры сейчас живут в клетке Voltrega, и пластик у поддонов более гибкий, а значит его сложнее разбить при случайном падении.
                     </p>
 
+                    <h3 className="title is-3" id={SECTIONS.BAD_COATING}>
+                        12. Некачественное покрытие
+                    </h3>
+
                     <p>
-                        Сейчас рисовки живут в Ferplast Piano 6 старой версии, и мы ее очень бережем. У нее хорошие пропорции - длина преобладает над высотой, при этом не плоская - можно сделать два яруса.
+                        Не ведитесь на низкую цену китайских клеток, которые заполонили маркетплейсы. Например, у PetTails от одного касания слезает краска с прутьев. Если птица погрызет ее, может отравиться.
+                    </p>
+
+                    <ImageCarousel
+                        images={[
+                            {
+                                image: sixteenImage,
+                                caption: "Облезающие покрытие (фото из отзывов на WB)",
+                                alt: "Облезающие покрытие прутьев",
+                            },
+                            {
+                                image: fifteenImage,
+                                caption: "Сообщение о случае отравления в чате ветеринарного врача",
+                                alt: "Отравление краской",
+                            },
+                        ]}
+                    />
+
+                    <p>
+                        Когда-то под запретом были оцинкованные прутья, но врачи отмечают, что случаев отравления не было уже очень давно. Возможно, изменилась технология изготовления.
+                    </p>
+
+                    <h3 className="title is-3" id={SECTIONS.CAGE_BOX_AVIARY}>
+                        13. Клетка, бокс или авиарий?
+                    </h3>
+
+                    <p>
+                        Поселить птиц можно не только в клетку. Есть еще пара вариантов - боксы и авиарии. Мы кратко рассмотрим их тоже. Но наш выбор, однозначно, клетка (ну и вольеры, но в квартирных условиях они мало кому подойдут). У кого позволяет площадь и желание, могут выделить под птиц отдельную комнату.
+                    </p>
+
+                    <p>
+                        <strong>Бокс</strong> - буквально &quot;ящик&quot;, у которого решетка только спереди, а остальные стенки и крыша - доски. Их любят заводчики, боксы удобно ставить штабелями друг на друга. Сделать бокс самим проще, чем клетку, потому что меньше решеток. Обычно они длинные и низкие, можно сделать на заказ желаемого размера, хоть двухметровые.
+                    </p>
+
+                    <ImageWithCaption
+                        image={eighteenImage}
+                        caption="Пример бокса."
+                        alt="Бокс"
+                        source="https://www.birdbreedingcages.co.uk/products/upvc-plastic-double-finch-breeding-cage-with-divider?srsltid=AfmBOoq28hohMTMYIiD7LiXxzC8Ps6eA_gEpUhW2C2LD8qU0B-ZKORUj"
+                        size="medium"
+                    />
+
+                    <p>
+                        На аглоязычных ресурсах такой тип жилища называют <i>&quot;breeding cage&quot;</i>, то есть клетка для разведения. Глухие стенки почти со всех сторон обеспечивают покой тревожным птицам, которые легко могут бросить кладку. Мы считаем, что для обычных владельцев, не заинтересованных разведением, бокс только усложнит содержание. В нем сложнее закрепить элементы, так как нужно сначала подготовить для них пазы / крепления. В итоге в боксы часто ставят только прямые жердочки, потому что их проще всего закрепить. Клетка же позволяет сделать это в любом месте.
+                    </p>
+
+                    <p>
+                        По поводу покоя: если необходимо его обеспечить, временно прикрыть стороны тканью, картонкой или фанеркой несложно, а вот &quot;раскрыть&quot; их уже не получится. В остальном же ограничение обзора без возможности погулять вне бокса ведет лишь к отупению птиц - они уже не могут нормально воспринимать открытое пространство и пугаются, если попадают в него. К тому же, рассматривать происходящее вокруг - это способ обогащения среды для птиц, имеющих в неволе мало визуальных стимулов.
+                    </p>
+
+                    <ImageWithCaption
+                        image={nineteenImage}
+                        caption="&quot;Стерильные&quot; по наполнению маленькие боксы для разведения."
+                        alt="Боксы для разведения"
+                        source="nineteenImage"
+                        size="big"
+                    />
+
+                    <p>
+                        Под <strong>авиарием</strong> часто имеют ввиду <strong>витрину</strong>, то есть шкаф со стеклом. Понятно, что его выбирают из эстетических целей, чтобы решетки не мешали наблюдать за птицами. Поэтому чаще всего жителями авиариев становятся гульды. Получается пернатый аквариум. Также встречали информацию, что витрины использовались ранее, чтобы поддерживать высокую влажность.
+                    </p>
+
+                    <ImageWithCaption
+                        image={seventeenImage}
+                        caption="Стеклянный авиарий (витрина). Даже на стенке не повисеть..."
+                        alt="Авиарий"
+                        source="https://ru.pinterest.com/pin/2462974788361414/"
+                        size="medium"
+                    />
+
+                    <p>
+                        Но красота эта - в ущерб вентиляции. Да, там могут быть зазоры между стеклом и стенками и даже решетка сверху. Но птицам с их чувствительной дыхательной системой надо по максимуму обеспечивать приток свежего воздуха, а такую систему невозможно полноценно проветрить. Производители уверяют, что у них все супер, но замеры качества воздуха почему-то делают в только что собранном шкафу, а не в том, в котором с неделю пожили птицы.
+                    </p>
+
+                    <p>
+                        Из практической стороны - еще меньше возможностей установки внутренних элементов, чем в боксах, видимые брызги / грязь на стекле могут выглядеть еще менее эстетично, чем на решетке. При внезапном испуге у жителей есть вероятность врезаться в стекло.
+                    </p>
+
+                    <hr />
+
+                    <p>
+                        Сейчас рисовки живут в <i>Ferplast Piano 6</i> старой версии, и мы ее очень бережем. У нее хорошие пропорции - длина преобладает над высотой, при этом не плоская - можно сделать два яруса.
                     </p>
 
                     <ImageWithCaption
@@ -293,6 +386,7 @@ const Article: FC = () => {
                     <p>
                         В общем, сделали для себя вывод: хочешь идеальную клетку - сделай ее сам.
                     </p>
+
                     <ArticleNavigation {...getArticleNavigation("/articles/cageSelection")} />
                 </div>
             </div>

@@ -7,7 +7,7 @@ export default function About() {
 				О проекте
 			</h1>
 			<p className="content">
-				Rice & Stripes - информационный ресурс о содержании зебровых амадин.
+				Rice & Stripes - сайт об амадинах.
 			</p>
 		</div>
 	);

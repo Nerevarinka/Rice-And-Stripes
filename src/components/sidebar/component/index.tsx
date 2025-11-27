@@ -135,7 +135,7 @@ export default function Sidebar() {
 
 				<footer className="sidebar-footer is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered mb-5 mt-3">
 					<div>
-						© 2025 - {today.getFullYear()}
+						© 2025
 						<br />
 						Rice & Stripes
 					</div>

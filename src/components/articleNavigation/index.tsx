@@ -20,10 +20,8 @@ export type ArticleNavigationProps = {
     };
 };
 
-const mainContainer = document.querySelector("main");
-
 const ArticleNavigation: FC<ArticleNavigationProps> = ({ previousArticle, nextArticle }) => {
-    const scrollToTop = useCallback(() => mainContainer!.scrollTo({ top: 0, behavior: "smooth" }), []);
+    const scrollToTop = useCallback(() => document.querySelector("main")?.scrollTo({ top: 0, behavior: "smooth" }), []);
 
     return (
         <div className="article-navigation">

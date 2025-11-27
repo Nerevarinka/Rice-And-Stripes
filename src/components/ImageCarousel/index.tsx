@@ -104,9 +104,9 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
 
             if (e.key === "Escape") {
                 closeModal();
-            } else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+            } else if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A" || e.key === "ф" || e.key === "Ф") {
                 goToPrevious();
-            } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+            } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D" || e.key === "в" || e.key === "В") {
                 goToNext();
             }
         };

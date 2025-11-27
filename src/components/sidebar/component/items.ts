@@ -12,14 +12,14 @@ export const sideBarMenu: Array<SidebarItem> = [
             link: article.link,
         })),
     },
-    {
-        isGroup: true,
-        caption: "Заметки",
-        link: "/notes",
-    },
-    {
-        isGroup: true,
-        link: "/about",
-        caption: "Наши амадинки",
-    }
+    // {
+    //     isGroup: true,
+    //     caption: "Заметки",
+    //     link: "/notes",
+    // },
+    // {
+    //     isGroup: true,
+    //     link: "/about",
+    //     caption: "Наши амадинки",
+    // }
 ];

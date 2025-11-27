@@ -15,9 +15,9 @@ const ArticlesLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
 			{isArticlePage && (
-				<button className="back-button" onClick={() => router.back()} aria-label="Вернуться назад">
-					<ArrowLeft size={20} />
-					<span>Назад</span>
+				<button className="button is-light p-3 back-button" onClick={() => router.replace("/articles")} aria-label="Вернуться назад">
+					<ArrowLeft size={15} />
+					<span>К статьям</span>
 				</button>
 			)}
 			{children}

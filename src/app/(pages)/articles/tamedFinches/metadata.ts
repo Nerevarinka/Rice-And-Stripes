@@ -30,5 +30,6 @@ export const metadata: Metadata = createArticleMetadata(
         "японские амадины",
         "гульдовы амадины",
         "уход за птицами",
+        "можно ли приручить амадин",
     ]
 );
