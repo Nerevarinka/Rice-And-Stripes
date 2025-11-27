@@ -5,7 +5,7 @@ import type { FC } from "react";
 import TableOfContents from "@/components/tableOfContents";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
-import ImageWithCaption from "@/components/imageWithCaptions";
+import ImageWithCaption from "@/components/imageWithCaption";
 
 import firstImage from "@/shared/assets/articles/letFinchesFly/1.jpg";
 import secondImage from "@/shared/assets/articles/letFinchesFly/2.jpg";

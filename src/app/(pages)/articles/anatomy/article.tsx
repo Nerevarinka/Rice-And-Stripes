@@ -3,10 +3,10 @@
 import type { FC } from "react";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/imageWithCaptions";
+import ImageWithCaption from "@/components/imageWithCaption";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
-import ImageCarousel from "@/components/imageCarousels";
+import ImageCarousel from "@/components/imageCarousel";
 
 import cover from "@/shared/assets/articles/anatomy/cover.jpg";
 import secondImage from "@/shared/assets/articles/anatomy/2.jpg";
