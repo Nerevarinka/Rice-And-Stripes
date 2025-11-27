@@ -10,7 +10,7 @@ $color-primary-text-dark: #fefbf6;
 $color-accent-dark: #272116;
 $color-background-dark: #050300;
 
-@media (prefers-color-scheme: light) {
+// @media (prefers-color-scheme: light) {
     :root {
         --color-primary: #{$color-primary-light};
         --color-secondary: #{$color-secondary-light};
@@ -18,16 +18,16 @@ $color-background-dark: #050300;
         --color-accent: #{$color-accent-light};
         --color-background: #{$color-background-light};
     }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-primary: #{$color-primary-dark};
-        --color-secondary: #{$color-secondary-dark};
-        --color-primary-text: #{$color-primary-text-dark};
-        --color-accent: #{$color-accent-dark};
-        --color-background: #{$color-background-dark};
-    }
-}
+// }
+// @media (prefers-color-scheme: dark) {
+//     :root {
+//         --color-primary: #{$color-primary-dark};
+//         --color-secondary: #{$color-secondary-dark};
+//         --color-primary-text: #{$color-primary-text-dark};
+//         --color-accent: #{$color-accent-dark};
+//         --color-background: #{$color-background-dark};
+//     }
+// }
 
 // Цветовая палитра
 $text-muted: #67676c;

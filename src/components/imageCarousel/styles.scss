@@ -27,7 +27,6 @@
         height: 100%;
         width: auto;
         object-fit: contain;
-        //border-radius: 4px;
         cursor: pointer;
         transition: $transition-fast;
         display: block;
@@ -120,7 +119,6 @@
         gap: 1rem;
         background-color: var(--color-background);
         padding: 4px;
-        //border-radius: 8px;
     }
 
     &__image {

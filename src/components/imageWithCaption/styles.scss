@@ -38,7 +38,6 @@
 
     &__image {
         height: auto;
-        //border-radius: 4px;
         cursor: pointer;
         transition: $transition-fast;
         object-fit: scale-down;
@@ -111,7 +110,6 @@
         background-color: rgba(0, 0, 0, 0.3);
         cursor: pointer;
         z-index: 10;
-        //border-radius: 4px;
         backdrop-filter: blur(20px) grayscale(100%) contrast(50%);
     }
 
@@ -211,7 +209,6 @@
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
         border: 2px solid #ffffff;
-        //border-radius: 4px;
         display: inline-block;
         transition: all 0.2s ease;
 
@@ -282,7 +279,6 @@
         gap: 1rem;
         background-color: var(--color-background);
         padding: 4px;
-        //border-radius: 8px;
     }
 
     &__image {
@@ -298,7 +294,6 @@
         color: #fff;
         text-align: center;
         background-color: #000c;
-        //border-radius: 4px;
         max-width: 80%;
         padding: 1rem 1.5rem;
         font-size: 0.875rem;
