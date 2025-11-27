@@ -11,7 +11,10 @@ interface TagComponentProps {
 /**
  * Компонент для отображения тега статьи
  */
-const TagComponent: React.FC<TagComponentProps> = ({ tag, onClick }) => {
+const TagComponent: React.FC<TagComponentProps> = ({
+    tag,
+    onClick
+}) => {
     return (
         <span
             className="tag is-light mr-1"

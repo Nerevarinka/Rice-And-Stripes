@@ -2,7 +2,7 @@ import Link from "next/link";
 import { formatDate } from "@bodynarf/utils";
 
 import { Note, MediaItemTag } from "@/models";
-import TagComponent from "@/components/tagComponent";
+import TagComponent from "@/components/tag";
 
 import "./styles.scss";
 
