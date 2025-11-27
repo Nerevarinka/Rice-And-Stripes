@@ -5,8 +5,8 @@ import type { FC } from "react";
 import TableOfContents from "@/components/tableOfContents";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
-import ImageWithCaption from "@/components/imageWithCaption";
-import ImageCarousel from "@/components/imageCarousel";
+import ImageWithCaption from "@/components/imageWithCaptions";
+import ImageCarousel from "@/components/imageCarousels";
 
 import cover from "@/shared/assets/articles/topTenMistakes/cover.jpg";
 import firstImage from "@/shared/assets/articles/topTenMistakes/1.jpg";

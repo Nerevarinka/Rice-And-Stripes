@@ -5,9 +5,9 @@ import { type FC } from "react";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/imageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaptions";
 import VideoWithCaption from "@/components/videoWithCaption";
-import ImageCarousel from "@/components/imageCarousel";
+import ImageCarousel from "@/components/imageCarousels";
 
 import cover from "@/shared/assets/articles/cageSelection/cover.jpg";
 import firstImage from "@/shared/assets/articles/cageSelection/1.jpg";

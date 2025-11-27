@@ -5,8 +5,8 @@ import type { FC } from "react";
 import TableOfContents from "@/components/tableOfContents";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
-import ImageWithCaption from "@/components/imageWithCaption";
-import ImageCarousel from "@/components/imageCarousel";
+import ImageWithCaption from "@/components/imageWithCaptions";
+import ImageCarousel from "@/components/imageCarousels";
 
 import firstImage from "@/shared/assets/articles/zebraFinchesNatureDiet/1.jpg";
 import secondImage from "@/shared/assets/articles/zebraFinchesNatureDiet/2.jpg";

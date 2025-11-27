@@ -18,7 +18,7 @@ import nineteenImage from "@/shared/assets/articles/tamedFinches/19.jpg";
 import twentyImage from "@/shared/assets/articles/tamedFinches/20.jpg";
 
 import TableOfContents from "@/components/tableOfContents";
-import ImageWithCaption from "@/components/imageWithCaption";
+import ImageWithCaption from "@/components/imageWithCaptions";
 import VideoWithCaption from "@/components/videoWithCaption";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
