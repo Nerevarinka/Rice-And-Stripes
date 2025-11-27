@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import "./styles.scss";
+import { ASSETS_PREFIX } from "../../../next.config";
 
 export type VideoPosition = "left" | "center" | "right";
 export type VideoSize = "small" | "medium" | "big";
@@ -72,6 +73,13 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
         setIsSpoilerVisible(false);
     };
 
+    const pathToVideo = useMemo(
+        () => src.toLowerCase().startsWith(ASSETS_PREFIX.toLowerCase())
+            ? src
+            : `${ASSETS_PREFIX}${src}`.replaceAll("//", "/"),
+        [src]
+    );
+
     return (
         <div className={containerClassName}>
             <div className={wrapperClassName}>
@@ -79,7 +87,7 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
                     className={videoClassName}
                     controls
                 >
-                    <source src={src} type={type} />
+                    <source src={pathToVideo} type={type} />
                     Браузер не поддерживает HTML5 видео
                 </video>
                 {isSpoilerVisible && (
