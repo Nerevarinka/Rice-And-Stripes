@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatDate } from "@bodynarf/utils";
+import { formatDate } from "@bodynarf/utils/date/format";
 
 import { Note, MediaItemTag } from "@/models";
 import TagComponent from "@/components/tag";
