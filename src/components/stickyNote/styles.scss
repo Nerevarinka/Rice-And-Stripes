@@ -1,0 +1,167 @@
+@use "../../shared/styles/variables" as *;
+@use "../../shared/styles/common" as *;
+
+.sticky-note-wrapper {
+	width: 250px;
+	display: flex;
+
+	a {
+		display: flex;
+		flex: 1;
+		text-decoration: none;
+	}
+}
+
+.sticky-note {
+	width: 100%;
+	min-height: 200px;
+	background: linear-gradient(135deg, #fef5e7 0%, #fff9e6 100%);
+	padding: 1rem;
+	box-shadow:
+		2px 2px 8px rgba(0, 0, 0, 0.1),
+		4px 4px 12px rgba(0, 0, 0, 0.05);
+	border-radius: 2px;
+	transform: rotate(-1deg);
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		background: linear-gradient(180deg, rgba(255, 200, 100, 0.3) 0%, transparent 100%);
+		border-radius: 2px 2px 0 0;
+	}
+
+	&:hover {
+		transform: rotate(0deg) translateY(-5px);
+		box-shadow:
+			4px 4px 16px rgba(0, 0, 0, 0.15),
+			8px 8px 24px rgba(0, 0, 0, 0.1);
+	}
+
+	// Варианты цветов для sticky notes
+	&--yellow {
+		background: linear-gradient(135deg, #fef5e7 0%, #fff9e6 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(255, 200, 100, 0.3) 0%, transparent 100%);
+		}
+	}
+
+	&--pink {
+		background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(255, 182, 193, 0.3) 0%, transparent 100%);
+		}
+	}
+
+	&--blue {
+		background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(173, 216, 230, 0.3) 0%, transparent 100%);
+		}
+	}
+
+	&--green {
+		background: linear-gradient(135deg, #e6ffe6 0%, #f0fff0 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(144, 238, 144, 0.3) 0%, transparent 100%);
+		}
+	}
+
+	&--purple {
+		background: linear-gradient(135deg, #f3e6ff 0%, #f8f0ff 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(221, 160, 221, 0.3) 0%, transparent 100%);
+		}
+	}
+
+	&--orange {
+		background: linear-gradient(135deg, #ffe6d9 0%, #fff5ee 100%);
+		&::before {
+			background: linear-gradient(180deg, rgba(255, 165, 79, 0.3) 0%, transparent 100%);
+		}
+	}
+}
+
+.sticky-note-content {
+	flex: 1;
+	padding-top: 1.5rem;
+}
+
+.sticky-note-title {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 0.75rem;
+	font-family: "Permanent Marker", cursive;
+	line-height: 1.3;
+}
+
+.sticky-note-description {
+	font-size: 0.9rem;
+	color: #555;
+	line-height: 1.5;
+	font-family: "Patrick Hand", cursive;
+}
+
+.sticky-note-footer {
+	margin-top: auto;
+	padding-top: 0.75rem;
+}
+
+.sticky-note-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+	margin-bottom: 0.5rem;
+
+	.tag {
+		font-size: 0.7rem;
+		padding: 0.2rem 0.4rem;
+		height: auto;
+	}
+}
+
+.sticky-note-date {
+	font-size: 0.75rem;
+	color: #888;
+	font-style: italic;
+	display: block;
+	text-align: right;
+}
+
+.notes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 2rem;
+	max-height: calc(100vh - 13rem);
+	overflow-y: auto;
+	padding-right: 0.5rem;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--bulma-scheme-main);
+		border-radius: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--bulma-border);
+		border-radius: 4px;
+
+		&:hover {
+			background: var(--bulma-text-weak);
+		}
+	}
+}
