@@ -6,6 +6,7 @@ import { articleInfo as letFinchesFly } from "@/app/(pages)/articles/letFinchesF
 import { articleInfo as topTenMistakes } from "@/app/(pages)/articles/topTenMistakes/metadata";
 import { articleInfo as zebraFinchesNatureDiet } from "@/app/(pages)/articles/zebraFinchesNatureDiet/metadata";
 import { articleInfo as tamedFinches } from "@/app/(pages)/articles/tamedFinches/metadata";
+import { articleInfo as nailBeakTrimming } from "@/app/(pages)/articles/nailBeakTrimming/metadata";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
@@ -14,5 +15,6 @@ export const articles: Array<Article> = [
     letFinchesFly,
     topTenMistakes,
     zebraFinchesNatureDiet,
-    tamedFinches
+    tamedFinches,
+    nailBeakTrimming,
 ].toSorted((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
