@@ -15,4 +15,4 @@ export const articles: Array<Article> = [
     topTenMistakes,
     zebraFinchesNatureDiet,
     tamedFinches
-].toSorted((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
+].sort((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
