@@ -8,6 +8,7 @@ import { articleInfo as zebraFinchesNatureDiet } from "@/app/(pages)/articles/ze
 import { articleInfo as tamedFinches } from "@/app/(pages)/articles/tamedFinches/metadata";
 import { articleInfo as nailBeakTrimming } from "@/app/(pages)/articles/nailBeakTrimming/metadata";
 import { articleInfo as vinegarSwill } from "@/app/(pages)/articles/vinegarSwill/metadata";
+import { articleInfo as iodineObsession } from "@/app/(pages)/articles/iodineObsession/metadata";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
@@ -19,4 +20,5 @@ export const articles: Array<Article> = [
     tamedFinches,
     nailBeakTrimming,
     vinegarSwill,
+    iodineObsession,
 ].toSorted((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
