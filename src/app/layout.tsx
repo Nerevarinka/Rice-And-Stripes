@@ -21,7 +21,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ru" className="is-clipped">
+		<html lang="ru" className="is-clipped" data-theme="light">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased is-clipped`}
 			>
