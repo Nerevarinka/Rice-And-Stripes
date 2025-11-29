@@ -12,7 +12,7 @@ export type ImageSize = "small" | "medium" | "big";
 
 export type ImageWithCaptionProps = {
     /** Изображение для отображения */
-    image: StaticImageData | string;
+    image: StaticImageData;
 
     /** Подпись под изображением */
     caption: string;
@@ -80,7 +80,7 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
         if (!isSpoilerVisible && expandable) {
             if (isMobile) {
                 // On mobile, open image in new tab
-                window.open((image as StaticImageData)?.src ?? image, "_blank");
+                window.open(image.src, "_blank");
             } else {
                 // On desktop, open modal
                 setIsModalOpen(true);

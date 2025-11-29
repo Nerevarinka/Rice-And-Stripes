@@ -5,7 +5,6 @@ import { AlertTriangle } from "lucide-react";
 
 import "./styles.scss";
 import { ASSETS_PREFIX } from "../../../next.config";
-import { generateAssetPath } from "@/shared/utils/assetPathBuilder";
 
 export type VideoPosition = "left" | "center" | "right";
 export type VideoSize = "small" | "medium" | "big";
@@ -75,7 +74,9 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
     };
 
     const pathToVideo = useMemo(
-        () => generateAssetPath(src),
+        () => src.toLowerCase().startsWith(ASSETS_PREFIX.toLowerCase())
+            ? src
+            : `${ASSETS_PREFIX}${src}`.replaceAll("//", "/"),
         [src]
     );
 

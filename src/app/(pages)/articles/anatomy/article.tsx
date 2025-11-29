@@ -7,7 +7,6 @@ import ImageWithCaption from "@/components/imageWithCaption";
 import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import ImageCarousel from "@/components/imageCarousel";
-import { generateAssetPath } from "@/shared/utils/assetPathBuilder";
 
 import cover from "@/shared/assets/articles/anatomy/cover.jpg";
 import secondImage from "@/shared/assets/articles/anatomy/2.jpg";
@@ -102,7 +101,7 @@ const Article: FC = () => {
                     </p>
 
                     <ImageWithCaption
-                        image={generateAssetPath("articles/anatomy/cover.jpg")}
+                        image={cover}
                         caption="Урок анатомии доктора Тульпа, амадиновая версия"
                         alt="Урок анатомии доктора Тульпа, амадиновая версия"
                         className="main-picture"

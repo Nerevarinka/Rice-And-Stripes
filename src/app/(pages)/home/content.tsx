@@ -4,7 +4,8 @@ import Image from "next/image";
 // import Link from "next/link";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { generateAssetPath } from "@/shared/utils/assetPathBuilder";
+import jumbo from "@/shared/assets/home/jumbo.png";
+import getUp from "@/shared/assets/home/getUp.png";
 
 import "./styles.scss";
 
@@ -24,7 +25,7 @@ export default function Home() {
 
                 <figure className="image my-5">
                     <Image
-                        src={generateAssetPath("assets/home/jumbo.png")}
+                        src={jumbo}
                         alt="Банда"
                         style={{
                             maxWidth: isMobile ? "100%" : "60rem",
@@ -58,7 +59,7 @@ export default function Home() {
 
                 <figure className="image my-5">
                     <Image
-                        src={generateAssetPath("assets/home/getUp.png")}
+                        src={getUp}
                         alt="Вставай"
                         style={{
                             maxHeight: isMobile ? "25rem" : "40rem",
