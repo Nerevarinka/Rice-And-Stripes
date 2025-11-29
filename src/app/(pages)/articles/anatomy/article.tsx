@@ -102,7 +102,7 @@ const Article: FC = () => {
                     </p>
 
                     <ImageWithCaption
-                        image={generateAssetPath("/assets/articles/anatomy/cover.jpg")}
+                        image={generateAssetPath("articles/anatomy/cover.jpg")}
                         caption="Урок анатомии доктора Тульпа, амадиновая версия"
                         alt="Урок анатомии доктора Тульпа, амадиновая версия"
                         className="main-picture"
