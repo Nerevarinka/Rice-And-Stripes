@@ -1,5 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
+// Полифиллы для старых браузеров
+import "core-js/stable";
+import "whatwg-fetch";
+import "abort-controller/polyfill";
+import "url-search-params-polyfill";
+
 import "./globals.scss";
 
 import Sidebar from "@/components/sidebar";
@@ -14,7 +20,6 @@ const geistMono = Geist_Mono({
 	subsets: ["latin"],
 });
 
-
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -22,6 +27,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ru" className="is-clipped" data-theme="light">
+			<head>
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased is-clipped`}
 			>
