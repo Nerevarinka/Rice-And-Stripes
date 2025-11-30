@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { siGithub } from "simple-icons";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -24,6 +24,8 @@ export default function Sidebar() {
 	const [showNested, setShowNested] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const isMobile = useIsMobile();
+	const asideRef = useRef<HTMLElement | null>(null);
+	const toggleRef = useRef<HTMLButtonElement | null>(null);
 
 	// Check if we're on 404 page (any path that doesn't match our routes)
 	const isValidRoute = useMemo(() => sideBarMenu.some(item =>
@@ -42,6 +44,22 @@ export default function Sidebar() {
 		};
 	}, [pathname]);
 
+	// Close sidebar when clicking outside (on mobile)
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (!isMobile || !isMobileMenuOpen) return;
+			const target = event.target as Node;
+
+			if (asideRef.current && asideRef.current.contains(target)) return;
+			if (toggleRef.current && toggleRef.current.contains(target)) return;
+
+			setIsMobileMenuOpen(false);
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [isMobile, isMobileMenuOpen]);
+
 	const handleLinkClick = () => {
 		if (isMobile) {
 			setIsMobileMenuOpen(false);
@@ -52,6 +70,7 @@ export default function Sidebar() {
 		<>
 			{isMobile && (
 				<button
+					ref={toggleRef}
 					className={`sidebar-burger${isMobileMenuOpen ? ' sidebar-burger--open' : ''}`}
 					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 					aria-label="Toggle menu"
@@ -67,7 +86,7 @@ export default function Sidebar() {
 					onClick={() => setIsMobileMenuOpen(false)}
 				/>
 			)}
-			<aside className={`sidebar is-flex-shrink-0${isMobile && isMobileMenuOpen ? ' sidebar--mobile-open' : ''}${isMobile ? ' sidebar--mobile' : ''}`} style={{ overflowY: "auto" }}>
+			<aside ref={asideRef} className={`sidebar is-flex-shrink-0${isMobile && isMobileMenuOpen ? ' sidebar--mobile-open' : ''}${isMobile ? ' sidebar--mobile' : ''}`} style={{ overflowY: "auto" }}>
 				<div className="sidebar-wrapper is-flex is-flex-direction-column">
 				<div className="is-flex is-justify-content-center">
 					<Link href="/">

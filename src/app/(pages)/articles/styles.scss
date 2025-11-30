@@ -1,6 +1,38 @@
 @use "../../../shared/styles/variables" as *;
 @use "../../../shared/styles/common" as *;
 
+.articles-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+
+	.title {
+		margin: 0;
+		flex: 1;
+	}
+}
+
+.search-toggle {
+	display: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	color: var(--bulma-text);
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: var(--bulma-text-strong);
+	}
+
+	@media (max-width: 768px) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
 .search-field {
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	padding: 1rem;
@@ -9,7 +41,7 @@
 }
 
 .card-group {
-	max-height: calc(100vh - 15rem);
+	max-height: calc(100vh - 16rem);
 	overflow-y: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -41,6 +73,12 @@
 		&:hover {
 			background: var(--bulma-text-weak);
 		}
+	}
+}
+
+@media (max-width: 768px) {
+	.search-closed-mobile .card-group {
+		max-height: calc(100vh - 9rem);
 	}
 }
 

@@ -3,18 +3,22 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Search } from "lucide-react";
 
 import { formatDate } from "@bodynarf/utils/date/format";
 
 import { articles } from "@/shared/articles";
 import { MediaItemTagColors, MediaItemTag } from "@/models";
 import TagComponent from "@/components/tag";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 import "./styles.scss";
 
 export default function ArticlesContainer() {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedTags, setSelectedTags] = useState<MediaItemTag[]>([]);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const isMobile = useIsMobile();
 
     const availableTags = useMemo(() => {
         const tagsSet = new Set<MediaItemTag>();
@@ -61,20 +65,34 @@ export default function ArticlesContainer() {
     };
 
     return (
-        <section className="mx-4">
-            <h2 className="title is-2">
-                Статьи для владельцев
-            </h2>
+        <section className={`mx-4 ${isMobile && !isSearchOpen ? "search-closed-mobile" : ""}`}>
+            <div className="articles-header">
+                <h2 className={`title ${isMobile ? "is-3" : "is-2"}`}>
+                    Статьи для владельцев
+                </h2>
 
-            <SearchAndFilterPanel
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                selectedTags={selectedTags}
-                setSelectedTags={setSelectedTags}
-                availableTags={availableTags}
-            />
+                {isMobile && (
+                    <button
+                        className="search-toggle"
+                        onClick={() => setIsSearchOpen(!isSearchOpen)}
+                        aria-label="Открыть поиск"
+                    >
+                        <Search size={24} />
+                    </button>
+                )}
+            </div>
 
-            <div className="card-group py-4 pr-3 mt-2 pl-1">
+            {(!isMobile || isSearchOpen) && (
+                <SearchAndFilterPanel
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                    selectedTags={selectedTags}
+                    setSelectedTags={setSelectedTags}
+                    availableTags={availableTags}
+                />
+            )}
+
+            <div className="card-group py-4 pr-3 mt-2 mb-4 pl-1">
                 {filteredArticles.map(x =>
                     <div key={x.link} className="card-wrapper">
                         <Link href={x.link}>
@@ -93,8 +111,8 @@ export default function ArticlesContainer() {
                                             {x.caption}
                                         </p>
                                         <p className="mb-3">
-                                            {x.description.length > 150 
-                                                ? `${x.description.substring(0, 150)}..` 
+                                            {x.description.length > 150
+                                                ? `${x.description.substring(0, 150)}..`
                                                 : x.description
                                             }
                                         </p>
@@ -108,7 +126,7 @@ export default function ArticlesContainer() {
                                             />
                                         ))}
                                     </div>
-                                    <time 
+                                    <time
                                         className="has-text-grey is-size-7 article-date"
                                         title="Дата публикации статьи"
                                     >
@@ -157,7 +175,7 @@ function SearchAndFilterPanel({
                 />
             </div>
 
-            <div className="mt-3 is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: '0.75rem' }}>
+            <div className="mt-3 is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: "0.75rem" }}>
                 <div className="is-flex is-align-items-center">
                     <label className="label mb-0 mr-2">Фильтр по тегам:</label>
                     <div className="select">
@@ -184,7 +202,7 @@ function SearchAndFilterPanel({
                 </div>
 
                 {selectedTags.length > 0 && (
-                    <div className="is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: '0.5rem' }}>
+                    <div className="is-flex is-align-items-center is-flex-wrap-wrap" style={{ gap: "0.5rem" }}>
                         {selectedTags.map(tag => (
                             <span
                                 key={tag}

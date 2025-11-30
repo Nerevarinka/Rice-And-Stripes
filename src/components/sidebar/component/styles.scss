@@ -29,7 +29,7 @@
 
 	a {
 		color: $primary-brown;
-		
+
 		&:hover {
 			color: $link-color;
 		}
@@ -240,7 +240,7 @@
 .sidebar-burger {
 	position: fixed;
 	top: 1rem;
-	left: -0.5rem;
+	left: -1rem;
 	z-index: 1002;
 	width: 2.5rem;
 	height: 2.5rem;
@@ -255,10 +255,6 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 	padding: 0;
-
-	&:not(.sidebar-burger--open):hover {
-		left: 0.5rem;
-	}
 
 	&:active {
 		background-color: lighten($primary-brown, 45%);

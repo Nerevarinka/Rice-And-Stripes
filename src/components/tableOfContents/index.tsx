@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, type FC, type ReactNode } from "react";
-import { List } from "lucide-react";
+import { useEffect, useState, useRef, type FC, type ReactNode } from "react";
+import { List, X } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 import "./styles.scss";
@@ -32,6 +32,8 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
     const [activeId, setActiveId] = useState<string>("");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const isMobile = useIsMobile();
+    const navRef = useRef<HTMLElement | null>(null);
+    const toggleRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -61,6 +63,23 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
         };
     }, [items]);
 
+    // Close sidebar when clicking outside (on mobile)
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (!isMobile || !isMobileMenuOpen) return;
+            const target = event.target as Node;
+
+            // If click is inside nav or on the toggle button, do nothing
+            if (navRef.current && navRef.current.contains(target)) return;
+            if (toggleRef.current && toggleRef.current.contains(target)) return;
+
+            setIsMobileMenuOpen(false);
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [isMobile, isMobileMenuOpen]);
+
     const scrollToElement = (elementId: string) => {
         const element = document.getElementById(elementId);
         if (!element) {
@@ -86,11 +105,13 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
         <div className={containerClassName}>
             {isMobile && (
                 <button
-                    className="toc-toggle"
+                    ref={toggleRef}
+                    className={`toc-toggle${isMobileMenuOpen ? ' is-open' : ''}`}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle table of contents"
+                    aria-label={isMobileMenuOpen ? "Закрыть оглавление" : "Открыть оглавление"}
+                    aria-expanded={isMobileMenuOpen}
                 >
-                    <List size={24} />
+                    {isMobileMenuOpen ? <X size={24} /> : <List size={24} />}
                 </button>
             )}
             {isMobile && isMobileMenuOpen && (
@@ -103,7 +124,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
                 {children}
             </div>
 
-            <nav className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
+            <nav ref={navRef} className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
                 <ul className="table-of-contents__list pl-2">
                     {items.map(({ caption, elementId }) => (
                         <li key={elementId} className="table-of-contents__item">
