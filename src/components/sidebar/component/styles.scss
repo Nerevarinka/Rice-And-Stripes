@@ -63,15 +63,17 @@
 	&-header {
 		padding-top: 0.35rem;
 
-			&-hr {
-				width: 10rem;
-				margin: 2rem auto;
+		&-hr {
+			width: 10rem;
+			margin: 2rem auto;
 
-				html.is-mobile & {
-					width: 6rem;
-					margin: 1rem auto;
-				}
-			}		&-title {
+			html.is-mobile & {
+				width: 6rem;
+				margin: 1rem auto;
+			}
+		}
+
+		&-title {
 			font-size: 1.5rem;
 			font-weight: 400;
 			text-decoration: none;
@@ -133,7 +135,7 @@
 		padding-left: 2.5rem;
 		margin-top: 0.25rem;
 
-		html.is-mobile & {
+		html:not(.is-mobile) & {
 			animation: slideDown 0.3s ease-out;
 		}
 	}
