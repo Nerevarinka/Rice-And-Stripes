@@ -167,7 +167,7 @@ html.is-mobile .search-closed-mobile .card-group {
 	transition: $transition-fast;
 	z-index: 100;
 
-	html.is-mobile & {
+	html:not(.is-mobile) & {
 		display: flex;
 	}
 }
