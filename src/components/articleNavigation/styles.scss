@@ -8,7 +8,7 @@
     padding-top: 2rem;
     border-top: 1px solid $border-gray;
 
-    @media (max-width: 768px) {
+    html.is-mobile & {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
@@ -20,19 +20,19 @@
         &--center {
             justify-content: center;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 order: 2;
             }
         }
 
         &:first-child {
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 order: 1;
             }
         }
 
         &:last-child {
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 order: 3;
             }
         }
@@ -41,7 +41,7 @@
     &__placeholder {
         width: 100%;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             display: none;
         }
     }
@@ -88,7 +88,7 @@
             width: auto;
             min-width: 10rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 width: 100%;
             }
         }

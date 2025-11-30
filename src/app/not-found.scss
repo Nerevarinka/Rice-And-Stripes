@@ -22,7 +22,7 @@
         text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
         animation: bounce 2s infinite;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 6rem;
         }
     }
@@ -33,7 +33,7 @@
         color: var(--color-primary-text);
         margin-bottom: 1rem;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 2rem;
         }
     }
@@ -45,7 +45,7 @@
         margin-bottom: 1rem;
         line-height: 1.6;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 1rem;
         }
     }
@@ -57,7 +57,7 @@
         margin-bottom: 2.5rem;
         font-style: italic;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 0.9rem;
         }
     }

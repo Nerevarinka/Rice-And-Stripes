@@ -22,7 +22,7 @@
     padding: 1rem;
     margin-left: 2rem;
 
-    @media (max-width: 1024px) {
+    html.is-mobile & {
         display: none;
     }
 

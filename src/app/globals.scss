@@ -14,21 +14,20 @@ body {
 }
 
 .main-content {
-	@media (max-width: 768px) {
-		/* Add extra bottom padding to account for safe-area (iOS) and mobile UI */
+	html.is-mobile & {
 		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 }
 
 .container {
-	@media (max-width: 768px) {
+	html.is-mobile & {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 	}
 }
 
 .content {
-	@media (max-width: 768px) {
+	html.is-mobile & {
 		font-size: 0.95rem;
 
 		h3.title {

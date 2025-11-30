@@ -8,7 +8,7 @@
     &--left {
         align-items: flex-start;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             align-items: center;
         }
     }
@@ -20,7 +20,7 @@
     &--right {
         align-items: flex-end;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             align-items: center;
         }
     }
@@ -30,7 +30,7 @@
         display: inline-block;
         max-width: 100%;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             display: block;
             width: 100%;
         }
@@ -61,7 +61,7 @@
             max-height: min(50rem, 100%);
         }
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             width: 100%;
             height: auto !important;
         }
@@ -88,7 +88,7 @@
         font-style: italic;
         text-align: center;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             display: block;
             width: 100%;
         }
@@ -124,7 +124,7 @@
         padding: 2rem;
         color: #ffffff;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             padding: 1rem;
         }
 
@@ -146,7 +146,7 @@
         margin-bottom: 0.75rem;
         animation: pulse 2s ease-in-out infinite;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -155,7 +155,7 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 1.75rem;
                 margin-bottom: 0.5rem;
             }
@@ -165,7 +165,7 @@
             font-size: 3rem;
             margin-bottom: 1.25rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 0.5rem;
                 margin-bottom: 0.5rem;
             }
@@ -179,7 +179,7 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
         }
@@ -188,7 +188,7 @@
             font-size: 1.125rem;
             margin-bottom: 1rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 0.875rem;
                 margin-bottom: 0.5rem;
             }
@@ -198,7 +198,7 @@
             font-size: 1.25rem;
             margin-bottom: 1.25rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 0.95rem;
                 margin-bottom: 0.5rem;
             }
@@ -212,7 +212,7 @@
         display: inline-block;
         transition: all 0.2s ease;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             font-size: 0.625rem;
             padding: 0.3rem 0.6rem;
         }
@@ -221,7 +221,7 @@
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 0.75rem;
                 padding: 0.4rem 0.8rem;
             }
@@ -231,7 +231,7 @@
             font-size: 1rem;
             padding: 0.6rem 1.2rem;
 
-            @media (max-width: 768px) {
+            html.is-mobile & {
                 font-size: 0.875rem;
                 padding: 0.25rem 0.5rem;
             }
@@ -301,7 +301,7 @@
         position: fixed;
         bottom: 1rem;
 
-        @media (max-width: 768px) {
+        html.is-mobile & {
             position: relative;
             bottom: auto;
             max-width: 100%;
