@@ -16,7 +16,7 @@ body {
 .main-content {
 	@media (max-width: 768px) {
 		/* Add extra bottom padding to account for safe-area (iOS) and mobile UI */
-		padding: 1rem 0.75rem calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 }
 

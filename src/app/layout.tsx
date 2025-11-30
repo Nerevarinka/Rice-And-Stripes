@@ -9,6 +9,7 @@ import "url-search-params-polyfill";
 import "./globals.scss";
 
 import Sidebar from "@/components/sidebar";
+import MobileFlag from "@/components/mobileFlag";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased is-clipped`}
 			>
+				<MobileFlag />
 				<div className="is-flex is-clipped" style={{ height: '100vh' }}>
 					<Sidebar />
 					<main className="is-flex-grow-1 pt-2 pl-4 main-content" style={{ overflowY: 'auto' }}>

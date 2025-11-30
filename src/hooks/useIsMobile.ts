@@ -13,7 +13,13 @@ export const useIsMobile = (breakpoint: number = 768): boolean => {
         if (typeof window === "undefined") return;
 
         const checkIsMobile = () => {
-            setIsMobile(window.innerWidth < breakpoint);
+            // Basic UA check for mobile devices (works when phone is in landscape)
+            const ua = typeof navigator !== "undefined" ? navigator.userAgent || navigator.vendor || "" : "";
+            const uaIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i.test(ua);
+
+            // Consider device mobile if UA indicates mobile OR width is below breakpoint
+            const byWidth = window.innerWidth < breakpoint;
+            setIsMobile(uaIsMobile || byWidth);
         };
 
         // Initial check
@@ -21,9 +27,14 @@ export const useIsMobile = (breakpoint: number = 768): boolean => {
 
         // Add event listener for window resize
         window.addEventListener("resize", checkIsMobile);
+        // Also react to orientation changes (covers landscape on phones)
+        window.addEventListener("orientationchange", checkIsMobile);
 
         // Cleanup
-        return () => window.removeEventListener("resize", checkIsMobile);
+        return () => {
+            window.removeEventListener("resize", checkIsMobile);
+            window.removeEventListener("orientationchange", checkIsMobile);
+        };
     }, [breakpoint]);
 
     return isMobile;
