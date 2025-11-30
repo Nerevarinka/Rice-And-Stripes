@@ -28,6 +28,7 @@ import sixteenImage from "@/shared/assets/articles/cageSelection/16.png";
 import seventeenImage from "@/shared/assets/articles/cageSelection/17.jpg";
 import eighteenImage from "@/shared/assets/articles/cageSelection/18.jpg";
 import nineteenImage from "@/shared/assets/articles/cageSelection/19.jpg";
+import twentyImage from "@/shared/assets/articles/cageSelection/20.png";
 
 const SECTIONS = {
     HIGHT_AND_LENGTH: "hight-and-length",
@@ -201,9 +202,18 @@ const Article: FC = () => {
                         size="medium"
                     />
 
-                    <p>
-                        Здесь на всякий случай отметим давно известный факт – круглые клетки ни для каких птиц не подходят: в них тяжело ориентироваться (птицы, которые долго жили в таких клетках, могут иметь привычку вертеть головой). Для чувства защищенности нужен уголок.
-                    </p>
+                    <div className="message is-info">
+                        <div className="message-body">
+                            Здесь на всякий случай отметим давно известный факт – круглые клетки ни для каких птиц не подходят: в них тяжело ориентироваться (птицы, которые долго жили в таких клетках, могут иметь привычку вертеть головой). Для чувства защищенности нужен уголок.
+
+                        <ImageWithCaption
+                            image={twentyImage}
+                            caption=""
+                            alt="Круглая vs прямоугольная клетка"
+                            size="big"
+                        />
+                        </div>
+                    </div>
 
                     <h3 className="title is-3" id={SECTIONS.COLORED_BARS}>
                         9. Цветные прутья
