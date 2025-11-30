@@ -326,6 +326,16 @@ const Article: FC = () => {
                         Видео о том, как разговаривать с птицей:
                     </p>
 
+                    <p>
+                        Никогда не подрезайте птицам крылья!
+                    </p>
+
+                    <div className="message is-danger">
+                        <div className="message-body">
+                            <strong>Никогда не подрезайте птицам крылья!</strong> Полет - их базовая потребность. Они будут испытывать лишь стресс оттого, что не могут убежать от опасности, а недостаток движения негативно скажется на физическом здоровье.
+                        </div>
+                    </div>
+
                     <div className="is-flex is-justify-content-center">
                         <iframe className="m-auto" width="560" height="315" src="https://www.youtube.com/embed/HHzA771gp9s?si=FOIVHrKXJUcpRsf3" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                     </div>
@@ -491,9 +501,9 @@ const Article: FC = () => {
                     </p>
 
                     <div className="message is-success">
-                        <blockquote className="message-body">
+                        <div className="message-body">
                             <i>Не заводите птиц, чтобы приручить, и тогда вы не разочаруетесь. Не превращайте это в главную цель содержания.</i>
-                        </blockquote>
+                        </div>
                     </div>
 
                     <p>

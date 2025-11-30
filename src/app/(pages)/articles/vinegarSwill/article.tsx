@@ -6,6 +6,7 @@ import ArticleNavigation from "@/components/articleNavigation";
 import { getArticleNavigation } from "@/shared/utils/articleNavigation";
 import TableOfContents from "@/components/tableOfContents";
 import ImageWithCaption from "@/components/imageWithCaption";
+import Link from "next/link";
 
 import firstImage from "@/shared/assets/articles/vinegarSwill/1.gif";
 import secondImage from "@/shared/assets/articles/vinegarSwill/2.jpg";
@@ -22,11 +23,14 @@ import elevenImage from "@/shared/assets/articles/vinegarSwill/11.png";
 const SECTIONS = {
     VINEGAR_FACTS: "vinegar-facts",
     BIRD_DIGESTION: "bird-digestion",
+    CONCLUSION: "conclusion",
+
 } as const;
 
 const tableOfContents = [
     { caption: "Популярные утверждения об уксусе", elementId: SECTIONS.VINEGAR_FACTS, },
     { caption: "Еще о пищеварении птиц", elementId: SECTIONS.BIRD_DIGESTION, },
+    { caption: "Итог", elementId: SECTIONS.CONCLUSION, },
 ];
 
 const Article: FC = () => {
@@ -129,7 +133,11 @@ const Article: FC = () => {
                     </div>
 
                     <p>
-                        Это похоже на ситуацию с йодом <i>(см. нашу статью «Йодовая одержимость»)</i> – у кого-то совпало улучшение с приемом уксуса и его применение распространилось среди владельцев, однако <i>«после»</i> – не значит <i>«вследствие»</i> (<i>«А мне помогло»</i> – из той же категории). Временные нарушения микрофлоры могут проходить самостоятельно.
+                        Это похоже на ситуацию с йодом (см. нашу статью {` `}
+                        <Link href="/articles/iodineObsession" target="_blank" rel="noreferrer">
+                            «Йодовая одержимость»
+                        </Link>)
+                        – у кого-то совпало улучшение с приемом уксуса и его применение распространилось среди владельцев, однако <i>«после»</i> – не значит <i>«вследствие»</i> (<i>«А мне помогло»</i> – из той же категории). Временные нарушения микрофлоры могут проходить самостоятельно.
                     </p>
 
                     <ImageWithCaption
@@ -392,14 +400,16 @@ const Article: FC = () => {
                     </p>
 
                     <p>
-                        Эти же люди говорят, что промывать зерносмесь не имеет смысла (у нас уже есть статья-разбор на эту тему). Задумайтесь. ☝
+                        Эти же люди говорят, что промывать зерносмесь не имеет смысла. Задумайтесь. ☝
                     </p>
 
                     <p>
                         Между тем, мы ни разу не сталкивались с рекомендацией подкислять воду птицам от врачей-орнитологов. Кроме того, не все из них выписывают даже «дорогостоящие пробиотики» после курса антибиотика, потому что знают об отсутствии эффективности.
                     </p>
 
-                    <hr />
+                    <h3 className="title is-3" id={SECTIONS.CONCLUSION}>
+                        Итог
+                    </h3>
 
                     <p>
                         Очень обидно, что люди часто больше доверяют «старым дедовским способам» из интернета, чем грамотным <strong>врачам и здравому смыслу</strong>.

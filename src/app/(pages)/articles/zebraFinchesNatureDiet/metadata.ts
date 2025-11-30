@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Article } from "@/models";
 import { createArticleMetadata } from "@/shared/metadata";
 
-import articleCover from "@/shared/assets/articles/zebraFinchesNatureDiet/cover.jpg";
+import articleCover from "@/shared/assets/articles/zebraFinchesNatureDiet/cover.png";
 
 /** Данные о статье "Питание зебровых амадин в природе" */
 export const articleInfo: Article = {
