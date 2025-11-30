@@ -20,5 +20,5 @@ export const articles: Array<Article> = [
     tamedFinches,
     nailBeakTrimming,
     vinegarSwill,
-    iodineObsession,
-].toSorted((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
+    iodineObsession
+].sort((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
