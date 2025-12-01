@@ -7,10 +7,6 @@
 	align-items: center;
 	gap: 1rem;
 
-	html.is-mobile & {
-		margin-bottom: 1rem;
-	}
-
 	.title {
 		margin: 0;
 		flex: 1;
@@ -45,7 +41,7 @@
 }
 
 .card-group {
-	max-height: calc(100vh - 12.5rem);
+	max-height: calc(100vh - 12.55rem);
 	overflow-y: auto;
 	display: flex;
 	flex-wrap: wrap;
