@@ -9,6 +9,7 @@ import { articleInfo as tamedFinches } from "@/app/(pages)/articles/tamedFinches
 import { articleInfo as nailBeakTrimming } from "@/app/(pages)/articles/nailBeakTrimming/metadata";
 import { articleInfo as vinegarSwill } from "@/app/(pages)/articles/vinegarSwill/metadata";
 import { articleInfo as iodineObsession } from "@/app/(pages)/articles/iodineObsession/metadata";
+import { articleInfo as whyWashSeeds } from "@/app/(pages)/articles/whyWashSeeds/metadata";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
@@ -20,5 +21,6 @@ export const articles: Array<Article> = [
     tamedFinches,
     nailBeakTrimming,
     vinegarSwill,
-    iodineObsession
+    iodineObsession,
+    whyWashSeeds,
 ].sort((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
