@@ -7,6 +7,10 @@
 	align-items: center;
 	gap: 1rem;
 
+	html.is-mobile & {
+		margin-bottom: 1rem;
+	}
+
 	.title {
 		margin: 0;
 		flex: 1;
@@ -41,11 +45,18 @@
 }
 
 .card-group {
-	max-height: calc(100vh - 16rem);
+	max-height: calc(100vh - 12.5rem);
 	overflow-y: auto;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.5rem;
+
+	html.is-mobile & {
+		max-height: calc(-18rem + 100vh);
+	}
+	html.is-mobile .search-closed-mobile & {
+		max-height: calc(100vh - 11rem);
+	}
 
 	.card-wrapper {
 		width: 22rem;
@@ -74,10 +85,6 @@
 			background: var(--bulma-text-weak);
 		}
 	}
-}
-
-html.is-mobile .search-closed-mobile .card-group {
-	max-height: calc(100vh - 10rem);
 }
 
 .m-card {
