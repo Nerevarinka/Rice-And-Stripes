@@ -41,11 +41,18 @@
 }
 
 .card-group {
-	max-height: calc(100vh - 16rem);
+	max-height: calc(100vh - 12.55rem);
 	overflow-y: auto;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.5rem;
+
+	html.is-mobile & {
+		max-height: calc(-18rem + 100vh);
+	}
+	html.is-mobile .search-closed-mobile & {
+		max-height: calc(100vh - 11rem);
+	}
 
 	.card-wrapper {
 		width: 22rem;
@@ -74,10 +81,6 @@
 			background: var(--bulma-text-weak);
 		}
 	}
-}
-
-html.is-mobile .search-closed-mobile .card-group {
-	max-height: calc(100vh - 10rem);
 }
 
 .m-card {

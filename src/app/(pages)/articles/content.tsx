@@ -65,8 +65,8 @@ export default function ArticlesContainer() {
     };
 
     return (
-        <section className={`mx-4 ${isMobile && !isSearchOpen ? "search-closed-mobile" : ""}`}>
-            <div className="articles-header">
+        <section className={`mx-4 is-h-100${isMobile && !isSearchOpen ? " search-closed-mobile" : ""}`}>
+            <div className="articles-header mb-4">
                 <h2 className={`title ${isMobile ? "is-3" : "is-2"}`}>
                     Статьи для владельцев
                 </h2>
