@@ -9,7 +9,8 @@ import { articleInfo as tamedFinches } from "@/app/(pages)/articles/tamedFinches
 import { articleInfo as nailBeakTrimming } from "@/app/(pages)/articles/nailBeakTrimming/metadata";
 import { articleInfo as vinegarSwill } from "@/app/(pages)/articles/vinegarSwill/metadata";
 import { articleInfo as iodineObsession } from "@/app/(pages)/articles/iodineObsession/metadata";
-import { articleInfo as whyWashSeeds } from "@/app/(pages)/articles/whyWashSeeds/metadata";
+import { articleInfo as seedsWithFungi } from "@/app/(pages)/articles/seedsWithFungi/metadata";
+import { articleInfo as sproutingSeedMix } from "@/app/(pages)/articles/sproutingSeedMix/metadata";
 
 /** Данные о статьях */
 export const articles: Array<Article> = [
@@ -22,5 +23,6 @@ export const articles: Array<Article> = [
     nailBeakTrimming,
     vinegarSwill,
     iodineObsession,
-    whyWashSeeds,
+    seedsWithFungi,
+    sproutingSeedMix,
 ].sort((x, y) => x.publishDate.getTime() - y.publishDate.getTime());
