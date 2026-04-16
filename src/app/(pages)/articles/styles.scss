@@ -50,6 +50,7 @@
 	html.is-mobile & {
 		max-height: calc(-18rem + 100vh);
 	}
+
 	html.is-mobile .search-closed-mobile & {
 		max-height: calc(100vh - 11rem);
 	}
@@ -201,6 +202,10 @@
 	ul,
 	ol {
 		margin-top: 1.5rem;
+	}
+
+	.message-body .content>ul:first-child {
+		margin-top: 0;
 	}
 
 	ul,

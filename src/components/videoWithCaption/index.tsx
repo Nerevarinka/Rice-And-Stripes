@@ -4,7 +4,6 @@ import { useMemo, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import "./styles.scss";
-import { ASSETS_PREFIX } from "../../../next.config";
 
 export type VideoPosition = "left" | "center" | "right";
 export type VideoSize = "small" | "medium" | "big";
@@ -14,7 +13,7 @@ export type VideoWithCaptionProps = {
     src: string;
 
     /** Подпись под видео */
-    caption: string;
+    caption: React.ReactNode;
 
     /** Позиционирование видео */
     position?: VideoPosition;
@@ -73,12 +72,7 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
         setIsSpoilerVisible(false);
     };
 
-    const pathToVideo = useMemo(
-        () => src.toLowerCase().startsWith(ASSETS_PREFIX.toLowerCase())
-            ? src
-            : `${ASSETS_PREFIX}${src}`.replaceAll("//", "/"),
-        [src]
-    );
+    const pathToVideo = src;
 
     return (
         <div className={containerClassName}>
