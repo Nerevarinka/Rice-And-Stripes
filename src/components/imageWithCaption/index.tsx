@@ -15,7 +15,7 @@ export type ImageWithCaptionProps = {
     image: StaticImageData;
 
     /** Подпись под изображением */
-    caption: string;
+    caption: React.ReactNode;
 
     /** Alt текст для изображения */
     alt: string;
