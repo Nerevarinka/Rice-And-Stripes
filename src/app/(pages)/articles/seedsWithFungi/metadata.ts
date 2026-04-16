@@ -11,7 +11,7 @@ export const articleInfo: Article = {
     link: "/articles/seedsWithFungi",
     cover: articleCover,
     description: "Про плесень и микотоксины",
-    publishDate: new Date(2026, 2, 17),
+    publishDate: new Date(2026, 3, 16),
     tags: ["питание", "здоровье"],
 };
 

@@ -11,7 +11,7 @@ export const articleInfo: Article = {
     link: "/articles/sproutingSeedMix",
     cover: articleCover,
     description: "Способы обработки зерна для птиц. Промывание, замачивание и проращивание. Польза, риски, приготовление пророста",
-    publishDate: new Date(2026, 4, 17),
+    publishDate: new Date(2026, 3, 16),
     tags: ["питание", "здоровье"],
 };
 
