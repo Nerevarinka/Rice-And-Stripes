@@ -262,7 +262,11 @@ const Article: FC = () => {
 
                     <p>Это не стерилизация, а снижение стартовой контаминации. Именно в этот момент обработка наиболее эффективна.</p>
 
-                    <p><strong>Промывка только холодной водой недостаточна</strong> и, как было показано, оказывает лишь минимальное влияние на снижение загрязнения. <i>Но от пыли такой способ уже избавит.</i></p>
+                    <p><strong>Промывка только холодной водой недостаточна</strong> и, как было показано, оказывает лишь минимальное влияние на снижение загрязнения. Однако, в совместном исследовании Е. Вигдоровой (вет. врач) и Р. Овчинникова (микробиолог) <Link
+                        href="https://vk.com/wall-175830251_6042"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >были получены обнадеживающие результаты</Link>: промытая зерносмесь не содержала колониеобразующих единиц грибов. <i>В любом случае, от пыли такой способ уже избавит.</i></p>
 
                     <article className="message is-success">
                         <div className="message-header">
@@ -813,6 +817,50 @@ const Article: FC = () => {
 
                             <p className="mt-2">
                                 [19] N. Saunders et al. (2014). Use of treatments to prevent the growth of pathogens on sprouted seeds.
+                            </p>
+
+                            <p className="mt-2">
+                                [20] C. Xie et al. (2024). Detoxification of deoxynivalenol and its derivatives in Fusarium contaminated wheat through soaking and germination. doi: 10.1016/j.foodcont.2023.110084
+                            </p>
+
+                            <p className="mt-2">
+                                [21] Z. Wu et al. (2011). Food grade fungal stress on germinating peanut seeds induced phytoalexins and enhanced polyphenolic antioxidants. doi: 10.1021/jf200776w
+                            </p>
+
+                            <p className="mt-2">
+                                [22] K. Seetharaman et al. (1997). In Vitro Activity of Sorgum Seed Antifungal Proteins against Grain Mold Pathogens. doi: 10.1021/jf960924z
+                            </p>
+
+                            <p className="mt-2">
+                                [23] K. Lorenz et al. (2009). Cereal sprouts: Composition, nutritive value, food applications. doi: 10.1080/10408398009527295
+                            </p>
+
+                            <p className="mt-2">
+                                [24] P. Benincasa et al. (2019). Sprouted Grains: A Comprehensive Review. doi: 10.3390/nu11020421
+                            </p>
+
+                            <p className="mt-2">
+                                [25] P. Burkholder (1943). Vitamins in Dehydrated Seeds and Sprouts. doi: 10.1126/science.97.2529.562
+                            </p>
+
+                            <p className="mt-2">
+                                [26] E. Soriano-Richards et al. (1998). Phaseollidin stored in vacuoles and the phytoalexin response in bean. doi: 10.1046/j.1365-3059.1998.00264.x
+                            </p>
+
+                            <p className="mt-2">
+                                [27] P. Karlovsky et al. (2016). Impact of food processing and detoxification treatments on mycotoxin contamination. doi: 10.1007/s12550-016-0257-7
+                            </p>
+
+                            <p className="mt-2">
+                                [28] H. Barakat et al. (2023). Impact of Sprouting Process on the Protein Quality of Yellow and Red Quinoa (Chenopodium quinoa). doi: 10.3390/molecules29020404
+                            </p>
+
+                            <p className="mt-2">
+                                [29] S. Perveen et al. (2024). Comparison of nutritional, antioxidant, physicochemical, and rheological characteristics of whole and sprouted wheat flour. doi: 10.1016/j.lwt.2024.116679
+                            </p>
+
+                            <p className="mt-2">
+                                [30] M. Majzoobi et al. (2023). Unlocking the Potential of Sprouted Cereals, Pseudocereals, and Pulses in Combating Malnutrition. doi: 10.3390/foods12213901
                             </p>
                         </div>
                     </details>
