@@ -904,6 +904,30 @@ const Article: FC = () => {
                             <p className="mt-2">
                                 [12] L. Alpsoy (2011). Key Roles of Vitamins A, C, and E in Aflatoxin B1-Induced Oxidative Stress. doi:10.1016/B978-0-12-386960-9.00012-5
                             </p>
+
+                            <p className="mt-2">
+                                [13] L. Jackson et al. (2003). Apple quality, storage, and washing treatments affect patulin levels in apple cider. doi: 10.4315/0362-028x-66.4.618
+                            </p>
+
+                            <p className="mt-2">
+                                [14] L. Alpsoy (2011). Key Roles of Vitamins A, C, and E in Aflatoxin B1-Induced Oxidative Stress. doi:10.1016/B978-0-12-386960-9.00012-5
+                            </p>
+
+                            <p className="mt-2">
+                                [15] S. Kushwaha et al. (2025). Fungal toxin (mycotoxin): Introduction, sources and types, production, detection, and applications. doi: 10.1016/j.fnutr.2025.100005.00012-5
+                            </p>
+
+                            <p className="mt-2">
+                                [16] X. Chen et al. (2016). Interactive effects of dietary protein concentration and aflatoxin B1 on performance, nutrient digestibility, and gut health in broiler chicks. doi: org/10.3382/ps/pew022
+                            </p>
+
+                            <p className="mt-2">
+                                [17] G. Kitaw et al. (2011). Nutritional and fungal load dynamics of fresh brewers’ grain stored under aerobic conditions. doi: 10.1186/s13568-022-01356-3
+                            </p>
+
+                            <p className="mt-2">
+                                [18] A. Khapre et al. (2020). A review on microbial contamination of Cereal grains. doi: 10.22271/chemi.2020.v8.i3y.9474
+                            </p>
                         </div>
                     </details>
 
