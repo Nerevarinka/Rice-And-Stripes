@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 2,
+  "id": "65d4f00a-6ff0-4e11-9534-ca3226fb150b",
+  "slug": "java-sparrows-love-doves",
+  "title": "Пушистый идеал: рисовки предпочли голубей",
+  "description": "О (не)здоровых межвидовых отношениях",
+  "coverUrl": "/uploads/articles/java-sparrows-love-doves/4.webp",
+  "publishDate": "2025-02-19T09:00:00.000Z",
+  "updatedAt": "2026-08-01T19:47:26.896Z",
+  "status": "published",
+  "tags": [
+    "познавательное"
+  ],
+  "blocks": [
+    {
+      "id": "4b88eca7-5f36-45e0-b76a-1977f06e81bd",
+      "type": "video",
+      "kind": "file",
+      "src": "/uploads/articles/java-sparrows-love-doves/java-sparrow-java-finch.mp4",
+      "caption": "",
+      "source": "",
+      "size": "small",
+      "title": "",
+      "spoiler": "",
+      "gifLike": true,
+      "mimeType": "video/mp4"
+    },
+    {
+      "id": "d3362f31-a446-487c-b97f-d58d117c6bfa",
+      "type": "richText",
+      "html": "<p>Наткнулась на очень интересную статью 1954(!) года про поведение птиц, в которой рисовым амадинам посвящен забавный фрагмент с очаровательными иллюстрациями. [1]</p><p></p><p>В статье упоминается, как рисовки устраивались на ночлег под обыкновенными горлицами <em>(Streptopelia turtur)</em>, которые высиживали кладку:</p>"
+    },
+    {
+      "id": "0970bb6a-4e41-43e0-8efe-a2e586826087",
+      "type": "message",
+      "variant": "dark",
+      "title": "",
+      "bodyHtml": "<p><em>\"При освещении гнезда фонариком было видно два белых яйца, сдвинутых сторону, и, подняв горлицу, можно было обнаружить двух рисовых амадин бок о бок под ней\".</em></p>",
+      "collapsible": false,
+      "defaultOpen": false
+    },
+    {
+      "id": "7602c7ee-969b-4111-bd29-41958286bbe2",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/1.webp",
+      "alt": "Обыкновенная горлица",
+      "caption": "Обыкновенная горлица. Фото: birdsoftheworld.org (автор - Marc FASOL)",
+      "source": "",
+      "size": "big",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "10eeccdc-ef0b-4bd8-a3d2-87e844fa40b2",
+      "type": "richText",
+      "html": "<p>Автор описывает также необычное поведение рисовых амадин, которых содержали в одном авиарии с другим видом горлиц - пятнистыми <em>(Spilopelia chinensis)</em>.</p>"
+    },
+    {
+      "id": "626413fd-fe27-4bfb-a1e9-5d05a0cb5098",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/2.webp",
+      "alt": "Пятнистая горлица",
+      "caption": "Пятнистая горлица. Фото: birdsoftheworld.org (автор - Aseem Kothiala)",
+      "source": "",
+      "size": "big",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "51911527-46a1-4340-842d-00506f4c79cf",
+      "type": "richText",
+      "html": "<p>Он заметил следующие взаимодействия между этими видами (рисунки из оригинальной статьи):</p><p></p><p>1) Рисовки предпочитали сидеть рядом с горлицами, а не с представителями своего вида.</p>"
+    },
+    {
+      "id": "3ec25a46-6159-4f1a-8128-019a70b6d798",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/3.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "98749004-9dcc-44bd-b337-9335eb56204f",
+      "type": "richText",
+      "html": "<p>2) Рисовки прижимались к голубям.</p>"
+    },
+    {
+      "id": "fa0c025f-9d48-4012-b762-5ef29e76ddf9",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/4.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "d39b37d4-0e4f-4a11-8853-0a6895fd4d2c",
+      "type": "richText",
+      "html": "<p>3) Рисовки протискивались между лапками горлиц и укрывались среди перьев на брюшке. </p>"
+    },
+    {
+      "id": "f3a9a1fa-6d5a-4929-8cb0-a6259c659fad",
+      "type": "message",
+      "variant": "dark",
+      "title": "",
+      "bodyHtml": "<p><em>\"В сумерках были замечены две горлицы, сидящие рядом друг с другом, но рисовок не было видно. Небольшое беспокойство, вызванное появлением человека, привело к тому, что из-под каждого голубя выглянула голова рисовки\".</em></p>",
+      "collapsible": false,
+      "defaultOpen": false
+    },
+    {
+      "id": "a1edec66-0636-40f0-a9f4-adda91069789",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/5.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "060145c2-0434-4091-9663-e440ee56ce56",
+      "type": "richText",
+      "html": "<p>4) Рисовки предпочитали чистить перья голубям, а не сородичам.</p>"
+    },
+    {
+      "id": "21329713-b695-444b-af78-02e3be1a1f80",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/6.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "f5e5ff86-8759-4844-9ea1-4d5842018d72",
+      "type": "richText",
+      "html": "<p>5) Когда рисовок становилось больше, чем голубей, некоторые амадины защищали свою любимую горлицу от сородичей.</p>"
+    },
+    {
+      "id": "992a1f17-42f2-486c-86ed-9974d475a750",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/7.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "8f557187-6c3f-4522-92f1-15929cbe319a",
+      "type": "richText",
+      "html": "<p>6) Рисовки \"играли в чехарду\" с голубями. Они прыгали горлицам на спину с одной стороны, спрыгивали с другой и повторяли это снова и снова.</p>"
+    },
+    {
+      "id": "00043f23-b4a6-4cc2-b09e-463ad82ab06c",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/8.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "257e211a-3303-47a0-bd2c-6cd46ea0e864",
+      "type": "richText",
+      "html": "<p><strong>В чем же причина такого чуднóго поведения?</strong></p><p>Известно, что некоторые амадины могут сбиваться в плотные кучки и сидеть бок о бок (и даже друг на друге). Сигналом к такому \"слипанию\" служит распушение оперения у одной из особи, в результате чего она превращается в шарик.</p><p></p><p>Голубь же, когда отдыхает, становится огромным пушистым шаром, который начинает привлекать рисовок больше, чем собственные сородичи (так называемый <em>гиперстимул - </em>слишком сильный раздражитель, который вызывает более мощную реакцию, чем естественный сигнал). Поэтому, даже если рисовка сидела, распушившись, ее шаровидность меркла по сравнению с горлицей по соседству.</p><p></p><p>В случае с перепрыгиванием через голубя поведение можно объяснить желанием перебраться в центр скопления (птицы могут стремиться сесть в середину, так как там теплее). Только горлица была одна, и рисовка тщетно пыталась найти себе положение получше. При этом из-за больших размеров горлицы она не видела, что середины нет (ведь когда амадин только две, они не пытаются перепрыгивать друг друга).</p><p></p><p>Другой показательный пример гиперстимула (правда, уже не про рисовок): кулику-сороке <em>(Haematopus ostralegus)</em> подложили гигантское искуственное яйцо, и птица предпочла высиживать его вместо родного маленького.</p>"
+    },
+    {
+      "id": "7f5a4377-b337-492f-afda-3a82c9e18525",
+      "type": "image",
+      "imageUrl": "/uploads/articles/java-sparrows-love-doves/9.webp",
+      "alt": "",
+      "caption": "\"Какое хорошее у меня яйцо! Здоровое…\" [2]",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "88000171-1467-47d6-a37f-c2de9fadf5ce",
+      "type": "richText",
+      "html": "<p>Можно также заметить, что цвет оперения горлиц похож на рисовок. Чтобы проверить, действительно ли он влияет на поведение, горлиц заменили на домашних голубей. Хотя голуби были еще больше горлиц и совсем гигантскими по сравнению с рисовками, они все равно привлекали последних. Голуби имели разную окраску, и у исследователей была возможность изучить предпочтения амадин. К сожалению, они оказались настолько активными (постоянно выясняли отношения между собой), что своими резкими движениями отпугивали амадинок, которые хотели подойти к ним поближе.</p><p></p><p>Наблюдаемое поведение рисовок - не единичный случай. Вместе с горлицами амадин заметил Don McLeish. [3] Во время трапезы амадина брала рисинку, запрыгивала на голубя и доедала ее на ней. Горлицы не обращали на них внимания и только иногда раскрывали крылья, чтобы сбросить наглецов.</p>"
+    },
+    {
+      "id": "eb42107f-f229-471b-b663-79caf5e635e1",
+      "type": "imageCarousel",
+      "images": [
+        {
+          "imageUrl": "/uploads/articles/java-sparrows-love-doves/10.webp",
+          "alt": "Рисовка на голубе",
+          "caption": "Выслеживает самую лучшую рисинку",
+          "source": ""
+        },
+        {
+          "imageUrl": "/uploads/articles/java-sparrows-love-doves/11.webp",
+          "alt": "Рисовка на голубе 2",
+          "caption": "Кому-то наступили на лапку (в такой толкучке неудивительно)",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "id": "ca4a0f13-74f4-4775-a242-9d38594633dd",
+      "type": "richText",
+      "html": "<p>Даже совсем юные рисовки катались на голубях и пытались почесывать их.</p>"
+    },
+    {
+      "id": "6ad60de8-37aa-4ec8-9329-41f0c509935c",
+      "type": "imageCarousel",
+      "images": [
+        {
+          "imageUrl": "/uploads/articles/java-sparrows-love-doves/12.webp",
+          "alt": "Рисовка на голубе",
+          "caption": "Такой маленький, а уже освоил верховую езду",
+          "source": ""
+        },
+        {
+          "imageUrl": "/uploads/articles/java-sparrows-love-doves/13.webp",
+          "alt": "Рисовка чешет голубя",
+          "caption": "Дай почешу!",
+          "source": ""
+        },
+        {
+          "imageUrl": "/uploads/articles/java-sparrows-love-doves/14.webp",
+          "alt": "Голубь сбрасывает рисовку",
+          "caption": "Брысь!",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "id": "2ebbcb50-5cce-48ce-8d58-e11833deffc4",
+      "type": "richText",
+      "html": "<p>А чтобы вы не думали, что рисовки без ума от голубей, вот видео, где амадина бесстрашно прогоняет горлицу. Жалко ее – она такая мирная. Интересно, что же там такое вкусное было?</p>"
+    },
+    {
+      "id": "168f4338-6082-460f-9b56-3c2c593688ab",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239033",
+      "caption": "",
+      "source": "https://macaulaylibrary.org/asset/201645351",
+      "size": "medium",
+      "title": "",
+      "spoiler": ""
+    },
+    {
+      "id": "c0f738ec-f3ac-4d9d-b646-39de12a85b9d",
+      "type": "message",
+      "variant": "dark",
+      "title": "Источники",
+      "bodyHtml": "<p>[1] Morris, Desmond. (1956). <em>The Feather Postures of Birds and the Problem of the Origin of Social Signals. Behaviour, 9(1), 75–111. </em>doi:10.1163/156853956x00264</p><p>[2] Staddon, John. <em>Behaviorism: Mind, mechanism and society. Interpretations.</em></p><p>[3] Dove Riding Java'<em>s, </em><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://dmcleish.com/Maui2009/DoveRiders/index.html\"><em>https://dmcleish.com/Maui2009/DoveRiders/</em>index.html</a></p>",
+      "collapsible": false,
+      "defaultOpen": false
+    },
+    {
+      "id": "e44d7fa4-1c67-4fc4-88a2-6ae304bd91f6",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239033",
+      "caption": "",
+      "source": "",
+      "size": "big",
+      "title": "",
+      "spoiler": "страшно",
+      "gifLike": false,
+      "mimeType": "video/mp4",
+      "spoilerEnabled": true
+    },
+    {
+      "id": "81cafc29-348f-4eda-8718-9f22814cca59",
+      "type": "video",
+      "kind": "file",
+      "src": "/uploads/articles/java-sparrows-love-doves/1280.mp4",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "плохо",
+      "spoilerEnabled": true,
+      "gifLike": false,
+      "mimeType": "video/mp4"
+    },
+    {
+      "id": "1a1092d1-00ce-4f63-aec3-591da8deb059",
+      "type": "video",
+      "kind": "youtube",
+      "src": "https://www.youtube.com/watch?v=myblEG5nPCA",
+      "caption": "",
+      "source": "https://www.youtube.com/watch?v=myblEG5nPCA",
+      "size": "medium",
+      "title": "",
+      "spoiler": "алерт",
+      "spoilerEnabled": true,
+      "gifLike": false
+    }
+  ],
+  "html": "\n        <div class=\"video-with-caption video-with-caption--center\">\n            <div class=\"video-with-caption__video-wrapper video-with-caption__video-wrapper--small\">\n                <video class=\"video-with-caption__video video-with-caption__video--small\" autoplay loop muted playsinline preload=\"auto\">\n                    <source src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/java-sparrow-java-finch.mp4\" type=\"video/mp4\" />\n                </video>\n            </div>\n            <div class=\"video-with-caption__caption\">\n                \n                \n            </div>\n        </div>\n    \n<div class=\"content article-block article-block--richtext\"><p>Наткнулась на очень интересную статью 1954(!) года про поведение птиц, в которой рисовым амадинам посвящен забавный фрагмент с очаровательными иллюстрациями. [1]</p><p></p><p>В статье упоминается, как рисовки устраивались на ночлег под обыкновенными горлицами <em>(Streptopelia turtur)</em>, которые высиживали кладку:</p></div>\n\n        <article class=\"message is-dark\">\n            \n            <div class=\"message-body\"><p><em>\"При освещении гнезда фонариком было видно два белых яйца, сдвинутых сторону, и, подняв горлицу, можно было обнаружить двух рисовых амадин бок о бок под ней\".</em></p></div>\n        </article>\n    \n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--big\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/1.webp\" alt=\"Обыкновенная горлица\" class=\"image-with-caption__image image-with-caption__image--big\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Обыкновенная горлица. Фото: birdsoftheworld.org (автор - Marc FASOL)\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Автор описывает также необычное поведение рисовых амадин, которых содержали в одном авиарии с другим видом горлиц - пятнистыми <em>(Spilopelia chinensis)</em>.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--big\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/2.webp\" alt=\"Пятнистая горлица\" class=\"image-with-caption__image image-with-caption__image--big\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Пятнистая горлица. Фото: birdsoftheworld.org (автор - Aseem Kothiala)\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Он заметил следующие взаимодействия между этими видами (рисунки из оригинальной статьи):</p><p></p><p>1) Рисовки предпочитали сидеть рядом с горлицами, а не с представителями своего вида.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/3.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>2) Рисовки прижимались к голубям.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/4.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>3) Рисовки протискивались между лапками горлиц и укрывались среди перьев на брюшке. </p></div>\n\n        <article class=\"message is-dark\">\n            \n            <div class=\"message-body\"><p><em>\"В сумерках были замечены две горлицы, сидящие рядом друг с другом, но рисовок не было видно. Небольшое беспокойство, вызванное появлением человека, привело к тому, что из-под каждого голубя выглянула голова рисовки\".</em></p></div>\n        </article>\n    \n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/5.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>4) Рисовки предпочитали чистить перья голубям, а не сородичам.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/6.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>5) Когда рисовок становилось больше, чем голубей, некоторые амадины защищали свою любимую горлицу от сородичей.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/7.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>6) Рисовки \"играли в чехарду\" с голубями. Они прыгали горлицам на спину с одной стороны, спрыгивали с другой и повторяли это снова и снова.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/8.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p><strong>В чем же причина такого чуднóго поведения?</strong></p><p>Известно, что некоторые амадины могут сбиваться в плотные кучки и сидеть бок о бок (и даже друг на друге). Сигналом к такому \"слипанию\" служит распушение оперения у одной из особи, в результате чего она превращается в шарик.</p><p></p><p>Голубь же, когда отдыхает, становится огромным пушистым шаром, который начинает привлекать рисовок больше, чем собственные сородичи (так называемый <em>гиперстимул - </em>слишком сильный раздражитель, который вызывает более мощную реакцию, чем естественный сигнал). Поэтому, даже если рисовка сидела, распушившись, ее шаровидность меркла по сравнению с горлицей по соседству.</p><p></p><p>В случае с перепрыгиванием через голубя поведение можно объяснить желанием перебраться в центр скопления (птицы могут стремиться сесть в середину, так как там теплее). Только горлица была одна, и рисовка тщетно пыталась найти себе положение получше. При этом из-за больших размеров горлицы она не видела, что середины нет (ведь когда амадин только две, они не пытаются перепрыгивать друг друга).</p><p></p><p>Другой показательный пример гиперстимула (правда, уже не про рисовок): кулику-сороке <em>(Haematopus ostralegus)</em> подложили гигантское искуственное яйцо, и птица предпочла высиживать его вместо родного маленького.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/9.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                &quot;Какое хорошее у меня яйцо! Здоровое…&quot; [2]\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Можно также заметить, что цвет оперения горлиц похож на рисовок. Чтобы проверить, действительно ли он влияет на поведение, горлиц заменили на домашних голубей. Хотя голуби были еще больше горлиц и совсем гигантскими по сравнению с рисовками, они все равно привлекали последних. Голуби имели разную окраску, и у исследователей была возможность изучить предпочтения амадин. К сожалению, они оказались настолько активными (постоянно выясняли отношения между собой), что своими резкими движениями отпугивали амадинок, которые хотели подойти к ним поближе.</p><p></p><p>Наблюдаемое поведение рисовок - не единичный случай. Вместе с горлицами амадин заметил Don McLeish. [3] Во время трапезы амадина брала рисинку, запрыгивала на голубя и доедала ее на ней. Горлицы не обращали на них внимания и только иногда раскрывали крылья, чтобы сбросить наглецов.</p></div>\n\n        <div class=\"image-carousel\">\n            <figure class=\"image-carousel__content\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/10.webp\" alt=\"Рисовка на голубе\" class=\"image-carousel__image\" />\n                <figcaption class=\"image-carousel__caption\">\n                    Выслеживает самую лучшую рисинку\n                    \n                </figcaption>\n            </figure>\n        </div>\n    \n<div class=\"content article-block article-block--richtext\"><p>Даже совсем юные рисовки катались на голубях и пытались почесывать их.</p></div>\n\n        <div class=\"image-carousel\">\n            <figure class=\"image-carousel__content\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/12.webp\" alt=\"Рисовка на голубе\" class=\"image-carousel__image\" />\n                <figcaption class=\"image-carousel__caption\">\n                    Такой маленький, а уже освоил верховую езду\n                    \n                </figcaption>\n            </figure>\n        </div>\n    \n<div class=\"content article-block article-block--richtext\"><p>А чтобы вы не думали, что рисовки без ума от голубей, вот видео, где амадина бесстрашно прогоняет горлицу. Жалко ее – она такая мирная. Интересно, что же там такое вкусное было?</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239033&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    \n                    <a href=\"https://macaulaylibrary.org/asset/201645351\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"source-link\">Оригинал</a>\n                </div>\n            </div>\n        \n\n        <article class=\"message is-dark\">\n            <div class=\"message-header\">Источники</div>\n            <div class=\"message-body\"><p>[1] Morris, Desmond. (1956). <em>The Feather Postures of Birds and the Problem of the Origin of Social Signals. Behaviour, 9(1), 75–111. </em>doi:10.1163/156853956x00264</p><p>[2] Staddon, John. <em>Behaviorism: Mind, mechanism and society. Interpretations.</em></p><p>[3] Dove Riding Java'<em>s, </em><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://dmcleish.com/Maui2009/DoveRiders/index.html\"><em>https://dmcleish.com/Maui2009/DoveRiders/</em>index.html</a></p></div>\n        </article>\n    \n\n            <div class=\"embedded-video embedded-video--big\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239033&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    \n                    \n                </div>\n            </div>\n        \n\n        <div class=\"video-with-caption video-with-caption--center\">\n            <div class=\"video-with-caption__video-wrapper video-with-caption__video-wrapper--medium\">\n                <video class=\"video-with-caption__video video-with-caption__video--medium\" controls preload=\"metadata\">\n                    <source src=\"/Rice-And-Stripes/uploads/articles/java-sparrows-love-doves/1280.mp4\" type=\"video/mp4\" />\n                </video>\n            </div>\n            <div class=\"video-with-caption__caption\">\n                \n                \n            </div>\n        </div>\n    \n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://www.youtube.com/embed/myblEG5nPCA\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    \n                    <a href=\"https://www.youtube.com/watch?v=myblEG5nPCA\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"source-link\">Оригинал</a>\n                </div>\n            </div>\n        ",
+  "tocItems": [],
+  "readingTimeMinutes": 4
+}
