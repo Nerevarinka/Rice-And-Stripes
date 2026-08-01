@@ -217,8 +217,16 @@
 	ul,
 	ol {
 		margin-top: 1.5rem;
+		-webkit-hyphens: auto;
 		hyphens: auto;
 		overflow-wrap: break-word;
+		text-wrap: pretty;
+	}
+
+	p {
+		@media (min-width: 769px) {
+			text-align: justify;
+		}
 	}
 
 	.message-body .content>ul:first-child {

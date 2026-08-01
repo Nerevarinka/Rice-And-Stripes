@@ -35,6 +35,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
     const [activeId, setActiveId] = useState<string>("");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const isMobile = useIsMobile();
+    const hasItems = items.length > 0;
     const navRef = useRef<HTMLElement | null>(null);
     const toggleRef = useRef<HTMLButtonElement | null>(null);
 
@@ -106,7 +107,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
 
     return (
         <div className={containerClassName}>
-            {isMobile && (
+            {isMobile && hasItems && (
                 <button
                     ref={toggleRef}
                     className={`toc-toggle${isMobileMenuOpen ? ' is-open' : ''}`}
@@ -117,7 +118,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
                     {isMobileMenuOpen ? <X size={24} /> : <List size={24} />}
                 </button>
             )}
-            {isMobile && isMobileMenuOpen && (
+            {isMobile && hasItems && isMobileMenuOpen && (
                 <div
                     className="toc-overlay"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -127,25 +128,27 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
                 {children}
             </div>
 
-            <nav ref={navRef} className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
-                {isMobile ? <h2 className="table-of-contents__title">Оглавление</h2> : null}
-                <ul className="table-of-contents__list pl-2">
-                    {items.map(({ caption, elementId, level = 2 }) => (
-                        <li key={elementId} className={`table-of-contents__item table-of-contents__item--level-${level}`}>
-                            <a
-                                onClick={() => scrollToElement(elementId)}
-                                className={
-                                    `table-of-contents__link ${activeId === elementId
-                                        ? "table-of-contents__link--active"
-                                        : ""
-                                    }`}
-                            >
-                                {caption}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            {hasItems ? (
+                <nav ref={navRef} className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
+                    {isMobile ? <h2 className="table-of-contents__title">Оглавление</h2> : null}
+                    <ul className="table-of-contents__list pl-2">
+                        {items.map(({ caption, elementId, level = 2 }) => (
+                            <li key={elementId} className={`table-of-contents__item table-of-contents__item--level-${level}`}>
+                                <a
+                                    onClick={() => scrollToElement(elementId)}
+                                    className={
+                                        `table-of-contents__link ${activeId === elementId
+                                            ? "table-of-contents__link--active"
+                                            : ""
+                                        }`}
+                                >
+                                    {caption}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            ) : null}
         </div>
     );
 };

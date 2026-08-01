@@ -4,11 +4,17 @@ import "whatwg-fetch";
 import "abort-controller/polyfill";
 import "url-search-params-polyfill";
 
+import type { Metadata } from "next";
+
 import "./globals.scss";
 
 import Sidebar from "@/components/sidebar";
 import MobileFlag from "@/components/mobileFlag";
 import { getAllSidebarItems } from "@/shared/articleCatalog";
+
+export const metadata: Metadata = {
+	metadataBase: new URL("https://nerevarinka.github.io"),
+};
 
 export default async function RootLayout({
 	children,
