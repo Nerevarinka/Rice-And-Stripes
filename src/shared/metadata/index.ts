@@ -62,6 +62,7 @@ export function createArticleMetadata(
     articleInfo: Article,
     keywords: string[]
 ): Metadata {
+    const articleUrl = withBasePath(articleInfo.link);
     const coverUrl = typeof articleInfo.cover === "string"
         ? articleInfo.cover.startsWith("http://") || articleInfo.cover.startsWith("https://") || articleInfo.cover.startsWith("/Rice-And-Stripes/")
             ? articleInfo.cover
@@ -83,6 +84,7 @@ export function createArticleMetadata(
             title: articleInfo.caption,
             description: articleInfo.description,
             type: "article",
+            url: articleUrl,
             images: coverUrl
                 ? [
                     {
@@ -99,6 +101,9 @@ export function createArticleMetadata(
             title: articleInfo.caption,
             description: articleInfo.description,
             images: coverUrl ? [coverUrl] : [],
+        },
+        alternates: {
+            canonical: articleUrl,
         },
     };
 }
