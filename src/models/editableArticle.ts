@@ -64,7 +64,9 @@ export type EditableArticleVideoBlock = {
     size: EditableArticleImageSize;
     title?: string;
     spoiler?: string;
+    spoilerEnabled?: boolean;
     mimeType?: string;
+    gifLike?: boolean;
 };
 
 export type EditableArticleMessageBlock = {

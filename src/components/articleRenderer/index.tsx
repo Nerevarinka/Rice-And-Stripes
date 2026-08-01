@@ -1,5 +1,6 @@
 import sanitizeHtml from "sanitize-html";
 
+import EmbeddedVideo from "@/components/embeddedVideo";
 import ImageCarousel from "@/components/imageCarousel";
 import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/videoWithCaption";
@@ -54,31 +55,6 @@ function cleanHtml(html: string) {
         },
         allowedSchemes: ["http", "https", "mailto", "tel"],
     });
-}
-
-function EmbeddedVideo({ src, caption, source, title, size }: { src: string; caption: string; source?: string; title?: string; size: "small" | "medium" | "big"; }) {
-    return (
-        <div className={`embedded-video embedded-video--${size}`}>
-            <iframe
-                src={src}
-                title={title ?? caption ?? "Видео"}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-            />
-            <div className="video-with-caption__caption">
-                {caption}
-                {source ? (
-                    <>
-                        {caption ? <br /> : null}
-                        <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">
-                            Оригинал
-                        </a>
-                    </>
-                ) : null}
-            </div>
-        </div>
-    );
 }
 
 export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
@@ -149,6 +125,7 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                     source={block.source}
                                     title={block.title}
                                     size={block.size}
+                                    spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
                                 />
                             ) : null;
                         }
@@ -157,22 +134,12 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                             <VideoWithCaption
                                 key={block.id}
                                 src={normalizeEditableArticleAssetUrl(block.src)}
-                                caption={
-                                    <>
-                                        {block.caption}
-                                        {block.source ? (
-                                            <>
-                                                <br />
-                                                <a href={block.source} target="_blank" rel="noopener noreferrer" className="source-link">
-                                                    Источник
-                                                </a>
-                                            </>
-                                        ) : null}
-                                    </>
-                                }
+                                caption={block.caption}
+                                source={block.source}
                                 size={block.size}
-                                spoiler={block.spoiler}
+                                spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
                                 type={block.mimeType ?? "video/mp4"}
+                                gifLike={block.gifLike}
                             />
                         );
                     case "message":

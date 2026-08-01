@@ -128,12 +128,15 @@ function renderVideoBlock(block: EditableArticleVideoBlock) {
         `;
     }
 
-    const source = block.source ? `<br /><a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Источник</a>` : "";
+    const source = block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : "";
+    const videoAttributes = block.gifLike
+        ? "autoplay loop muted playsinline preload=\"auto\""
+        : "controls preload=\"metadata\"";
 
     return `
         <div class="video-with-caption video-with-caption--center">
             <div class="video-with-caption__video-wrapper video-with-caption__video-wrapper--${escapeHtml(block.size)}">
-                <video class="video-with-caption__video video-with-caption__video--${escapeHtml(block.size)}" controls>
+                <video class="video-with-caption__video video-with-caption__video--${escapeHtml(block.size)}" ${videoAttributes}>
                     <source src="${escapeHtml(src)}" type="${escapeHtml(block.mimeType ?? "video/mp4")}" />
                 </video>
             </div>

@@ -27,8 +27,21 @@
 
     &__video-wrapper {
         position: relative;
-        display: inline-block;
+        display: block;
+        width: 100%;
         max-width: 100%;
+
+        &--small {
+            max-width: 25rem;
+        }
+
+        &--medium {
+            max-width: 35rem;
+        }
+
+        &--big {
+            max-width: 50rem;
+        }
 
         html.is-mobile & {
             display: block;
@@ -37,6 +50,7 @@
     }
 
     &__video {
+        width: 100%;
         height: auto;
         transition: $transition-fast;
         max-width: 100%;
@@ -91,6 +105,9 @@
         cursor: pointer;
         z-index: 10;
         backdrop-filter: blur(20px) grayscale(100%) contrast(50%);
+        border: 0;
+        padding: 0;
+        font: inherit;
     }
 
     &__spoiler-noise {
@@ -100,6 +117,10 @@
     &__spoiler-content {
         position: relative;
         z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
         text-align: center;
         padding: 2rem;
         color: #ffffff;
@@ -122,8 +143,9 @@
     }
 
     &__spoiler-warning {
+        display: block;
         font-size: 2rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0;
         animation: pulse 2s ease-in-out infinite;
 
         html.is-mobile & {
@@ -153,9 +175,10 @@
     }
 
     &__spoiler-text {
+        display: block;
         font-size: 1rem;
         font-weight: 600;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0;
         text-transform: uppercase;
         letter-spacing: 0.05em;
 

@@ -23,6 +23,8 @@ import {
     CalendarDays,
     ChevronDown,
     ChevronUp,
+    ChevronsDown,
+    ChevronsUp,
     FileJson2,
     Heading2,
     ImagePlus,
@@ -55,7 +57,6 @@ import type {
     EditableArticleMessageVariant,
     EditableArticleRichTextBlock,
     EditableArticleSpoilerBlock,
-    EditableArticleStatus,
     EditableArticleVideoBlock,
     EditableArticleVideoKind,
 } from "@/models/editableArticle";
@@ -105,10 +106,6 @@ const AVAILABLE_TAGS: MediaItemTag[] = [
     "содержание",
     "здоровье",
 ];
-
-type ArticleStudioProps = {
-    initialStatus?: EditableArticleStatus;
-};
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -255,6 +252,8 @@ function createEmptyVideoBlock(): EditableArticleVideoBlock {
         size: "medium",
         title: "",
         spoiler: "",
+        spoilerEnabled: false,
+        gifLike: false,
     };
 }
 
@@ -320,7 +319,7 @@ function getBlockLabel(block: EditableArticleBlock) {
         case "image":
             return "Изображение";
         case "video":
-            return block.kind === "file" ? "Видео-файл" : "Видео-ссылка";
+            return block.gifLike ? "Анимация как GIF" : block.kind === "file" ? "Видео-файл" : "Видео-ссылка";
         case "imageCarousel":
             return "Карусель";
         case "message":
@@ -465,6 +464,8 @@ type BlockCardProps = {
     onDuplicate: () => void;
     onMoveUp: () => void;
     onMoveDown: () => void;
+    onMoveToTop: () => void;
+    onMoveToBottom: () => void;
     onInsertBelow: () => void;
     setStatusMessage: (message: string) => void;
 };
@@ -480,6 +481,8 @@ function BlockCard({
     onDuplicate,
     onMoveUp,
     onMoveDown,
+    onMoveToTop,
+    onMoveToBottom,
     onInsertBelow,
     setStatusMessage,
 }: BlockCardProps) {
@@ -524,11 +527,6 @@ function BlockCard({
         <section className={`article-studio__block article-studio__block--${block.type}${block.type === "message" ? ` article-studio__block--message-${block.variant}` : ""}`}>
             <div className="article-studio__block-header">
                 <div className="article-studio__block-title">
-                    <span className="article-studio__block-type">{getBlockLabel(block)}</span>
-                    <span className="article-studio__block-index">#{index + 1}</span>
-                </div>
-
-                <div className="article-studio__block-actions">
                     <button
                         type="button"
                         className="button is-small is-light"
@@ -538,11 +536,22 @@ function BlockCard({
                     >
                         {isCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
                     </button>
+                    <span className="article-studio__block-type">{getBlockLabel(block)}</span>
+                    <span className="article-studio__block-index">#{index + 1}</span>
+                </div>
+
+                <div className="article-studio__block-actions">
+                    <button type="button" className="button is-small is-light" onClick={onMoveToTop} disabled={index === 0} aria-label="Переместить блок в самое начало" title="Переместить блок в самое начало">
+                        <ChevronsUp size={16} />
+                    </button>
                     <button type="button" className="button is-small is-light" onClick={onMoveUp} disabled={index === 0} aria-label="Переместить блок выше" title="Переместить блок выше">
                         <ArrowUp size={16} />
                     </button>
                     <button type="button" className="button is-small is-light" onClick={onMoveDown} disabled={index === total - 1} aria-label="Переместить блок ниже" title="Переместить блок ниже">
                         <ArrowDown size={16} />
+                    </button>
+                    <button type="button" className="button is-small is-light" onClick={onMoveToBottom} disabled={index === total - 1} aria-label="Переместить блок в самый конец" title="Переместить блок в самый конец">
+                        <ChevronsDown size={16} />
                     </button>
                     <button type="button" className="button is-small is-light" onClick={onDuplicate} aria-label="Дублировать блок" title="Дублировать блок">
                         <Copy size={16} />
@@ -672,6 +681,18 @@ function BlockCard({
                                     </select>
                                 </div>
                             </div>
+                            {block.kind === "file" ? (
+                                <div className="column is-full">
+                                    <label className="checkbox">
+                                        <input
+                                            type="checkbox"
+                                            checked={block.gifLike ?? false}
+                                            onChange={event => onChange({ ...block, gifLike: event.target.checked })}
+                                        />
+                                        <span className="ml-2">Воспроизводить как GIF: автозапуск, повтор и без звука</span>
+                                    </label>
+                                </div>
+                            ) : null}
                             <div className="column is-full">
                                 <label className="label">{block.kind === "file" ? "Путь к видеофайлу" : "Ссылка на видео"}</label>
                                 <div className="field is-grouped">
@@ -724,9 +745,25 @@ function BlockCard({
                                 <input className="input" value={block.source ?? ""} onChange={event => onChange({ ...block, source: event.target.value })} />
                             </div>
                             <div className="column is-full">
-                                <label className="label">Спойлер</label>
-                                <input className="input" value={block.spoiler ?? ""} onChange={event => onChange({ ...block, spoiler: event.target.value })} />
-                                <p className="help">Необязательно. Укажите предупреждение, если видео нужно скрыть до клика, например «Сцены медицинских процедур».</p>
+                                <label className="checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={block.spoilerEnabled ?? Boolean(block.spoiler)}
+                                        onChange={event => onChange({ ...block, spoilerEnabled: event.target.checked })}
+                                    />
+                                    <span className="ml-2">Скрыть видео под спойлером</span>
+                                </label>
+                                {(block.spoilerEnabled ?? Boolean(block.spoiler)) ? (
+                                    <div className="mt-3">
+                                        <label className="label">Текст предупреждения</label>
+                                        <input
+                                            className="input"
+                                            value={block.spoiler ?? ""}
+                                            onChange={event => onChange({ ...block, spoiler: event.target.value })}
+                                            placeholder="Например: Сцены медицинских процедур"
+                                        />
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                     </div>
@@ -992,7 +1029,7 @@ function BlockPalette({
     );
 }
 
-export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudioProps) {
+export default function ArticleStudio() {
     const [repoRoot, setRepoRoot] = useState<FileSystemDirectoryHandle | null>(null);
     const [articleId, setArticleId] = useState(() => createId());
     const [publishDate, setPublishDate] = useState(() => getLocalDateInputValue());
@@ -1002,7 +1039,6 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
     const [description, setDescription] = useState("");
     const [coverUrl, setCoverUrl] = useState("");
     const [tags, setTags] = useState<MediaItemTag[]>([]);
-    const [status, setStatus] = useState<EditableArticleStatus>(initialStatus);
     const [saveState, setSaveState] = useState<SaveState>("idle");
     const [statusMessage, setStatusMessage] = useState("");
     const [coverUploadMessage, setCoverUploadMessage] = useState("");
@@ -1123,7 +1159,6 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
             setDescription(article.description ?? "");
             setCoverUrl(article.coverUrl ?? "");
             setTags(article.tags ?? []);
-            setStatus(article.status ?? "draft");
             setBlocks(article.blocks);
             setSaveState("idle");
             setCoverUploadMessage(repoRoot ? "" : "Чтобы заменить обложку, сначала подключите корневую папку проекта.");
@@ -1211,6 +1246,16 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
         });
     };
 
+    const moveBlockToEdge = (index: number, edge: "top" | "bottom") => {
+        setBlocks(current => {
+            if (index < 0 || index >= current.length) return current;
+            const next = [...current];
+            const [moved] = next.splice(index, 1);
+            next.splice(edge === "top" ? 0 : next.length, 0, moved);
+            return next;
+        });
+    };
+
     const saveArticle = async () => {
         if (!repoRoot) {
             setStatusMessage("Подключите папку репозитория, чтобы сохранить статью в проект.");
@@ -1238,7 +1283,7 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
                 coverUrl: coverUrl.trim(),
                 publishDate: new Date(`${publishDate}T12:00:00`).toISOString(),
                 updatedAt: now,
-                status,
+                status: "published",
                 tags,
                 blocks,
                 html,
@@ -1334,8 +1379,7 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
                         </div>
                     </div>
 
-                    <div className="article-studio__two-cols">
-                        <div className="field">
+                    <div className="field">
                             <label className="label">Адрес статьи (slug)</label>
                             <div className="control">
                                 <input
@@ -1350,17 +1394,6 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
                             <p id="slug-help" className={`help ${slug && !isSlugValid ? "is-danger" : ""}`}>
                                 Постоянное имя файла, часть URL и папка медиа: английские слова строчными буквами через дефис. Заполните до загрузки картинок.
                             </p>
-                        </div>
-
-                        <div className="field">
-                            <label className="label">Статус</label>
-                            <div className="select is-fullwidth">
-                                <select value={status} onChange={event => setStatus(event.target.value as EditableArticleStatus)}>
-                                    <option value="draft">Черновик</option>
-                                    <option value="published">Опубликована</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="field article-studio__publish-date">
@@ -1491,6 +1524,8 @@ export default function ArticleStudio({ initialStatus = "draft" }: ArticleStudio
                                 onDuplicate={() => duplicateBlock(block)}
                                 onMoveUp={() => moveBlock(index, -1)}
                                 onMoveDown={() => moveBlock(index, 1)}
+                                onMoveToTop={() => moveBlockToEdge(index, "top")}
+                                onMoveToBottom={() => moveBlockToEdge(index, "bottom")}
                                 onInsertBelow={() => openPalette(index + 1)}
                                 setStatusMessage={setStatusMessage}
                             />

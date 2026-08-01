@@ -266,6 +266,11 @@
 	width: 100%;
 	margin: 1.5rem auto;
 
+	.video-with-caption__video-wrapper {
+		display: block;
+		width: 100%;
+	}
+
 	&--small {
 		max-width: 25rem;
 	}

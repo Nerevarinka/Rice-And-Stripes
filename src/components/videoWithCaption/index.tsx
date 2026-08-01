@@ -32,6 +32,9 @@ export type VideoWithCaptionProps = {
 
     /** MIME тип видео (по умолчанию video/mp4) */
     type?: string;
+
+    /** Воспроизводить MP4 как лёгкую GIF-анимацию */
+    gifLike?: boolean;
 };
 
 /**
@@ -46,6 +49,7 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
     source,
     spoiler,
     type = "video/mp4",
+    gifLike = false,
 }) => {
     const [isSpoilerVisible, setIsSpoilerVisible] = useState(!!spoiler);
 
@@ -79,7 +83,12 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
             <div className={wrapperClassName}>
                 <video
                     className={videoClassName}
-                    controls
+                    controls={!gifLike}
+                    autoPlay={gifLike}
+                    loop={gifLike}
+                    muted={gifLike}
+                    playsInline={gifLike}
+                    preload={gifLike ? "auto" : "metadata"}
                 >
                     <source src={pathToVideo} type={type} />
                     Браузер не поддерживает HTML5 видео
@@ -101,9 +110,9 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
                 {caption}
                 {source && (
                     <>
-                        <br />
+                        {caption ? <br /> : null}
                         <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">   
-                            Источник
+                            Оригинал
                         </a>
                     </>
                 )}

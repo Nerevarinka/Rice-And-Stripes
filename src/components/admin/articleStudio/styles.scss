@@ -73,6 +73,13 @@
 	gap: 0.45rem;
 }
 
+.article-studio .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+}
+
 .article-studio__notice {
 	margin-bottom: 0;
 	background: #fff8dc;
@@ -153,6 +160,7 @@
 
 .article-studio__cover-preview {
 	margin: 0;
+	width: min(22rem, 100%);
 	border: 1px solid rgba(10, 10, 10, 0.08);
 	border-radius: 8px;
 	overflow: hidden;

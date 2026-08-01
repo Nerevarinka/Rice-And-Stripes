@@ -37,9 +37,7 @@ async function addStaticReadingTime(article: Article): Promise<Article> {
 export async function getAllArticleCards(): Promise<Article[]> {
     const staticCards = await Promise.all(staticArticles.map(addStaticReadingTime));
     const editableArticles = await getEditableArticles();
-    const editableCards = editableArticles
-        .filter(article => article.status === "published")
-        .map(editableArticleToCard);
+    const editableCards = editableArticles.map(editableArticleToCard);
 
     return [...staticCards, ...editableCards]
         .filter((article, index, array) => array.findIndex(item => item.link === article.link) === index)

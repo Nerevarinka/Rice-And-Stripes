@@ -15,9 +15,7 @@ import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/r
 export async function generateStaticParams() {
     const articles = await getEditableArticles();
 
-    return articles
-        .filter(article => article.status === "published")
-        .map(article => ({ slug: article.slug }));
+    return articles.map(article => ({ slug: article.slug }));
 }
 
 export async function generateMetadata(
@@ -26,7 +24,7 @@ export async function generateMetadata(
     const { slug } = await params;
     const article = await getEditableArticleBySlug(slug);
 
-    if (!article || article.status !== "published") {
+    if (!article) {
         return {};
     }
 
@@ -49,7 +47,7 @@ export default async function EditableArticlePage(
     const { slug } = await params;
     const article = await getEditableArticleBySlug(slug);
 
-    if (!article || article.status !== "published") {
+    if (!article) {
         notFound();
     }
 
