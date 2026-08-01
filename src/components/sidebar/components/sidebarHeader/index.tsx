@@ -9,13 +9,11 @@ const SidebarHeader: FC = () => {
                 href="/"
                 className="sidebar-header-title"
             >
-                Амадины
-                <br />
                 Rice & Stripes
             </Link>
 
             <div className="sidebar-header-description">
-                Блог о птицах
+                Блог о жизни амадин
             </div>
         </>
     );

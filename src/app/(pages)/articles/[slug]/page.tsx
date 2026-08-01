@@ -1,0 +1,87 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Clock3 } from "lucide-react";
+import { formatDate } from "@bodynarf/utils/date/format";
+
+import TableOfContents from "@/components/tableOfContents";
+import ArticleNavigation from "@/components/articleNavigation";
+import ArticleRenderer from "@/components/articleRenderer";
+import { createArticleMetadata } from "@/shared/metadata";
+import { getEditableArticles, getEditableArticleBySlug } from "@/shared/editableArticles";
+import { extractTocItemsFromHtml } from "@/shared/utils/extractTocItemsFromHtml";
+import { getEditableArticleNavigation } from "@/shared/utils/editableArticleNavigation";
+import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/readingTime";
+
+export async function generateStaticParams() {
+    const articles = await getEditableArticles();
+
+    return articles
+        .filter(article => article.status === "published")
+        .map(article => ({ slug: article.slug }));
+}
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+    const { slug } = await params;
+    const article = await getEditableArticleBySlug(slug);
+
+    if (!article || article.status !== "published") {
+        return {};
+    }
+
+    return createArticleMetadata(
+        {
+            caption: article.title,
+            link: `/articles/${article.slug}`,
+            cover: article.coverUrl,
+            description: article.description,
+            publishDate: new Date(article.publishDate),
+            tags: article.tags,
+        },
+        [article.title, article.description, ...article.tags]
+    );
+}
+
+export default async function EditableArticlePage(
+    { params }: { params: Promise<{ slug: string }> }
+) {
+    const { slug } = await params;
+    const article = await getEditableArticleBySlug(slug);
+
+    if (!article || article.status !== "published") {
+        notFound();
+    }
+
+    const navigation = await getEditableArticleNavigation(`/articles/${article.slug}`);
+    const tocItems = article.tocItems?.length
+        ? article.tocItems
+        : extractTocItemsFromHtml(article.html ?? "");
+    const readingTimeMinutes = article.readingTimeMinutes
+        ?? calculateReadingTimeMinutes(article.blocks ?? []);
+
+    return (
+        <TableOfContents items={tocItems}>
+            <div className="article-content-wrapper">
+                <div className="article-content content">
+                    <h1 className="title is-2">{article.title}</h1>
+                    <div className="article-meta article-meta--lead">
+                        <span className="article-reading-time" title="Ориентировочное время чтения">
+                            <Clock3 size={17} />
+                            {formatReadingTime(readingTimeMinutes)}
+                        </span>
+                        <time title="Дата первой публикации">
+                            {formatDate(new Date(article.publishDate), "dd.MM.yyyy")}
+                        </time>
+                    </div>
+                    {article.blocks?.length ? (
+                        <ArticleRenderer blocks={article.blocks} />
+                    ) : (
+                        <div dangerouslySetInnerHTML={{ __html: article.html }} />
+                    )}
+                </div>
+                <ArticleNavigation {...navigation} />
+            </div>
+        </TableOfContents>
+    );
+}

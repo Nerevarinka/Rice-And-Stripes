@@ -3,18 +3,22 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Clock3, Search } from "lucide-react";
 
 import { formatDate } from "@bodynarf/utils/date/format";
 
-import { articles } from "@/shared/articles";
-import { MediaItemTagColors, MediaItemTag } from "@/models";
+import type { Article, MediaItemTag } from "@/models";
+import { MediaItemTagColors } from "@/models";
 import TagComponent from "@/components/tag";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 import "./styles.scss";
 
-export default function ArticlesContainer() {
+type ArticlesContainerProps = {
+    articles: Article[];
+};
+
+export default function ArticlesContainer({ articles }: ArticlesContainerProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedTags, setSelectedTags] = useState<MediaItemTag[]>([]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -28,7 +32,7 @@ export default function ArticlesContainer() {
         });
 
         return Array.from(tagsSet);
-    }, []);
+    }, [articles]);
 
     const filteredArticles = useMemo(() => {
         let result = [...articles];
@@ -52,7 +56,7 @@ export default function ArticlesContainer() {
         }
 
         return result;
-    }, [searchQuery, selectedTags]);
+    }, [articles, searchQuery, selectedTags]);
 
     const handleTagClick = (tag: MediaItemTag, e: React.MouseEvent) => {
         e.preventDefault();
@@ -99,10 +103,20 @@ export default function ArticlesContainer() {
                             <div className="card m-card">
                                 <div className="card-image">
                                     <figure className="image is-16by9">
-                                        <Image
-                                            src={x.cover}
-                                            alt={x.caption}
-                                        />
+                                        {x.cover ? (
+                                            <Image
+                                                src={x.cover}
+                                                alt={x.caption}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 33vw"
+                                                style={{ objectFit: "cover" }}
+                                            />
+                                        ) : (
+                                            <div
+                                                className="has-background-light"
+                                                style={{ width: "100%", height: "100%" }}
+                                            />
+                                        )}
                                     </figure>
                                 </div>
                                 <div className="card-content">
@@ -126,12 +140,17 @@ export default function ArticlesContainer() {
                                             />
                                         ))}
                                     </div>
-                                    <time
-                                        className="has-text-grey is-size-7 article-date"
-                                        title="Дата публикации статьи"
-                                    >
-                                        {formatDate(x.publishDate, "dd.MM.yyyy")}
-                                    </time>
+                                    <div className="article-card-meta has-text-grey is-size-7">
+                                        {x.readingTimeMinutes ? (
+                                            <span className="article-reading-time" title="Ориентировочное время чтения">
+                                                <Clock3 size={14} />
+                                                Время на прочтение: {x.readingTimeMinutes} мин
+                                            </span>
+                                        ) : null}
+                                        <time className="article-date" title="Дата публикации статьи">
+                                            {formatDate(x.publishDate, "dd.MM.yyyy")}
+                                        </time>
+                                    </div>
                                 </div>
                             </div>
                         </Link>

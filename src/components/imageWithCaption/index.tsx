@@ -12,7 +12,7 @@ export type ImageSize = "small" | "medium" | "big";
 
 export type ImageWithCaptionProps = {
     /** Изображение для отображения */
-    image: StaticImageData;
+    image: StaticImageData | string;
 
     /** Подпись под изображением */
     caption: React.ReactNode;
@@ -76,11 +76,13 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
         !expandable && "image-with-caption__image-wrapper--not-expandable",
     ].filter(Boolean).join(" ");
 
+    const imageSrc = typeof image === "string" ? image : image.src;
+
     const handleImageClick = () => {
         if (!isSpoilerVisible && expandable) {
             if (isMobile) {
                 // On mobile, open image in new tab
-                window.open(image.src, "_blank");
+                window.open(imageSrc, "_blank");
             } else {
                 // On desktop, open modal
                 setIsModalOpen(true);
@@ -119,13 +121,25 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
         <>
             <div className={containerClassName}>
                 <div className={wrapperClassName}>
-                    <Image
-                        src={image}
-                        className={imageClassName}
-                        alt={alt}
-                        onClick={handleImageClick}
-                        title={isSpoilerVisible ? undefined : (expandable ? "Кликните для увеличения" : undefined)}
-                    />
+                    {typeof image === "string" ? (
+                        // User-uploaded files have no build-time dimensions; the browser reads them from the file.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                            src={image}
+                            className={imageClassName}
+                            alt={alt}
+                            onClick={handleImageClick}
+                            title={isSpoilerVisible ? undefined : (expandable ? "Кликните для увеличения" : undefined)}
+                        />
+                    ) : (
+                        <Image
+                            src={image}
+                            className={imageClassName}
+                            alt={alt}
+                            onClick={handleImageClick}
+                            title={isSpoilerVisible ? undefined : (expandable ? "Кликните для увеличения" : undefined)}
+                        />
+                    )}
                     {isSpoilerVisible && (
                         <div className="image-with-caption__spoiler" onClick={handleSpoilerClick}>
                             <div className="image-with-caption__spoiler-noise"></div>

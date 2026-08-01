@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FC } from "react";
+import { useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import "./styles.scss";

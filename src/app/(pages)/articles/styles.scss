@@ -38,6 +38,13 @@
 	padding: 1rem;
 	border-radius: var(--bulma-radius);
 	background-color: var(--bulma-scheme-main);
+
+	:is(.input, .select select):focus,
+	:is(.input, .select select):focus-visible {
+		border-color: $link-in-text-color;
+		box-shadow: 0 0 0 0.125em rgba(165, 77, 18, 0.18);
+		outline: none;
+	}
 }
 
 .card-group {
@@ -127,9 +134,17 @@
 			flex: 1;
 		}
 
-		.article-date {
-			align-self: flex-end;
+		.article-card-meta {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.75rem;
 			margin-top: auto;
+		}
+
+		.article-date {
+			margin-left: auto;
+			white-space: nowrap;
 		}
 
 		.title {
@@ -202,6 +217,8 @@
 	ul,
 	ol {
 		margin-top: 1.5rem;
+		hyphens: auto;
+		overflow-wrap: break-word;
 	}
 
 	.message-body .content>ul:first-child {
@@ -227,7 +244,115 @@
 }
 
 .message {
-	padding-top: 1.5rem;
+	margin-top: 1.5rem;
+	padding-top: 0;
+}
+
+.message-body > :first-child {
+	margin-top: 0;
+}
+
+.message-body > :is(.image-with-caption, .image-carousel):last-child {
+	margin-bottom: 0;
+}
+
+.article-reading-time {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.embedded-video {
+	width: 100%;
+	margin: 1.5rem auto;
+
+	&--small {
+		max-width: 25rem;
+	}
+
+	&--medium {
+		max-width: 35rem;
+	}
+
+	&--big {
+		max-width: 50rem;
+	}
+
+	iframe {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border: 0;
+	}
+
+	.video-with-caption__caption {
+		margin-top: 0.25rem;
+	}
+}
+
+.article-meta--lead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem 1.5rem;
+	flex-wrap: wrap;
+	margin: 0.5rem 0 1.5rem;
+	color: var(--bulma-text-weak);
+	font-size: 0.875rem;
+}
+
+.article-content table {
+	border: 1px solid #b5b5b5 !important;
+	border-collapse: collapse;
+	margin: 1.5rem auto !important;
+	max-width: 100%;
+	width: auto;
+
+	td,
+	th {
+		border: 1px solid #b5b5b5 !important;
+		padding: 0.65rem 0.75rem;
+		text-align: left !important;
+		vertical-align: top;
+		overflow-wrap: break-word;
+		word-break: normal;
+	}
+
+	&.has-text-centered td,
+	&.has-text-centered th {
+		text-align: center !important;
+	}
+
+	td[data-text-align="center"],
+	th[data-text-align="center"] {
+		text-align: center !important;
+	}
+
+	td[data-text-align="left"],
+	th[data-text-align="left"] {
+		text-align: left !important;
+	}
+
+	th {
+		background: #f5f5f5;
+		font-weight: 700;
+	}
+}
+
+.article-accordion {
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+		list-style-position: inside;
+	}
+
+	&.message {
+		padding-top: 0;
+
+		> summary.message-header {
+			display: list-item;
+		}
+	}
 }
 
 .source-link {
