@@ -20,6 +20,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+		html.is-mobile & {
+			height: auto;
+			min-height: 0;
+		}
     }
 
     &__image {
@@ -32,8 +37,13 @@
         display: block;
         margin: 0 auto;
 
+		html.is-mobile & {
+			width: auto;
+			height: auto;
+			max-height: 70vh;
+		}
+
         &:hover {
-            opacity: 0.9;
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
         }
     }
@@ -56,16 +66,34 @@
         justify-content: center;
         z-index: 2;
 
+		html.is-mobile & {
+			width: 2.25rem;
+			height: 2.25rem;
+
+			svg {
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+		}
+
         &:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
         &--prev {
             left: 1rem;
+
+			html.is-mobile & {
+				left: 0.35rem;
+			}
         }
 
         &--next {
             right: 1rem;
+
+			html.is-mobile & {
+				right: 0.35rem;
+			}
         }
     }
 
@@ -74,6 +102,10 @@
         gap: 0.5rem;
         margin-top: 1rem;
         justify-content: center;
+
+		html.is-mobile & {
+			margin-top: 0.65rem;
+		}
     }
 
     &__dot {

@@ -12,6 +12,9 @@ export type TableOfContentsItem = {
 
     /** ID элемента на странице */
     elementId: string;
+
+    /** Уровень заголовка для визуальной вложенности */
+    level?: 2 | 3 | 4;
 };
 
 export type TableOfContentsProps = {
@@ -125,9 +128,10 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
             </div>
 
             <nav ref={navRef} className={`table-of-contents${isMobile && isMobileMenuOpen ? ' table-of-contents--mobile-open' : ''}${isMobile ? ' table-of-contents--mobile' : ''}`}>
+                {isMobile ? <h2 className="table-of-contents__title">Оглавление</h2> : null}
                 <ul className="table-of-contents__list pl-2">
-                    {items.map(({ caption, elementId }) => (
-                        <li key={elementId} className="table-of-contents__item">
+                    {items.map(({ caption, elementId, level = 2 }) => (
+                        <li key={elementId} className={`table-of-contents__item table-of-contents__item--level-${level}`}>
                             <a
                                 onClick={() => scrollToElement(elementId)}
                                 className={

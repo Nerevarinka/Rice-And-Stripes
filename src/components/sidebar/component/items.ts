@@ -1,8 +1,6 @@
-import { SidebarItem } from "@/models";
-import { articles } from "@/shared/articles";
+import type { Article, SidebarItem } from "@/models";
 
-/** Список элементов меню сайдбара */
-export const sideBarMenu: Array<SidebarItem> = [
+export const buildSideBarMenu = (articles: Article[]): SidebarItem[] => [
     {
         caption: "Статьи",
         link: "/articles",
@@ -12,14 +10,4 @@ export const sideBarMenu: Array<SidebarItem> = [
             link: article.link,
         })),
     },
-    // {
-    //     isGroup: true,
-    //     caption: "Заметки",
-    //     link: "/notes",
-    // },
-    // {
-    //     isGroup: true,
-    //     link: "/about",
-    //     caption: "Наши амадинки",
-    // }
 ];

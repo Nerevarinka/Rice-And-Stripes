@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { StaticImageData } from "next/image";
 
 import { Article } from "@/models";
 import packageJson from "../../../package.json";
+import { withBasePath } from "@/shared/utils/withBasePath";
 
 /**
  * Общие настройки метаданных для статей
@@ -62,6 +62,14 @@ export function createArticleMetadata(
     articleInfo: Article,
     keywords: string[]
 ): Metadata {
+    const coverUrl = typeof articleInfo.cover === "string"
+        ? articleInfo.cover.startsWith("http://") || articleInfo.cover.startsWith("https://") || articleInfo.cover.startsWith("/Rice-And-Stripes/")
+            ? articleInfo.cover
+            : withBasePath(articleInfo.cover)
+        : "src" in articleInfo.cover
+            ? articleInfo.cover.src
+            : articleInfo.cover.default.src;
+
     const baseMetadata = createCommonMetadata(
         articleInfo.caption,
         articleInfo.description,
@@ -75,10 +83,10 @@ export function createArticleMetadata(
             title: articleInfo.caption,
             description: articleInfo.description,
             type: "article",
-            images: articleInfo.cover
+            images: coverUrl
                 ? [
                     {
-                        url: (articleInfo.cover as StaticImageData).src,
+                        url: coverUrl,
                         width: 1200,
                         height: 630,
                         alt: articleInfo.caption,
@@ -90,7 +98,7 @@ export function createArticleMetadata(
             card: "summary_large_image",
             title: articleInfo.caption,
             description: articleInfo.description,
-            images: articleInfo.cover ? [(articleInfo.cover as StaticImageData).src] : [],
+            images: coverUrl ? [coverUrl] : [],
         },
     };
 }

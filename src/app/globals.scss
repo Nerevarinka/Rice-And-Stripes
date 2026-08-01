@@ -58,3 +58,10 @@ body {
 		}
 	}
 }
+
+.content iframe[src*="youtube.com"],
+.content iframe[src*="player.vimeo.com"] {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	border: 0;
+}

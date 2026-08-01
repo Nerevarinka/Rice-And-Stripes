@@ -138,13 +138,25 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
                         onTouchMove={isMobile ? onTouchMove : undefined}
                         onTouchEnd={isMobile ? onTouchEnd : undefined}
                     >
-                        <Image
-                            src={currentSrc!}
-                            className="image-carousel__image"
-                            alt={`${currentAlt} ${currentIndex + 1}`}
-                            onClick={openModal}
-                            title="Кликните для увеличения"
-                        />
+                        {typeof currentSrc === "string" ? (
+                            // User-uploaded files have no build-time dimensions.
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                                src={currentSrc}
+                                className="image-carousel__image"
+                                alt={`${currentAlt ?? "Изображение"} ${currentIndex + 1}`}
+                                onClick={openModal}
+                                title="Кликните для увеличения"
+                            />
+                        ) : (
+                            <Image
+                                src={currentSrc!}
+                                className="image-carousel__image"
+                                alt={`${currentAlt ?? "Изображение"} ${currentIndex + 1}`}
+                                onClick={openModal}
+                                title="Кликните для увеличения"
+                            />
+                        )}
                         {images.length > 1 && (
                             <>
                                 <button

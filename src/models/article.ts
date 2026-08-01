@@ -10,7 +10,7 @@ export type Article = {
     link: string;
 
     /** Обложка статьи */
-    cover: StaticImport;
+    cover: StaticImport | string;
 
     /** Описание статьи */
     description: string;
@@ -20,4 +20,7 @@ export type Article = {
 
     /** Теги статьи */
     tags: MediaItemTag[];
+
+    /** Ориентировочное время чтения */
+    readingTimeMinutes?: number;
 };

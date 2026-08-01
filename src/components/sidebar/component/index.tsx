@@ -12,14 +12,17 @@ import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
 import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 
 import "./styles.scss";
-import { sideBarMenu } from "./items";
 
 import SidebarHeader from "../components/sidebarHeader";
 import SidebarLinks from "../components/sidebarLinks";
 
-const today = new Date();
+import type { SidebarItem } from "@/models";
 
-export default function Sidebar() {
+type SidebarProps = {
+	menuItems: SidebarItem[];
+};
+
+export default function Sidebar({ menuItems }: SidebarProps) {
 	const pathname = usePathname();
 	const [showNested, setShowNested] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,12 +31,12 @@ export default function Sidebar() {
 	const toggleRef = useRef<HTMLButtonElement | null>(null);
 
 	// Check if we're on 404 page (any path that doesn't match our routes)
-	const isValidRoute = useMemo(() => sideBarMenu.some(item =>
+	const isValidRoute = useMemo(() => menuItems.some(item =>
 		pathname === item.link ||
 		(pathname.startsWith(item.link + "/") &&
 			(item.children && item.children.some(child => pathname === child.link))
 		)
-	), [pathname]);
+	), [pathname, menuItems]);
 
 	useEffect(() => {
 		const hideTimer = setTimeout(() => setShowNested(false), 0);
@@ -113,7 +116,7 @@ export default function Sidebar() {
 
 					<div className="is-flex-grow-1">
 						<nav className="is-flex is-flex-direction-column">
-							{sideBarMenu.map(x => (
+							{menuItems.map(x => (
 								<div key={x.link}>
 									<div className={`sidebar-item is-flex is-align-items-center${isValidRoute && pathname.startsWith(x.link) ? ' is-active' : ''}`}>
 										<Image

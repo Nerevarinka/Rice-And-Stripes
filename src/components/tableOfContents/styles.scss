@@ -42,6 +42,10 @@
         margin-left: 0;
         display: block;
         box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+
+		html.is-mobile & {
+			display: block;
+		}
     }
 
     &--mobile-open {
@@ -54,8 +58,23 @@
         padding-left: 1rem;
     }
 
+	&__title {
+		margin: 0 3rem 1rem 0;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: $primary-brown;
+	}
+
     &__item {
         margin-bottom: 0.5rem;
+
+		&--level-3 {
+			margin-left: 1rem;
+		}
+
+		&--level-4 {
+			margin-left: 2rem;
+		}
     }
 
     &__link {
