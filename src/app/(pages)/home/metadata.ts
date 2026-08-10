@@ -1,12 +1,11 @@
 import { createCommonMetadata } from "@/shared/metadata";
-import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 import { withBasePath } from "@/shared/utils/withBasePath";
 import type { Metadata } from "next";
 
 const title = "Rice & Stripes - Блог о жизни амадин";
-const description = "Блог о жизни амадин: уход, наблюдения, наук";
+const description = "Блог о жизни амадин: уход, наблюдения, наука";
 const homeUrl = withBasePath("/");
-const logoUrl = mainLogo.src;
+const logoUrl = withBasePath("/logoV2-preview.jpg");
 
 const baseMetadata = createCommonMetadata(
 	title,
@@ -30,8 +29,9 @@ export const metadata: Metadata = {
 		url: homeUrl,
 		images: [{
 			url: logoUrl,
-			width: mainLogo.width,
-			height: mainLogo.height,
+			width: 600,
+			height: 600,
+			type: "image/jpeg",
 			alt: "Rice & Stripes",
 		}],
 	},

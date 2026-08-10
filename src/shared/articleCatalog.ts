@@ -1,51 +1,24 @@
 import "server-only";
 
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import type { Article, SearchItem, SidebarItem } from "@/models";
 
-import type { Article, SidebarItem } from "@/models";
-
-import { articles as staticArticles } from "@/shared/articles";
 import { editableArticleToCard, getEditableArticles } from "@/shared/editableArticles";
-import { calculateReadingTimeFromWordCount } from "@/shared/utils/readingTime";
-
-export async function getStaticArticleReadingTime(slug: string) {
-    if (!slug || !/^[a-zA-Z0-9-]+$/.test(slug)) {
-        return undefined;
-    }
-
-    try {
-        const source = await readFile(
-            path.join(process.cwd(), "src", "app", "(pages)", "articles", slug, "article.tsx"),
-            "utf8"
-        );
-        const russianWords = source.match(/[а-яё]+(?:-[а-яё]+)*/giu)?.length ?? 0;
-
-        return calculateReadingTimeFromWordCount(russianWords);
-    } catch {
-        return undefined;
-    }
-}
-
-async function addStaticReadingTime(article: Article): Promise<Article> {
-    const slug = article.link.split("/").filter(Boolean).at(-1);
-    const readingTimeMinutes = slug ? await getStaticArticleReadingTime(slug) : undefined;
-
-    return readingTimeMinutes ? { ...article, readingTimeMinutes } : article;
-}
+import { notes } from "@/shared/notes";
+import { editableNoteToCard, getEditableNotes } from "@/shared/editableNotes";
 
 export async function getAllArticleCards(): Promise<Article[]> {
-    const staticCards = await Promise.all(staticArticles.map(addStaticReadingTime));
     const editableArticles = await getEditableArticles();
     const editableCards = editableArticles.map(editableArticleToCard);
 
-    return [...staticCards, ...editableCards]
-        .filter((article, index, array) => array.findIndex(item => item.link === article.link) === index)
+    return editableCards
         .sort((left, right) => right.publishDate.getTime() - left.publishDate.getTime());
 }
 
 export async function getAllSidebarItems(): Promise<SidebarItem[]> {
     const articles = await getAllArticleCards();
+    const editableNotes = await getEditableNotes();
+    const allNotes = [...notes, ...editableNotes.map(editableNoteToCard)]
+        .sort((left, right) => right.publishDate.getTime() - left.publishDate.getTime());
     const isProduction = process.env.NODE_ENV === "production";
 
     const items: SidebarItem[] = [
@@ -58,6 +31,25 @@ export async function getAllSidebarItems(): Promise<SidebarItem[]> {
                 link: article.link,
             })),
         },
+        {
+            caption: "Заметки",
+            link: "/notes",
+            isGroup: true,
+            children: allNotes.map(note => ({
+                caption: note.caption || "Заметка",
+                link: note.link,
+            })),
+        },
+        {
+            caption: "Мои амадины",
+            link: "/finches",
+            isGroup: false,
+        },
+        {
+            caption: "Об авторе",
+            link: "/about",
+            isGroup: false,
+        },
     ];
 
     if (!isProduction) {
@@ -69,4 +61,67 @@ export async function getAllSidebarItems(): Promise<SidebarItem[]> {
     }
 
     return items;
+}
+
+function compactSearchText(value: string) {
+    const words = value
+        .toLocaleLowerCase("ru-RU")
+        .replace(/ё/g, "е")
+        .match(/[a-zа-я0-9]+(?:-[a-zа-я0-9]+)*/gi) ?? [];
+
+    return Array.from(new Set(words.filter(word => word.length >= 2))).join(" ");
+}
+
+export async function getSiteSearchItems(): Promise<SearchItem[]> {
+    const articles = await getAllArticleCards();
+    const editableArticles = await getEditableArticles();
+    const editableBySlug = new Map(editableArticles.map(article => [article.slug, article]));
+
+    const articleItems = await Promise.all(articles.map(async article => {
+        const slug = article.link.split("/").filter(Boolean).at(-1) ?? "";
+        const editableArticle = editableBySlug.get(slug);
+        const body = editableArticle ? JSON.stringify(editableArticle.blocks ?? []) : "";
+
+        return {
+            title: article.caption,
+            description: article.description,
+            link: article.link,
+            kind: "Статья" as const,
+            searchText: compactSearchText(`${article.caption} ${article.description} ${body}`),
+        };
+    }));
+
+    const editableNotes = await getEditableNotes();
+    const allNotes = [...notes, ...editableNotes.map(editableNoteToCard)];
+    const editableNotesBySlug = new Map(editableNotes.map(note => [note.slug, note]));
+    const noteItems: SearchItem[] = allNotes.map(note => {
+        const slug = note.link.split("/").filter(Boolean).at(-1) ?? "";
+        const editableNote = editableNotesBySlug.get(slug);
+        return {
+        title: note.caption || "Заметка",
+        description: note.description,
+        link: note.link,
+        kind: "Заметка",
+        searchText: compactSearchText(`${note.caption ?? ""} ${note.description} ${JSON.stringify(editableNote?.blocks ?? [])}`),
+        };
+    });
+
+    const sectionItems: SearchItem[] = [
+        {
+            title: "Мои амадины",
+            description: "Фотографии и истории птиц, которые живут или жили со мной.",
+            link: "/finches",
+            kind: "Раздел",
+            searchText: "мои амадины птицы фотографии истории характеры привычки",
+        },
+        {
+            title: "Об авторе",
+            description: "Об авторе блога Rice & Stripes и его истории.",
+            link: "/about",
+            kind: "Раздел",
+            searchText: "об авторе блог проект Rice Stripes",
+        },
+    ];
+
+    return [...articleItems, ...noteItems, ...sectionItems];
 }

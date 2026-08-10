@@ -1,0 +1,32 @@
+@use "../../shared/styles/variables" as *;
+
+.site-search-link {
+	display: flex;
+	align-items: center;
+	min-height: 2.5rem;
+	padding: 0.25rem 0;
+}
+
+.site-search-link__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: auto;
+	height: 2rem;
+	font-size: 1rem;
+	font-weight: 500;
+	color: $primary-brown;
+
+	&:hover {
+		color: $link-color;
+	}
+}
+
+.site-search-link__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 30px;
+	margin-right: 8px;
+	flex: 0 0 auto;
+}

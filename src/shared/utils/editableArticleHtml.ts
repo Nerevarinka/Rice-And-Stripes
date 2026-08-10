@@ -1,5 +1,6 @@
 import { withBasePath } from "./withBasePath";
 import { getVideoEmbedUrl } from "./videoEmbedUrl";
+import { sanitizeInlineHtml } from "./sanitizeInlineHtml";
 
 import type {
     EditableArticleBlock,
@@ -66,7 +67,7 @@ function renderImageBlock(block: EditableArticleImageBlock) {
                 ${spoiler}
             </div>
             <figcaption class="image-with-caption__caption">
-                ${escapeHtml(block.caption)}
+                ${sanitizeInlineHtml(block.caption)}
                 ${source}
             </figcaption>
         </figure>
@@ -99,7 +100,7 @@ function renderCarouselBlock(block: EditableArticleImageCarouselBlock) {
             <figure class="image-carousel__content">
                 <img src="${escapeHtml(first.src)}" alt="${escapeHtml(first.alt)}" class="image-carousel__image" />
                 <figcaption class="image-carousel__caption">
-                    ${first.caption ? escapeHtml(first.caption) : ""}
+                    ${first.caption ? sanitizeInlineHtml(first.caption) : ""}
                     ${source}
                 </figcaption>
             </figure>
@@ -121,7 +122,7 @@ function renderVideoBlock(block: EditableArticleVideoBlock) {
                     allowfullscreen
                 ></iframe>
                 <div class="video-with-caption__caption">
-                    ${escapeHtml(block.caption)}
+                    ${sanitizeInlineHtml(block.caption)}
                     ${block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : ""}
                 </div>
             </div>
@@ -134,14 +135,14 @@ function renderVideoBlock(block: EditableArticleVideoBlock) {
         : "controls preload=\"metadata\"";
 
     return `
-        <div class="video-with-caption video-with-caption--center">
+        <div class="video-with-caption video-with-caption--center${block.gifLike ? " video-with-caption--gif-like" : ""}">
             <div class="video-with-caption__video-wrapper video-with-caption__video-wrapper--${escapeHtml(block.size)}">
                 <video class="video-with-caption__video video-with-caption__video--${escapeHtml(block.size)}" ${videoAttributes}>
                     <source src="${escapeHtml(src)}" type="${escapeHtml(block.mimeType ?? "video/mp4")}" />
                 </video>
             </div>
             <div class="video-with-caption__caption">
-                ${escapeHtml(block.caption)}
+                ${sanitizeInlineHtml(block.caption)}
                 ${source}
             </div>
         </div>
@@ -152,12 +153,21 @@ function renderMessageBlock(block: EditableArticleMessageBlock) {
     const title = block.title?.trim()
         ? `<div class="message-header">${escapeHtml(block.title)}</div>`
         : "";
+    const content = (block.content ?? [
+        { id: `${block.id}-legacy-text`, type: "richText" as const, html: block.bodyHtml || "" },
+        ...(block.media ?? block.videos ?? []),
+    ]).map(item => {
+        if (item.type === "richText") return `<div>${item.html}</div>`;
+        if (item.type === "video") return renderVideoBlock(item);
+        if (item.type === "imageCarousel") return renderCarouselBlock(item);
+        return renderImageBlock(item);
+    }).join("");
 
     if (block.collapsible) {
         return `
         <details class="message is-${escapeHtml(block.variant)} article-accordion"${block.defaultOpen ? " open" : ""}>
             <summary class="message-header">${escapeHtml(block.title?.trim() || "Подробнее")}</summary>
-            <div class="message-body">${block.bodyHtml}</div>
+            <div class="message-body">${content}</div>
         </details>
         `;
     }
@@ -165,7 +175,7 @@ function renderMessageBlock(block: EditableArticleMessageBlock) {
     return `
         <article class="message is-${escapeHtml(block.variant)}">
             ${title}
-            <div class="message-body">${block.bodyHtml}</div>
+            <div class="message-body">${content}</div>
         </article>
     `;
 }

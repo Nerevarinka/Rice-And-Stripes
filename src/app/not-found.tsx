@@ -1,27 +1,31 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Home, Search } from "lucide-react";
+import { Home } from "lucide-react";
+
+import pageNotFoundImage from "@/shared/assets/notFound/pageNotFound.webp";
+
 import "./not-found.scss";
 
 export default function NotFound() {
     return (
         <div className="not-found">
             <div className="not-found__content">
-                <div className="not-found__icon">404</div>
-                <h1 className="not-found__title">Страница не найдена</h1>
-                
-                <p className="not-found__joke">
-                    Её склевали амадины вместе с чумизой 🌾🐦
+                <Image
+                    src={pageNotFoundImage}
+                    alt="Амадина ищет улетевшую страницу"
+                    className="not-found__image"
+                    sizes="(max-width: 768px) calc(100vw - 2rem), 640px"
+                    priority
+                />
+
+                <p className="not-found__message">
+                    Кажется, эта страница улетела! Но мы уже отправили амадину на ее поиски
                 </p>
-                <div className="not-found__actions">
-                    <Link href="/" className="not-found__button not-found__button--primary">
-                        <Home size={20} />
-                        <span>На главную</span>
-                    </Link>
-                    <Link href="/articles" className="not-found__button not-found__button--secondary">
-                        <Search size={20} />
-                        <span>К статьям</span>
-                    </Link>
-                </div>
+
+                <Link href="/" className="not-found__button">
+                    <Home size={18} aria-hidden="true" />
+                    <span>На главную</span>
+                </Link>
             </div>
         </div>
     );

@@ -18,6 +18,9 @@ export type Article = {
     /** Дата публикации */
     publishDate: Date;
 
+    /** Дата последнего редактирования */
+    updatedAt?: Date;
+
     /** Теги статьи */
     tags: MediaItemTag[];
 

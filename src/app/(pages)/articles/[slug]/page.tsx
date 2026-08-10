@@ -57,6 +57,9 @@ export default async function EditableArticlePage(
         : extractTocItemsFromHtml(article.html ?? "");
     const readingTimeMinutes = article.readingTimeMinutes
         ?? calculateReadingTimeMinutes(article.blocks ?? []);
+    const publishDate = new Date(article.publishDate);
+    const updatedDate = new Date(article.updatedAt);
+    const wasUpdated = formatDate(publishDate, "yyyy-MM-dd") !== formatDate(updatedDate, "yyyy-MM-dd");
 
     return (
         <TableOfContents items={tocItems}>
@@ -68,9 +71,16 @@ export default async function EditableArticlePage(
                             <Clock3 size={17} />
                             {formatReadingTime(readingTimeMinutes)}
                         </span>
-                        <time title="Дата первой публикации">
-                            {formatDate(new Date(article.publishDate), "dd.MM.yyyy")}
-                        </time>
+                        <span className="article-date-group">
+                            <time dateTime={article.publishDate} title="Дата первой публикации">
+                                Опубликовано: {formatDate(publishDate, "dd.MM.yyyy")}
+                            </time>
+                            {wasUpdated ? (
+                                <time dateTime={article.updatedAt} title="Дата последнего редактирования">
+                                    Обновлено: {formatDate(updatedDate, "dd.MM.yyyy")}
+                                </time>
+                            ) : null}
+                        </span>
                     </div>
                     {article.blocks?.length ? (
                         <ArticleRenderer blocks={article.blocks} />

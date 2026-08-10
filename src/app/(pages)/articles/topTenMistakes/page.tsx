@@ -1,16 +1,5 @@
-import type { FC } from "react";
+import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 
-import StaticArticleReadingTime from "@/components/staticArticleReadingTime";
-
-import Article from "./article";
-export { metadata } from "./metadata";
-
-const TopTenMistakesPage: FC = () => {
-    return (
-        <StaticArticleReadingTime slug="topTenMistakes">
-            <Article />
-        </StaticArticleReadingTime>
-    );
-};
-
-export default TopTenMistakesPage;
+export default function LegacyArticlePage() {
+    return <LegacyArticleRedirect href="/articles/top-10-beginner-mistakes" />;
+}

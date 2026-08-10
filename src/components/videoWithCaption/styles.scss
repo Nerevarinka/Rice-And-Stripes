@@ -25,6 +25,14 @@
         }
     }
 
+    &--gif-like &__video-wrapper {
+        width: fit-content;
+    }
+
+    &--gif-like &__video {
+        width: auto;
+    }
+
     &__video-wrapper {
         position: relative;
         display: block;
@@ -88,7 +96,7 @@
         }
 
         .source-link {
-            cursor: alias;
+            cursor: pointer;
         }
     }
 

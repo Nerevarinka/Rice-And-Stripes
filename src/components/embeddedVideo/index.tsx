@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { AlertTriangle } from "lucide-react";
 
 type EmbeddedVideoProps = {
     src: string;
-    caption: string;
+    caption: ReactNode;
     source?: string;
     title?: string;
     size: "small" | "medium" | "big";
@@ -27,8 +27,8 @@ export default function EmbeddedVideo({
             <div className={`video-with-caption__video-wrapper video-with-caption__video-wrapper--${size}`}>
                 <iframe
                     src={src}
-                    title={title ?? caption ?? "Видео"}
-                    loading="lazy"
+                    title={title ?? "Видео"}
+                    loading="eager"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                 />

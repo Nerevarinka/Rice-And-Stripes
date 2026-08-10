@@ -51,6 +51,8 @@ function getVkEmbedUrl(url: string) {
         const parsed = new URL(url);
         const isVkHost = parsed.hostname === "vk.com"
             || parsed.hostname.endsWith(".vk.com")
+            || parsed.hostname === "vk.ru"
+            || parsed.hostname.endsWith(".vk.ru")
             || parsed.hostname === "vkvideo.ru"
             || parsed.hostname.endsWith(".vkvideo.ru");
         if (!isVkHost) {
@@ -63,7 +65,7 @@ function getVkEmbedUrl(url: string) {
             return ownerId && videoId ? url : "";
         }
 
-        const match = decodeURIComponent(url).match(/video(-?\d+)_(\d+)/i);
+        const match = decodeURIComponent(url).match(/(?:video|clip)(-?\d+)_(\d+)/i);
         if (!match?.[1] || !match[2]) {
             return "";
         }

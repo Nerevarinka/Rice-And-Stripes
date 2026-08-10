@@ -6,7 +6,7 @@ export type EditableArticleHeadingLevel = 2 | 3 | 4;
 
 export type EditableArticleImageSize = "small" | "medium" | "big";
 
-export type EditableArticleMessageVariant = "info" | "success" | "dark" | "link" | "danger";
+export type EditableArticleMessageVariant = "info" | "success" | "warning" | "dark" | "link" | "danger";
 
 export type EditableArticleVideoKind = "youtube" | "vk" | "rutube" | "vimeo" | "file";
 
@@ -69,14 +69,35 @@ export type EditableArticleVideoBlock = {
     gifLike?: boolean;
 };
 
+export type EditableArticleMessageMedia =
+    | EditableArticleImageBlock
+    | EditableArticleImageCarouselBlock
+    | EditableArticleVideoBlock;
+
+export type EditableArticleMessageText = {
+    id: string;
+    type: "richText";
+    html: string;
+};
+
+export type EditableArticleMessageContent =
+    | EditableArticleMessageText
+    | EditableArticleMessageMedia;
+
 export type EditableArticleMessageBlock = {
     id: string;
     type: "message";
     variant: EditableArticleMessageVariant;
     title?: string;
-    bodyHtml: string;
     collapsible?: boolean;
     defaultOpen?: boolean;
+    content?: EditableArticleMessageContent[];
+    /** @deprecated New message blocks store ordered text and media in content. */
+    media?: EditableArticleMessageMedia[];
+    /** @deprecated New message blocks store text fragments in content. */
+    bodyHtml: string;
+    /** @deprecated Older drafts stored nested videos separately. */
+    videos?: EditableArticleVideoBlock[];
 };
 
 export type EditableArticleSpoilerBlock = {
@@ -98,6 +119,7 @@ export type EditableArticleBlock =
 
 export type EditableArticle = {
     schemaVersion: 2;
+    contentType?: "article";
     id: string;
     slug: string;
     title: string;
@@ -111,4 +133,8 @@ export type EditableArticle = {
     html: string;
     tocItems?: EditableArticleTocItem[];
     readingTimeMinutes?: number;
+};
+
+export type EditableNote = Omit<EditableArticle, "contentType" | "tags"> & {
+    contentType: "note";
 };
