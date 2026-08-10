@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useCallback, useState, useEffect, type FC } from "react";
+import { useCallback, useState, useEffect, type FC, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -15,7 +15,7 @@ export type CarouselImage = {
     image?: StaticImageData;
 
     /** Подпись к изображению */
-    caption?: string;
+    caption?: ReactNode;
 
     /** Alt текст для изображения */
     alt?: string;
@@ -97,6 +97,16 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
             goToPrevious();
         }
     };
+
+    useEffect(() => {
+        images.forEach(({ image, src }) => {
+            const imageSrc = image?.src || src;
+            if (imageSrc) {
+                const preloadImage = new window.Image();
+                preloadImage.src = imageSrc;
+            }
+        });
+    }, [images]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -211,7 +221,7 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
                         <Image
                             src={currentSrc!}
                             className="image-modal__image"
-                            alt={currentAlt ?? currentCaption ?? ""}
+                            alt={currentAlt ?? "Изображение"}
                             fill
                             style={{ objectFit: "contain" }}
                         />

@@ -13,9 +13,9 @@ const NotesLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<>
 			{isNotePage && (
-				<button className="back-button" onClick={() => router.back()} aria-label="Вернуться назад">
-					<ArrowLeft size={20} />
-					<span>Назад</span>
+				<button className="button is-light p-3 notes-back-button" onClick={() => router.replace("/notes")} aria-label="Вернуться к заметкам">
+					<ArrowLeft size={15} />
+					<span>К заметкам</span>
 				</button>
 			)}
 			{children}

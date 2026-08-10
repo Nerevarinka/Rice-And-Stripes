@@ -3,6 +3,8 @@
 import { useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
+import { withBasePath } from "@/shared/utils/withBasePath";
+
 import "./styles.scss";
 
 export type VideoPosition = "left" | "center" | "right";
@@ -56,6 +58,7 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
     const containerClassName = [
         "video-with-caption",
         `video-with-caption--${position}`,
+        gifLike ? "video-with-caption--gif-like" : "",
         className,
     ]
         .filter(Boolean)
@@ -76,7 +79,9 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
         setIsSpoilerVisible(false);
     };
 
-    const pathToVideo = src;
+    const pathToVideo = src.startsWith("/") && !src.startsWith("/Rice-And-Stripes/")
+        ? withBasePath(src)
+        : src;
 
     return (
         <div className={containerClassName}>

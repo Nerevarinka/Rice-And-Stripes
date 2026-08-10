@@ -3,12 +3,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
+import { Mark, mergeAttributes } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import { Table } from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
+import { CellSelection } from "@tiptap/pm/tables";
+import { TextSelection } from "@tiptap/pm/state";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Placeholder from "@tiptap/extension-placeholder";
 import { common, createLowlight } from "lowlight";
@@ -47,13 +50,16 @@ import {
 } from "lucide-react";
 import type {
     EditableArticle,
+    EditableNote,
     EditableArticleBlock,
+    EditableArticleCarouselImage,
     EditableArticleHeadingBlock,
     EditableArticleHeadingLevel,
     EditableArticleImageBlock,
     EditableArticleImageCarouselBlock,
     EditableArticleImageSize,
     EditableArticleMessageBlock,
+    EditableArticleMessageContent,
     EditableArticleMessageVariant,
     EditableArticleRichTextBlock,
     EditableArticleSpoilerBlock,
@@ -69,6 +75,42 @@ import { withBasePath } from "@/shared/utils/withBasePath";
 import "./styles.scss";
 
 const lowlight = createLowlight(common);
+
+const DisplayHeading = Mark.create({
+    name: "displayHeading",
+    inclusive: false,
+    addAttributes() {
+        return {
+            level: {
+                default: 1,
+                parseHTML: element => Number(element.getAttribute("data-display-heading")) || 1,
+            },
+        };
+    },
+    parseHTML() {
+        return [{ tag: "span[data-display-heading]" }];
+    },
+    renderHTML({ HTMLAttributes }) {
+        const { level, ...attributes } = HTMLAttributes;
+        return ["span", mergeAttributes(attributes, {
+            "data-display-heading": String(level ?? 1),
+        }), 0];
+    },
+});
+
+const CaptionNormal = Mark.create({
+    name: "captionNormal",
+    parseHTML() {
+        return [{ tag: "span[data-caption-normal]" }];
+    },
+    renderHTML() {
+        return ["span", { "data-caption-normal": "true" }, 0];
+    },
+});
+
+const MAX_UPLOADED_IMAGE_SIDE = 1500;
+let optimizeUploadedImages = true;
+let activeEditorContentId = "";
 
 const AlignableTableCell = TableCell.extend({
     addAttributes() {
@@ -206,7 +248,148 @@ function parseDateInputValue(value: string) {
 }
 
 function makeAssetPath(assetFolder: string, file: File) {
-    return `/uploads/articles/${assetFolder}/${file.name}`;
+    return `/uploads/${assetFolder}/${file.name}`;
+}
+
+async function removeFileIfExists(
+    root: FileSystemDirectoryHandle,
+    relativePath: string
+) {
+    const pathParts = relativePath.split("/").filter(Boolean);
+    const fileName = pathParts.pop();
+    if (!fileName) return;
+
+    try {
+        let currentDirectory = root;
+        for (const directoryName of pathParts) {
+            currentDirectory = await currentDirectory.getDirectoryHandle(directoryName);
+        }
+        await currentDirectory.removeEntry(fileName);
+    } catch (error) {
+        if (error instanceof DOMException && error.name === "NotFoundError") return;
+        throw error;
+    }
+}
+
+async function readTextFileIfExists(
+    root: FileSystemDirectoryHandle,
+    relativePath: string
+) {
+    const pathParts = relativePath.split("/").filter(Boolean);
+    const fileName = pathParts.pop();
+    if (!fileName) return null;
+
+    try {
+        let currentDirectory = root;
+        for (const directoryName of pathParts) {
+            currentDirectory = await currentDirectory.getDirectoryHandle(directoryName);
+        }
+        const fileHandle = await currentDirectory.getFileHandle(fileName);
+        return await (await fileHandle.getFile()).text();
+    } catch (error) {
+        if (error instanceof DOMException && error.name === "NotFoundError") return null;
+        throw error;
+    }
+}
+
+async function assertContentSlugAvailable(
+    root: FileSystemDirectoryHandle,
+    collectionName: string,
+    slug: string,
+    contentId: string
+) {
+    const relativePath = `data/${collectionName}/${slug}.json`;
+    const existingText = await readTextFileIfExists(root, relativePath);
+    if (!existingText) return;
+
+    try {
+        const existing = JSON.parse(existingText) as { id?: string };
+        if (existing.id === contentId) return;
+    } catch {
+        // An unreadable existing file is still occupied and must not be replaced.
+    }
+
+    throw new Error(`Slug "${slug}" уже занят другим материалом. Выберите другой slug или откройте существующий JSON для редактирования.`);
+}
+
+function canvasToBlob(canvas: HTMLCanvasElement, type: string, quality: number) {
+    return new Promise<Blob | null>(resolve => canvas.toBlob(resolve, type, quality));
+}
+
+function formatFileSize(bytes: number) {
+    if (bytes < 1024) return `${bytes} Б`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} КБ`;
+    return `${(bytes / 1024 / 1024).toFixed(2)} МБ`;
+}
+
+async function prepareImageForUpload(file: File) {
+    const supportedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+    if (!optimizeUploadedImages) {
+        return {
+            file,
+            message: `Изображение сохранено без обработки: ${formatFileSize(file.size)}.`,
+        };
+    }
+    if (!supportedTypes.has(file.type)) {
+        return {
+            file,
+            message: `Формат ${file.type || file.name.split(".").pop() || "файла"} не обрабатывается: сохранён исходник ${formatFileSize(file.size)}.`,
+        };
+    }
+
+    let bitmap: ImageBitmap;
+    try {
+        bitmap = await createImageBitmap(file);
+    } catch {
+        return {
+            file,
+            message: `Не удалось прочитать изображение: сохранён исходник ${formatFileSize(file.size)}.`,
+        };
+    }
+    try {
+        const originalWidth = bitmap.width;
+        const originalHeight = bitmap.height;
+        const scale = Math.min(1, MAX_UPLOADED_IMAGE_SIDE / Math.max(bitmap.width, bitmap.height));
+        const width = Math.max(1, Math.round(bitmap.width * scale));
+        const height = Math.max(1, Math.round(bitmap.height * scale));
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const context = canvas.getContext("2d");
+        if (!context) {
+            return { file, message: `Обработка не применилась: сохранён исходник ${formatFileSize(file.size)}.` };
+        }
+
+        context.drawImage(bitmap, 0, 0, width, height);
+        const blob = await canvasToBlob(canvas, "image/webp", 0.82);
+        if (!blob) {
+            return { file, message: `WebP не создан: сохранён исходник ${formatFileSize(file.size)}.` };
+        }
+
+        const wasResized = scale < 1;
+        if (blob.size >= file.size) {
+            return {
+                file,
+                message: `WebP получился не меньше (${formatFileSize(blob.size)}). Сохранён исходник ${formatFileSize(file.size)}, ${originalWidth}×${originalHeight} px.`,
+            };
+        }
+
+        const baseName = file.name.replace(/\.[^.]+$/, "") || "image";
+        const optimizedFile = new File([blob], `${baseName}.webp`, {
+            type: "image/webp",
+            lastModified: file.lastModified,
+        });
+        const dimensions = wasResized
+            ? `, ${originalWidth}×${originalHeight} → ${width}×${height} px`
+            : `, ${width}×${height} px`;
+        return {
+            file: optimizedFile,
+            message: `Изображение оптимизировано: ${formatFileSize(file.size)} → ${formatFileSize(blob.size)}${dimensions}.`,
+        };
+    } finally {
+        bitmap.close();
+    }
 }
 
 function pickFile(accept: string) {
@@ -245,7 +428,7 @@ function createEmptyVideoBlock(): EditableArticleVideoBlock {
     return {
         id: createId(),
         type: "video",
-        kind: "youtube",
+        kind: "vk",
         src: "",
         caption: "",
         source: "",
@@ -268,14 +451,16 @@ function createEmptyCarouselBlock(): EditableArticleImageCarouselBlock {
 }
 
 function createEmptyMessageBlock(): EditableArticleMessageBlock {
+    const textBlock = createEmptyRichTextBlock();
     return {
         id: createId(),
         type: "message",
         variant: "info",
         title: "",
-        bodyHtml: "<p></p>",
+        bodyHtml: "",
         collapsible: false,
         defaultOpen: false,
+        content: [textBlock],
     };
 }
 
@@ -331,13 +516,30 @@ function getBlockLabel(block: EditableArticleBlock) {
     }
 }
 
-function uploadAssetUrl(
+async function uploadAssetUrl(
     repoRoot: FileSystemDirectoryHandle,
     assetFolder: string,
-    file: File
+    file: File,
+    onPrepared?: (message: string) => void
 ) {
-    const relativePath = `public/uploads/articles/${assetFolder}/${file.name}`;
-    return writeBinaryFile(repoRoot, relativePath, file).then(() => makeAssetPath(assetFolder, file));
+    const [collectionName, slug] = assetFolder.split("/");
+    if ((collectionName === "articles" || collectionName === "notes") && slug) {
+        try {
+            await assertContentSlugAvailable(repoRoot, collectionName, slug, activeEditorContentId);
+        } catch (error) {
+            onPrepared?.(error instanceof Error ? error.message : "Slug уже занят.");
+            return null;
+        }
+    }
+
+    const prepared = file.type.startsWith("image/")
+        ? await prepareImageForUpload(file)
+        : { file, message: "" };
+    const preparedFile = prepared.file;
+    const relativePath = `public/uploads/${assetFolder}/${preparedFile.name}`;
+    await writeBinaryFile(repoRoot, relativePath, preparedFile);
+    if (prepared.message) onPrepared?.(prepared.message);
+    return makeAssetPath(assetFolder, preparedFile);
 }
 
 type RichTextEditorProps = {
@@ -347,15 +549,21 @@ type RichTextEditorProps = {
 };
 
 function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
+    const selectedTableCellsRef = useRef<{ anchor: number; head: number } | null>(null);
+    const cleanTrailingEmptyParagraph = (html: string) => {
+        if (/<\/table><p>(?:<br>)?<\/p>$/.test(html)) return html;
+        return html.replace(/(?:<p>(?:<br>)?<\/p>)+$/g, "") || "<p></p>";
+    };
+
     const editor = useEditor({
         immediatelyRender: false,
+        shouldRerenderOnTransaction: true,
         extensions: [
             StarterKit.configure({
-                heading: {
-                    levels: [2, 3, 4],
-                },
+                heading: false,
                 codeBlock: false,
             }),
+            DisplayHeading,
             Link.configure({
                 openOnClick: false,
                 autolink: true,
@@ -371,7 +579,24 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
             }),
         ],
         content: value,
-        onUpdate: ({ editor: currentEditor }) => onChange(currentEditor.getHTML()),
+        onSelectionUpdate: ({ editor: currentEditor }) => {
+            const { selection } = currentEditor.state;
+            if (selection instanceof CellSelection) {
+                selectedTableCellsRef.current = {
+                    anchor: selection.$anchorCell.pos,
+                    head: selection.$headCell.pos,
+                };
+            }
+        },
+        onUpdate: ({ editor: currentEditor }) => onChange(cleanTrailingEmptyParagraph(currentEditor.getHTML())),
+        onBlur: ({ editor: currentEditor }) => {
+            const html = currentEditor.getHTML();
+            const cleanedHtml = cleanTrailingEmptyParagraph(html);
+            if (cleanedHtml !== html) {
+                currentEditor.commands.setContent(cleanedHtml, { emitUpdate: false });
+                onChange(cleanedHtml);
+            }
+        },
     });
 
     if (!editor) {
@@ -379,20 +604,71 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
     }
 
     const toggleLink = () => {
-        const href = window.prompt("Адрес ссылки");
-        if (!href) {
+        const currentHref = editor.getAttributes("link").href ?? "";
+        const href = window.prompt("Адрес ссылки (оставьте пустым, чтобы удалить)", currentHref);
+        if (href === null) return;
+
+        if (!href.trim()) {
+            editor.chain().focus().extendMarkRange("link").unsetLink().run();
             return;
         }
 
-        editor.chain().focus().extendMarkRange("link").setLink({ href }).run();
+        editor.chain().focus().extendMarkRange("link").setLink({ href: href.trim() }).run();
     };
 
-    const addTable = () => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
+    const addTable = () => editor.chain()
+        .focus()
+        .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+        .command(({ tr, state }) => {
+            const { $from } = tr.selection;
+            let tableDepth = $from.depth;
+            while (tableDepth > 0 && $from.node(tableDepth).type.name !== "table") tableDepth -= 1;
+            if (tableDepth === 0) return true;
+
+            const tablePosition = $from.before(tableDepth);
+            const tableNode = tr.doc.nodeAt(tablePosition);
+            if (!tableNode) return true;
+
+            const afterTable = tablePosition + tableNode.nodeSize;
+            const followingNode = tr.doc.nodeAt(afterTable);
+            if (!followingNode || followingNode.type.name !== "paragraph") {
+                tr.insert(afterTable, state.schema.nodes.paragraph.create());
+            }
+            tr.setSelection(TextSelection.near(tr.doc.resolve(afterTable + 1)));
+            return true;
+        })
+        .run();
     const hasTable = editor.getHTML().includes("<table");
     const setCellAlignment = (textAlign: "left" | "center") => {
-        editor.chain().focus().run();
-        editor.commands.updateAttributes("tableCell", { textAlign });
-        editor.commands.updateAttributes("tableHeader", { textAlign });
+        const currentSelection = editor.state.selection;
+        const savedSelection = selectedTableCellsRef.current;
+
+        if (currentSelection instanceof CellSelection || savedSelection) {
+            const cellSelection = currentSelection instanceof CellSelection
+                ? currentSelection
+                : CellSelection.create(editor.state.doc, savedSelection!.anchor, savedSelection!.head);
+            const transaction = editor.state.tr.setSelection(cellSelection);
+
+            cellSelection.forEachCell((cell, position) => {
+                transaction.setNodeMarkup(position, undefined, {
+                    ...cell.attrs,
+                    textAlign,
+                });
+            });
+
+            editor.view.dispatch(transaction);
+            editor.view.focus();
+            return;
+        }
+
+        editor.chain().focus().setCellAttribute("textAlign", textAlign).run();
+    };
+
+    const toggleDisplayHeading = (level: 1 | 2 | 3) => {
+        const isActive = editor.isActive("displayHeading", { level });
+        const chain = editor.chain().focus().unsetMark("displayHeading");
+        if (!isActive) chain.setMark("displayHeading", { level });
+        chain.run();
     };
 
     const tableActions = [
@@ -409,7 +685,7 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
 
     return (
         <div className="article-studio__editor-shell">
-            <div className="article-studio__toolbar">
+            <div className="article-studio__toolbar" onMouseDown={event => event.preventDefault()}>
                 <button type="button" className={`button is-small ${editor.isActive("bold") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleBold().run()} aria-label="Жирный" title="Жирный">
                     <Bold size={16} />
                 </button>
@@ -419,6 +695,17 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
                 <button type="button" className={`button is-small ${editor.isActive("strike") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleStrike().run()} aria-label="Зачёркнутый текст" title="Зачёркнутый текст">
                     <Strikethrough size={16} />
                 </button>
+                {([1, 2, 3] as const).map(level => (
+                    <button
+                        key={level}
+                        type="button"
+                        className={`button is-small ${editor.isActive("displayHeading", { level }) ? "is-link" : "is-light"}`}
+                        onMouseDown={event => event.preventDefault()}
+                        onClick={() => toggleDisplayHeading(level)}
+                        aria-label={`Визуальный заголовок H${level}`}
+                        title={`H${level}: крупный текст без добавления в оглавление`}
+                    >H{level}</button>
+                ))}
                 <button type="button" className={`button is-small ${editor.isActive("bulletList") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleBulletList().run()} aria-label="Маркированный список" title="Маркированный список">
                     <List size={16} />
                 </button>
@@ -439,7 +726,7 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
             {hasTable ? (
                 <div className="article-studio__table-actions">
                     {tableActions.map(item => (
-                        <button key={item.label} type="button" className="button is-small is-light" onClick={item.action}>
+                        <button key={item.label} type="button" className="button is-small is-light" onMouseDown={event => event.preventDefault()} onClick={item.action}>
                             {item.label}
                         </button>
                     ))}
@@ -449,6 +736,239 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
             <div className="article-studio__editor">
                 <EditorContent editor={editor} />
             </div>
+        </div>
+    );
+}
+
+function InlineTextEditor({ value, onChange, defaultItalic = false }: { value: string; onChange: (html: string) => void; defaultItalic?: boolean }) {
+    const editor = useEditor({
+        shouldRerenderOnTransaction: true,
+        extensions: [
+            StarterKit.configure({
+                heading: false,
+                bulletList: false,
+                orderedList: false,
+                listItem: false,
+                blockquote: false,
+                codeBlock: false,
+                horizontalRule: false,
+            }),
+            Link.configure({
+                openOnClick: false,
+                autolink: true,
+                linkOnPaste: true,
+                HTMLAttributes: {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                },
+            }),
+            CaptionNormal,
+        ],
+        content: value || "<p></p>",
+        immediatelyRender: false,
+        onUpdate: ({ editor: currentEditor }) => {
+            const html = currentEditor.getHTML()
+                .replace(/^<p>/, "")
+                .replace(/<\/p>$/, "")
+                .replace(/<\/p><p>/g, "<br>");
+            onChange(html === "<br>" ? "" : html);
+        },
+    });
+
+    useEffect(() => {
+        if (!editor) return;
+        const current = editor.getHTML()
+            .replace(/^<p>/, "")
+            .replace(/<\/p>$/, "")
+            .replace(/<\/p><p>/g, "<br>");
+        if (current !== value) editor.commands.setContent(value || "<p></p>", { emitUpdate: false });
+    }, [editor, value]);
+
+    if (!editor) return null;
+
+    const toggleLink = () => {
+        const currentHref = editor.getAttributes("link").href ?? "";
+        const href = window.prompt("Адрес ссылки (оставьте пустым, чтобы удалить)", currentHref);
+        if (href === null) return;
+
+        if (!href.trim()) {
+            editor.chain().focus().extendMarkRange("link").unsetLink().run();
+            return;
+        }
+
+        editor.chain().focus().extendMarkRange("link").setLink({ href: href.trim() }).run();
+    };
+
+    const toggleItalic = () => {
+        if (!defaultItalic) {
+            editor.chain().focus().toggleItalic().run();
+            return;
+        }
+
+        const chain = editor.chain().focus();
+        if (editor.isActive("captionNormal")) {
+            chain.unsetMark("captionNormal").run();
+        } else {
+            chain.unsetMark("italic").setMark("captionNormal").run();
+        }
+    };
+
+    return (
+        <div className={`article-studio__inline-editor${defaultItalic ? " article-studio__inline-editor--caption" : ""}`}>
+            <div className="article-studio__inline-toolbar" onMouseDown={event => event.preventDefault()}>
+                <button type="button" className={`button is-small ${editor.isActive("bold") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleBold().run()} title="Жирный" aria-label="Жирный"><Bold size={15} /></button>
+                <button type="button" className={`button is-small ${(defaultItalic ? !editor.isActive("captionNormal") : editor.isActive("italic")) ? "is-link" : "is-light"}`} onClick={toggleItalic} title="Курсив" aria-label="Курсив"><Italic size={15} /></button>
+                <button type="button" className={`button is-small ${editor.isActive("strike") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleStrike().run()} title="Зачёркнуто" aria-label="Зачёркнуто"><Strikethrough size={15} /></button>
+                <button type="button" className={`button is-small ${editor.isActive("link") ? "is-link" : "is-light"}`} onClick={toggleLink} title="Добавить или изменить ссылку" aria-label="Добавить или изменить ссылку"><Link2 size={15} /></button>
+            </div>
+            <EditorContent editor={editor} />
+        </div>
+    );
+}
+
+function NestedVideoEditor({
+    video,
+    repoRoot,
+    assetFolder,
+    onChange,
+    onDelete,
+    setStatusMessage,
+}: {
+    video: EditableArticleVideoBlock;
+    repoRoot: FileSystemDirectoryHandle | null;
+    assetFolder: string;
+    onChange: (video: EditableArticleVideoBlock) => void;
+    onDelete: () => void;
+    setStatusMessage: (message: string) => void;
+}) {
+    const uploadVideo = async () => {
+        if (!repoRoot || !assetFolder) {
+            setStatusMessage("Сначала подключите папку проекта и заполните slug.");
+            return;
+        }
+        const file = await pickFile("video/*");
+        if (!file) return;
+        const src = await uploadAssetUrl(repoRoot, assetFolder, file, setStatusMessage);
+        if (!src) return;
+        onChange({ ...video, src, mimeType: file.type || "video/mp4" });
+    };
+
+    return (
+        <div className="article-studio__nested-video">
+            <div className="article-studio__nested-video-header">
+                <strong>Видео в заметке</strong>
+                <button type="button" className="button is-small is-light" onClick={onDelete} title="Удалить видео" aria-label="Удалить видео"><Trash2 size={15} /></button>
+            </div>
+            <div className="columns is-multiline">
+                <div className="column is-half">
+                    <label className="label">Тип</label>
+                    <div className="select is-fullwidth"><select value={video.kind} onChange={event => onChange({ ...video, kind: event.target.value as EditableArticleVideoKind })}>
+                        <option value="vk">VK Видео</option><option value="youtube">YouTube</option><option value="rutube">RUTUBE</option><option value="vimeo">Vimeo</option><option value="file">Локальный файл</option>
+                    </select></div>
+                </div>
+                <div className="column is-half">
+                    <label className="label">Размер</label>
+                    <div className="select is-fullwidth"><select value={video.size} onChange={event => onChange({ ...video, size: event.target.value as EditableArticleImageSize })}>
+                        <option value="small">small</option><option value="medium">medium</option><option value="big">big</option>
+                    </select></div>
+                </div>
+                <div className="column is-full">
+                    <label className="label">{video.kind === "file" ? "Путь к видеофайлу" : "Ссылка на видео"}</label>
+                    <div className="field is-grouped"><p className="control is-expanded"><input className="input" value={video.src} onChange={event => onChange({ ...video, src: event.target.value })} /></p>
+                    {video.kind === "file" ? <p className="control"><button type="button" className="button is-light" onClick={uploadVideo}><Video size={16} /><span>Загрузить</span></button></p> : null}</div>
+                </div>
+                <div className="column is-full"><label className="label">Подпись</label><InlineTextEditor value={video.caption} onChange={caption => onChange({ ...video, caption })} defaultItalic /></div>
+                <div className="column is-half"><label className="label">Название для доступности</label><input className="input" value={video.title ?? ""} onChange={event => onChange({ ...video, title: event.target.value })} /></div>
+                <div className="column is-half"><label className="label">Оригинал / источник</label><input className="input" value={video.source ?? ""} onChange={event => onChange({ ...video, source: event.target.value })} /></div>
+                {video.kind === "file" ? <div className="column is-full"><label className="checkbox"><input type="checkbox" checked={video.gifLike ?? false} onChange={event => onChange({ ...video, gifLike: event.target.checked })} /><span className="ml-2">Воспроизводить как GIF</span></label></div> : null}
+                <div className="column is-full">
+                    <label className="checkbox"><input type="checkbox" checked={video.spoilerEnabled ?? Boolean(video.spoiler)} onChange={event => onChange({ ...video, spoilerEnabled: event.target.checked })} /><span className="ml-2">Скрыть видео под спойлером</span></label>
+                    {(video.spoilerEnabled ?? Boolean(video.spoiler)) ? <div className="mt-3"><label className="label">Текст предупреждения</label><input className="input" value={video.spoiler ?? ""} onChange={event => onChange({ ...video, spoiler: event.target.value })} /></div> : null}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function NestedImageEditor({ image, repoRoot, assetFolder, onChange, onDelete, setStatusMessage }: {
+    image: EditableArticleImageBlock;
+    repoRoot: FileSystemDirectoryHandle | null;
+    assetFolder: string;
+    onChange: (image: EditableArticleImageBlock) => void;
+    onDelete: () => void;
+    setStatusMessage: (message: string) => void;
+}) {
+    const [uploadMessage, setUploadMessage] = useState("");
+    const upload = async () => {
+        if (!repoRoot || !assetFolder) {
+            setStatusMessage("Сначала подключите папку проекта и заполните slug.");
+            return;
+        }
+        const file = await pickFile("image/*");
+        if (!file) return;
+        const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file, setUploadMessage);
+        if (!imageUrl) return;
+        onChange({ ...image, imageUrl, alt: image.alt || file.name });
+    };
+
+    return (
+        <div className="article-studio__nested-media">
+            <div className="article-studio__nested-video-header"><strong>Изображение в заметке</strong><button type="button" className="button is-small is-light" onClick={onDelete} title="Удалить" aria-label="Удалить"><Trash2 size={15} /></button></div>
+            {image.imageUrl ? <div className="article-studio__nested-image-preview"><img src={withBasePath(image.imageUrl)} alt={image.alt || ""} /></div> : null}
+            {uploadMessage ? <p className="help mt-1">{uploadMessage}</p> : null}
+            <div className="field is-grouped"><p className="control is-expanded"><input className="input" value={image.imageUrl} onChange={event => onChange({ ...image, imageUrl: event.target.value })} placeholder="/uploads/..." /></p><p className="control"><button type="button" className="button is-light" onClick={upload}><ImagePlus size={16} /><span>Загрузить</span></button></p></div>
+            <div className="columns is-multiline">
+                <div className="column is-half"><label className="label">Alt</label><input className="input" value={image.alt} onChange={event => onChange({ ...image, alt: event.target.value })} /></div>
+                <div className="column is-half"><label className="label">Размер</label><div className="select is-fullwidth"><select value={image.size} onChange={event => onChange({ ...image, size: event.target.value as EditableArticleImageSize })}><option value="small">small</option><option value="medium">medium</option><option value="big">big</option></select></div></div>
+                <div className="column is-full"><label className="label">Подпись</label><InlineTextEditor value={image.caption} onChange={caption => onChange({ ...image, caption })} defaultItalic /></div>
+                <div className="column is-half"><label className="label">Источник</label><input className="input" value={image.source ?? ""} onChange={event => onChange({ ...image, source: event.target.value })} /></div>
+                <div className="column is-half"><label className="label">Спойлер</label><input className="input" value={image.spoiler ?? ""} onChange={event => onChange({ ...image, spoiler: event.target.value })} /></div>
+            </div>
+        </div>
+    );
+}
+
+function NestedCarouselEditor({ carousel, repoRoot, assetFolder, onChange, onDelete, setStatusMessage }: {
+    carousel: EditableArticleImageCarouselBlock;
+    repoRoot: FileSystemDirectoryHandle | null;
+    assetFolder: string;
+    onChange: (carousel: EditableArticleImageCarouselBlock) => void;
+    onDelete: () => void;
+    setStatusMessage: (message: string) => void;
+}) {
+    const [uploadMessages, setUploadMessages] = useState<Record<number, string>>({});
+    const upload = async (index: number) => {
+        if (!repoRoot || !assetFolder) {
+            setStatusMessage("Сначала подключите папку проекта и заполните slug.");
+            return;
+        }
+        const file = await pickFile("image/*");
+        if (!file) return;
+        const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file, message => {
+            setUploadMessages(current => ({ ...current, [index]: message }));
+        });
+        if (!imageUrl) return;
+        const images = [...carousel.images];
+        images[index] = { ...images[index], imageUrl, alt: images[index].alt || file.name };
+        onChange({ ...carousel, images });
+    };
+    const updateImage = (index: number, nextImage: EditableArticleCarouselImage) => {
+        const images = [...carousel.images];
+        images[index] = nextImage;
+        onChange({ ...carousel, images });
+    };
+
+    return (
+        <div className="article-studio__nested-media">
+            <div className="article-studio__nested-video-header"><strong>Карусель в заметке</strong><button type="button" className="button is-small is-light" onClick={onDelete} title="Удалить" aria-label="Удалить"><Trash2 size={15} /></button></div>
+            {carousel.images.map((image, index) => <div className="article-studio__nested-carousel-item" key={`${carousel.id}-${index}`}>
+                <div className="article-studio__nested-video-header"><strong>Картинка {index + 1}</strong><button type="button" className="button is-small is-light" disabled={carousel.images.length === 1} onClick={() => onChange({ ...carousel, images: carousel.images.filter((_, itemIndex) => itemIndex !== index) })} title="Удалить картинку" aria-label="Удалить картинку"><X size={14} /></button></div>
+                {image.imageUrl ? <div className="article-studio__nested-image-preview"><img src={withBasePath(image.imageUrl)} alt={image.alt || ""} /></div> : null}
+                {uploadMessages[index] ? <p className="help mt-1">{uploadMessages[index]}</p> : null}
+                <div className="field is-grouped"><p className="control is-expanded"><input className="input" value={image.imageUrl} onChange={event => updateImage(index, { ...image, imageUrl: event.target.value })} /></p><p className="control"><button type="button" className="button is-light" onClick={() => upload(index)}><ImagePlus size={16} /><span>Загрузить</span></button></p></div>
+                <div className="columns is-multiline"><div className="column is-half"><label className="label">Alt</label><input className="input" value={image.alt} onChange={event => updateImage(index, { ...image, alt: event.target.value })} /></div><div className="column is-half"><label className="label">Источник</label><input className="input" value={image.source ?? ""} onChange={event => updateImage(index, { ...image, source: event.target.value })} /></div><div className="column is-full"><label className="label">Подпись</label><InlineTextEditor value={image.caption ?? ""} onChange={caption => updateImage(index, { ...image, caption })} defaultItalic /></div></div>
+            </div>)}
+            <button type="button" className="button is-light article-studio__nested-carousel-add" onClick={() => onChange({ ...carousel, images: [...carousel.images, { imageUrl: "", alt: "", caption: "", source: "" }] })}><Plus size={16} /><span>Добавить картинку</span></button>
         </div>
     );
 }
@@ -487,6 +1007,18 @@ function BlockCard({
     setStatusMessage,
 }: BlockCardProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [imageUploadMessages, setImageUploadMessages] = useState<Record<string, string>>({});
+    const messageContent: EditableArticleMessageContent[] = block.type === "message"
+        ? block.content ?? [
+            { id: `${block.id}-legacy-text`, type: "richText", html: block.bodyHtml || "<p></p>" },
+            ...(block.media ?? block.videos ?? []),
+        ]
+        : [];
+    const setMessageContent = (content: EditableArticleMessageContent[]) => {
+        if (block.type === "message") {
+            onChange({ ...block, content, bodyHtml: "", media: undefined, videos: undefined });
+        }
+    };
     const uploadImage = async (carouselImageIndex?: number) => {
         if (!repoRoot) {
             setStatusMessage("Сначала подключите папку репозитория, чтобы сохранить изображение в проект.");
@@ -503,7 +1035,11 @@ function BlockCard({
             return;
         }
 
-        const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file);
+        const messageKey = block.type === "image" ? "image" : String(carouselImageIndex);
+        const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file, message => {
+            setImageUploadMessages(current => ({ ...current, [messageKey]: message }));
+        });
+        if (!imageUrl) return;
 
         if (block.type === "image") {
             onChange({ ...block, imageUrl });
@@ -601,9 +1137,10 @@ function BlockCard({
                         <div className={`article-studio__asset-preview article-studio__asset-preview--${block.size}${block.imageUrl ? "" : " article-studio__asset-preview--empty"}`}>
                             {block.imageUrl ? <img src={withBasePath(block.imageUrl)} alt={block.alt || block.caption || "preview"} /> : <div className="article-studio__asset-placeholder">Нет изображения</div>}
                         </div>
+                        {imageUploadMessages.image ? <p className="help mt-1">{imageUploadMessages.image}</p> : null}
                         <div className="field is-grouped">
                             <p className="control is-expanded">
-                                <input className="input" value={block.imageUrl} onChange={event => onChange({ ...block, imageUrl: event.target.value })} placeholder="/uploads/articles/..." />
+                                <input className="input" value={block.imageUrl} onChange={event => onChange({ ...block, imageUrl: event.target.value })} placeholder="/uploads/..." />
                             </p>
                             <p className="control">
                                 <button type="button" className="button is-light" onClick={() => uploadImage()}>
@@ -629,7 +1166,7 @@ function BlockCard({
                             </div>
                             <div className="column is-full">
                                 <label className="label">Подпись</label>
-                                <textarea className="textarea" rows={3} value={block.caption} onChange={event => onChange({ ...block, caption: event.target.value })} />
+                                <InlineTextEditor value={block.caption} onChange={caption => onChange({ ...block, caption })} defaultItalic />
                             </div>
                             <div className="column is-half">
                                 <label className="label">Источник</label>
@@ -663,8 +1200,8 @@ function BlockCard({
                                         value={block.kind}
                                         onChange={event => onChange({ ...block, kind: event.target.value as EditableArticleVideoKind })}
                                     >
-                                        <option value="youtube">YouTube</option>
                                         <option value="vk">VK Видео</option>
+                                        <option value="youtube">YouTube</option>
                                         <option value="rutube">RUTUBE</option>
                                         <option value="vimeo">Vimeo</option>
                                         <option value="file">Локальный файл</option>
@@ -697,7 +1234,7 @@ function BlockCard({
                                 <label className="label">{block.kind === "file" ? "Путь к видеофайлу" : "Ссылка на видео"}</label>
                                 <div className="field is-grouped">
                                     <p className="control is-expanded">
-                                        <input className="input" value={block.src} onChange={event => onChange({ ...block, src: event.target.value })} placeholder={block.kind === "file" ? "/uploads/articles/..." : block.kind === "vk" ? "https://vkvideo.ru/video-..._..." : block.kind === "rutube" ? "https://rutube.ru/video/..." : block.kind === "vimeo" ? "https://vimeo.com/..." : "https://www.youtube.com/watch?v=..."} />
+                                        <input className="input" value={block.src} onChange={event => onChange({ ...block, src: event.target.value })} placeholder={block.kind === "file" ? "/uploads/..." : block.kind === "vk" ? "https://vkvideo.ru/video-..._..." : block.kind === "rutube" ? "https://rutube.ru/video/..." : block.kind === "vimeo" ? "https://vimeo.com/..." : "https://www.youtube.com/watch?v=..."} />
                                     </p>
                                     {block.kind === "file" ? (
                                         <p className="control">
@@ -720,7 +1257,8 @@ function BlockCard({
                                                         return;
                                                     }
 
-                                                    const videoUrl = await uploadAssetUrl(repoRoot, assetFolder, file);
+                                                    const videoUrl = await uploadAssetUrl(repoRoot, assetFolder, file, setStatusMessage);
+                                                    if (!videoUrl) return;
                                                     onChange({ ...block, src: videoUrl, mimeType: file.type || "video/mp4" });
                                                 }}
                                             >
@@ -733,7 +1271,7 @@ function BlockCard({
                             </div>
                             <div className="column is-full">
                                 <label className="label">Подпись</label>
-                                <textarea className="textarea" rows={3} value={block.caption} onChange={event => onChange({ ...block, caption: event.target.value })} />
+                                <InlineTextEditor value={block.caption} onChange={caption => onChange({ ...block, caption })} defaultItalic />
                             </div>
                             <div className="column is-half">
                                 <label className="label">Название видео для доступности</label>
@@ -830,6 +1368,9 @@ function BlockCard({
                                         />
                                     </div>
                                 ) : null}
+                                {imageUploadMessages[String(imageIndex)] ? (
+                                    <p className="help mt-1">{imageUploadMessages[String(imageIndex)]}</p>
+                                ) : null}
                                 <div className="field">
                                     <label className="label">Путь к файлу</label>
                                     <div className="field is-grouped">
@@ -866,15 +1407,14 @@ function BlockCard({
                                 </div>
                                 <div className="field">
                                     <label className="label">Подпись</label>
-                                    <textarea
-                                        className="textarea"
-                                        rows={2}
+                                    <InlineTextEditor
                                         value={image.caption ?? ""}
-                                        onChange={event => {
+                                        onChange={caption => {
                                             const nextImages = [...block.images];
-                                            nextImages[imageIndex] = { ...image, caption: event.target.value };
+                                            nextImages[imageIndex] = { ...image, caption };
                                             onChange({ ...block, images: nextImages });
                                         }}
+                                        defaultItalic
                                     />
                                 </div>
                                 <div className="field">
@@ -913,6 +1453,7 @@ function BlockCard({
                                     <select value={block.variant} onChange={event => onChange({ ...block, variant: event.target.value as EditableArticleMessageVariant })}>
                                         <option value="info">info</option>
                                         <option value="success">success</option>
+                                        <option value="warning">warning</option>
                                         <option value="dark">dark</option>
                                         <option value="link">link</option>
                                         <option value="danger">danger</option>
@@ -945,12 +1486,43 @@ function BlockCard({
                                     ) : null}
                                 </div>
                             </div>
-                            <div className="column is-full">
-                                <RichTextEditor
-                                    value={block.bodyHtml}
-                                    placeholder="Текст сообщения..."
-                                    onChange={html => onChange({ ...block, bodyHtml: html })}
-                                />
+                            <div className="column is-full article-studio__nested-videos">
+                                {messageContent.map((content, contentIndex) => {
+                                    const updateContent = (nextContent: EditableArticleMessageContent) => {
+                                        const next = [...messageContent];
+                                        next[contentIndex] = nextContent;
+                                        setMessageContent(next);
+                                    };
+                                    const deleteContent = () => setMessageContent(messageContent.filter((_, index) => index !== contentIndex));
+                                    const moveContent = (direction: -1 | 1) => {
+                                        const targetIndex = contentIndex + direction;
+                                        if (targetIndex < 0 || targetIndex >= messageContent.length) return;
+                                        const next = [...messageContent];
+                                        [next[contentIndex], next[targetIndex]] = [next[targetIndex], next[contentIndex]];
+                                        setMessageContent(next);
+                                    };
+                                    return <div className="article-studio__message-content" key={content.id}>
+                                        <div className="article-studio__message-content-actions">
+                                            <span>Элемент {contentIndex + 1}</span>
+                                            <button type="button" className="button is-small is-light" disabled={contentIndex === 0} onClick={() => moveContent(-1)} title="Переместить выше" aria-label="Переместить выше"><ArrowUp size={14} /></button>
+                                            <button type="button" className="button is-small is-light" disabled={contentIndex === messageContent.length - 1} onClick={() => moveContent(1)} title="Переместить ниже" aria-label="Переместить ниже"><ArrowDown size={14} /></button>
+                                        </div>
+                                        {content.type === "richText" ? <div className="article-studio__nested-media">
+                                            <div className="article-studio__nested-video-header"><strong>Текст</strong><button type="button" className="button is-small is-light" onClick={deleteContent} title="Удалить" aria-label="Удалить"><Trash2 size={15} /></button></div>
+                                            <RichTextEditor value={content.html} placeholder="Текст сообщения..." onChange={html => updateContent({ ...content, html })} />
+                                        </div> : content.type === "video"
+                                            ? <NestedVideoEditor video={content} repoRoot={repoRoot} assetFolder={assetFolder} setStatusMessage={setStatusMessage} onChange={updateContent} onDelete={deleteContent} />
+                                            : content.type === "image"
+                                                ? <NestedImageEditor image={content} repoRoot={repoRoot} assetFolder={assetFolder} setStatusMessage={setStatusMessage} onChange={updateContent} onDelete={deleteContent} />
+                                                : <NestedCarouselEditor carousel={content} repoRoot={repoRoot} assetFolder={assetFolder} setStatusMessage={setStatusMessage} onChange={updateContent} onDelete={deleteContent} />}
+                                    </div>;
+                                })}
+                                <div className="article-studio__nested-media-actions">
+                                    <button type="button" className="button is-light" onClick={() => setMessageContent([...messageContent, createEmptyRichTextBlock()])}><FileText size={16} /><span>Добавить текст</span></button>
+                                    <button type="button" className="button is-light" onClick={() => setMessageContent([...messageContent, createEmptyImageBlock()])}><ImagePlus size={16} /><span>Добавить картинку</span></button>
+                                    <button type="button" className="button is-light" onClick={() => setMessageContent([...messageContent, createEmptyCarouselBlock()])}><LayoutGrid size={16} /><span>Добавить карусель</span></button>
+                                    <button type="button" className="button is-light" onClick={() => setMessageContent([...messageContent, createEmptyVideoBlock()])}><Video size={16} /><span>Добавить видео</span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1030,8 +1602,15 @@ function BlockPalette({
 }
 
 export default function ArticleStudio() {
+    const [contentType, setContentType] = useState<"article" | "note">("article");
+    const [shouldOptimizeImages, setShouldOptimizeImages] = useState(true);
     const [repoRoot, setRepoRoot] = useState<FileSystemDirectoryHandle | null>(null);
     const [articleId, setArticleId] = useState(() => createId());
+    const [openedSource, setOpenedSource] = useState<{
+        collectionName: "articles" | "notes";
+        fileName: string;
+    } | null>(null);
+    activeEditorContentId = articleId;
     const [publishDate, setPublishDate] = useState(() => getLocalDateInputValue());
     const [publishDateText, setPublishDateText] = useState(() => formatDateInputValue(getLocalDateInputValue()));
     const [title, setTitle] = useState("");
@@ -1042,16 +1621,22 @@ export default function ArticleStudio() {
     const [saveState, setSaveState] = useState<SaveState>("idle");
     const [statusMessage, setStatusMessage] = useState("");
     const [coverUploadMessage, setCoverUploadMessage] = useState("");
+    const [coverOptimizationMessage, setCoverOptimizationMessage] = useState("");
     const [blocks, setBlocks] = useState<EditableArticleBlock[]>([createEmptyRichTextBlock()]);
     const [palette, setPalette] = useState<BlockPaletteState | null>(null);
     const [deletedBlock, setDeletedBlock] = useState<{ block: EditableArticleBlock; index: number } | null>(null);
     const deleteUndoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const normalizedSlug = slug.trim();
     const isSlugValid = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(normalizedSlug);
-    const articlePathPreview = useMemo(
-        () => `data/articles/${normalizedSlug || "your-article-slug"}.json`,
-        [normalizedSlug]
+    const collectionName = contentType === "article" ? "articles" : "notes";
+    const contentLabel = contentType === "article" ? "статья" : "заметка";
+    const contentLabelGenitive = contentType === "article" ? "статьи" : "заметки";
+    const contentLabelAccusative = contentType === "article" ? "статью" : "заметку";
+    const contentPathPreview = useMemo(
+        () => `data/${collectionName}/${normalizedSlug || "your-slug"}.json`,
+        [collectionName, normalizedSlug]
     );
+    const assetFolder = `${collectionName}/${isSlugValid ? normalizedSlug : ""}`;
 
     const hasRequiredFields = useMemo(
         () => Boolean(title.trim() && isSlugValid && publishDate),
@@ -1103,7 +1688,9 @@ export default function ArticleStudio() {
             throw new Error("Сначала заполните корректный slug: он станет именем папки для медиафайлов.");
         }
 
-        return uploadAssetUrl(repoRoot, normalizedSlug, file);
+        const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file, setCoverOptimizationMessage);
+        if (!imageUrl) throw new Error("Slug уже занят, обложка не загружена.");
+        return imageUrl;
     };
 
     const uploadCover = async () => {
@@ -1126,11 +1713,19 @@ export default function ArticleStudio() {
             return;
         }
 
+        setCoverOptimizationMessage("");
         try {
             const imageUrl = await storeUpload(file);
+            const previousCoverUrl = coverUrl;
             setCoverUrl(imageUrl);
+            if (previousCoverUrl && previousCoverUrl !== imageUrl) {
+                setBlocks(currentBlocks => currentBlocks.map(block =>
+                    block.type === "image" && block.imageUrl === previousCoverUrl
+                        ? { ...block, imageUrl }
+                        : block
+                ));
+            }
             setCoverUploadMessage("");
-            setStatusMessage(`Обложка сохранена в ${imageUrl}`);
         } catch (error) {
             const message = error instanceof Error ? error.message : "Не удалось загрузить обложку.";
             setCoverUploadMessage(message);
@@ -1145,12 +1740,18 @@ export default function ArticleStudio() {
         }
 
         try {
-            const article = JSON.parse(await file.text()) as EditableArticle;
+            const article = JSON.parse(await file.text()) as EditableArticle | EditableNote;
             if (!article || !Array.isArray(article.blocks) || !article.slug || !article.title) {
-                throw new Error("Выбранный JSON не похож на статью из этой админки.");
+                throw new Error("Выбранный JSON не похож на материал из этой админки.");
             }
 
             setArticleId(article.id || createId());
+            const openedContentType = article.contentType === "note" ? "note" : "article";
+            setContentType(openedContentType);
+            setOpenedSource({
+                collectionName: openedContentType === "note" ? "notes" : "articles",
+                fileName: file.name,
+            });
             const openedPublishDate = article.publishDate?.slice(0, 10) || getLocalDateInputValue();
             setPublishDate(openedPublishDate);
             setPublishDateText(formatDateInputValue(openedPublishDate));
@@ -1158,13 +1759,14 @@ export default function ArticleStudio() {
             setSlug(article.slug);
             setDescription(article.description ?? "");
             setCoverUrl(article.coverUrl ?? "");
-            setTags(article.tags ?? []);
+            setCoverOptimizationMessage("");
+            setTags("tags" in article ? article.tags ?? [] : []);
             setBlocks(article.blocks);
             setSaveState("idle");
             setCoverUploadMessage(repoRoot ? "" : "Чтобы заменить обложку, сначала подключите корневую папку проекта.");
-            setStatusMessage(`Открыта статья ${file.name}. Подключите папку проекта перед сохранением.`);
+            setStatusMessage(`Открыт материал ${file.name}. Подключите папку проекта перед сохранением.`);
         } catch (error) {
-            setStatusMessage(error instanceof Error ? error.message : "Не удалось открыть статью.");
+            setStatusMessage(error instanceof Error ? error.message : "Не удалось открыть материал.");
         }
     };
 
@@ -1256,9 +1858,9 @@ export default function ArticleStudio() {
         });
     };
 
-    const saveArticle = async () => {
+    const saveContent = async () => {
         if (!repoRoot) {
-            setStatusMessage("Подключите папку репозитория, чтобы сохранить статью в проект.");
+            setStatusMessage(`Подключите папку репозитория, чтобы сохранить ${contentLabelAccusative} в проект.`);
             return;
         }
 
@@ -1268,13 +1870,14 @@ export default function ArticleStudio() {
         }
 
         setSaveState("saving");
-        setStatusMessage("Сохраняю статью...");
+        setStatusMessage(`Сохраняю ${contentLabelAccusative}...`);
 
         try {
             const safeSlug = normalizedSlug;
+            await assertContentSlugAvailable(repoRoot, collectionName, safeSlug, articleId);
             const now = new Date().toISOString();
             const html = serializeEditableArticleBlocksToHtml(blocks);
-            const payload: EditableArticle = {
+            const commonPayload = {
                 schemaVersion: 2,
                 id: articleId,
                 slug: safeSlug,
@@ -1284,20 +1887,35 @@ export default function ArticleStudio() {
                 publishDate: new Date(`${publishDate}T12:00:00`).toISOString(),
                 updatedAt: now,
                 status: "published",
-                tags,
                 blocks,
                 html,
                 tocItems,
                 readingTimeMinutes,
             };
+            const payload: EditableArticle | EditableNote = contentType === "article"
+                ? { ...commonPayload, contentType: "article", tags } as EditableArticle
+                : { ...commonPayload, contentType: "note" } as EditableNote;
 
-            await writeTextFile(repoRoot, `data/articles/${safeSlug}.json`, `${JSON.stringify(payload, null, 2)}\n`);
+            const nextFileName = `${safeSlug}.json`;
+            await writeTextFile(repoRoot, `data/${collectionName}/${nextFileName}`, `${JSON.stringify(payload, null, 2)}\n`);
+
+            if (openedSource && (
+                openedSource.collectionName !== collectionName
+                || openedSource.fileName !== nextFileName
+            )) {
+                await removeFileIfExists(
+                    repoRoot,
+                    `data/${openedSource.collectionName}/${openedSource.fileName}`
+                );
+            }
+
+            setOpenedSource({ collectionName, fileName: nextFileName });
 
             setSaveState("saved");
-            setStatusMessage(`Статья сохранена в data/articles/${safeSlug}.json`);
+            setStatusMessage(`${contentType === "article" ? "Статья" : "Заметка"} сохранена в data/${collectionName}/${safeSlug}.json`);
         } catch (error) {
             setSaveState("error");
-            setStatusMessage(error instanceof Error ? error.message : "Не удалось сохранить статью.");
+            setStatusMessage(error instanceof Error ? error.message : `Не удалось сохранить ${contentLabelAccusative}.`);
         }
     };
 
@@ -1317,9 +1935,9 @@ export default function ArticleStudio() {
         <section className="article-studio">
             <div className="article-studio__header">
                 <div>
-                    <h1 className="title is-2 mb-2">Создание статьи</h1>
+                    <h1 className="title is-2 mb-2">Создание материала</h1>
                     <p className="article-studio__hint">
-                        Блоковый редактор сохраняет статью и медиафайлы прямо в папку проекта.
+                        Блоковый редактор сохраняет материал и медиафайлы прямо в папку проекта.
                     </p>
                 </div>
 
@@ -1336,7 +1954,7 @@ export default function ArticleStudio() {
                             <CircleHelp size={16} aria-hidden="true" />
                         </button>
                         <div id="open-json-help" className="article-studio__repo-help" role="tooltip">
-                            В окне выбора файла откройте папку проекта, затем <strong>data → articles</strong>. Эта папка хранит JSON уже сохранённых статей; пока статей нет, внутри будет только служебный файл <code>.gitkeep</code>. Полный путь: <code>C:\Users\Valnushka\source\repos\RiceAndStripes\data\articles</code>.
+                            В окне выбора файла откройте папку проекта, затем <strong>data → {collectionName}</strong>. Здесь находятся JSON сохранённых материалов выбранного типа. Полный путь: <code>C:\Users\Valnushka\source\repos\RiceAndStripes\data\{collectionName}</code>.
                         </div>
                     </div>
                     <div className="article-studio__repo-action">
@@ -1354,15 +1972,34 @@ export default function ArticleStudio() {
                             Всегда выбирайте папку <strong>C:\Users\Valnushka\source\repos\RiceAndStripes</strong>. Это корень проекта: внутри видны <code>package.json</code>, <code>src</code>, <code>public</code> и <code>data</code>. Подключение разрешает браузеру сохранять JSON, картинки и видео; файлы остаются на вашем компьютере.
                         </div>
                     </div>
-                    <button type="button" className="button is-primary" onClick={saveArticle}>
+                    <button type="button" className="button is-primary" onClick={saveContent}>
                         <Save size={18} />
-                        <span>Сохранить статью</span>
+                        <span>Сохранить {contentLabelAccusative}</span>
                     </button>
                 </div>
             </div>
 
             <div className="notification article-studio__notice">
-                На GitHub Pages админка скрыта. Локально откройте проект через <code>npm run dev</code>, подключите папку репозитория и сохраните статью прямо в файлы.
+                На GitHub Pages админка скрыта. Локально откройте проект через <code>npm run dev</code>, подключите папку репозитория и сохраните материал прямо в файлы.
+            </div>
+
+            <div className="article-studio__content-type" role="group" aria-label="Тип создаваемого материала">
+                <button
+                    type="button"
+                    className={`button ${contentType === "article" ? "is-selected" : ""}`}
+                    aria-pressed={contentType === "article"}
+                    onClick={() => { setContentType("article"); setSaveState("idle"); }}
+                >
+                    Статья
+                </button>
+                <button
+                    type="button"
+                    className={`button ${contentType === "note" ? "is-selected" : ""}`}
+                    aria-pressed={contentType === "note"}
+                    onClick={() => { setContentType("note"); setSaveState("idle"); }}
+                >
+                    Заметка
+                </button>
             </div>
 
             <div className="article-studio__grid">
@@ -1374,13 +2011,13 @@ export default function ArticleStudio() {
                                 className="input"
                                 value={title}
                                 onChange={event => setTitle(event.target.value)}
-                                placeholder="Название статьи"
+                                placeholder={contentType === "article" ? "Название статьи" : "Название заметки"}
                             />
                         </div>
                     </div>
 
                     <div className="field">
-                            <label className="label">Адрес статьи (slug)</label>
+                            <label className="label">Адрес {contentLabelGenitive} (slug)</label>
                             <div className="control">
                                 <input
                                     className={`input ${slug && !isSlugValid ? "is-danger" : ""}`}
@@ -1453,8 +2090,11 @@ export default function ArticleStudio() {
                             <input
                                 className="input"
                                 value={coverUrl}
-                                onChange={event => setCoverUrl(event.target.value)}
-                                placeholder="/uploads/articles/..."
+                                onChange={event => {
+                                    setCoverUrl(event.target.value);
+                                    setCoverOptimizationMessage("");
+                                }}
+                                placeholder={`/uploads/${collectionName}/...`}
                             />
                             <button type="button" className="button is-light" onClick={uploadCover}>
                                 <ImagePlus size={18} />
@@ -1462,10 +2102,11 @@ export default function ArticleStudio() {
                             </button>
                         </div>
                         {coverUrl ? (
-                            <figure className="article-studio__cover-preview mt-3">
+                            <figure className={`article-studio__cover-preview ${contentType === "note" ? "article-studio__cover-preview--note" : ""} mt-3`}>
                                 <img src={withBasePath(coverUrl)} alt="Cover preview" />
                             </figure>
                         ) : null}
+                        {coverOptimizationMessage ? <p className="help mt-1">{coverOptimizationMessage}</p> : null}
                         {coverUploadMessage ? (
                             <div className="notification is-warning is-light article-studio__cover-message mt-3">
                                 <span>{coverUploadMessage}</span>
@@ -1477,9 +2118,22 @@ export default function ArticleStudio() {
                                 ) : null}
                             </div>
                         ) : null}
+                        <label className="checkbox mt-3">
+                            <input
+                                type="checkbox"
+                                checked={shouldOptimizeImages}
+                                onChange={event => {
+                                    const checked = event.target.checked;
+                                    optimizeUploadedImages = checked;
+                                    setShouldOptimizeImages(checked);
+                                }}
+                            />
+                            <span className="ml-2">Оптимизировать новые изображения: WebP, самая большая сторона до 1500 px</span>
+                        </label>
+                        <p className="help">Если WebP не даёт экономии, файл останется в исходном формате. Снимите флажок, чтобы сохранить исходник без изменений.</p>
                     </div>
 
-                    <div className="field">
+                    {contentType === "article" ? <div className="field">
                         <label className="label">Теги</label>
                         <div className="tags are-medium article-studio__tags">
                             {AVAILABLE_TAGS.map(tag => (
@@ -1497,12 +2151,12 @@ export default function ArticleStudio() {
                                 </button>
                             ))}
                         </div>
-                    </div>
+                    </div> : null}
 
                     <div className="article-studio__blocks-header">
                         <div>
-                            <h2 className="title is-4 mb-1">Блоки статьи</h2>
-                            <p className="article-studio__hint">Добавляйте блоки один за другим и собирайте статью из готовых карточек.</p>
+                            <h2 className="title is-4 mb-1">Блоки {contentLabelGenitive}</h2>
+                            <p className="article-studio__hint">Добавляйте блоки один за другим и собирайте {contentLabelAccusative} из готовых карточек.</p>
                         </div>
                         <button type="button" className="button is-light" onClick={() => setPalette({ index: blocks.length })}>
                             <Plus size={18} />
@@ -1518,7 +2172,7 @@ export default function ArticleStudio() {
                                 index={index}
                                 total={blocks.length}
                                 repoRoot={repoRoot}
-                                assetFolder={isSlugValid ? normalizedSlug : ""}
+                                assetFolder={isSlugValid ? assetFolder : ""}
                                 onChange={nextBlock => updateBlock(block.id, nextBlock)}
                                 onDelete={() => deleteBlock(block.id)}
                                 onDuplicate={() => duplicateBlock(block)}
@@ -1545,10 +2199,10 @@ export default function ArticleStudio() {
 
                 <aside className="article-studio__sidebar">
                     <div className="notification is-light article-studio__panel">
-                        <p className="mb-2"><strong>Готовность статьи</strong></p>
+                        <p className="mb-2"><strong>Готовность {contentLabelGenitive}</strong></p>
                         <p className="is-size-7 has-text-grey mb-1">Папка проекта: {repoRoot ? "подключена" : "сначала подключите"}</p>
-                        <p className="is-size-7 has-text-grey mb-1">Файл статьи: {articlePathPreview}</p>
-                        <p className="is-size-7 has-text-grey mb-1">Блоков в статье: {blocks.length}</p>
+                        <p className="is-size-7 has-text-grey mb-1">Файл: {contentPathPreview}</p>
+                        <p className="is-size-7 has-text-grey mb-1">Блоков: {blocks.length}</p>
                         <p className="is-size-7 has-text-grey mb-1">Время чтения: {formatReadingTime(readingTimeMinutes)}</p>
                         <p className="is-size-7 has-text-grey mb-1">Сохранение: {{ idle: "изменения не сохранены", saving: "сохраняется...", saved: "сохранено", error: "ошибка" }[saveState]}</p>
                         <p className="is-size-7 has-text-grey">{statusMessage || "Готов к работе"}</p>
@@ -1557,9 +2211,9 @@ export default function ArticleStudio() {
                     <div className="notification is-info is-light article-studio__panel">
                         <p className="mb-2"><strong>После нажатия «Сохранить»</strong></p>
                         <ul className="article-studio__list">
-                            <li>текст статьи попадёт в <code>{articlePathPreview}</code></li>
-                            <li>картинки и видео попадут в <code>public/uploads/articles/{isSlugValid ? normalizedSlug : "<slug>"}/…</code></li>
-                            <li>статью можно будет открыть и проверить локально</li>
+                            <li>текст попадёт в <code>{contentPathPreview}</code></li>
+                            <li>картинки и видео попадут в <code>public/uploads/{collectionName}/{isSlugValid ? normalizedSlug : "<slug>"}/…</code></li>
+                            <li>{contentLabelAccusative} можно будет открыть и проверить локально</li>
                         </ul>
                     </div>
 
@@ -1591,9 +2245,9 @@ export default function ArticleStudio() {
             <button
                 type="button"
                 className="button is-primary article-studio__floating-save"
-                onClick={saveArticle}
-                title="Сохранить статью"
-                aria-label="Сохранить статью"
+                onClick={saveContent}
+                title={`Сохранить ${contentLabelAccusative}`}
+                aria-label={`Сохранить ${contentLabelAccusative}`}
             >
                 <Save size={20} />
                 <span>Сохранить</span>

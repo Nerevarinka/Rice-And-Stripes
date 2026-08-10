@@ -62,8 +62,12 @@ export async function getEditableArticles(): Promise<EditableArticle[]> {
 }
 
 export async function getEditableArticleBySlug(slug: string): Promise<EditableArticle | null> {
-    const articles = await getEditableArticles();
-    return articles.find(article => article.slug === slug) ?? null;
+    if (!/^[a-z0-9-]+$/.test(slug)) {
+        return null;
+    }
+
+    const article = await readEditableArticleFile(`${slug}.json`);
+    return article?.slug === slug ? article : null;
 }
 
 export function editableArticleToCard(article: EditableArticle): Article {
@@ -75,6 +79,7 @@ export function editableArticleToCard(article: EditableArticle): Article {
         cover: coverUrl,
         description: article.description,
         publishDate: new Date(article.publishDate),
+        updatedAt: article.updatedAt ? new Date(article.updatedAt) : undefined,
         tags: article.tags,
         readingTimeMinutes: article.readingTimeMinutes
             ?? calculateReadingTimeMinutes(article.blocks ?? []),

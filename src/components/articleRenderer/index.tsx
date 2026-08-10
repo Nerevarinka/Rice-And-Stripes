@@ -5,13 +5,82 @@ import ImageCarousel from "@/components/imageCarousel";
 import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/videoWithCaption";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
+import { sanitizeInlineHtml } from "@/shared/utils/sanitizeInlineHtml";
 import { getVideoEmbedUrl } from "@/shared/utils/videoEmbedUrl";
+import { withBasePathIfInternal } from "@/shared/utils/withBasePath";
 
-import type { EditableArticleBlock } from "@/models/editableArticle";
+import type { EditableArticleBlock, EditableArticleMessageContent, EditableArticleMessageMedia, EditableArticleVideoBlock } from "@/models/editableArticle";
 
 type ArticleRendererProps = {
     blocks: EditableArticleBlock[];
 };
+
+function FormattedCaption({ html }: { html?: string }) {
+    if (!html) return null;
+    return <span dangerouslySetInnerHTML={{ __html: sanitizeInlineHtml(html) }} />;
+}
+
+function VideoBlockView({ block }: { block: EditableArticleVideoBlock }) {
+    if (block.kind !== "file") {
+        const embedUrl = getVideoEmbedUrl(block.kind, block.src);
+        return embedUrl ? (
+            <EmbeddedVideo
+                src={embedUrl}
+                caption={<FormattedCaption html={block.caption} />}
+                source={block.source}
+                title={block.title}
+                size={block.size}
+                spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
+            />
+        ) : null;
+    }
+
+    return (
+        <VideoWithCaption
+            src={normalizeEditableArticleAssetUrl(block.src)}
+            caption={<FormattedCaption html={block.caption} />}
+            source={block.source}
+            size={block.size}
+            spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
+            type={block.mimeType ?? "video/mp4"}
+            gifLike={block.gifLike}
+        />
+    );
+}
+
+function MessageMediaView({ media }: { media: EditableArticleMessageMedia }) {
+    if (media.type === "video") return <VideoBlockView block={media} />;
+    if (media.type === "imageCarousel") {
+        return <ImageCarousel images={media.images.map(image => ({
+            src: normalizeEditableArticleAssetUrl(image.imageUrl),
+            alt: image.alt,
+            caption: <FormattedCaption html={image.caption} />,
+            source: image.source,
+        }))} />;
+    }
+    return <ImageWithCaption
+        image={normalizeEditableArticleAssetUrl(media.imageUrl)}
+        alt={media.alt}
+        caption={<><FormattedCaption html={media.caption} />{media.source ? <><br /><a href={media.source} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
+        size={media.size}
+        spoiler={media.spoiler}
+        expandable={media.expandable}
+    />;
+}
+
+function MessageContentView({ content }: { content: EditableArticleMessageContent }) {
+    if (content.type === "richText") {
+        return <div dangerouslySetInnerHTML={{ __html: cleanHtml(content.html) }} />;
+    }
+    return <MessageMediaView media={content} />;
+}
+
+function getMessageContent(block: Extract<EditableArticleBlock, { type: "message" }>): EditableArticleMessageContent[] {
+    return block.content ?? [
+        { id: `${block.id}-legacy-text`, type: "richText", html: block.bodyHtml || "" },
+        ...(block.media ?? block.videos ?? []),
+    ];
+}
 
 function cleanHtml(html: string) {
     return sanitizeHtml(html, {
@@ -49,11 +118,21 @@ function cleanHtml(html: string) {
         ],
         allowedAttributes: {
             a: ["href", "target", "rel"],
+            span: ["data-display-heading"],
             td: ["data-text-align"],
             th: ["data-text-align"],
             "*": ["class", "id"],
         },
         allowedSchemes: ["http", "https", "mailto", "tel"],
+        transformTags: {
+            a: (_tagName, attributes) => ({
+                tagName: "a",
+                attribs: {
+                    ...attributes,
+                    href: withBasePathIfInternal(attributes.href ?? ""),
+                },
+            }),
+        },
     });
 }
 
@@ -86,7 +165,7 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                 alt={block.alt}
                                 caption={
                                     <>
-                                        {block.caption}
+                                        <FormattedCaption html={block.caption} />
                                         {block.source ? (
                                             <>
                                                 <br />
@@ -109,52 +188,30 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                 images={block.images.map(image => ({
                                     src: normalizeEditableArticleAssetUrl(image.imageUrl),
                                     alt: image.alt,
-                                    caption: image.caption,
+                                    caption: <FormattedCaption html={image.caption} />,
                                     source: image.source,
                                 }))}
                             />
                         );
                     case "video":
-                        if (block.kind !== "file") {
-                            const embedUrl = getVideoEmbedUrl(block.kind, block.src);
-                            return embedUrl ? (
-                                <EmbeddedVideo
-                                    key={block.id}
-                                    src={embedUrl}
-                                    caption={block.caption}
-                                    source={block.source}
-                                    title={block.title}
-                                    size={block.size}
-                                    spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
-                                />
-                            ) : null;
-                        }
-
-                        return (
-                            <VideoWithCaption
-                                key={block.id}
-                                src={normalizeEditableArticleAssetUrl(block.src)}
-                                caption={block.caption}
-                                source={block.source}
-                                size={block.size}
-                                spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
-                                type={block.mimeType ?? "video/mp4"}
-                                gifLike={block.gifLike}
-                            />
-                        );
+                        return <VideoBlockView key={block.id} block={block} />;
                     case "message":
                         if (block.collapsible) {
                             return (
                                 <details key={block.id} className={`message is-${block.variant} article-accordion`} open={block.defaultOpen}>
                                     <summary className="message-header">{block.title?.trim() || "Подробнее"}</summary>
-                                    <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanHtml(block.bodyHtml) }} />
+                                    <div className="message-body">
+                                        {getMessageContent(block).map(content => <MessageContentView key={content.id} content={content} />)}
+                                    </div>
                                 </details>
                             );
                         }
                         return (
                             <article key={block.id} className={`message is-${block.variant}`}>
                                 {block.title?.trim() ? <div className="message-header">{block.title}</div> : null}
-                                <div className="message-body" dangerouslySetInnerHTML={{ __html: cleanHtml(block.bodyHtml) }} />
+                                <div className="message-body">
+                                    {getMessageContent(block).map(content => <MessageContentView key={content.id} content={content} />)}
+                                </div>
                             </article>
                         );
                     case "spoiler":

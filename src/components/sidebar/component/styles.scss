@@ -119,12 +119,19 @@
 		line-height: 1.5;
 
 		&-group-text {
-			font-weight: 600;
-			padding: 0.75rem 0 0.5rem;
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+			padding: 0.4rem 0;
+
+			html.is-mobile & {
+				font-size: 1rem;
+				padding: 0.3rem 0;
+			}
 		}
 
 		html.is-mobile & {
-			font-size: 0.85rem;
+			font-size: 1rem;
 			padding: 0.3rem 0;
 		}
 	}
@@ -178,6 +185,7 @@
 	}
 
 	&-item {
+		min-height: 2.75rem;
 		padding: 0.25rem 0;
 		position: relative;
 
@@ -227,6 +235,21 @@
 	}
 }
 
+// Keep the server-rendered sidebar out of the layout before React hydrates.
+@media screen and (max-width: 767.98px) {
+	.sidebar:not(.sidebar--mobile) {
+		position: fixed;
+		left: -15rem;
+		top: 0;
+		bottom: 0;
+		width: 12rem;
+	}
+
+	.site-search-link {
+		min-height: 2.75rem;
+	}
+}
+
 .sidebar-gh-icon {
 	opacity: 0.5;
 	transition: $transition-fast;
@@ -240,14 +263,15 @@
 
 .sidebar-burger {
 	position: fixed;
-	top: 1rem;
-	left: -1rem;
+	top: 0.75rem;
+	left: -0.7rem;
 	z-index: 1002;
-	width: 2.5rem;
-	height: 2.5rem;
-	background-color: var(--color-accent);
-	border: 1px solid $border-gray;
-	border-radius: 0.5rem;
+	width: 2.1rem;
+	height: 2.25rem;
+	background-color: #fffaf2;
+	border: 1px solid rgba($primary-brown, 0.28);
+	border-radius: 0 0.5rem 0.5rem 0;
+	box-shadow: 1px 2px 5px rgba(82, 54, 31, 0.1);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -256,6 +280,12 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 	padding: 0;
+	opacity: 0.88;
+
+	&:hover,
+	&:focus-visible {
+		opacity: 1;
+	}
 
 	&:active {
 		background-color: lighten($primary-brown, 45%);
@@ -264,10 +294,16 @@
 
 	&--open {
 		left: 0.5rem;
+		border-radius: 0.35rem;
 
 		span {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -1px 0 0 -0.5rem;
+
 			&:first-child {
-				transform: rotate(45deg) translate(6px, 5px);
+				transform: rotate(45deg);
 			}
 
 			&:nth-child(2) {
@@ -275,14 +311,14 @@
 			}
 
 			&:last-child {
-				transform: rotate(-45deg) translate(6px, -5px);
+				transform: rotate(-45deg);
 			}
 		}
 	}
 
 	span {
 		display: block;
-		width: 1.25rem;
+		width: 1rem;
 		height: 2px;
 		background-color: $primary-brown;
 		transition: $transition-fast;

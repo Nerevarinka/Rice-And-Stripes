@@ -1,16 +1,5 @@
-import type { FC } from "react";
+import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 
-import StaticArticleReadingTime from "@/components/staticArticleReadingTime";
-
-import Article from "./article";
-export { metadata } from "./metadata";
-
-const ZebraFinchesNatureDietPage: FC = () => {
-    return (
-        <StaticArticleReadingTime slug="zebraFinchesNatureDiet">
-            <Article />
-        </StaticArticleReadingTime>
-    );
-};
-
-export default ZebraFinchesNatureDietPage;
+export default function LegacyArticlePage() {
+    return <LegacyArticleRedirect href="/articles/zebra-finches-natural-diet" />;
+}

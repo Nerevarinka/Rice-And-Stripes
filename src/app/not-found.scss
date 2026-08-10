@@ -1,129 +1,69 @@
 @use "../shared/styles/variables" as *;
 
 .not-found {
-    min-height: 100vh;
+    min-height: calc(100vh - 1rem);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-accent) 100%);
+    background-color: var(--color-background);
 
     &__content {
+        width: min(100%, 40rem);
         text-align: center;
-        max-width: 600px;
-        animation: fadeIn 0.6s ease-in-out;
     }
 
-    &__icon {
-        font-size: 8rem;
-        font-weight: 800;
-        color: var(--color-primary);
-        margin-bottom: 1.5rem;
-        text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-        animation: bounce 2s infinite;
-
-        html.is-mobile & {
-            font-size: 6rem;
-        }
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
     }
 
-    &__title {
-        font-size: 2.5rem;
-        font-weight: 700;
+    &__message {
+        max-width: 34rem;
+        margin: 1.25rem auto 1.5rem;
         color: var(--color-primary-text);
-        margin-bottom: 1rem;
-
-        html.is-mobile & {
-            font-size: 2rem;
-        }
-    }
-
-    &__description {
-        font-size: 1.125rem;
-        color: var(--color-primary-text);
-        opacity: 0.8;
-        margin-bottom: 1rem;
-        line-height: 1.6;
-
-        html.is-mobile & {
-            font-size: 1rem;
-        }
-    }
-
-    &__joke {
-        font-size: 1rem;
-        color: var(--color-primary-text);
-        opacity: 0.7;
-        margin-bottom: 2.5rem;
-        font-style: italic;
-
-        html.is-mobile & {
-            font-size: 0.9rem;
-        }
-    }
-
-    &__actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
+        font-size: 1.1rem;
+        line-height: 1.5;
     }
 
     &__button {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.875rem 1.75rem;
-        border-radius: 8px;
-        font-size: 1rem;
+        justify-content: center;
+        gap: 0.45rem;
+        min-height: 2.5rem;
+        padding: 0.5rem 1rem;
+        color: $primary-brown;
+        background-color: #fffaf2;
+        border: 1px solid rgba($primary-brown, 0.35);
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(82, 54, 31, 0.1);
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.2s ease;
-        cursor: pointer;
+        transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 
-        &--primary {
-            background-color: var(--color-primary);
-            color: #fff;
-
-            &:hover {
-                background-color: var(--color-primary);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                filter: brightness(1.1);
-            }
+        &:hover,
+        &:focus-visible {
+            color: $link-color;
+            background-color: $background-beige;
+            border-color: rgba($primary-brown, 0.5);
         }
 
-        &--secondary {
-            background-color: transparent;
-            color: var(--color-primary-text);
-            border: 2px solid var(--color-primary);
-
-            &:hover {
-                background-color: var(--color-primary);
-                color: #fff;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            }
+        &:focus-visible {
+            outline: 2px solid rgba($primary-brown, 0.3);
+            outline-offset: 2px;
         }
     }
-}
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+    @media screen and (max-width: 767.98px) {
+        min-height: calc(100vh - 0.5rem);
+        padding: 1rem;
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
+        &__message {
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
     }
 }

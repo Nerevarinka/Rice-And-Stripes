@@ -58,7 +58,16 @@
         text-align: center;
         padding: 0.75rem 1rem;
 
-        color: var(--color-primary-text) !important;
+        color: $primary-brown !important;
+        background-color: #fffaf2;
+        border: 1px solid rgba($primary-brown, 0.35);
+        box-shadow: 0 2px 5px rgba(82, 54, 31, 0.1);
+
+		&:hover {
+			color: $link-color !important;
+			background-color: $background-beige;
+			border-color: rgba($primary-brown, 0.5);
+		}
 
         &--prev,
         &--next {

@@ -1,0 +1,84 @@
+@use "../../shared/styles/variables" as *;
+
+.sort-control {
+	position: relative;
+	width: 13.75rem;
+	flex: 0 0 auto;
+
+	&__trigger {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 0.45rem;
+		width: 100%;
+		height: 2.5rem;
+		padding: 0 0.7rem;
+		color: $primary-brown;
+		background-color: #fffaf2;
+		border: 1px solid rgba($primary-brown, 0.45);
+		border-radius: 6px;
+		text-align: left;
+		cursor: pointer;
+
+		span {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		&:focus-visible {
+			border-color: $link-in-text-color;
+			box-shadow: 0 0 0 0.125em rgba(165, 77, 18, 0.18);
+			outline: none;
+		}
+
+		svg:last-child {
+			transition: transform 0.15s ease;
+		}
+	}
+
+	&.is-open &__trigger svg:last-child {
+		transform: rotate(180deg);
+	}
+
+	&--without-icon &__trigger {
+		grid-template-columns: 1fr auto;
+	}
+
+	&__menu {
+		position: absolute;
+		top: calc(100% + 0.2rem);
+		left: 0;
+		right: 0;
+		z-index: 30;
+		display: flex;
+		flex-direction: column;
+		padding: 0.25rem;
+		background-color: #fffaf2;
+		border: 1px solid rgba($primary-brown, 0.35);
+		border-radius: 6px;
+		box-shadow: 0 5px 14px $shadow-light;
+	}
+
+	&__option {
+		padding: 0.45rem 0.6rem;
+		color: var(--color-primary-text);
+		background: transparent;
+		border: 0;
+		border-radius: 4px;
+		text-align: left;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible,
+		&.is-selected {
+			color: $primary-brown;
+			background-color: $background-beige;
+			outline: none;
+		}
+	}
+
+	@media screen and (max-width: 767.98px) {
+		width: min(100%, 14rem);
+	}
+}

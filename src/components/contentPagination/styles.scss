@@ -1,0 +1,58 @@
+@use "../../shared/styles/variables" as *;
+
+.content-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	margin: 1.25rem 0 2rem;
+
+	button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.4rem;
+		height: 2.4rem;
+		padding: 0;
+		color: $primary-brown;
+		background-color: #fffaf2;
+		border: 1px solid rgba($primary-brown, 0.32);
+		border-radius: 6px;
+		cursor: pointer;
+		transition: $transition-fast;
+
+		&:hover:not(:disabled),
+		&:focus-visible {
+			color: $link-color;
+			background-color: $background-beige;
+			border-color: rgba($primary-brown, 0.48);
+			outline: none;
+		}
+
+		&:disabled {
+			cursor: default;
+			opacity: 0.35;
+		}
+	}
+
+	&__status {
+		min-width: 8.5rem;
+		color: $primary-brown;
+		font-size: 0.9rem;
+		text-align: center;
+	}
+
+	@media screen and (max-width: 380px) {
+		gap: 0.25rem;
+
+		button {
+			width: 2.15rem;
+			height: 2.15rem;
+		}
+
+		&__status {
+			min-width: 6.4rem;
+			font-size: 0.78rem;
+		}
+	}
+}

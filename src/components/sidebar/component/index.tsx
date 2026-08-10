@@ -7,14 +7,15 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { siGithub } from "simple-icons";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { withBasePath } from "@/shared/utils/withBasePath";
 
 import sidebarItemIcon from "@/shared/assets/sidebar/zebraFinchIcon.webp";
-import mainLogo from "@/shared/assets/sidebar/mainLogo.png";
 
 import "./styles.scss";
 
 import SidebarHeader from "../components/sidebarHeader";
 import SidebarLinks from "../components/sidebarLinks";
+import SiteSearchForm from "@/components/siteSearchForm";
 
 import type { SidebarItem } from "@/models";
 
@@ -69,6 +70,40 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 		}
 	};
 
+	const renderMenuItem = (item: SidebarItem) => (
+		<div key={item.link}>
+			<div className={`sidebar-item is-flex is-align-items-center${isValidRoute && pathname.startsWith(item.link) ? ' is-active' : ''}`}>
+				<Image
+					src={sidebarItemIcon}
+					alt="Sidebar item icon"
+					width={16}
+					height={16}
+					className="finch-hidden-icon"
+				/>
+				<Link
+					href={item.link}
+					className={item.isGroup ? "sidebar-link-group-text is-flex is-flex-direction-column" : "sidebar-link"}
+					onClick={handleLinkClick}
+				>
+					{item.caption}
+				</Link>
+			</div>
+			{item.children && item.children.filter(child => pathname === child.link).length > 0 && showNested && (
+				<div className="sidebar-nested-items">
+					{item.children
+						.filter(child => pathname === child.link)
+						.map(child => (
+							<div key={child.link} className="sidebar-nested-item">
+								<span className="sidebar-nested-link sidebar-nested-link--active" title={child.caption}>
+									{child.caption.length > 20 ? child.caption.slice(0, 20) + '...' : child.caption}
+								</span>
+							</div>
+						))}
+				</div>
+			)}
+		</div>
+	);
+
 	return (
 		<>
 			{isMobile && (
@@ -98,12 +133,12 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 					<div className="is-flex is-justify-content-center">
 						<Link href="/">
 							<Image
-								src={mainLogo}
-								alt="Logo"
+								src={withBasePath("/logoV2.webp")}
+								alt="Логотип Rice & Stripes"
 								width={160}
 								height={160}
 								className="sidebar-logo is-flex is-flex-direction-column"
-								title="Будто логотип кофейни"
+								title="Rice & Stripes"
 							/>
 						</Link>
 					</div>
@@ -116,42 +151,9 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 
 					<div className="is-flex-grow-1">
 						<nav className="is-flex is-flex-direction-column">
-							{menuItems.map(x => (
-								<div key={x.link}>
-									<div className={`sidebar-item is-flex is-align-items-center${isValidRoute && pathname.startsWith(x.link) ? ' is-active' : ''}`}>
-										<Image
-											src={sidebarItemIcon}
-											alt="Sidebar item icon"
-											width={16}
-											height={16}
-											className="finch-hidden-icon"
-										/>
-										<Link
-											href={x.link}
-											className={x.isGroup ? "sidebar-link-group-text is-flex is-flex-direction-column" : "sidebar-link"}
-											onClick={handleLinkClick}
-										>
-											{x.caption}
-										</Link>
-									</div>
-									{x.children && x.children.filter(child => pathname === child.link).length > 0 && showNested && (
-										<div className="sidebar-nested-items">
-											{x.children
-												.filter(child => pathname === child.link)
-												.map(child => (
-													<div key={child.link} className="sidebar-nested-item">
-														<span
-															className="sidebar-nested-link sidebar-nested-link--active"
-															title={child.caption}
-														>
-															{child.caption.length > 20 ? child.caption.slice(0, 20) + '...' : child.caption}
-														</span>
-													</div>
-												))}
-										</div>
-									)}
-								</div>
-							))}
+							{menuItems.filter(item => item.link !== "/admin/create").map(renderMenuItem)}
+							<SiteSearchForm onNavigate={handleLinkClick} />
+							{menuItems.filter(item => item.link === "/admin/create").map(renderMenuItem)}
 						</nav>
 					</div>
 

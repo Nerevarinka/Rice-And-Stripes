@@ -65,3 +65,17 @@ body {
 	aspect-ratio: 16 / 9;
 	border: 0;
 }
+
+@media screen and (max-width: 767.98px) {
+	.main-content {
+		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
+	}
+
+	.site-search-page__heading > .title,
+	.notes-page > .title,
+	.finches-page__header > .title,
+	.about-page > .title {
+		font-size: 2rem !important;
+		line-height: 1.15;
+	}
+}

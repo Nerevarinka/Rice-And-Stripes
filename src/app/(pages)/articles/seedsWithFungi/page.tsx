@@ -1,16 +1,5 @@
-import type { FC } from "react";
+import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 
-import StaticArticleReadingTime from "@/components/staticArticleReadingTime";
-
-import Article from "./article";
-export { metadata } from "./metadata";
-
-const SeedsWithFungiPage: FC = () => {
-    return (
-        <StaticArticleReadingTime slug="seedsWithFungi">
-            <Article />
-        </StaticArticleReadingTime>
-    );
-};
-
-export default SeedsWithFungiPage;
+export default function LegacyArticlePage() {
+    return <LegacyArticleRedirect href="/articles/seeds-with-fungi" />;
+}
