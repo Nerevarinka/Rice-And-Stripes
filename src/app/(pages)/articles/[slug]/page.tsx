@@ -6,7 +6,9 @@ import { formatDate } from "@bodynarf/utils/date/format";
 import TableOfContents from "@/components/tableOfContents";
 import ArticleNavigation from "@/components/articleNavigation";
 import ArticleRenderer from "@/components/articleRenderer";
+import JsonLd from "@/components/jsonLd";
 import { createArticleMetadata } from "@/shared/metadata";
+import { createPublicationStructuredData } from "@/shared/structuredData";
 import { getEditableArticles, getEditableArticleBySlug } from "@/shared/editableArticles";
 import { extractTocItemsFromHtml } from "@/shared/utils/extractTocItemsFromHtml";
 import { getEditableArticleNavigation } from "@/shared/utils/editableArticleNavigation";
@@ -63,6 +65,16 @@ export default async function EditableArticlePage(
 
     return (
         <TableOfContents items={tocItems}>
+            <JsonLd data={createPublicationStructuredData({
+                title: article.title,
+                description: article.description,
+                slug: article.slug,
+                section: "articles",
+                coverUrl: article.coverUrl,
+                publishDate: article.publishDate,
+                updatedAt: article.updatedAt,
+                tags: article.tags,
+            })} />
             <div className="article-content-wrapper">
                 <div className="article-content content">
                     <h1 className="title is-2">{article.title}</h1>

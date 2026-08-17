@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 const title = "Rice & Stripes - Блог о жизни амадин";
 const description = "Блог о жизни амадин: уход, наблюдения, наука";
 const homeUrl = withBasePath("/");
-const logoUrl = withBasePath("/logoV2-preview.jpg");
+const logoUrl = withBasePath("/logoV2-preview-v2.jpg");
 
 const baseMetadata = createCommonMetadata(
 	title,

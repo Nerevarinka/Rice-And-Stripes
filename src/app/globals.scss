@@ -68,6 +68,8 @@ body {
 
 @media screen and (max-width: 767.98px) {
 	.main-content {
+		width: 100%;
+		min-width: 0;
 		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 

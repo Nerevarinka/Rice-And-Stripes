@@ -104,6 +104,7 @@
 }
 
 .toc-toggle {
+    display: none;
     position: fixed;
     top: 0.75rem;
     right: -0.7rem;
@@ -114,7 +115,6 @@
     border: 1px solid rgba($primary-brown, 0.28);
     border-radius: 0.5rem 0 0 0.5rem;
     box-shadow: -1px 2px 5px rgba(82, 54, 31, 0.1);
-    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -135,7 +135,8 @@
 }
 
 .toc-toggle.is-open {
-    right: 0.5rem;
+    right: 0.75rem;
+    border-radius: 0.5rem;
 }
 
 .toc-overlay {
@@ -150,6 +151,10 @@
 }
 
 @media screen and (max-width: 767.98px) {
+	.toc-toggle {
+		display: flex;
+	}
+
 	.table-of-contents:not(.table-of-contents--mobile) {
 		display: none;
 	}

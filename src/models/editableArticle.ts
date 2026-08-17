@@ -133,8 +133,17 @@ export type EditableArticle = {
     html: string;
     tocItems?: EditableArticleTocItem[];
     readingTimeMinutes?: number;
+    redirectFrom?: string[];
 };
 
 export type EditableNote = Omit<EditableArticle, "contentType" | "tags"> & {
     contentType: "note";
+};
+
+export type EditableNoteRedirect = {
+    schemaVersion: 2;
+    contentType: "noteRedirect";
+    slug: string;
+    redirectTo: `/articles/${string}`;
+    updatedAt: string;
 };

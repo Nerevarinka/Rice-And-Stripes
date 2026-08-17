@@ -51,6 +51,7 @@ import {
 import type {
     EditableArticle,
     EditableNote,
+    EditableNoteRedirect,
     EditableArticleBlock,
     EditableArticleCarouselImage,
     EditableArticleHeadingBlock,
@@ -1609,7 +1610,9 @@ export default function ArticleStudio() {
     const [openedSource, setOpenedSource] = useState<{
         collectionName: "articles" | "notes";
         fileName: string;
+        slug: string;
     } | null>(null);
+    const [redirectFrom, setRedirectFrom] = useState<string[]>([]);
     activeEditorContentId = articleId;
     const [publishDate, setPublishDate] = useState(() => getLocalDateInputValue());
     const [publishDateText, setPublishDateText] = useState(() => formatDateInputValue(getLocalDateInputValue()));
@@ -1751,7 +1754,9 @@ export default function ArticleStudio() {
             setOpenedSource({
                 collectionName: openedContentType === "note" ? "notes" : "articles",
                 fileName: file.name,
+                slug: article.slug,
             });
+            setRedirectFrom(article.redirectFrom ?? []);
             const openedPublishDate = article.publishDate?.slice(0, 10) || getLocalDateInputValue();
             setPublishDate(openedPublishDate);
             setPublishDateText(formatDateInputValue(openedPublishDate));
@@ -1876,6 +1881,11 @@ export default function ArticleStudio() {
             const safeSlug = normalizedSlug;
             await assertContentSlugAvailable(repoRoot, collectionName, safeSlug, articleId);
             const now = new Date().toISOString();
+            const isConvertingNote = contentType === "article" && openedSource?.collectionName === "notes";
+            const sourceNotePath = isConvertingNote ? `/notes/${openedSource.slug}` : null;
+            const nextRedirectFrom = sourceNotePath
+                ? Array.from(new Set([...redirectFrom, sourceNotePath]))
+                : redirectFrom;
             const html = serializeEditableArticleBlocksToHtml(blocks);
             const commonPayload = {
                 schemaVersion: 2,
@@ -1893,13 +1903,37 @@ export default function ArticleStudio() {
                 readingTimeMinutes,
             };
             const payload: EditableArticle | EditableNote = contentType === "article"
-                ? { ...commonPayload, contentType: "article", tags } as EditableArticle
+                ? { ...commonPayload, contentType: "article", tags, redirectFrom: nextRedirectFrom } as EditableArticle
                 : { ...commonPayload, contentType: "note" } as EditableNote;
 
             const nextFileName = `${safeSlug}.json`;
             await writeTextFile(repoRoot, `data/${collectionName}/${nextFileName}`, `${JSON.stringify(payload, null, 2)}\n`);
 
-            if (openedSource && (
+            if (contentType === "article") {
+                for (const legacyPath of nextRedirectFrom) {
+                    const match = legacyPath.match(/^\/notes\/([a-z0-9]+(?:-[a-z0-9]+)*)$/);
+                    if (!match) continue;
+                    const redirectPayload: EditableNoteRedirect = {
+                        schemaVersion: 2,
+                        contentType: "noteRedirect",
+                        slug: match[1],
+                        redirectTo: `/articles/${safeSlug}`,
+                        updatedAt: now,
+                    };
+                    await writeTextFile(
+                        repoRoot,
+                        `data/notes/${match[1]}.json`,
+                        `${JSON.stringify(redirectPayload, null, 2)}\n`
+                    );
+                }
+            }
+
+            if (isConvertingNote && openedSource) {
+                // The redirect stub was written from nextRedirectFrom above.
+                if (openedSource.fileName !== `${openedSource.slug}.json`) {
+                    await removeFileIfExists(repoRoot, `data/notes/${openedSource.fileName}`);
+                }
+            } else if (openedSource && (
                 openedSource.collectionName !== collectionName
                 || openedSource.fileName !== nextFileName
             )) {
@@ -1909,7 +1943,8 @@ export default function ArticleStudio() {
                 );
             }
 
-            setOpenedSource({ collectionName, fileName: nextFileName });
+            setOpenedSource({ collectionName, fileName: nextFileName, slug: safeSlug });
+            setRedirectFrom(nextRedirectFrom);
 
             setSaveState("saved");
             setStatusMessage(`${contentType === "article" ? "Статья" : "Заметка"} сохранена в data/${collectionName}/${safeSlug}.json`);
@@ -2001,6 +2036,27 @@ export default function ArticleStudio() {
                     Заметка
                 </button>
             </div>
+
+            {contentType === "note" && openedSource?.collectionName === "notes" ? (
+                <div className="article-studio__conversion">
+                    <div>
+                        <strong>Заметка стала достаточно большой?</strong>
+                        <p>Преобразуйте её в статью. Старый адрес заметки продолжит работать.</p>
+                    </div>
+                    <button
+                        type="button"
+                        className="button article-studio__convert-button"
+                        onClick={() => {
+                            setContentType("article");
+                            setSaveState("idle");
+                            setStatusMessage("Выберите теги и сохраните статью. Старый адрес заметки будет перенаправлять читателей автоматически.");
+                        }}
+                    >
+                        <FileText size={18} />
+                        <span>Преобразовать в статью</span>
+                    </button>
+                </div>
+            ) : null}
 
             <div className="article-studio__grid">
                 <div className="article-studio__main">

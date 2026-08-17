@@ -3,8 +3,16 @@ import { notFound } from "next/navigation";
 import { formatDate } from "@bodynarf/utils/date/format";
 
 import ArticleRenderer from "@/components/articleRenderer";
+import JsonLd from "@/components/jsonLd";
+import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 import { createArticleMetadata } from "@/shared/metadata";
-import { getEditableNoteBySlug, getEditableNotes } from "@/shared/editableNotes";
+import { createPublicationStructuredData } from "@/shared/structuredData";
+import {
+    getEditableNoteBySlug,
+    getEditableNoteRedirectBySlug,
+    getEditableNoteRedirects,
+    getEditableNotes,
+} from "@/shared/editableNotes";
 
 import "../styles.scss";
 
@@ -12,9 +20,10 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-    const notes = await getEditableNotes();
-    return notes.length
-        ? notes.map(note => ({ slug: note.slug }))
+    const [notes, redirects] = await Promise.all([getEditableNotes(), getEditableNoteRedirects()]);
+    const slugs = [...notes, ...redirects].map(note => ({ slug: note.slug }));
+    return slugs.length
+        ? slugs
         : [{ slug: "_empty" }];
 }
 
@@ -23,6 +32,15 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     const { slug } = await params;
     if (slug === "_empty") return {};
+    const noteRedirect = await getEditableNoteRedirectBySlug(slug);
+    if (noteRedirect) {
+        return {
+            robots: { index: false, follow: true },
+            alternates: {
+                canonical: `https://nerevarinka.github.io/Rice-And-Stripes${noteRedirect.redirectTo}`,
+            },
+        };
+    }
     const note = await getEditableNoteBySlug(slug);
     if (!note) return {};
 
@@ -41,6 +59,8 @@ export default async function EditableNotePage(
 ) {
     const { slug } = await params;
     if (slug === "_empty") return null;
+    const noteRedirect = await getEditableNoteRedirectBySlug(slug);
+    if (noteRedirect) return <LegacyArticleRedirect href={noteRedirect.redirectTo} />;
     const note = await getEditableNoteBySlug(slug);
     if (!note) notFound();
     const publishDate = new Date(note.publishDate);
@@ -49,6 +69,15 @@ export default async function EditableNotePage(
 
     return (
         <main className="note-detail">
+            <JsonLd data={createPublicationStructuredData({
+                title: note.title,
+                description: note.description,
+                slug: note.slug,
+                section: "notes",
+                coverUrl: note.coverUrl,
+                publishDate: note.publishDate,
+                updatedAt: note.updatedAt,
+            })} />
             <article className="note-detail__content content">
                 <h1 className="title is-2">{note.title}</h1>
                 <div className="note-detail__meta">

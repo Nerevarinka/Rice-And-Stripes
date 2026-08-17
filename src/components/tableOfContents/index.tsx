@@ -107,7 +107,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
 
     return (
         <div className={containerClassName}>
-            {isMobile && hasItems && (
+            {hasItems && (
                 <button
                     ref={toggleRef}
                     className={`toc-toggle${isMobileMenuOpen ? ' is-open' : ''}`}
