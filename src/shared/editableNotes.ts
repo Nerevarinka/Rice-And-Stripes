@@ -3,16 +3,20 @@ import "server-only";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
-import type { EditableNote, Note } from "@/models";
+import type { EditableNote, EditableNoteRedirect, Note } from "@/models";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 
 const NOTES_DIR = path.join(process.cwd(), "data", "notes");
 
-async function readEditableNoteFile(fileName: string): Promise<EditableNote | null> {
+type EditableNoteFile = EditableNote | EditableNoteRedirect;
+
+async function readEditableNoteFile(fileName: string): Promise<EditableNoteFile | null> {
     try {
         const raw = await readFile(path.join(NOTES_DIR, fileName), "utf8");
-        const note = JSON.parse(raw) as EditableNote;
-        return note.contentType === "note" && Array.isArray(note.blocks) ? note : null;
+        const note = JSON.parse(raw) as EditableNoteFile;
+        if (note.contentType === "note" && Array.isArray(note.blocks)) return note;
+        if (note.contentType === "noteRedirect" && note.slug && note.redirectTo) return note;
+        return null;
     } catch {
         return null;
     }
@@ -28,13 +32,32 @@ export async function getEditableNotes(): Promise<EditableNote[]> {
         );
 
         return notes
-            .filter((note): note is EditableNote => note !== null)
+            .filter((note): note is EditableNote => note?.contentType === "note")
             .sort((left, right) =>
                 new Date(right.publishDate).getTime() - new Date(left.publishDate).getTime()
             );
     } catch {
         return [];
     }
+}
+
+export async function getEditableNoteRedirects(): Promise<EditableNoteRedirect[]> {
+    try {
+        const fileNames = await readdir(NOTES_DIR);
+        const notes = await Promise.all(
+            fileNames
+                .filter(fileName => fileName.endsWith(".json"))
+                .map(readEditableNoteFile)
+        );
+        return notes.filter((note): note is EditableNoteRedirect => note?.contentType === "noteRedirect");
+    } catch {
+        return [];
+    }
+}
+
+export async function getEditableNoteRedirectBySlug(slug: string): Promise<EditableNoteRedirect | null> {
+    const redirects = await getEditableNoteRedirects();
+    return redirects.find(redirect => redirect.slug === slug) ?? null;
 }
 
 export async function getEditableNoteBySlug(slug: string): Promise<EditableNote | null> {

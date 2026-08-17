@@ -106,18 +106,17 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 
 	return (
 		<>
-			{isMobile && (
-				<button
-					ref={toggleRef}
-					className={`sidebar-burger${isMobileMenuOpen ? ' sidebar-burger--open' : ''}`}
-					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-					aria-label="Toggle menu"
-				>
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-			)}
+			<button
+				ref={toggleRef}
+				className={`sidebar-burger${isMobileMenuOpen ? ' sidebar-burger--open' : ''}`}
+				onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+				aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
+				aria-expanded={isMobileMenuOpen}
+			>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
 			{isMobile && isMobileMenuOpen && (
 				<div
 					className="sidebar-overlay"

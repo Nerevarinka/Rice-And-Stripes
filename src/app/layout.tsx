@@ -11,7 +11,9 @@ import "./globals.scss";
 import Sidebar from "@/components/sidebar";
 import MobileFlag from "@/components/mobileFlag";
 import ScrollProgress from "@/components/scrollProgress";
+import JsonLd from "@/components/jsonLd";
 import { getAllSidebarItems } from "@/shared/articleCatalog";
+import { createSiteStructuredData } from "@/shared/structuredData";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://nerevarinka.github.io"),
@@ -35,8 +37,9 @@ export default async function RootLayout({
 					}}
 				/>
 			</head>
-			<body className="antialiased is-clipped">
-				<MobileFlag />
+		<body className="antialiased is-clipped">
+			<JsonLd data={createSiteStructuredData()} />
+			<MobileFlag />
 				<div className="is-flex is-clipped" style={{ height: "100vh" }}>
 					<Sidebar menuItems={menuItems} />
 					<main className="is-flex-grow-1 pt-2 pl-4 main-content" style={{ overflowY: "auto" }}>
