@@ -256,14 +256,48 @@
     }
 }
 
+.embedded-video {
+	width: 100%;
+	margin: 1.5rem auto;
+
+	.video-with-caption__video-wrapper {
+		display: block;
+		width: 100%;
+		background-color: #171717;
+	}
+
+	&--small {
+		max-width: 25rem;
+	}
+
+	&--medium {
+		max-width: 35rem;
+	}
+
+	&--big {
+		max-width: 50rem;
+	}
+
+	iframe {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border: 0;
+		background-color: #171717;
+	}
+
+	.video-with-caption__caption {
+		margin-top: 0.25rem;
+	}
+}
+
 .embedded-video__troubleshooting {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.2rem;
 	position: relative;
-	margin-left: 0.3rem;
-	color: var(--bulma-text-weak);
-	font-size: 0.82rem;
+	color: #767676;
+	font-size: 0.72rem;
 	font-style: normal;
 	text-align: left;
 	cursor: help;
@@ -274,13 +308,24 @@
 		cursor: pointer;
 		text-decoration: underline;
 	}
+
+	svg {
+		display: block;
+		flex: 0 0 auto;
+		transform: translateY(1px);
+	}
+}
+
+.embedded-video__meta {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	margin-top: 0.2rem;
 }
 
 .embedded-video__help-label {
-	color: var(--color-link, #8a4b08);
-	text-decoration: underline;
-	text-decoration-style: dotted;
-	text-underline-offset: 0.2em;
+	color: #767676;
+	text-decoration: none;
 }
 
 .embedded-video__help-tooltip {
@@ -306,7 +351,7 @@
 }
 
 .embedded-video__help-separator {
-	margin-left: 0.35rem;
+	margin: 0 0.4rem;
 	font-style: normal;
 }
 

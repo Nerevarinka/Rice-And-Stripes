@@ -21,6 +21,7 @@ import {
     Copy,
     Eye,
     FileText,
+    NotebookTabs,
     FolderOpen,
     CircleHelp,
     CalendarDays,
@@ -40,6 +41,7 @@ import {
     RotateCcw,
     Save,
     Strikethrough,
+    Underline,
     Trash2,
     Video,
     Table2,
@@ -62,10 +64,12 @@ import type {
     EditableArticleMessageBlock,
     EditableArticleMessageContent,
     EditableArticleMessageVariant,
+    EditableArticleNoteEmbedBlock,
     EditableArticleRichTextBlock,
     EditableArticleSpoilerBlock,
     EditableArticleVideoBlock,
     EditableArticleVideoKind,
+    EmbeddedNoteSummary,
 } from "@/models/editableArticle";
 import { MediaItemTagColors, type MediaItemTag } from "@/models/mediaItemTag";
 import { createTocItemsFromBlocks } from "@/shared/utils/extractTocItemsFromHtml";
@@ -163,6 +167,7 @@ type BlockPaletteType =
     | "video"
     | "imageCarousel"
     | "message"
+    | "noteEmbed"
     | "spoiler";
 
 type BlockPaletteState = {
@@ -475,6 +480,10 @@ function createEmptySpoilerBlock(): EditableArticleSpoilerBlock {
     };
 }
 
+function createEmptyNoteEmbedBlock(): EditableArticleNoteEmbedBlock {
+    return { id: createId(), type: "noteEmbed", noteSlug: "" };
+}
+
 function createBlock(type: BlockPaletteType): EditableArticleBlock {
     switch (type) {
         case "richText":
@@ -489,6 +498,8 @@ function createBlock(type: BlockPaletteType): EditableArticleBlock {
             return createEmptyCarouselBlock();
         case "message":
             return createEmptyMessageBlock();
+        case "noteEmbed":
+            return createEmptyNoteEmbedBlock();
         case "spoiler":
             return createEmptySpoilerBlock();
         default:
@@ -510,6 +521,8 @@ function getBlockLabel(block: EditableArticleBlock) {
             return "Карусель";
         case "message":
             return `Сообщение (${block.variant})`;
+        case "noteEmbed":
+            return "Встроенная заметка";
         case "spoiler":
             return "Спойлер";
         default:
@@ -552,12 +565,23 @@ type RichTextEditorProps = {
 function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
     const selectedTableCellsRef = useRef<{ anchor: number; head: number } | null>(null);
     const cleanTrailingEmptyParagraph = (html: string) => {
-        if (/<\/table><p>(?:<br>)?<\/p>$/.test(html)) return html;
-        return html.replace(/(?:<p>(?:<br>)?<\/p>)+$/g, "") || "<p></p>";
+        let cleaned = html;
+        let previous = "";
+
+        while (cleaned !== previous) {
+            previous = cleaned;
+            cleaned = cleaned
+                .replace(/<li><p>(?:\s|<br\s*\/?\s*>)*<\/p><\/li>(\s*<\/(?:ul|ol)>)/gi, "$1")
+                .replace(/<p>(?:\s|<br\s*\/?\s*>)*<\/p>(?=\s*<\/(?:blockquote|div)>)/gi, "")
+                .replace(/(?:<p>(?:\s|<br\s*\/?\s*>)*<\/p>)+$/gi, "");
+        }
+
+        return cleaned || "<p></p>";
     };
 
     const editor = useEditor({
         immediatelyRender: false,
+        enableInputRules: false,
         shouldRerenderOnTransaction: true,
         extensions: [
             StarterKit.configure({
@@ -605,16 +629,20 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
     }
 
     const toggleLink = () => {
+        const selection = {
+            from: editor.state.selection.from,
+            to: editor.state.selection.to,
+        };
         const currentHref = editor.getAttributes("link").href ?? "";
         const href = window.prompt("Адрес ссылки (оставьте пустым, чтобы удалить)", currentHref);
         if (href === null) return;
 
         if (!href.trim()) {
-            editor.chain().focus().extendMarkRange("link").unsetLink().run();
+            editor.chain().focus().setTextSelection(selection).extendMarkRange("link").unsetLink().unsetUnderline().run();
             return;
         }
 
-        editor.chain().focus().extendMarkRange("link").setLink({ href: href.trim() }).run();
+        editor.chain().focus().setTextSelection(selection).extendMarkRange("link").setLink({ href: href.trim() }).run();
     };
 
     const addTable = () => editor.chain()
@@ -696,6 +724,9 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
                 <button type="button" className={`button is-small ${editor.isActive("strike") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleStrike().run()} aria-label="Зачёркнутый текст" title="Зачёркнутый текст">
                     <Strikethrough size={16} />
                 </button>
+                <button type="button" className={`button is-small ${editor.isActive("underline") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleUnderline().run()} aria-label="Подчёркнутый текст" title="Подчёркнутый текст">
+                    <Underline size={16} />
+                </button>
                 {([1, 2, 3] as const).map(level => (
                     <button
                         key={level}
@@ -745,6 +776,7 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
 
 function InlineTextEditor({ value, onChange, defaultItalic = false }: { value: string; onChange: (html: string) => void; defaultItalic?: boolean }) {
     const editor = useEditor({
+        enableInputRules: false,
         shouldRerenderOnTransaction: true,
         extensions: [
             StarterKit.configure({
@@ -790,16 +822,20 @@ function InlineTextEditor({ value, onChange, defaultItalic = false }: { value: s
     if (!editor) return null;
 
     const toggleLink = () => {
+        const selection = {
+            from: editor.state.selection.from,
+            to: editor.state.selection.to,
+        };
         const currentHref = editor.getAttributes("link").href ?? "";
         const href = window.prompt("Адрес ссылки (оставьте пустым, чтобы удалить)", currentHref);
         if (href === null) return;
 
         if (!href.trim()) {
-            editor.chain().focus().extendMarkRange("link").unsetLink().run();
+            editor.chain().focus().setTextSelection(selection).extendMarkRange("link").unsetLink().unsetUnderline().run();
             return;
         }
 
-        editor.chain().focus().extendMarkRange("link").setLink({ href: href.trim() }).run();
+        editor.chain().focus().setTextSelection(selection).extendMarkRange("link").setLink({ href: href.trim() }).run();
     };
 
     const toggleItalic = () => {
@@ -822,6 +858,7 @@ function InlineTextEditor({ value, onChange, defaultItalic = false }: { value: s
                 <button type="button" className={`button is-small ${editor.isActive("bold") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleBold().run()} title="Жирный" aria-label="Жирный"><Bold size={15} /></button>
                 <button type="button" className={`button is-small ${(defaultItalic ? !editor.isActive("captionNormal") : editor.isActive("italic")) ? "is-link" : "is-light"}`} onClick={toggleItalic} title="Курсив" aria-label="Курсив"><Italic size={15} /></button>
                 <button type="button" className={`button is-small ${editor.isActive("strike") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleStrike().run()} title="Зачёркнуто" aria-label="Зачёркнуто"><Strikethrough size={15} /></button>
+                <button type="button" className={`button is-small ${editor.isActive("underline") ? "is-link" : "is-light"}`} onClick={() => editor.chain().focus().toggleUnderline().run()} title="Подчёркнуто" aria-label="Подчёркнуто"><Underline size={15} /></button>
                 <button type="button" className={`button is-small ${editor.isActive("link") ? "is-link" : "is-light"}`} onClick={toggleLink} title="Добавить или изменить ссылку" aria-label="Добавить или изменить ссылку"><Link2 size={15} /></button>
             </div>
             <EditorContent editor={editor} />
@@ -978,6 +1015,7 @@ function NestedCarouselEditor({ carousel, repoRoot, assetFolder, onChange, onDel
 
 type BlockCardProps = {
     block: EditableArticleBlock;
+    notes: EmbeddedNoteSummary[];
     index: number;
     total: number;
     repoRoot: FileSystemDirectoryHandle | null;
@@ -995,6 +1033,7 @@ type BlockCardProps = {
 
 function BlockCard({
     block,
+    notes,
     index,
     total,
     repoRoot,
@@ -1132,6 +1171,39 @@ function BlockCard({
                             <label className="label">Текст заголовка</label>
                             <input className="input" value={block.text} onChange={event => onChange({ ...block, text: event.target.value })} />
                         </div>
+                    </div>
+                ) : null}
+
+                {block.type === "noteEmbed" ? (
+                    <div className="article-studio__block-form article-studio__note-embed-editor">
+                        <div className="field">
+                            <label className="label">Заметка</label>
+                            <div className="select is-fullwidth">
+                                <select
+                                    value={block.noteSlug}
+                                    onChange={event => onChange({ ...block, noteSlug: event.target.value })}
+                                >
+                                    <option value="">Выберите заметку…</option>
+                                    {notes.map(note => (
+                                        <option key={note.slug} value={note.slug}>{note.title}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <p className="help">Карточка будет брать актуальные заголовок, описание, дату и обложку из оригинала.</p>
+                        </div>
+                        {(() => {
+                            const note = notes.find(item => item.slug === block.noteSlug);
+                            return note ? (
+                                <div className="article-studio__note-embed-preview">
+                                    <div>
+                                        <span>Заметка · {formatDateInputValue(note.publishDate.slice(0, 10))}</span>
+                                        <strong>{note.title}</strong>
+                                        {note.description ? <p>{note.description}</p> : null}
+                                    </div>
+                                    {note.coverUrl ? <img src={withBasePath(note.coverUrl)} alt="" /> : null}
+                                </div>
+                            ) : null;
+                        })()}
                     </div>
                 ) : null}
 
@@ -1560,9 +1632,11 @@ function BlockCard({
 function BlockPalette({
     onChoose,
     onClose,
+    allowNoteEmbed,
 }: {
     onChoose: (type: BlockPaletteType) => void;
     onClose: () => void;
+    allowNoteEmbed: boolean;
 }) {
     const options: Array<{ type: BlockPaletteType; title: string; description: string; icon: ReactNode }> = [
         { type: "richText", title: "Обычный текст", description: "Абзацы, списки, ссылки, таблицы и фрагменты кода.", icon: <FileText size={18} /> },
@@ -1571,6 +1645,7 @@ function BlockPalette({
         { type: "video", title: "Видео", description: "Ссылка YouTube/Vimeo или видеофайл из проекта.", icon: <Video size={18} /> },
         { type: "imageCarousel", title: "Карусель картинок", description: "Один блок с несколькими листаемыми изображениями.", icon: <LayoutGrid size={18} /> },
         { type: "message", title: "Цветная заметка", description: "Важная мысль, совет, предупреждение или цитата. Можно сворачивать.", icon: <MessageSquareMore size={18} /> },
+        { type: "noteEmbed", title: "Встроенная заметка", description: "Карточка существующей заметки со ссылкой на оригинал.", icon: <NotebookTabs size={18} /> },
         { type: "spoiler", title: "Раскрывающийся раздел", description: "Скрытый до клика текст, например список литературы.", icon: <Eye size={18} /> },
     ];
 
@@ -1584,7 +1659,7 @@ function BlockPalette({
                     </button>
                 </div>
                 <div className="article-studio__palette-grid">
-                    {options.map(option => (
+                    {options.filter(option => allowNoteEmbed || option.type !== "noteEmbed").map(option => (
                         <button
                             key={option.type}
                             type="button"
@@ -1604,7 +1679,7 @@ function BlockPalette({
     );
 }
 
-export default function ArticleStudio() {
+export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] }) {
     const [contentType, setContentType] = useState<"article" | "note">("article");
     const [shouldOptimizeImages, setShouldOptimizeImages] = useState(true);
     const [repoRoot, setRepoRoot] = useState<FileSystemDirectoryHandle | null>(null);
@@ -1872,6 +1947,17 @@ export default function ArticleStudio() {
 
         if (!hasRequiredFields) {
             setStatusMessage("Заполните заголовок, дату публикации и slug в формате fungi-in-food.");
+            return;
+        }
+
+        const noteEmbedBlocks = blocks.filter((block): block is EditableArticleNoteEmbedBlock => block.type === "noteEmbed");
+        if (contentType === "note" && noteEmbedBlocks.length > 0) {
+            setStatusMessage("Встроенные заметки можно добавлять только в статью. Удалите такой блок или выберите режим «Статья».");
+            return;
+        }
+        const missingNote = noteEmbedBlocks.find(block => !notes.some(note => note.slug === block.noteSlug));
+        if (missingNote) {
+            setStatusMessage("В блоке «Встроенная заметка» нужно выбрать существующую заметку.");
             return;
         }
 
@@ -2226,6 +2312,7 @@ export default function ArticleStudio() {
                             <BlockCard
                                 key={block.id}
                                 block={block}
+                                notes={notes}
                                 index={index}
                                 total={blocks.length}
                                 repoRoot={repoRoot}
@@ -2324,6 +2411,7 @@ export default function ArticleStudio() {
                 <BlockPalette
                     onChoose={choosePaletteItem}
                     onClose={() => setPalette(null)}
+                    allowNoteEmbed={contentType === "article"}
                 />
             ) : null}
         </section>

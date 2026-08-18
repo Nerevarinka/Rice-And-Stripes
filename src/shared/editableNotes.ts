@@ -4,7 +4,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
 
-import type { EditableNote, EditableNoteRedirect, Note } from "@/models";
+import type { EditableNote, EditableNoteRedirect, EmbeddedNoteSummary, Note } from "@/models";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 
 const NOTES_DIR = path.join(process.cwd(), "data", "notes");
@@ -72,5 +72,15 @@ export function editableNoteToCard(note: EditableNote): Note {
         tags: [],
         image: note.coverUrl ? normalizeEditableArticleAssetUrl(note.coverUrl) : undefined,
         imageAlt: note.title,
+    };
+}
+
+export function editableNoteToEmbedSummary(note: EditableNote): EmbeddedNoteSummary {
+    return {
+        slug: note.slug,
+        title: note.title,
+        description: note.description,
+        coverUrl: note.coverUrl,
+        publishDate: note.publishDate,
     };
 }

@@ -12,7 +12,7 @@ export const metadata: Metadata = createCommonMetadata(
 
 export default function FinchesPage() {
     return (
-        <div className="finches-page">
+        <div className="finches-page mx-4">
             <header className="finches-page__header">
                 <h1 className="title is-2">Мои амадины</h1>
                 <p>

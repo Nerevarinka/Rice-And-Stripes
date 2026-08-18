@@ -1,9 +1,7 @@
 @use "../../../shared/styles/variables" as *;
 
 .site-search-page {
-	max-width: 60rem;
-	margin: 0 auto;
-	padding: 2rem 1.5rem 4rem 0;
+	padding-bottom: 4rem;
 }
 
 .site-search-page__heading {
@@ -11,7 +9,14 @@
 	align-items: center;
 	gap: 0.65rem;
 	margin-bottom: 1rem;
-	color: $primary-brown;
+	color: var(--bulma-title-color);
+
+	> svg {
+		width: 1.9rem;
+		height: 1.9rem;
+		flex: 0 0 auto;
+		stroke-width: 2.25;
+	}
 
 	.title {
 		margin: 0;
@@ -51,14 +56,72 @@
 	}
 }
 
+.site-search-options {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem 1.5rem;
+	max-width: 60rem;
+	margin-bottom: 1.5rem;
+	padding: 0.85rem 1rem;
+	border-radius: 6px;
+	background-color: var(--bulma-scheme-main);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.site-search-options__group {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.site-search-options__label {
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.site-search-scope {
+	display: inline-flex;
+	border: 1px solid rgba($primary-brown, 0.35);
+	border-radius: 6px;
+	overflow: hidden;
+
+	button {
+		padding: 0.55rem 0.8rem;
+		border: 0;
+		border-right: 1px solid rgba($primary-brown, 0.2);
+		background: #fffaf2;
+		color: $primary-brown;
+		font: inherit;
+		cursor: pointer;
+
+		&:last-child {
+			border-right: 0;
+		}
+
+		&:hover,
+		&.is-active {
+			background: $background-beige;
+		}
+
+		&.is-active {
+			font-weight: 600;
+			box-shadow: inset 0 -2px 0 $primary-brown;
+		}
+	}
+}
+
 .site-search-page__clear,
 .site-search-page__submit {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: 2.75rem;
+	padding: 0;
 	border: 0;
+	border-radius: 0;
 	background: transparent;
+	box-shadow: none;
 	color: $primary-brown;
 	cursor: pointer;
 
@@ -102,12 +165,44 @@
 	}
 }
 
-.site-search-result__kind {
+.site-search-result__meta {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.35rem 0.8rem;
+	width: 100%;
 	font-size: 0.78rem;
-	font-weight: 600;
 	color: $text-muted;
+
+	time {
+		margin-left: auto;
+		text-align: right;
+	}
+}
+
+.site-search-result__kind {
+	font-weight: 600;
 }
 
 html.is-mobile .site-search-page {
-	padding: 1.25rem 1rem 3rem 0;
+	padding-bottom: 3rem;
+
+	.site-search-options,
+	.site-search-options__group {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.site-search-options {
+		gap: 0.85rem;
+	}
+
+	.site-search-scope {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+
+		button {
+			padding-inline: 0.45rem;
+		}
+	}
 }

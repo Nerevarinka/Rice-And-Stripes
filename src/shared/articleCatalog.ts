@@ -88,6 +88,7 @@ export async function getSiteSearchItems(): Promise<SearchItem[]> {
             link: article.link,
             kind: "Статья" as const,
             searchText: compactSearchText(`${article.caption} ${article.description} ${body}`),
+            publishDate: article.publishDate.toISOString(),
         };
     }));
 
@@ -103,6 +104,7 @@ export async function getSiteSearchItems(): Promise<SearchItem[]> {
         link: note.link,
         kind: "Заметка",
         searchText: compactSearchText(`${note.caption ?? ""} ${note.description} ${JSON.stringify(editableNote?.blocks ?? [])}`),
+        publishDate: note.publishDate.toISOString(),
         };
     });
 

@@ -108,6 +108,20 @@ export type EditableArticleSpoilerBlock = {
     defaultOpen?: boolean;
 };
 
+export type EditableArticleNoteEmbedBlock = {
+    id: string;
+    type: "noteEmbed";
+    noteSlug: string;
+};
+
+export type EmbeddedNoteSummary = {
+    slug: string;
+    title: string;
+    description: string;
+    coverUrl: string;
+    publishDate: string;
+};
+
 export type EditableArticleBlock =
     | EditableArticleRichTextBlock
     | EditableArticleHeadingBlock
@@ -115,7 +129,8 @@ export type EditableArticleBlock =
     | EditableArticleImageCarouselBlock
     | EditableArticleVideoBlock
     | EditableArticleMessageBlock
-    | EditableArticleSpoilerBlock;
+    | EditableArticleSpoilerBlock
+    | EditableArticleNoteEmbedBlock;
 
 export type EditableArticle = {
     schemaVersion: 2;

@@ -12,6 +12,10 @@ export default async function CreateArticlePage() {
         );
 	}
 
-	const { default: ArticleStudio } = await import("@/components/admin/articleStudio");
-	return <ArticleStudio />;
+	const [{ default: ArticleStudio }, { editableNoteToEmbedSummary, getEditableNotes }] = await Promise.all([
+		import("@/components/admin/articleStudio"),
+		import("@/shared/editableNotes"),
+	]);
+	const notes = (await getEditableNotes()).map(editableNoteToEmbedSummary);
+	return <ArticleStudio notes={notes} />;
 }

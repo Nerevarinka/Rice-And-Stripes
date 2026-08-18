@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "7283c5a7-3a27-4b69-be18-b9cfd0d7e902",
+  "slug": "branches-all-year",
+  "title": "Приносим ветки груглый год",
+  "description": "Можно ли давать ветки птицам зимой?",
+  "coverUrl": "/uploads/notes/branches-all-year/szWqTn0CBuY.webp",
+  "publishDate": "2025-01-26T09:00:00.000Z",
+  "updatedAt": "2026-08-18T14:14:08.654Z",
+  "status": "published",
+  "blocks": [
+    {
+      "id": "a5c1e1cc-7152-436f-bdac-0c41232b3ce0",
+      "type": "richText",
+      "html": "<p>Некоторые владельцы птиц сомневаются, можно ли приносить осенью и зимой веточный корм. В это время ветки выглядят не очень привлекательно, и это может сбить с толку.</p><p></p><p>Но побеги остаются живыми, и если их поставить в тепле в воду, из почек могут распуститься листочки. Так что зимой тоже можно и нужно давать питомцам не только ветви хвойных деревьев, но и лиственных.</p><p></p><p>Наши рисовки обожают разгрызать почки, поэтому ветки приходится от них временно прятать, если хочется дождаться появления зелени.</p>"
+    },
+    {
+      "id": "1451ef32-f105-434c-9756-5576e0ab3e6d",
+      "type": "image",
+      "imageUrl": "/uploads/notes/branches-all-year/szWqTn0CBuY.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    }
+  ],
+  "html": "<div class=\"content article-block article-block--richtext\"><p>Некоторые владельцы птиц сомневаются, можно ли приносить осенью и зимой веточный корм. В это время ветки выглядят не очень привлекательно, и это может сбить с толку.</p><p></p><p>Но побеги остаются живыми, и если их поставить в тепле в воду, из почек могут распуститься листочки. Так что зимой тоже можно и нужно давать питомцам не только ветви хвойных деревьев, но и лиственных.</p><p></p><p>Наши рисовки обожают разгрызать почки, поэтому ветки приходится от них временно прятать, если хочется дождаться появления зелени.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/notes/branches-all-year/szWqTn0CBuY.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    ",
+  "tocItems": [],
+  "readingTimeMinutes": 1,
+  "contentType": "note"
+}

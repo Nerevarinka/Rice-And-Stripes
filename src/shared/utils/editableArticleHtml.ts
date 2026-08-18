@@ -49,7 +49,7 @@ function renderRichTextBlock(block: EditableArticleRichTextBlock) {
 
 function renderHeadingBlock(block: EditableArticleHeadingBlock) {
     const tag = `h${block.level}`;
-    const levelClass = `is-${block.level}`;
+    const levelClass = `is-${block.level + 1}`;
     return `<${tag} id="${escapeHtml(block.id)}" class="title ${levelClass}">${escapeHtml(block.text)}</${tag}>`;
 }
 
@@ -207,6 +207,8 @@ export function serializeEditableArticleBlocksToHtml(blocks: EditableArticleBloc
                     return renderMessageBlock(block);
                 case "spoiler":
                     return renderSpoilerBlock(block);
+                case "noteEmbed":
+                    return `<aside class="embedded-note"><a href="/notes/${escapeHtml(block.noteSlug)}">Открыть встроенную заметку</a></aside>`;
                 default:
                     return "";
             }

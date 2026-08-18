@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 2,
+  "id": "a2240c84-5910-416b-b1f2-e421f2e80594",
+  "slug": "toys-for-finches",
+  "title": "Игрушки для амадин: чем занять птичку",
+  "description": "Нужны ли амадинам качели? Что такое копошилка? Безопасны ли фонтанчики? Можно ли весить зеркало амадинам?",
+  "coverUrl": "/uploads/articles/toys-for-finches/EzgW0OLVIAElJbh1.webp",
+  "publishDate": "2025-03-31T09:00:00.000Z",
+  "updatedAt": "2026-08-18T18:06:36.450Z",
+  "status": "published",
+  "blocks": [
+    {
+      "id": "c4bc76aa-7d06-4483-9a31-8a1090a8cd3a",
+      "type": "richText",
+      "html": "<p><em>\"Амадины не попугаи, им не нужны игрушки.\"</em> Эту фразу понимают слишком буквально, в итоге в клетке у них есть только пара перекладин. Что остается птицам? Либо драться, либо размножаться - когда еда всегда под боком и рядом нет хищников, больше особо заняться нечем. А ведь для их психики важно разнообразить полную рутины жизнь.</p><p></p><p>У нас самые активные в этом плане рисовки - им все время нужно что-то изучать и тюкать, поэтому приходится думать, как бы не дать им заскучать, когда нас нет дома и они сидят в клетке.</p><p></p><p>Предлагаю варианты для обогащения окружающей среды и улучшения качества жизни птичек.</p>"
+    },
+    {
+      "id": "481d88c9-3653-405f-8ce4-d44f212716ea",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/EzgW0OLVIAElJbh1.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "9c568e2f-d8ce-4712-b861-56893de4d8ba",
+      "type": "heading",
+      "level": 2,
+      "text": "1. Качели"
+    },
+    {
+      "id": "691e5730-6fca-4568-b705-5e90fe19d835",
+      "type": "richText",
+      "html": "<p>Сидеть на качелях - хорошее физическое упражнение, ведь нужно удерживать равновесие. А для того, чтобы приземлиться на раскачивающуюся присаду, надо иметь хорошую координацию.</p><p></p><p>У нас качели особо обожал <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/wall-229064209_64\"><u>Зефир</u></a>, даже спал на них и не пускал посидеть Пингвинчика. Причем у него были свои любимые, которые мотались во все стороны, на новых, более устойчивых, ему не очень понравилось сидеть. А вот Крабик качелей очень боялся сначала, у него начиналась паника, когда случайно садился на них. Так что пришлось снять их, пока он еще сидел в отдельной клетке. По-видимому, дома у него были только устойчивые жердочки. Но когда он начал жить с Пингвинчиком, то распробовал по его примеру и теперь чувствует себя на них очень уверенно.</p>"
+    },
+    {
+      "id": "d127f399-2b07-4dd7-a442-f6665c822049",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/zFBpW3vBk6tEtSwkhvrX2-gkYN5NIeqB4OuM-qOfHomDbeCw-DRpM4XVHpHodHOq4wMSuaazwEztoFfIzsbROhPs.webp",
+      "alt": "Амадина на качелях",
+      "caption": "Зефир на своих любимых качелях",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "05ba5ba1-ec05-456d-8dee-d14fa216cb8a",
+      "type": "heading",
+      "level": 2,
+      "text": "2. Веточки большие и маленькие"
+    },
+    {
+      "id": "9f53006f-ba90-4584-bdf4-5c823115d613",
+      "type": "richText",
+      "html": "<p>Большие ветвистые побеги становятся интересными присадами с изогнутыми, наклонными и вертикальными поверхностями, по которым можно прыгать и карабкаться. На тонких раскачивающихся веточках сложно удерживать баланс - опять, же, как и с качелями, это хорошая тренировка.</p>"
+    },
+    {
+      "id": "287fe25c-de24-42f9-b325-7555c4d6f130",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/NwPvpaq5ZhxY5r-4jFZ-_H6NB6rOV3pDGi9XiqVleDRqmUUzM62EZffUiv9qa6OapIgDiAc9Ja0qXqqe_WQXyhcK.webp",
+      "alt": "Амадины на ветках",
+      "caption": "Клоп и Бимж среди веток ольхи",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "f6cf3c72-f1eb-450b-aa44-fe7e93845b9b",
+      "type": "richText",
+      "html": "<p>Почки, сережки, кора на кончиках тонких побегов, листва, хвоя, мох и лишайники - то, что можно с удовольствием отковырять и/или съесть. Собирать ветки надо в дали от дорог, лучше всего в лесу. Перед подачей достаточно <strong>хорошо промыть</strong> потоком теплой воды, ошпаривать или замачивать в уксусе не нужно - это не убьет все микроорганизмы, но убьет полезное.</p><p></p><p>Рисовки у нас не жуют свежую хвою сосны, а ждут, пока она засохнет, чтобы поотрывать иголочки.</p><p></p><p>Все ветки я ставлю в воду, чтобы не засохли быстро. Если дело происходит зимой, то таким способом можно получить молодые сочные листочки.</p>"
+    },
+    {
+      "id": "37156836-cde5-49a9-bd29-776a30e2ba6f",
+      "type": "noteEmbed",
+      "noteSlug": "branches-all-year"
+    },
+    {
+      "id": "93e4d8bc-a126-45a3-b45f-929c87932b48",
+      "type": "richText",
+      "html": "<p>Кстати, даже обычная замена жердочек тоже вносит небольшую новизну.</p><p></p><p>Что нужно иметь ввиду - веточки могут создать укромные места, которые спровоцируют <em>особо озабоченных</em> зебр строить гнездо.</p>"
+    },
+    {
+      "id": "899fcadc-ef22-4beb-a159-299d9065ab0d",
+      "type": "heading",
+      "level": 2,
+      "text": "3. Что-то для тормошения, дерганья и разрывания"
+    },
+    {
+      "id": "850391bc-9424-4dcd-9bc5-6a796701a04e",
+      "type": "richText",
+      "html": "<p>Амадины могут быть любителями разрушать предметы и разбирать их на части. Вот что у моих птиц есть в этой категории.</p>"
+    },
+    {
+      "id": "6d8da68d-78f9-480a-9d79-9d971a3a3c89",
+      "type": "richText",
+      "html": "<ul><li><p>Букетики - сейчас у них есть из засушенных цветковых растений, летом можно собрать из свежих (заодно поедят).</p></li></ul>"
+    },
+    {
+      "id": "bd7dae50-83cc-4bd3-949e-e5c35db5a0f3",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239034",
+      "caption": "Пингвигчик и Крабик разбирают букетик-ассорти из сухих трав",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "7cf19dbf-0a0d-4174-bbb3-4faf1504951e",
+      "type": "richText",
+      "html": "<ul><li><p>Набор мячей из кокосового и сизалевого волокон, листьев, похожих на кукурузные, и луговых трав.</p></li></ul>"
+    },
+    {
+      "id": "33779939-98f4-4589-b1ae-a3503eaf0406",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/gIYt7NyxsUJmQfTcoGd8TREzQgKjT5xaKEtFEjrNPcQ9iapb4WJ-wzpFdrlPuoekPW8COj_Yq_95_34sM5HLkwEt.webp",
+      "alt": "",
+      "caption": "Мячи",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "50969ee4-80f9-446c-83c4-cb5062d548c6",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239103",
+      "caption": "Клопик тормошит огромный шар",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "bda11c30-771d-498c-babf-e2eaf9a25750",
+      "type": "richText",
+      "html": "<p>Можно подвесить или просто положить. Еще ни один шар не разобрали, только потрепали чуть-чуть.</p>"
+    },
+    {
+      "id": "74f07446-8116-4003-b26e-9cf51548b7ca",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/video-229064209_456239018",
+      "caption": "Катаем шары (спойлер: и роняем)",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "73363c8e-2a12-4494-aa55-2383f527a581",
+      "type": "richText",
+      "html": "<ul><li><p>Плетеные шарики из ротанга (лиана такая). Лучше брать <strong>неокрашенные</strong>. Их можно подвесить гирляндой, вставить туда что-нибудь, чтобы вытаксивали.</p></li></ul><p>Я закрепляла в таких перья, потому что было время, когда Крабик пощипывал Пингвинчика.</p>"
+    },
+    {
+      "id": "71d7770b-80ba-447a-9a38-999536b91406",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/D6bITkE5mLyzVQ2yMCKGtAf3bbE8KidSrbmKNS_rb8g3HQnsC3zoEQUEk44WSHK8reaiu-uG961Q_uP1bNZgrKqZ.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "9c5a5370-3996-4e81-808b-afdd035f3c6e",
+      "type": "richText",
+      "html": "<ul><li><p>«Пиньята» - игрушка, которую можно потрошить. Под плотной соломенной сеткой у нее тонкие бумажки (наполнитель для коробок). Качество не особо понравилось, но можно использовать ее как идею для вдохновения и самим сделать похожее.</p></li></ul>"
+    },
+    {
+      "id": "6af5d46f-bc93-493a-be37-fd69d46193ca",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/U-eAXzrIxdaUfrMY3xK4W_H8Q7cCzP8JOfalwJBwz17ztKJYvC1Jk8N3ngAE1_ps2nGVtXE1nOVNqjzkhGqoH7-W.webp",
+      "alt": "",
+      "caption": "Напоминает ловец снов. Но по факту это ловец рисовок",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "3cd4a18b-87c0-4a04-be44-3879cb67b39f",
+      "type": "richText",
+      "html": "<ul><li><p>Пучок джутовых веревочек (или из пеньки) - раньше висел такой. Самый простой вариант. Джут можно найти в хозяйственных, садовых и строительных магазинах или заказать на маркетплейсах.</p></li></ul>"
+    },
+    {
+      "id": "0ec1117e-2a3a-4eb8-9cfb-6210c00b05fa",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/vfMpGuVoWyuKJ0INSCEIC-o_Rl8GOdg-Rng9hhxCHaLLk2foTzQt9hgzk2R-k9DHAfZNMUEtix23gNDMHJjImTPQ.webp",
+      "alt": "",
+      "caption": "Шпагат из джута",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "ece83eed-a1df-48f8-a2ab-9644710cf6ae",
+      "type": "message",
+      "variant": "danger",
+      "title": "Будьте осторожны с веревками!",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "cbb19e63-d0c8-4fa4-aeea-f8966e1a8eab",
+          "type": "richText",
+          "html": "<p>Не рекомендуется использовать хлопковые (в игрушке-пиньяте выше как раз такие канатики), потому что они распадаются на длинные нити. Известно много случаев, когда из зоба попугаев хирургическим путем доставали большой комок таких ниток, потому что они цеплялись друг за друга. Я не знаю аналогичных случаев с амадинами, потому что они не склонны проглатывать такие несъедобные предметы, но для них опасность длинных нитей заключается в том, что в них может запутатся лапка или коготок. Это может закончиться ампутацией, если не заметить вовремя.</p>"
+        },
+        {
+          "id": "af1e7620-814f-4027-961f-0a85bc387d17",
+          "type": "image",
+          "imageUrl": "/uploads/articles/toys-for-finches/1787060929741.webp",
+          "alt": "1787060929741.png",
+          "caption": "Случай из практики врача",
+          "source": "",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        },
+        {
+          "id": "535ad59d-cdb5-4558-babc-bf83835544a5",
+          "type": "richText",
+          "html": "<p>Джут, в отличие от хлопка, распадается на короткие фрагменты. Тем не менее, врачам иногда приходится доставать из зобов и джутовые \"валенки\". Это расстройство пищевого поведения возникает, как правило, из-за болезни: у птицы болит ЖКТ, и после наполнения ей становится легче.</p>"
+        }
+      ]
+    },
+    {
+      "id": "afd258b3-8e52-4a3c-8428-9cb555304ea0",
+      "type": "message",
+      "variant": "info",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "b2677054-179e-4c4e-9960-c65aa19e8ccf",
+          "type": "richText",
+          "html": "<p>📝 Игрушки из этого пункта могут провоцировать половое поведение. Чтобы их не растаскали на гнездо, лучше, чтобы их можно было дергать, но не отрывать куски. Это актуально для наших зебриков, рисовки реагируют адекватно.</p>"
+        }
+      ]
+    },
+    {
+      "id": "9a0e0e2b-a895-4dee-9b6f-98eb0432551b",
+      "type": "heading",
+      "level": 2,
+      "text": "4. Копошилки"
+    },
+    {
+      "id": "97b8f846-c2e9-4357-af40-1fa858375aa5",
+      "type": "message",
+      "variant": "dark",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "c9f3e56c-8001-46e9-83a7-a6954bbafe37",
+          "type": "richText",
+          "html": "<p>Как только не пишут это слово..</p><ul><li><p><em>Капашилка</em></p></li><li><p><em>Копашилка</em></p></li><li><p><em>Капошилка</em></p></li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "19b3df14-a94d-4fcd-b6ce-017a932c0a3a",
+      "type": "richText",
+      "html": "<p><strong>Копошилка </strong>(от слова <em>\"копошиться\"</em>) - маст-хэв для амадин, который, наверно, понравится всем. Позволяет проявлять поведение, как в естественной среде - птицы проводят много времени на земле в поисках семян и насекомых.</p><p></p><p>Копошилка - это не маленькая отдельная кормушка с толчеными травками, а посудина, куда можно залезть с ногами, желательно нескольким птицам. Ее наполняют <strong>сухими </strong>компонентами.</p><p></p><p>Чем ее наполнить? Вашей фантазией ✨</p><p></p><ul><li><p><strong>Аптечные травы.</strong> Это измельченные лекарственные растения, которые используют для приготовления отваров, например, цветки ромашки, лист брусники, кора дуба. Насколько мне известно, ограничений тут нет - все продающиеся травы безопасны.</p></li></ul><p>Начать можно с пары-тройки компонентов, потом докупать по мере возможности. Не факт, что хоть что-то птицы из этого будут есть - мои быстро теряют интерес к копошилке, которая состоит только из одних трав.</p>"
+    },
+    {
+      "id": "7db4a957-d5b4-412c-b937-9b14788d6f64",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/DfZal6y0WgaqTl8-7OF3f6c-A2spYC-iRtsmLiyXkZGz_hQiAR20CKo-0LyJdflr96xEelUXawJR7HE-OEFYsWFD.webp",
+      "alt": "",
+      "caption": "Пример упаковки. Тут пакетики наподобие чайных, но удобнее, когда пакет цельный.",
+      "source": "",
+      "size": "small",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "f9f0cdcc-fc14-4359-af34-ab3d15201081",
+      "type": "richText",
+      "html": "<ul><li><p><strong>Компоненты покрупнее.</strong> Сухие цельные листья, кусочки фруктов, ягоды, мох, травинки, маленькие веточки, шишки, цветы… Амадины могут воспринять содержимое как материал для гнезда, будьте внимательны. В этом случае перейдите на копошилку с элементами более мелкой фракции.</p></li></ul>"
+    },
+    {
+      "id": "7da23dda-46bd-49e8-a63d-5cd8f35d6306",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/HU_mXCUri7jnaSs1UdMdFhzEE06YoxK-MENJROy1BXPnSms1KcUdxViv9lgfx3xN35TqDshbQb11kL7j2gUbG-Nr.webp",
+      "alt": "",
+      "caption": "Не копошилка, а копошилище",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "1b011c6e-be68-46dc-b64e-a4192fa79557",
+      "type": "richText",
+      "html": "<p>Еще я подкладываю туда небольшие предметы, такие как игрушки из киндера. Птицам не обязательно с ними взаимодействовать, они просто создают <strong>разнообразие</strong>.</p><p></p><p>Рисовки таскают из такой копошилки что-нибудь и носят туда-сюда (на видео веточка не из копошилки, но принцип тот же).</p>"
+    },
+    {
+      "id": "74f4e1a1-04b5-4820-bafa-bbc62ea3a43c",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/video-229064209_456239020",
+      "caption": "Как занять рисовую амадину? - Дать ей завядшую веточку мяты.",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "04e10d9d-22c8-4255-b702-95519380d5e6",
+      "type": "richText",
+      "html": "<ul><li><p><strong>Песок + зерно.</strong> Очень простая в реализации, и птички в восторге.</p></li></ul><p></p><p>Мусор очень легко убирать – достаточно потрясти контейнер, и он окажется на поверхности, где его можно собрать совочком/ложкой.</p>"
+    },
+    {
+      "id": "2019f92f-522d-4761-b550-ab1b18203241",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/clip-229064209_456239094",
+      "caption": "Мой вариант элементарной копошилки. В основе – песок, в качестве того, что заинтересует птиц – зерно. В ней любят сидеть все мои амадинки.",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "4c58d031-8ce4-49d4-b3e4-4cac46c71284",
+      "type": "heading",
+      "level": 2,
+      "text": "5. Глиняные печеньки"
+    },
+    {
+      "id": "b60c78d4-481c-451b-88de-6eea0253b12f",
+      "type": "richText",
+      "html": "<p>В статье про <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://nerevarinka.github.io/Rice-And-Stripes/articles/top-10-beginner-mistakes\"><u>10 ошибок новичков</u></a> я писала, что это - альтернатива покупным зерновым палочкам.</p><p></p><p>Мои амадины саму глину не едят, поэтому нужно, чтобы зерно было не только на поверхности, иначе они не захотят крошить лепешку дальше. Для этого сначала перемешиваю компоненты в сухом виде и добавляю воду (соотношение на глаз). Можно включить в состав аптечные травы, как в копошилку, если они птицам интересны.</p>"
+    },
+    {
+      "id": "c75ba99a-2ce8-44af-b423-398e636112b4",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/dkA4R8Hhlzuthb8g89A4sUbOnQrxsv42P-6RLg2AmqUkbx2CWjIrgik6F9nZUZCfRcvnPoONCfMX3q9Oxwm1cwGV.webp",
+      "alt": "Амадины грызут глиняное печенье",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "9eb7b71d-e9c4-41ab-9ddf-298c6c249597",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/clip-229064209_456239106",
+      "caption": "Такая простая штука - а сколько радости.",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "e313b311-59cd-461c-8e65-f16702944096",
+      "type": "richText",
+      "html": "<p>Можно вырезать фигурки формочками, намазать на веточку, налепить на шпагат (как на фото) или просто закрепить в прищепке. Сушить в духовке, на батарее или просто на воздухе. В последнем случае печеньки получатся более твердыми.</p><p></p><p>Я взяла косметическую глину без добавок, ее было несколько видов: голубая, красная, белая, розовая, черная. Можно смешивать или использовать по-отдельности.</p><p></p><p>Вот такой цветной наборчик:</p>"
+    },
+    {
+      "id": "1162fea4-2a09-4270-a955-21d74fe47c0c",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/wDWjDHBDK_GLi0zHVwl-JHfW7XYhh6Gonj6_ovC3U2Fwbj9kvB8ZN6KTuoiNxTDfG81CfpLb2rM2kfccnRN02Zm-.webp",
+      "alt": "",
+      "caption": "Собери свою радугу!",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "8182abc1-fb80-4069-8a76-ebe4bf58413a",
+      "type": "heading",
+      "level": 2,
+      "text": "6. Колоски"
+    },
+    {
+      "id": "6b8962e7-a9f2-45c0-b99b-f8e84577baa1",
+      "type": "richText",
+      "html": "<p>Колоски - естественные фуражилки, очень любимы птицами. Все знают про чумизу, но ей колоски не ограничены. Есть и другие злаки (овес, просо, сорго), лен, канареечник. Их можно найти в продаже у фермеров, заготавливающих корма для птиц и грызунов.</p>"
+    },
+    {
+      "id": "6c8bb9b9-05cd-46a5-a422-54a93654d425",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/52pqJwsWVzk.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "1516fa85-522e-4a2b-97c6-ff038f0d30ab",
+      "type": "richText",
+      "html": "<p>Летом вы можете самостоятельно собирать дикорастущие злаки (мятлик, тимофеевку, костер и др.), предлагать в свежем виде и сушить на зиму.</p>"
+    },
+    {
+      "id": "f7f8cbc4-e2ed-43ed-9eaa-401fdd8c8cb6",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/6GSNHOBPHRy5ZJJ1slUoZ1l7_S9Nb5EXdGjc4qCD2dLvhLEWyzuXvAuZfGbWxCum2znCVMCTOZikN4fRMLDMT6DE.webp",
+      "alt": "",
+      "caption": "Все дикие злаки можно давать амадинам.",
+      "source": "https://old.bigenc.ru/biology/text/2879417",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "f9aa8fb1-bf45-4654-93fa-7594f8fc68ec",
+      "type": "heading",
+      "level": 2,
+      "text": "7. Что-то, что издает звуки"
+    },
+    {
+      "id": "d6ed5972-6cce-490c-af58-d4c7251ddadd",
+      "type": "richText",
+      "html": "<p>Некоторым птицам нравятся предметы, которые бренчат, шуршат или хрустят. Это могут быть сухие листочки, бумажки, мелкие предметы (типа колпачка от ручки, который можно бросить на стол).</p><p></p><p>Можно и колокольчики, если птицы не реагируют на блестящие поверхности (см. про это ниже). Мы подвешивали колокольчик к пучку джутовых веревочек, и он звенел, когда за пучок дергали. Сначала ребята испугались, но потом освоились с игрушкой. Так что есть плюс, даже если сам колокольчик не интересен - птицы привыкают к шумным звукам и не боятся их.</p>"
+    },
+    {
+      "id": "483c173a-fba3-4b63-9626-fe8b341d3e09",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239095",
+      "caption": "Крабик и колокольчик",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "6a1d27c6-dd83-433d-97c3-1a2f49313f42",
+      "type": "message",
+      "variant": "danger",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "35036bcc-877b-4278-bc22-904ef6ad608d",
+          "type": "richText",
+          "html": "<p>Колокольчики не рекомендуют попугаям из-за возможных травм оттого, что птица отрывает язычок и повреждает себе клюв и мягкие ткани (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/wall-175830251_7009\"><u>пример случая</u></a>).</p><p></p><p>Я сомневаюсь, что подобное может случиться с амадинами - у них не такие мощные клювы. Но знать лишним не будет. Еще хорошо бы знать, из чего колокольчик сделан, нет ли в нем токсичных металлов. По той же причине лучше не давать птицам бижутерию.</p>"
+        }
+      ]
+    },
+    {
+      "id": "541ab0fd-6bca-4bc4-8976-5ff94c3646ab",
+      "type": "heading",
+      "level": 2,
+      "text": "8. Мини-огород"
+    },
+    {
+      "id": "6a847047-a41f-41ae-9d2d-dfccde0b667f",
+      "type": "richText",
+      "html": "<p>Птичкам больше нравится не есть зелень не из кормушек и прищепок, а щипать и дергать прямо с \"грядки\". Злаки и бобы можно вырастить без грунта в контейнерах-проращивателях, промыв хорошо их перед подачей.</p><p></p><p>Амадины подходят к контейнеру с разных сторон, тянутся до верхушек. Наши рисовки активно охотятся на такие посевы, приходится их прятать, чтобы успели вырасти побольше.</p>"
+    },
+    {
+      "id": "09edeb71-70e7-4830-8f0e-c42c0587bb84",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/video-229064209_456239019",
+      "caption": "Есть картина \"Девочка на шаре\", а у нас \"Бимж на шаре\"",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "ace3be0b-d879-44df-9588-45c94fded606",
+      "type": "heading",
+      "level": 2,
+      "text": "9. Сложные фуражилки"
+    },
+    {
+      "id": "7d9f3da8-5b65-43ff-b2cc-db050dbbdce4",
+      "type": "richText",
+      "html": "<p>В середине прошлого века синички научились вскрывать алюминиевую фольгу на бутылках с молоком, чтобы добраться до сливок - чем наши амадины хуже? Некоторые птички проявляют особую сообразительность. Обязательно развивайте и поощрайте их навыки. Как у синиц, если один догадается, другие могут взять с него пример.</p>"
+    },
+    {
+      "id": "53e4b0d0-297e-4d48-b7a9-ffb3ded4d9e8",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/U156ymiSQQlRfuNklFPk0VpYNX_5GE4I0PnigMbZJWeHK2f5UPTv6EwyIPaU8hhIGCtVF6vlgP01iTU8vDK5x9Bt.webp",
+      "alt": "",
+      "caption": "Воришка-лазоревка.",
+      "source": "https://www.gettyimages.fi/detail/uutiskuva/thirsty-tit-opens-a-bottle-of-milk-with-its-beak-and-steals-uutiskuva/3136902?adppopup=true",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "e91746e8-14be-468b-84c7-fa6e1dbb67bb",
+      "type": "richText",
+      "html": "<p>Я искала какую-нибудь головоломку попроще и нашла вот такую. Рисовки долго не трогали ее, как задумано - могли только случайно перевернуть крышечки, если садились на них. Я давала им подсказки - привязала веревочки к петелькам, чтобы за них дергали и лишь слегка прикрывала углубления.</p>"
+    },
+    {
+      "id": "f6ed2b62-ce93-428d-b1b9-e22e663b8afd",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/wpDdfWtLU_oYZd8mKnXN-xMWD35d_04_fa91pmeGpkpde45eedxj1tMvAbcJdazKxm8pbDnscd1HSRa7bv9ba7uq.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "13c96606-4cd4-4ef6-a9f9-a38045554421",
+      "type": "richText",
+      "html": "<p>В конце концов Крабик разгадал, как пользоваться игрушкой, и теперь уверенно расшвыривает бочонки (причем за петельки, а не за веревочки) и даже снимает колечки. Но Пингвинчик такое не делает - друг уже за него сообразил, осталось только собирать клад.</p><p></p><p>А еще Крабик умеет отгибать край полотенца, чтобы добраться до зерна, которое оставлено подсушиться. В природе большую часть дня амадины занимаются поиском пищи, поэтому занятия, направленные на это - отличный досуг.</p>"
+    },
+    {
+      "id": "5d0b8fb0-35aa-4944-8650-f94df16e2200",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/clip-229064209_456239125",
+      "caption": "Зерно не спрячешь, если с тобой живёт Крабик.",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "fac6f2b1-3c6c-473b-bbff-41ed4b3f2beb",
+      "type": "message",
+      "variant": "success",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "aa6b38e9-68a1-4c01-b254-6ed22c3afb56",
+          "type": "richText",
+          "html": "<p>Вот еще пара видео с фуражилками, которые я подглядела у азиатов. Они в этом продвинуты и делают игрушки специально для маленьких птичек. Хотим!</p>"
+        },
+        {
+          "id": "e8a5a1c2-a70a-4957-8f06-b08529c34a3d",
+          "type": "video",
+          "kind": "vk",
+          "src": "https://vkvideo.ru/video-229064209_456239096",
+          "caption": "<em>Источник: </em><span data-caption-normal=\"true\">📸</span><em> bunsisters</em>",
+          "source": "",
+          "size": "medium",
+          "title": "",
+          "spoiler": "",
+          "spoilerEnabled": false,
+          "gifLike": false
+        },
+        {
+          "id": "77283d46-7af9-4156-8619-d995bb6efe77",
+          "type": "video",
+          "kind": "vk",
+          "src": "https://vkvideo.ru/video-229064209_456239098",
+          "caption": "<em>Источник: </em><span data-caption-normal=\"true\">📸</span><em> skyricebird</em>",
+          "source": "",
+          "size": "medium",
+          "title": "",
+          "spoiler": "",
+          "spoilerEnabled": false,
+          "gifLike": false
+        },
+        {
+          "id": "2020fd7d-77f7-40f9-b9d2-decae0629f62",
+          "type": "richText",
+          "html": "<p>К сожалению, подобных игрушек в России продается крайне мало, но я надеюсь, что ситуация изменится в лучшую сторону. А умельцы могут попробовать сделать подобное сами.</p>"
+        }
+      ]
+    },
+    {
+      "id": "691e22dc-969a-442f-85e6-622d1a459409",
+      "type": "heading",
+      "level": 2,
+      "text": "10. Вы"
+    },
+    {
+      "id": "e4ae80ce-b11a-4145-a9dc-42e5354e084a",
+      "type": "richText",
+      "html": "<p>Птички наблюдают за вами, изучают ваше поведение и голос, смотрят, что вы делаете и куда ходите. Разговаривайте с ними, общайтесь. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://nerevarinka.github.io/Rice-And-Stripes/articles/taming-finches\"><u>Выпускайте птиц полетать</u></a>, предварительно подготовив комнату и оборудуя им игровую зону со стендом и игрушками, перечисленными выше.</p><p></p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/@rice_and_stripes-mozhno-li-priruchit-amadin\" title=\"https://vk.com/@rice_and_stripes-mozhno-li-priruchit-amadin\"><u>Приручение</u></a> и обучение командам – тоже досуг, развивающий мозг. Это особенно актуально для птиц, которые по каким-либо причинам живут в одиночестве.</p><p></p><p>Еще с амадинами можно выходить на прогулки в переноске или клетке, <em>но это уже задел под отдельную заметку...</em></p>"
+    },
+    {
+      "id": "6d61d5db-0bc5-40c8-bbd4-7dcf11ab99f5",
+      "type": "heading",
+      "level": 2,
+      "text": "11. Вредные и сомнительные игрушки"
+    },
+    {
+      "id": "ffb13a1a-b526-4f13-8eb7-acfd9f55d1eb",
+      "type": "richText",
+      "html": "<p>Что точно <strong>не стоит</strong> давать для развлечения?</p>"
+    },
+    {
+      "id": "eceafc14-411d-4397-b3cf-3d0efb4406bb",
+      "type": "heading",
+      "level": 3,
+      "text": "Зеркало"
+    },
+    {
+      "id": "68c43d23-811a-4ddf-a4db-16c3861da5b3",
+      "type": "richText",
+      "html": "<p>Не предлагайте птицам зеркало специально в качестве игрушки. В лучшем случае они будут игнорировать его, в худшем - увидят партнера или конкурента. Зацикливанию на отражении особенно подвержены одинокие птицы.</p><p></p><p>На видео ниже зебровая амадина демонстирует половое поведение: поет отражению, издает характерные звуки и трясет хвостиком.</p>"
+    },
+    {
+      "id": "7250a9c8-7235-401f-bcaf-64d4243d6540",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239101",
+      "caption": "<em>Источник: ютуб-канал </em><strong><em>ravemania100a</em></strong>",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "2cf89bb9-32d6-4fa3-8877-c4e7d42c7a60",
+      "type": "richText",
+      "html": "<p>А здесь рисовка ведет себя агрессивно - ругается на свое отражение:</p>"
+    },
+    {
+      "id": "bda675f9-637d-494f-9b6c-0eea290a2fe7",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239102",
+      "caption": "<em>Источник: </em><span data-caption-normal=\"true\">📸 </span><strong><em>okome._.623</em></strong>",
+      "source": "",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "46ba04dc-edbc-4736-a67c-704e041ae418",
+      "type": "heading",
+      "level": 3,
+      "text": "Фонтанчики"
+    },
+    {
+      "id": "ff0fdc76-bb47-46bc-9480-5f80a99b2961",
+      "type": "image",
+      "imageUrl": "/uploads/articles/toys-for-finches/WvmVH-a_vEAtMeqE1uDE-CY4y6ssLIzPMTGHkjNVdvWk7S10fOIrqz9Xx-VdLS-JEBQC-6TS73ECSV2MWB11cfTI.webp",
+      "alt": "",
+      "caption": "",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "fb6f1742-4904-4c83-8c88-4df6c569d356",
+      "type": "richText",
+      "html": "<p>Мы очень хотели купить такую необычную поилку для кошек и собак. Уверены, птичкам бы понравилось в ней купаться. Но потом я узнала, что их <strong>невозможно </strong>хорошо промыть и просушить, что ведет к <strong>активному размножению бактерий</strong>. Учитывая, что туда еще и накакать могут, лучше обойтись обычными купалками.</p><p></p><p>Подробнее о зеркалах, фонтанчиках и других неполезных игрушках можно узнать в этом видео:</p>"
+    },
+    {
+      "id": "d82c9507-244c-4534-beb5-2f3d2778744b",
+      "type": "video",
+      "kind": "vk",
+      "src": "https://vk.ru/video-140742106_456239094",
+      "caption": "",
+      "source": "https://vk.ru/wall-140742106_1090",
+      "size": "medium",
+      "title": "",
+      "spoiler": "",
+      "spoilerEnabled": false,
+      "gifLike": false
+    },
+    {
+      "id": "0953991a-791f-40a0-b76d-155654f2c909",
+      "type": "heading",
+      "level": 2,
+      "text": "Заключение"
+    },
+    {
+      "id": "29dd4386-5797-424d-8717-49d9574928e4",
+      "type": "richText",
+      "html": "<ul><li><p>Амадинам <strong>можно и нужно</strong> предлагать развлечения, а не только летать по клетке.</p></li><li><p>Обязательно <strong>следите за реакцией питомцев</strong>, чтобы не допустить полового или агрессивного поведения.</p></li><li><p>Чередуйте предметы и периодически заменяйте, чтобы не наскучили.</p></li><li><p>Не загружайте игрушками клетку - должно оставаться место для свободного пролета по всей ее длине.</p></li><li><p>Что-то из перечисленного в статье может не вызвать интереса.</p></li><li><p>Отдавайте предпочтение занятиям, которые стимулируют физическую активность и направлены на поиск пищи и развитие мозга.</p></li></ul>"
+    }
+  ],
+  "html": "<div class=\"content article-block article-block--richtext\"><p><em>\"Амадины не попугаи, им не нужны игрушки.\"</em> Эту фразу понимают слишком буквально, в итоге в клетке у них есть только пара перекладин. Что остается птицам? Либо драться, либо размножаться - когда еда всегда под боком и рядом нет хищников, больше особо заняться нечем. А ведь для их психики важно разнообразить полную рутины жизнь.</p><p></p><p>У нас самые активные в этом плане рисовки - им все время нужно что-то изучать и тюкать, поэтому приходится думать, как бы не дать им заскучать, когда нас нет дома и они сидят в клетке.</p><p></p><p>Предлагаю варианты для обогащения окружающей среды и улучшения качества жизни птичек.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/EzgW0OLVIAElJbh1.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<h2 id=\"9c568e2f-d8ce-4712-b861-56893de4d8ba\" class=\"title is-3\">1. Качели</h2>\n<div class=\"content article-block article-block--richtext\"><p>Сидеть на качелях - хорошее физическое упражнение, ведь нужно удерживать равновесие. А для того, чтобы приземлиться на раскачивающуюся присаду, надо иметь хорошую координацию.</p><p></p><p>У нас качели особо обожал <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/wall-229064209_64\"><u>Зефир</u></a>, даже спал на них и не пускал посидеть Пингвинчика. Причем у него были свои любимые, которые мотались во все стороны, на новых, более устойчивых, ему не очень понравилось сидеть. А вот Крабик качелей очень боялся сначала, у него начиналась паника, когда случайно садился на них. Так что пришлось снять их, пока он еще сидел в отдельной клетке. По-видимому, дома у него были только устойчивые жердочки. Но когда он начал жить с Пингвинчиком, то распробовал по его примеру и теперь чувствует себя на них очень уверенно.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/zFBpW3vBk6tEtSwkhvrX2-gkYN5NIeqB4OuM-qOfHomDbeCw-DRpM4XVHpHodHOq4wMSuaazwEztoFfIzsbROhPs.webp\" alt=\"Амадина на качелях\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Зефир на своих любимых качелях\n                \n            </figcaption>\n        </figure>\n    \n<h2 id=\"05ba5ba1-ec05-456d-8dee-d14fa216cb8a\" class=\"title is-3\">2. Веточки большие и маленькие</h2>\n<div class=\"content article-block article-block--richtext\"><p>Большие ветвистые побеги становятся интересными присадами с изогнутыми, наклонными и вертикальными поверхностями, по которым можно прыгать и карабкаться. На тонких раскачивающихся веточках сложно удерживать баланс - опять, же, как и с качелями, это хорошая тренировка.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/NwPvpaq5ZhxY5r-4jFZ-_H6NB6rOV3pDGi9XiqVleDRqmUUzM62EZffUiv9qa6OapIgDiAc9Ja0qXqqe_WQXyhcK.webp\" alt=\"Амадины на ветках\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Клоп и Бимж среди веток ольхи\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Почки, сережки, кора на кончиках тонких побегов, листва, хвоя, мох и лишайники - то, что можно с удовольствием отковырять и/или съесть. Собирать ветки надо в дали от дорог, лучше всего в лесу. Перед подачей достаточно <strong>хорошо промыть</strong> потоком теплой воды, ошпаривать или замачивать в уксусе не нужно - это не убьет все микроорганизмы, но убьет полезное.</p><p></p><p>Рисовки у нас не жуют свежую хвою сосны, а ждут, пока она засохнет, чтобы поотрывать иголочки.</p><p></p><p>Все ветки я ставлю в воду, чтобы не засохли быстро. Если дело происходит зимой, то таким способом можно получить молодые сочные листочки.</p></div>\n<aside class=\"embedded-note\"><a href=\"/notes/branches-all-year\">Открыть встроенную заметку</a></aside>\n<div class=\"content article-block article-block--richtext\"><p>Кстати, даже обычная замена жердочек тоже вносит небольшую новизну.</p><p></p><p>Что нужно иметь ввиду - веточки могут создать укромные места, которые спровоцируют <em>особо озабоченных</em> зебр строить гнездо.</p></div>\n<h2 id=\"899fcadc-ef22-4beb-a159-299d9065ab0d\" class=\"title is-3\">3. Что-то для тормошения, дерганья и разрывания</h2>\n<div class=\"content article-block article-block--richtext\"><p>Амадины могут быть любителями разрушать предметы и разбирать их на части. Вот что у моих птиц есть в этой категории.</p></div>\n<div class=\"content article-block article-block--richtext\"><ul><li><p>Букетики - сейчас у них есть из засушенных цветковых растений, летом можно собрать из свежих (заодно поедят).</p></li></ul></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239034&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Пингвигчик и Крабик разбирают букетик-ассорти из сухих трав\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><ul><li><p>Набор мячей из кокосового и сизалевого волокон, листьев, похожих на кукурузные, и луговых трав.</p></li></ul></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/gIYt7NyxsUJmQfTcoGd8TREzQgKjT5xaKEtFEjrNPcQ9iapb4WJ-wzpFdrlPuoekPW8COj_Yq_95_34sM5HLkwEt.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Мячи\n                \n            </figcaption>\n        </figure>\n    \n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239103&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Клопик тормошит огромный шар\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><p>Можно подвесить или просто положить. Еще ни один шар не разобрали, только потрепали чуть-чуть.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239018&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Катаем шары (спойлер: и роняем)\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><ul><li><p>Плетеные шарики из ротанга (лиана такая). Лучше брать <strong>неокрашенные</strong>. Их можно подвесить гирляндой, вставить туда что-нибудь, чтобы вытаксивали.</p></li></ul><p>Я закрепляла в таких перья, потому что было время, когда Крабик пощипывал Пингвинчика.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/D6bITkE5mLyzVQ2yMCKGtAf3bbE8KidSrbmKNS_rb8g3HQnsC3zoEQUEk44WSHK8reaiu-uG961Q_uP1bNZgrKqZ.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><ul><li><p>«Пиньята» - игрушка, которую можно потрошить. Под плотной соломенной сеткой у нее тонкие бумажки (наполнитель для коробок). Качество не особо понравилось, но можно использовать ее как идею для вдохновения и самим сделать похожее.</p></li></ul></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/U-eAXzrIxdaUfrMY3xK4W_H8Q7cCzP8JOfalwJBwz17ztKJYvC1Jk8N3ngAE1_ps2nGVtXE1nOVNqjzkhGqoH7-W.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Напоминает ловец снов. Но по факту это ловец рисовок\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><ul><li><p>Пучок джутовых веревочек (или из пеньки) - раньше висел такой. Самый простой вариант. Джут можно найти в хозяйственных, садовых и строительных магазинах или заказать на маркетплейсах.</p></li></ul></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/vfMpGuVoWyuKJ0INSCEIC-o_Rl8GOdg-Rng9hhxCHaLLk2foTzQt9hgzk2R-k9DHAfZNMUEtix23gNDMHJjImTPQ.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Шпагат из джута\n                \n            </figcaption>\n        </figure>\n    \n\n        <article class=\"message is-danger\">\n            <div class=\"message-header\">Будьте осторожны с веревками!</div>\n            <div class=\"message-body\"><div><p>Не рекомендуется использовать хлопковые (в игрушке-пиньяте выше как раз такие канатики), потому что они распадаются на длинные нити. Известно много случаев, когда из зоба попугаев хирургическим путем доставали большой комок таких ниток, потому что они цеплялись друг за друга. Я не знаю аналогичных случаев с амадинами, потому что они не склонны проглатывать такие несъедобные предметы, но для них опасность длинных нитей заключается в том, что в них может запутатся лапка или коготок. Это может закончиться ампутацией, если не заметить вовремя.</p></div>\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/1787060929741.webp\" alt=\"1787060929741.png\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Случай из практики врача\n                \n            </figcaption>\n        </figure>\n    <div><p>Джут, в отличие от хлопка, распадается на короткие фрагменты. Тем не менее, врачам иногда приходится доставать из зобов и джутовые \"валенки\". Это расстройство пищевого поведения возникает, как правило, из-за болезни: у птицы болит ЖКТ, и после наполнения ей становится легче.</p></div></div>\n        </article>\n    \n\n        <article class=\"message is-info\">\n            \n            <div class=\"message-body\"><div><p>📝 Игрушки из этого пункта могут провоцировать половое поведение. Чтобы их не растаскали на гнездо, лучше, чтобы их можно было дергать, но не отрывать куски. Это актуально для наших зебриков, рисовки реагируют адекватно.</p></div></div>\n        </article>\n    \n<h2 id=\"9a0e0e2b-a895-4dee-9b6f-98eb0432551b\" class=\"title is-3\">4. Копошилки</h2>\n\n        <article class=\"message is-dark\">\n            \n            <div class=\"message-body\"><div><p>Как только не пишут это слово..</p><ul><li><p><em>Капашилка</em></p></li><li><p><em>Копашилка</em></p></li><li><p><em>Капошилка</em></p></li></ul></div></div>\n        </article>\n    \n<div class=\"content article-block article-block--richtext\"><p><strong>Копошилка </strong>(от слова <em>\"копошиться\"</em>) - маст-хэв для амадин, который, наверно, понравится всем. Позволяет проявлять поведение, как в естественной среде - птицы проводят много времени на земле в поисках семян и насекомых.</p><p></p><p>Копошилка - это не маленькая отдельная кормушка с толчеными травками, а посудина, куда можно залезть с ногами, желательно нескольким птицам. Ее наполняют <strong>сухими </strong>компонентами.</p><p></p><p>Чем ее наполнить? Вашей фантазией ✨</p><p></p><ul><li><p><strong>Аптечные травы.</strong> Это измельченные лекарственные растения, которые используют для приготовления отваров, например, цветки ромашки, лист брусники, кора дуба. Насколько мне известно, ограничений тут нет - все продающиеся травы безопасны.</p></li></ul><p>Начать можно с пары-тройки компонентов, потом докупать по мере возможности. Не факт, что хоть что-то птицы из этого будут есть - мои быстро теряют интерес к копошилке, которая состоит только из одних трав.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--small\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/DfZal6y0WgaqTl8-7OF3f6c-A2spYC-iRtsmLiyXkZGz_hQiAR20CKo-0LyJdflr96xEelUXawJR7HE-OEFYsWFD.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--small\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Пример упаковки. Тут пакетики наподобие чайных, но удобнее, когда пакет цельный.\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><ul><li><p><strong>Компоненты покрупнее.</strong> Сухие цельные листья, кусочки фруктов, ягоды, мох, травинки, маленькие веточки, шишки, цветы… Амадины могут воспринять содержимое как материал для гнезда, будьте внимательны. В этом случае перейдите на копошилку с элементами более мелкой фракции.</p></li></ul></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/HU_mXCUri7jnaSs1UdMdFhzEE06YoxK-MENJROy1BXPnSms1KcUdxViv9lgfx3xN35TqDshbQb11kL7j2gUbG-Nr.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Не копошилка, а копошилище\n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Еще я подкладываю туда небольшие предметы, такие как игрушки из киндера. Птицам не обязательно с ними взаимодействовать, они просто создают <strong>разнообразие</strong>.</p><p></p><p>Рисовки таскают из такой копошилки что-нибудь и носят туда-сюда (на видео веточка не из копошилки, но принцип тот же).</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239020&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Как занять рисовую амадину? - Дать ей завядшую веточку мяты.\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><ul><li><p><strong>Песок + зерно.</strong> Очень простая в реализации, и птички в восторге.</p></li></ul><p></p><p>Мусор очень легко убирать – достаточно потрясти контейнер, и он окажется на поверхности, где его можно собрать совочком/ложкой.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239094&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Мой вариант элементарной копошилки. В основе – песок, в качестве того, что заинтересует птиц – зерно. В ней любят сидеть все мои амадинки.\n                    \n                </div>\n            </div>\n        \n<h2 id=\"4c58d031-8ce4-49d4-b3e4-4cac46c71284\" class=\"title is-3\">5. Глиняные печеньки</h2>\n<div class=\"content article-block article-block--richtext\"><p>В статье про <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://nerevarinka.github.io/Rice-And-Stripes/articles/top-10-beginner-mistakes\"><u>10 ошибок новичков</u></a> я писала, что это - альтернатива покупным зерновым палочкам.</p><p></p><p>Мои амадины саму глину не едят, поэтому нужно, чтобы зерно было не только на поверхности, иначе они не захотят крошить лепешку дальше. Для этого сначала перемешиваю компоненты в сухом виде и добавляю воду (соотношение на глаз). Можно включить в состав аптечные травы, как в копошилку, если они птицам интересны.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/dkA4R8Hhlzuthb8g89A4sUbOnQrxsv42P-6RLg2AmqUkbx2CWjIrgik6F9nZUZCfRcvnPoONCfMX3q9Oxwm1cwGV.webp\" alt=\"Амадины грызут глиняное печенье\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239106&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Такая простая штука - а сколько радости.\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><p>Можно вырезать фигурки формочками, намазать на веточку, налепить на шпагат (как на фото) или просто закрепить в прищепке. Сушить в духовке, на батарее или просто на воздухе. В последнем случае печеньки получатся более твердыми.</p><p></p><p>Я взяла косметическую глину без добавок, ее было несколько видов: голубая, красная, белая, розовая, черная. Можно смешивать или использовать по-отдельности.</p><p></p><p>Вот такой цветной наборчик:</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/wDWjDHBDK_GLi0zHVwl-JHfW7XYhh6Gonj6_ovC3U2Fwbj9kvB8ZN6KTuoiNxTDfG81CfpLb2rM2kfccnRN02Zm-.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Собери свою радугу!\n                \n            </figcaption>\n        </figure>\n    \n<h2 id=\"8182abc1-fb80-4069-8a76-ebe4bf58413a\" class=\"title is-3\">6. Колоски</h2>\n<div class=\"content article-block article-block--richtext\"><p>Колоски - естественные фуражилки, очень любимы птицами. Все знают про чумизу, но ей колоски не ограничены. Есть и другие злаки (овес, просо, сорго), лен, канареечник. Их можно найти в продаже у фермеров, заготавливающих корма для птиц и грызунов.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/52pqJwsWVzk.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Летом вы можете самостоятельно собирать дикорастущие злаки (мятлик, тимофеевку, костер и др.), предлагать в свежем виде и сушить на зиму.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/6GSNHOBPHRy5ZJJ1slUoZ1l7_S9Nb5EXdGjc4qCD2dLvhLEWyzuXvAuZfGbWxCum2znCVMCTOZikN4fRMLDMT6DE.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Все дикие злаки можно давать амадинам.\n                <br /><a href=\"https://old.bigenc.ru/biology/text/2879417\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"source-link\">Источник</a>\n            </figcaption>\n        </figure>\n    \n<h2 id=\"f9aa8fb1-bf45-4654-93fa-7594f8fc68ec\" class=\"title is-3\">7. Что-то, что издает звуки</h2>\n<div class=\"content article-block article-block--richtext\"><p>Некоторым птицам нравятся предметы, которые бренчат, шуршат или хрустят. Это могут быть сухие листочки, бумажки, мелкие предметы (типа колпачка от ручки, который можно бросить на стол).</p><p></p><p>Можно и колокольчики, если птицы не реагируют на блестящие поверхности (см. про это ниже). Мы подвешивали колокольчик к пучку джутовых веревочек, и он звенел, когда за пучок дергали. Сначала ребята испугались, но потом освоились с игрушкой. Так что есть плюс, даже если сам колокольчик не интересен - птицы привыкают к шумным звукам и не боятся их.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239095&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Крабик и колокольчик\n                    \n                </div>\n            </div>\n        \n\n        <article class=\"message is-danger\">\n            \n            <div class=\"message-body\"><div><p>Колокольчики не рекомендуют попугаям из-за возможных травм оттого, что птица отрывает язычок и повреждает себе клюв и мягкие ткани (<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/wall-175830251_7009\"><u>пример случая</u></a>).</p><p></p><p>Я сомневаюсь, что подобное может случиться с амадинами - у них не такие мощные клювы. Но знать лишним не будет. Еще хорошо бы знать, из чего колокольчик сделан, нет ли в нем токсичных металлов. По той же причине лучше не давать птицам бижутерию.</p></div></div>\n        </article>\n    \n<h2 id=\"541ab0fd-6bca-4bc4-8976-5ff94c3646ab\" class=\"title is-3\">8. Мини-огород</h2>\n<div class=\"content article-block article-block--richtext\"><p>Птичкам больше нравится не есть зелень не из кормушек и прищепок, а щипать и дергать прямо с \"грядки\". Злаки и бобы можно вырастить без грунта в контейнерах-проращивателях, промыв хорошо их перед подачей.</p><p></p><p>Амадины подходят к контейнеру с разных сторон, тянутся до верхушек. Наши рисовки активно охотятся на такие посевы, приходится их прятать, чтобы успели вырасти побольше.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239019&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Есть картина \"Девочка на шаре\", а у нас \"Бимж на шаре\"\n                    \n                </div>\n            </div>\n        \n<h2 id=\"ace3be0b-d879-44df-9588-45c94fded606\" class=\"title is-3\">9. Сложные фуражилки</h2>\n<div class=\"content article-block article-block--richtext\"><p>В середине прошлого века синички научились вскрывать алюминиевую фольгу на бутылках с молоком, чтобы добраться до сливок - чем наши амадины хуже? Некоторые птички проявляют особую сообразительность. Обязательно развивайте и поощрайте их навыки. Как у синиц, если один догадается, другие могут взять с него пример.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/U156ymiSQQlRfuNklFPk0VpYNX_5GE4I0PnigMbZJWeHK2f5UPTv6EwyIPaU8hhIGCtVF6vlgP01iTU8vDK5x9Bt.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                Воришка-лазоревка.\n                <br /><a href=\"https://www.gettyimages.fi/detail/uutiskuva/thirsty-tit-opens-a-bottle-of-milk-with-its-beak-and-steals-uutiskuva/3136902?adppopup=true\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"source-link\">Источник</a>\n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Я искала какую-нибудь головоломку попроще и нашла вот такую. Рисовки долго не трогали ее, как задумано - могли только случайно перевернуть крышечки, если садились на них. Я давала им подсказки - привязала веревочки к петелькам, чтобы за них дергали и лишь слегка прикрывала углубления.</p></div>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/wpDdfWtLU_oYZd8mKnXN-xMWD35d_04_fa91pmeGpkpde45eedxj1tMvAbcJdazKxm8pbDnscd1HSRa7bv9ba7uq.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>В конце концов Крабик разгадал, как пользоваться игрушкой, и теперь уверенно расшвыривает бочонки (причем за петельки, а не за веревочки) и даже снимает колечки. Но Пингвинчик такое не делает - друг уже за него сообразил, осталось только собирать клад.</p><p></p><p>А еще Крабик умеет отгибать край полотенца, чтобы добраться до зерна, которое оставлено подсушиться. В природе большую часть дня амадины занимаются поиском пищи, поэтому занятия, направленные на это - отличный досуг.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239125&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    Зерно не спрячешь, если с тобой живёт Крабик.\n                    \n                </div>\n            </div>\n        \n\n        <article class=\"message is-success\">\n            \n            <div class=\"message-body\"><div><p>Вот еще пара видео с фуражилками, которые я подглядела у азиатов. Они в этом продвинуты и делают игрушки специально для маленьких птичек. Хотим!</p></div>\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239096&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    <em>Источник: </em><span data-caption-normal=\"true\">📸</span><em> bunsisters</em>\n                    \n                </div>\n            </div>\n        \n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239098&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    <em>Источник: </em><span data-caption-normal=\"true\">📸</span><em> skyricebird</em>\n                    \n                </div>\n            </div>\n        <div><p>К сожалению, подобных игрушек в России продается крайне мало, но я надеюсь, что ситуация изменится в лучшую сторону. А умельцы могут попробовать сделать подобное сами.</p></div></div>\n        </article>\n    \n<h2 id=\"691e22dc-969a-442f-85e6-622d1a459409\" class=\"title is-3\">10. Вы</h2>\n<div class=\"content article-block article-block--richtext\"><p>Птички наблюдают за вами, изучают ваше поведение и голос, смотрят, что вы делаете и куда ходите. Разговаривайте с ними, общайтесь. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://nerevarinka.github.io/Rice-And-Stripes/articles/taming-finches\"><u>Выпускайте птиц полетать</u></a>, предварительно подготовив комнату и оборудуя им игровую зону со стендом и игрушками, перечисленными выше.</p><p></p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://vk.ru/@rice_and_stripes-mozhno-li-priruchit-amadin\" title=\"https://vk.com/@rice_and_stripes-mozhno-li-priruchit-amadin\"><u>Приручение</u></a> и обучение командам – тоже досуг, развивающий мозг. Это особенно актуально для птиц, которые по каким-либо причинам живут в одиночестве.</p><p></p><p>Еще с амадинами можно выходить на прогулки в переноске или клетке, <em>но это уже задел под отдельную заметку...</em></p></div>\n<h2 id=\"6d61d5db-0bc5-40c8-bbd4-7dcf11ab99f5\" class=\"title is-3\">11. Вредные и сомнительные игрушки</h2>\n<div class=\"content article-block article-block--richtext\"><p>Что точно <strong>не стоит</strong> давать для развлечения?</p></div>\n<h3 id=\"eceafc14-411d-4397-b3cf-3d0efb4406bb\" class=\"title is-4\">Зеркало</h3>\n<div class=\"content article-block article-block--richtext\"><p>Не предлагайте птицам зеркало специально в качестве игрушки. В лучшем случае они будут игнорировать его, в худшем - увидят партнера или конкурента. Зацикливанию на отражении особенно подвержены одинокие птицы.</p><p></p><p>На видео ниже зебровая амадина демонстирует половое поведение: поет отражению, издает характерные звуки и трясет хвостиком.</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239101&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    <em>Источник: ютуб-канал </em><strong><em>ravemania100a</em></strong>\n                    \n                </div>\n            </div>\n        \n<div class=\"content article-block article-block--richtext\"><p>А здесь рисовка ведет себя агрессивно - ругается на свое отражение:</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-229064209&amp;id=456239102&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    <em>Источник: </em><span data-caption-normal=\"true\">📸 </span><strong><em>okome._.623</em></strong>\n                    \n                </div>\n            </div>\n        \n<h3 id=\"46ba04dc-edbc-4736-a67c-704e041ae418\" class=\"title is-4\">Фонтанчики</h3>\n\n        <figure class=\"image-with-caption image-with-caption--center\">\n            <div class=\"image-with-caption__image-wrapper image-with-caption__image-wrapper--medium\">\n                <img src=\"/Rice-And-Stripes/uploads/articles/toys-for-finches/WvmVH-a_vEAtMeqE1uDE-CY4y6ssLIzPMTGHkjNVdvWk7S10fOIrqz9Xx-VdLS-JEBQC-6TS73ECSV2MWB11cfTI.webp\" alt=\"\" class=\"image-with-caption__image image-with-caption__image--medium\" />\n                \n            </div>\n            <figcaption class=\"image-with-caption__caption\">\n                \n                \n            </figcaption>\n        </figure>\n    \n<div class=\"content article-block article-block--richtext\"><p>Мы очень хотели купить такую необычную поилку для кошек и собак. Уверены, птичкам бы понравилось в ней купаться. Но потом я узнала, что их <strong>невозможно </strong>хорошо промыть и просушить, что ведет к <strong>активному размножению бактерий</strong>. Учитывая, что туда еще и накакать могут, лучше обойтись обычными купалками.</p><p></p><p>Подробнее о зеркалах, фонтанчиках и других неполезных игрушках можно узнать в этом видео:</p></div>\n\n            <div class=\"embedded-video embedded-video--medium\">\n                <iframe\n                    src=\"https://vk.com/video_ext.php?oid=-140742106&amp;id=456239094&amp;hd=2\"\n                    title=\"\"\n                    loading=\"lazy\"\n                    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n                    allowfullscreen\n                ></iframe>\n                <div class=\"video-with-caption__caption\">\n                    \n                    <a href=\"https://vk.ru/wall-140742106_1090\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"source-link\">Оригинал</a>\n                </div>\n            </div>\n        \n<h2 id=\"0953991a-791f-40a0-b76d-155654f2c909\" class=\"title is-3\">Заключение</h2>\n<div class=\"content article-block article-block--richtext\"><ul><li><p>Амадинам <strong>можно и нужно</strong> предлагать развлечения, а не только летать по клетке.</p></li><li><p>Обязательно <strong>следите за реакцией питомцев</strong>, чтобы не допустить полового или агрессивного поведения.</p></li><li><p>Чередуйте предметы и периодически заменяйте, чтобы не наскучили.</p></li><li><p>Не загружайте игрушками клетку - должно оставаться место для свободного пролета по всей ее длине.</p></li><li><p>Что-то из перечисленного в статье может не вызвать интереса.</p></li><li><p>Отдавайте предпочтение занятиям, которые стимулируют физическую активность и направлены на поиск пищи и развитие мозга.</p></li></ul></div>",
+  "tocItems": [
+    {
+      "caption": "1. Качели",
+      "elementId": "9c568e2f-d8ce-4712-b861-56893de4d8ba",
+      "level": 2
+    },
+    {
+      "caption": "2. Веточки большие и маленькие",
+      "elementId": "05ba5ba1-ec05-456d-8dee-d14fa216cb8a",
+      "level": 2
+    },
+    {
+      "caption": "3. Что-то для тормошения, дерганья и разрывания",
+      "elementId": "899fcadc-ef22-4beb-a159-299d9065ab0d",
+      "level": 2
+    },
+    {
+      "caption": "4. Копошилки",
+      "elementId": "9a0e0e2b-a895-4dee-9b6f-98eb0432551b",
+      "level": 2
+    },
+    {
+      "caption": "5. Глиняные печеньки",
+      "elementId": "4c58d031-8ce4-49d4-b3e4-4cac46c71284",
+      "level": 2
+    },
+    {
+      "caption": "6. Колоски",
+      "elementId": "8182abc1-fb80-4069-8a76-ebe4bf58413a",
+      "level": 2
+    },
+    {
+      "caption": "7. Что-то, что издает звуки",
+      "elementId": "f9aa8fb1-bf45-4654-93fa-7594f8fc68ec",
+      "level": 2
+    },
+    {
+      "caption": "8. Мини-огород",
+      "elementId": "541ab0fd-6bca-4bc4-8976-5ff94c3646ab",
+      "level": 2
+    },
+    {
+      "caption": "9. Сложные фуражилки",
+      "elementId": "ace3be0b-d879-44df-9588-45c94fded606",
+      "level": 2
+    },
+    {
+      "caption": "10. Вы",
+      "elementId": "691e22dc-969a-442f-85e6-622d1a459409",
+      "level": 2
+    },
+    {
+      "caption": "11. Вредные и сомнительные игрушки",
+      "elementId": "6d61d5db-0bc5-40c8-bbd4-7dcf11ab99f5",
+      "level": 2
+    },
+    {
+      "caption": "Зеркало",
+      "elementId": "eceafc14-411d-4397-b3cf-3d0efb4406bb",
+      "level": 3
+    },
+    {
+      "caption": "Фонтанчики",
+      "elementId": "46ba04dc-edbc-4736-a67c-704e041ae418",
+      "level": 3
+    },
+    {
+      "caption": "Заключение",
+      "elementId": "0953991a-791f-40a0-b76d-155654f2c909",
+      "level": 2
+    }
+  ],
+  "readingTimeMinutes": 9,
+  "contentType": "article",
+  "tags": [
+    "содержание"
+  ],
+  "redirectFrom": []
+}

@@ -55,7 +55,7 @@
 		}
 
 		html.is-mobile & {
-			width: 6rem;
+			width: 8rem;
 		}
 	}
 
@@ -180,8 +180,8 @@
 		}
 
 		&--active {
-			color: $primary-brown;
-			font-weight: 600;
+			color: $text-muted;
+			font-weight: 500;
 		}
 	}
 
@@ -294,7 +294,10 @@
 	}
 
 	&--open {
-		left: 0.5rem;
+		top: 0.5rem;
+		left: 0.25rem;
+		width: 1.75rem;
+		height: 1.75rem;
 		border-radius: 0.35rem;
 
 		span {
@@ -329,6 +332,10 @@
 @media screen and (max-width: 767.98px) {
 	.sidebar-burger {
 		display: flex;
+	}
+
+	.sidebar--mobile-open .sidebar-wrapper {
+		padding-top: 0;
 	}
 }
 

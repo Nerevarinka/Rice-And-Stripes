@@ -10,6 +10,7 @@ import JsonLd from "@/components/jsonLd";
 import { createArticleMetadata } from "@/shared/metadata";
 import { createPublicationStructuredData } from "@/shared/structuredData";
 import { getEditableArticles, getEditableArticleBySlug } from "@/shared/editableArticles";
+import { editableNoteToEmbedSummary, getEditableNotes } from "@/shared/editableNotes";
 import { extractTocItemsFromHtml } from "@/shared/utils/extractTocItemsFromHtml";
 import { getEditableArticleNavigation } from "@/shared/utils/editableArticleNavigation";
 import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/readingTime";
@@ -53,7 +54,10 @@ export default async function EditableArticlePage(
         notFound();
     }
 
-    const navigation = await getEditableArticleNavigation(`/articles/${article.slug}`);
+    const [navigation, embeddedNotes] = await Promise.all([
+        getEditableArticleNavigation(`/articles/${article.slug}`),
+        getEditableNotes().then(notes => notes.map(editableNoteToEmbedSummary)),
+    ]);
     const tocItems = article.tocItems?.length
         ? article.tocItems
         : extractTocItemsFromHtml(article.html ?? "");
@@ -95,7 +99,7 @@ export default async function EditableArticlePage(
                         </span>
                     </div>
                     {article.blocks?.length ? (
-                        <ArticleRenderer blocks={article.blocks} />
+                        <ArticleRenderer blocks={article.blocks} embeddedNotes={embeddedNotes} />
                     ) : (
                         <div dangerouslySetInnerHTML={{ __html: article.html }} />
                     )}
