@@ -1,17 +1,14 @@
-const SITE_URL = "https://nerevarinka.github.io/Rice-And-Stripes";
+import { absoluteSiteUrl, siteConfig, siteUrl as SITE_URL } from "@/shared/siteConfig";
+
 const AUTHOR_URL = `${SITE_URL}/about`;
-const LOGO_URL = `${SITE_URL}/logoV2-preview-v2.jpg`;
+const LOGO_URL = absoluteSiteUrl(siteConfig.socialImage);
 
 export const PERSON_ID = `${AUTHOR_URL}#author`;
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 function absoluteUrl(path: string) {
-    if (/^https?:\/\//i.test(path)) return path;
-    if (path.startsWith("/Rice-And-Stripes/")) {
-        return `https://nerevarinka.github.io${path}`;
-    }
-    return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+    return absoluteSiteUrl(path);
 }
 
 export function createSiteStructuredData() {
@@ -32,7 +29,7 @@ export function createSiteStructuredData() {
             {
                 "@type": "Organization",
                 "@id": ORGANIZATION_ID,
-                name: "Rice & Stripes",
+                name: siteConfig.name,
                 url: SITE_URL,
                 logo: {
                     "@type": "ImageObject",
@@ -42,9 +39,9 @@ export function createSiteStructuredData() {
             {
                 "@type": "WebSite",
                 "@id": WEBSITE_ID,
-                name: "Rice & Stripes",
+                name: siteConfig.name,
                 url: SITE_URL,
-                description: "Блог о жизни амадин: уход, наблюдения, наука",
+                description: siteConfig.description,
                 inLanguage: "ru-RU",
                 author: { "@id": PERSON_ID },
                 publisher: { "@id": ORGANIZATION_ID },
@@ -91,7 +88,14 @@ export function createPublicationStructuredData({
                     "@type": "WebPage",
                     "@id": publicationUrl,
                 },
-                ...(coverUrl ? { image: absoluteUrl(coverUrl) } : {}),
+                ...(coverUrl ? {
+                    image: {
+                        "@type": "ImageObject",
+                        contentUrl: absoluteUrl(coverUrl),
+                        url: absoluteUrl(coverUrl),
+                        caption: title,
+                    },
+                } : {}),
                 datePublished: publishDate,
                 dateModified: updatedAt,
                 inLanguage: "ru-RU",

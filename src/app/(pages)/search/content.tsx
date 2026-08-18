@@ -46,7 +46,9 @@ export default function SearchResults({ items }: { items: SearchItem[] }) {
     const query = searchParams.get("q")?.trim() ?? "";
     const [inputValue, setInputValue] = useState(query);
 
-    useEffect(() => setInputValue(query), [query]);
+    useEffect(() => {
+        queueMicrotask(() => setInputValue(query));
+    }, [query]);
 
     const submit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

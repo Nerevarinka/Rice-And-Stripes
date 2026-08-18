@@ -2,6 +2,7 @@ import "server-only";
 
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { cache } from "react";
 
 import type { Article } from "@/models";
 import type { EditableArticle } from "@/models/editableArticle";
@@ -40,7 +41,7 @@ function normalizeAssetUrl(url: string) {
     return withBasePath(`/${url}`);
 }
 
-export async function getEditableArticles(): Promise<EditableArticle[]> {
+const readAllEditableArticles = cache(async (): Promise<EditableArticle[]> => {
     try {
         const fileNames = await readdir(ARTICLES_DIR);
 
@@ -59,6 +60,10 @@ export async function getEditableArticles(): Promise<EditableArticle[]> {
     } catch {
         return [];
     }
+});
+
+export async function getEditableArticles(): Promise<EditableArticle[]> {
+    return readAllEditableArticles();
 }
 
 export async function getEditableArticleBySlug(slug: string): Promise<EditableArticle | null> {

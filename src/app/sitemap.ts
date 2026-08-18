@@ -3,14 +3,29 @@ import type { MetadataRoute } from "next";
 import { getAllArticleCards } from "@/shared/articleCatalog";
 import { getEditableNotes, editableNoteToCard } from "@/shared/editableNotes";
 import { notes } from "@/shared/notes";
-
-const SITE_URL = "https://nerevarinka.github.io/Rice-And-Stripes";
+import { absoluteSiteUrl } from "@/shared/siteConfig";
 
 export const dynamic = "force-static";
 
 function absoluteUrl(pathname: string) {
-    const normalizedPath = pathname === "/" ? "" : pathname;
-    return `${SITE_URL}${normalizedPath}`;
+    return absoluteSiteUrl(pathname);
+}
+
+function imageUrl(image: unknown) {
+    if (!image) return undefined;
+    if (typeof image === "string") return absoluteUrl(image);
+    if (typeof image === "object" && "src" in image && typeof image.src === "string") {
+        return absoluteUrl(image.src);
+    }
+    if (typeof image === "object" && "default" in image) {
+        return imageUrl(image.default);
+    }
+    return undefined;
+}
+
+function sitemapImages(image: unknown) {
+    const url = imageUrl(image);
+    return url ? [url] : undefined;
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -37,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: article.updatedAt ?? article.publishDate,
             changeFrequency: "monthly" as const,
             priority: 0.8,
+            images: sitemapImages(article.cover),
         })),
         {
             url: absoluteUrl("/notes"),
@@ -48,6 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: note.updatedAt ?? note.publishDate,
             changeFrequency: "monthly" as const,
             priority: 0.6,
+            images: sitemapImages(note.image),
         })),
         {
             url: absoluteUrl("/finches"),

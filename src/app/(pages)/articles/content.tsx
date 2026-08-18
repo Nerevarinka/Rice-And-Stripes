@@ -47,12 +47,14 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
     const effectiveView: ArticlesView = isMobile ? "grid" : view;
 
     useEffect(() => {
-        const savedView = window.localStorage.getItem("articles-view");
-        if (savedView === "grid" || savedView === "list") setView(savedView);
-        const savedSort = window.localStorage.getItem("articles-sort") as ArticlesSort | null;
-        if (articleSortOptions.some(option => option.value === savedSort)) setSort(savedSort!);
-        const savedPageSize = Number(window.localStorage.getItem("articles-page-size"));
-        if ([12, 24, 48].includes(savedPageSize)) setPageSize(savedPageSize);
+        queueMicrotask(() => {
+            const savedView = window.localStorage.getItem("articles-view");
+            if (savedView === "grid" || savedView === "list") setView(savedView);
+            const savedSort = window.localStorage.getItem("articles-sort") as ArticlesSort | null;
+            if (articleSortOptions.some(option => option.value === savedSort)) setSort(savedSort!);
+            const savedPageSize = Number(window.localStorage.getItem("articles-page-size"));
+            if ([12, 24, 48].includes(savedPageSize)) setPageSize(savedPageSize);
+        });
     }, []);
 
     const selectView = (nextView: ArticlesView) => {
@@ -63,12 +65,14 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
     const selectSort = (nextSort: string) => {
         const value = nextSort as ArticlesSort;
         setSort(value);
+        setCurrentPage(1);
         window.localStorage.setItem("articles-sort", value);
     };
 
     const selectPageSize = (nextSize: string) => {
         const value = Number(nextSize);
         setPageSize(value);
+        setCurrentPage(1);
         window.localStorage.setItem("articles-page-size", String(value));
     };
 
@@ -105,8 +109,6 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
         return result;
     }, [articles, selectedTags, sort]);
 
-    useEffect(() => setCurrentPage(1), [selectedTags, sort, pageSize]);
-
     const totalPages = Math.max(1, Math.ceil(filteredArticles.length / pageSize));
     const pagedArticles = filteredArticles.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
@@ -123,6 +125,7 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
                 ? prev.filter(t => t !== tag)
                 : [...prev, tag]
         );
+        setCurrentPage(1);
     };
 
     return (

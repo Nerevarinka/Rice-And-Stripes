@@ -8,6 +8,7 @@
 	border-right: 1px solid $border-light;
 	background-color: var(--color-accent);
 	height: 100vh;
+	height: 100dvh;
 	padding: 1rem;
 
 	// Mobile styles
@@ -288,7 +289,7 @@
 	}
 
 	&:active {
-		background-color: lighten($primary-brown, 45%);
+		background-color: color.adjust($primary-brown, $lightness: 45%);
 		border-color: $primary-brown;
 	}
 

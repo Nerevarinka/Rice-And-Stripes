@@ -1,4 +1,4 @@
-@import "../../shared/styles/variables";
+@use "../../shared/styles/variables" as *;
 
 .video-with-caption {
     display: flex;
@@ -254,6 +254,60 @@
             transform: scale(1.05);
         }
     }
+}
+
+.embedded-video__troubleshooting {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	position: relative;
+	margin-left: 0.3rem;
+	color: var(--bulma-text-weak);
+	font-size: 0.82rem;
+	font-style: normal;
+	text-align: left;
+	cursor: help;
+	outline: none;
+
+	a {
+		color: var(--color-link, #8a4b08);
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+
+.embedded-video__help-label {
+	color: var(--color-link, #8a4b08);
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	text-underline-offset: 0.2em;
+}
+
+.embedded-video__help-tooltip {
+	display: none;
+	position: absolute;
+	z-index: 5;
+	right: 0;
+	bottom: calc(100% + 0.4rem);
+	width: min(19rem, calc(100vw - 2rem));
+	padding: 0.65rem 0.75rem;
+	border: 1px solid rgba(138, 75, 8, 0.25);
+	border-radius: 6px;
+	background: #fffaf2;
+	box-shadow: 0 4px 14px rgba(45, 35, 24, 0.14);
+	color: var(--bulma-text);
+	line-height: 1.45;
+}
+
+.embedded-video__troubleshooting:hover .embedded-video__help-tooltip,
+.embedded-video__troubleshooting:focus .embedded-video__help-tooltip,
+.embedded-video__troubleshooting:focus-within .embedded-video__help-tooltip {
+	display: block;
+}
+
+.embedded-video__help-separator {
+	margin-left: 0.35rem;
+	font-style: normal;
 }
 
 @keyframes pulse {

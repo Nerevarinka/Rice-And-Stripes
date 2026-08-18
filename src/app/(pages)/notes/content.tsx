@@ -31,21 +31,25 @@ export default function NotesContainer({ notes }: { notes: Note[] }) {
     const listRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const savedSort = window.localStorage.getItem("notes-sort") as NotesSort | null;
-        if (noteSortOptions.some(option => option.value === savedSort)) setSort(savedSort!);
-        const savedPageSize = Number(window.localStorage.getItem("notes-page-size"));
-        if ([12, 24, 48].includes(savedPageSize)) setPageSize(savedPageSize);
+        queueMicrotask(() => {
+            const savedSort = window.localStorage.getItem("notes-sort") as NotesSort | null;
+            if (noteSortOptions.some(option => option.value === savedSort)) setSort(savedSort!);
+            const savedPageSize = Number(window.localStorage.getItem("notes-page-size"));
+            if ([12, 24, 48].includes(savedPageSize)) setPageSize(savedPageSize);
+        });
     }, []);
 
     const selectSort = (nextSort: string) => {
         const value = nextSort as NotesSort;
         setSort(value);
+        setCurrentPage(1);
         window.localStorage.setItem("notes-sort", value);
     };
 
     const selectPageSize = (nextSize: string) => {
         const value = Number(nextSize);
         setPageSize(value);
+        setCurrentPage(1);
         window.localStorage.setItem("notes-page-size", String(value));
     };
 
@@ -57,8 +61,6 @@ export default function NotesContainer({ notes }: { notes: Note[] }) {
             default: return right.publishDate.getTime() - left.publishDate.getTime();
         }
     }), [notes, sort]);
-
-    useEffect(() => setCurrentPage(1), [sort, pageSize]);
 
     const totalPages = Math.max(1, Math.ceil(sortedNotes.length / pageSize));
     const pagedNotes = sortedNotes.slice((currentPage - 1) * pageSize, currentPage * pageSize);

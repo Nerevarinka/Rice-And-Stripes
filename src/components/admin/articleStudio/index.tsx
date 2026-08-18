@@ -726,6 +726,8 @@ function RichTextEditor({ value, placeholder, onChange }: RichTextEditorProps) {
 
             {hasTable ? (
                 <div className="article-studio__table-actions">
+                    {/* Actions intentionally close over the current editor selection. */}
+                    {/* eslint-disable-next-line react-hooks/refs */}
                     {tableActions.map(item => (
                         <button key={item.label} type="button" className="button is-small is-light" onMouseDown={event => event.preventDefault()} onClick={item.action}>
                             {item.label}
@@ -1632,7 +1634,6 @@ export default function ArticleStudio() {
     const normalizedSlug = slug.trim();
     const isSlugValid = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(normalizedSlug);
     const collectionName = contentType === "article" ? "articles" : "notes";
-    const contentLabel = contentType === "article" ? "статья" : "заметка";
     const contentLabelGenitive = contentType === "article" ? "статьи" : "заметки";
     const contentLabelAccusative = contentType === "article" ? "статью" : "заметку";
     const contentPathPreview = useMemo(

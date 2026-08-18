@@ -1,15 +1,13 @@
 import type { NextConfig } from "next";
+import { siteConfig } from "./src/shared/siteConfig";
 
-export const ASSETS_PREFIX = "/Rice-And-Stripes/";
+export const ASSETS_PREFIX = `${siteConfig.basePath}/`;
 
 const nextConfig: NextConfig = {
 	output: "export",
-  	basePath: "/Rice-And-Stripes",
+  	basePath: siteConfig.basePath,
 	turbopack: {
 		root: process.cwd(),
-	},
-	typescript: {
-		ignoreBuildErrors: true,
 	},
 	images: {
 		unoptimized: true,

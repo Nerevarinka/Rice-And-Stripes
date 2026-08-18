@@ -1,22 +1,23 @@
 // Поллиfills для старых браузеров
-import "core-js/stable";
-import "whatwg-fetch";
-import "abort-controller/polyfill";
-import "url-search-params-polyfill";
-
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import "./globals.scss";
 
 import Sidebar from "@/components/sidebar";
-import MobileFlag from "@/components/mobileFlag";
 import ScrollProgress from "@/components/scrollProgress";
 import JsonLd from "@/components/jsonLd";
 import { getAllSidebarItems } from "@/shared/articleCatalog";
 import { createSiteStructuredData } from "@/shared/structuredData";
+import { siteUrl } from "@/shared/siteConfig";
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://nerevarinka.github.io"),
+	metadataBase: new URL(siteUrl),
+};
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 5,
 };
 
 export default async function RootLayout({
@@ -27,20 +28,18 @@ export default async function RootLayout({
 	const menuItems = await getAllSidebarItems();
 
 	return (
-		<html lang="ru" className="is-clipped" data-theme="light" suppressHydrationWarning>
+		<html lang="ru" className="is-clipped" data-theme="light">
 			<head>
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<script
 					dangerouslySetInnerHTML={{
-						__html: `(function(){var ua=navigator.userAgent||navigator.vendor||"";if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i.test(ua)||window.innerWidth<768){document.documentElement.classList.add("is-mobile");document.documentElement.style.setProperty("--is-mobile","1");}})();`,
+						__html: `(function(){if(window.matchMedia("(max-width: 767.98px), (hover: none) and (pointer: coarse)").matches){document.documentElement.classList.add("is-mobile");}})();`,
 					}}
 				/>
 			</head>
-		<body className="antialiased is-clipped">
-			<JsonLd data={createSiteStructuredData()} />
-			<MobileFlag />
-				<div className="is-flex is-clipped" style={{ height: "100vh" }}>
+			<body className="antialiased is-clipped">
+				<JsonLd data={createSiteStructuredData()} />
+				<div className="is-flex is-clipped site-shell">
 					<Sidebar menuItems={menuItems} />
 					<main className="is-flex-grow-1 pt-2 pl-4 main-content" style={{ overflowY: "auto" }}>
 						<ScrollProgress />
