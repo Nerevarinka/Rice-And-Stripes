@@ -16,7 +16,7 @@ export default function Home() {
         <div className="container mb-6" id="home">
             <div className="content">
                 <h3 className="title is-3 has-text-centered">
-                    Блог о маленьких птицах с большим характером
+                    Блог о маленьких птицах с большими требованиями
                 </h3>
 
                 <p>

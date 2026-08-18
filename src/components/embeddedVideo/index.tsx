@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, Info } from "lucide-react";
 
 type EmbeddedVideoProps = {
     src: string;
@@ -10,6 +10,10 @@ type EmbeddedVideoProps = {
     title?: string;
     size: "small" | "medium" | "big";
     spoiler?: string;
+    troubleshooting?: {
+        provider: "VK" | "RUTUBE";
+        originalUrl: string;
+    };
 };
 
 export default function EmbeddedVideo({
@@ -19,6 +23,7 @@ export default function EmbeddedVideo({
     title,
     size,
     spoiler,
+    troubleshooting,
 }: EmbeddedVideoProps) {
     const [isSpoilerVisible, setIsSpoilerVisible] = useState(Boolean(spoiler));
 
@@ -54,6 +59,26 @@ export default function EmbeddedVideo({
                         <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">
                             Оригинал
                         </a>
+                    </>
+                ) : null}
+                {troubleshooting ? (
+                    <>
+                        {source ? <span className="embedded-video__help-separator" aria-hidden="true">·</span> : null}
+                        <span
+                            className="embedded-video__troubleshooting"
+                            tabIndex={0}
+                            aria-label="Подсказка, если видео не загрузилось"
+                        >
+                            <span className="embedded-video__help-label">Не загрузилось?</span>
+                            <Info size={14} aria-hidden="true" />
+                            <span className="embedded-video__help-tooltip" role="tooltip">
+                                Загрузка с {troubleshooting.provider} иногда задерживается. Если видео долго не появляется,
+                                обновите страницу, проверьте VPN или блокировщик либо {" "}
+                                <a href={troubleshooting.originalUrl} target="_blank" rel="noopener noreferrer">
+                                    откройте его на {troubleshooting.provider}
+                                </a>.
+                            </span>
+                        </span>
                     </>
                 ) : null}
             </div>

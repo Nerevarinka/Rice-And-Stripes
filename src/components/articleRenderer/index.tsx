@@ -31,6 +31,10 @@ function VideoBlockView({ block }: { block: EditableArticleVideoBlock }) {
                 title={block.title}
                 size={block.size}
                 spoiler={block.spoilerEnabled === false ? undefined : block.spoiler}
+                troubleshooting={block.kind === "vk" || block.kind === "rutube" ? {
+                    provider: block.kind === "vk" ? "VK" : "RUTUBE",
+                    originalUrl: block.src,
+                } : undefined}
             />
         ) : null;
     }

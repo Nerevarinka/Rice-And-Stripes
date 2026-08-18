@@ -793,8 +793,11 @@ html.is-mobile .article-content {
 	}
 }
 
-.article-content .message-body table tbody tr:hover > td {
-	background-color: #e9ecef !important;
+@media (hover: hover) and (pointer: fine) {
+	.article-content table tbody tr:not(:has(> th)):hover > td,
+	.article-content .message-body table tbody tr:not(:has(> th)):hover > td {
+		background-color: #e9ecef !important;
+	}
 }
 
 .article-accordion {

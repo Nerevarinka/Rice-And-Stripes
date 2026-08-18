@@ -23,3 +23,16 @@ export const metadata: Metadata = createCommonMetadata(
         "Здоровье амадин",
     ]
 );
+
+metadata.robots = {
+    index: true,
+    follow: true,
+    noimageindex: true,
+    googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+    },
+};

@@ -599,8 +599,11 @@
 	}
 }
 
-.article-studio__message-content table tbody tr:hover > td {
-	background-color: #e9ecef !important;
+@media (hover: hover) and (pointer: fine) {
+	.article-studio__editor table tbody tr:not(:has(> th)):hover > td,
+	.article-studio__message-content table tbody tr:not(:has(> th)):hover > td {
+		background-color: #e9ecef !important;
+	}
 }
 
 .article-studio__content-type {

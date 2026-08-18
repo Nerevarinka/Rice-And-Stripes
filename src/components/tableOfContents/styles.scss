@@ -1,4 +1,5 @@
 @use "../../shared/styles/variables" as *;
+@use "sass:color";
 
 .content-with-toc {
     display: flex;
@@ -129,7 +130,7 @@
     }
 
     &:active {
-        background-color: lighten($primary-brown, 45%);
+        background-color: color.adjust($primary-brown, $lightness: 45%);
         border-color: $primary-brown;
     }
 }

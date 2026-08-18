@@ -1,6 +1,4 @@
-import ArticleStudio from "@/components/admin/articleStudio";
-
-export default function CreateArticlePage() {
+export default async function CreateArticlePage() {
     if (process.env.NODE_ENV === "production") {
         return (
             <section className="section">
@@ -12,7 +10,8 @@ export default function CreateArticlePage() {
                 </div>
             </section>
         );
-    }
+	}
 
-    return <ArticleStudio />;
+	const { default: ArticleStudio } = await import("@/components/admin/articleStudio");
+	return <ArticleStudio />;
 }

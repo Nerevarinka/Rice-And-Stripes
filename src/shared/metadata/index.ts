@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Article } from "@/models";
 import packageJson from "../../../package.json";
-import { withBasePath } from "@/shared/utils/withBasePath";
+import { absoluteSiteUrl } from "@/shared/siteConfig";
 
 /**
  * Общие настройки метаданных для статей
@@ -11,11 +11,6 @@ const COMMON_ARTICLE_METADATA = {
     siteName: packageJson.displayName,
     locale: "ru_RU" as const,
     author: { name: "Nerevarinka" },
-    viewport: {
-        width: "device-width" as const,
-        initialScale: 1,
-        maximumScale: 5,
-    },
     robots: {
         index: true,
         follow: true,
@@ -48,7 +43,6 @@ export const createCommonMetadata = (
         locale: COMMON_ARTICLE_METADATA.locale,
         siteName: COMMON_ARTICLE_METADATA.siteName,
     },
-    viewport: COMMON_ARTICLE_METADATA.viewport,
     robots: COMMON_ARTICLE_METADATA.robots,
 });
 
@@ -62,11 +56,9 @@ export function createArticleMetadata(
     articleInfo: Article,
     keywords: string[]
 ): Metadata {
-    const articleUrl = withBasePath(articleInfo.link);
+    const articleUrl = absoluteSiteUrl(articleInfo.link);
     const coverUrl = typeof articleInfo.cover === "string"
-        ? articleInfo.cover.startsWith("http://") || articleInfo.cover.startsWith("https://") || articleInfo.cover.startsWith("/Rice-And-Stripes/")
-            ? articleInfo.cover
-            : withBasePath(articleInfo.cover)
+            ? absoluteSiteUrl(articleInfo.cover)
         : "src" in articleInfo.cover
             ? articleInfo.cover.src
             : articleInfo.cover.default.src;
