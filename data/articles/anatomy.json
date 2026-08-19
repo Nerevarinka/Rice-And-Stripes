@@ -6,7 +6,7 @@
   "description": "Как птицы дышат на выдохе, почему их нельзя долго держать в руке и как они держатся на жердочках - обо всем этом и многом другом можно узнать тут",
   "coverUrl": "/uploads/articles/anatomy/lesson.webp",
   "publishDate": "2025-03-24T09:00:00.000Z",
-  "updatedAt": "2026-08-10T17:19:29.758Z",
+  "updatedAt": "2026-08-19T20:38:15.766Z",
   "status": "published",
   "blocks": [
     {
@@ -458,10 +458,10 @@
     {
       "id": "anatomy-image-62",
       "type": "image",
-      "imageUrl": "/uploads/articles/anatomy/22.gif",
+      "imageUrl": "/uploads/articles/anatomy/respiration_human_birds_cropped(1).gif",
       "alt": "Гифка работы дыхательной системы птиц и млекопитающих",
       "caption": "Гифка-схема, показывающая разницу работы дыхательной системы человека и птицы. Свежий воздух - желтый, отработанный - розовый.",
-      "source": "https://ru.wikipedia.org/wiki/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD:Respiration-bird-mammal-insect_(1).gif",
+      "source": "https://de.wikipedia.org/wiki/Datei:Respiration-bird-mammal-insect_(1).gif",
       "size": "medium",
       "spoiler": "",
       "expandable": true
@@ -1136,5 +1136,6 @@
   "tags": [
     "познавательное",
     "здоровье"
-  ]
+  ],
+  "redirectFrom": []
 }
