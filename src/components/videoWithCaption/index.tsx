@@ -3,8 +3,8 @@
 import { useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
+import MediaCaption from "@/components/mediaCaption";
 import { withBasePath } from "@/shared/utils/withBasePath";
-import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 
 import "./styles.scss";
 
@@ -112,17 +112,12 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
                     </div>
                 )}
             </div>
-            <div className="video-with-caption__caption">
-                {caption}
-                {source && (
-                    <>
-                        {caption ? <br /> : null}
-                        <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">   
-                            Оригинал
-                        </a>
-                    </>
-                )}
-            </div>
+            <MediaCaption
+                className="video-with-caption__caption"
+                caption={caption}
+                source={source}
+                sourceLabel="Оригинал"
+            />
         </div>
     );
 };

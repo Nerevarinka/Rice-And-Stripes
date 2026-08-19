@@ -184,25 +184,27 @@
 	font-weight: 600;
 }
 
-html.is-mobile .site-search-page {
-	padding-bottom: 3rem;
+@media screen and (max-width: 767.98px) {
+	.site-search-page {
+		padding-bottom: 3rem;
 
-	.site-search-options,
-	.site-search-options__group {
-		align-items: stretch;
-		flex-direction: column;
-	}
+		.site-search-options,
+		.site-search-options__group {
+			align-items: stretch;
+			flex-direction: column;
+		}
 
-	.site-search-options {
-		gap: 0.85rem;
-	}
+		.site-search-options {
+			gap: 0.85rem;
+		}
 
-	.site-search-scope {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		.site-search-scope {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 
-		button {
-			padding-inline: 0.45rem;
+			button {
+				padding-inline: 0.45rem;
+			}
 		}
 	}
 }

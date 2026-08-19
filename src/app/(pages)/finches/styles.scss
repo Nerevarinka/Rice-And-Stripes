@@ -1,4 +1,8 @@
 .finches-page {
+	width: 100%;
+	max-width: 92.5rem;
+	margin-right: auto !important;
+	margin-left: auto !important;
 	padding-bottom: 4rem;
 }
 
@@ -14,6 +18,8 @@
 	}
 }
 
-html.is-mobile .finches-page {
-	padding-bottom: 3rem;
+@media screen and (max-width: 767.98px) {
+	.finches-page {
+		padding-bottom: 3rem;
+	}
 }

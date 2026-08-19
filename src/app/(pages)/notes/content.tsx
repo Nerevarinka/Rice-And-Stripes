@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, RotateCcw, SlidersHorizontal } from "lucide-react";
 
 import StickyNote from "@/components/stickyNote";
-import SortControl, { type SortOption } from "@/components/sortControl";
+import type { SortOption } from "@/components/sortControl";
 import ContentPagination from "@/components/contentPagination";
+import PublicationListToolbar from "@/components/publicationListToolbar";
 import type { Note } from "@/models";
 
 import "./styles.scss";
@@ -18,16 +18,16 @@ const noteSortOptions: SortOption[] = [
     { value: "title-asc", label: "По названию А–Я" },
     { value: "title-desc", label: "По названию Я–А" },
 ];
-const pageSizeOptions: SortOption[] = [12, 24, 48].map(value => ({
+const notePageSizes = [10, 20, 40];
+const pageSizeOptions: SortOption[] = notePageSizes.map(value => ({
     value: String(value),
     label: String(value),
 }));
 
 export default function NotesContainer({ notes }: { notes: Note[] }) {
     const [sort, setSort] = useState<NotesSort>("newest");
-    const [pageSize, setPageSize] = useState(24);
+    const [pageSize, setPageSize] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isMobilePanelOpen, setIsMobilePanelOpen] = useState(false);
     const listRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function NotesContainer({ notes }: { notes: Note[] }) {
             const savedSort = window.localStorage.getItem("notes-sort") as NotesSort | null;
             if (noteSortOptions.some(option => option.value === savedSort)) setSort(savedSort!);
             const savedPageSize = Number(window.localStorage.getItem("notes-page-size"));
-            if ([12, 24, 48].includes(savedPageSize)) setPageSize(savedPageSize);
+            if (notePageSizes.includes(savedPageSize)) setPageSize(savedPageSize);
         });
     }, []);
 
@@ -72,41 +72,25 @@ export default function NotesContainer({ notes }: { notes: Note[] }) {
 
     return (
         <section className="notes-page mx-4">
-            <h2 className="title is-2">Заметки</h2>
-            <p className="notes-page__intro">
-                Мысли, наблюдения и маленькие советы. Заметка может со временем перерасти в статью.
-            </p>
-
-            <button
-                type="button"
-                className="notes-tools-toggle"
-                onClick={() => setIsMobilePanelOpen(current => !current)}
-                aria-expanded={isMobilePanelOpen}
-            >
-                <SlidersHorizontal size={18} aria-hidden="true" />
-                <span>Сортировка</span>
-                <ChevronDown size={18} aria-hidden="true" />
-            </button>
-
-            <div className={`notes-tools${isMobilePanelOpen ? " is-mobile-open" : ""}`}>
-                <div className="notes-tools__control">
-                    <span className="label mb-0">Сортировка:</span>
-                    <SortControl value={sort} options={noteSortOptions} onChange={selectSort} />
-                </div>
-                <div className="notes-tools__control notes-tools__control--page-size">
-                    <span className="label mb-0">Заметок на странице:</span>
-                    <SortControl value={String(pageSize)} options={pageSizeOptions} onChange={selectPageSize} showSortIcon={false} />
-                </div>
-                <button
-                    type="button"
-                    className="notes-tools__reset"
-                    onClick={() => selectSort("newest")}
-                    disabled={sort === "newest"}
-                >
-                    <RotateCcw size={16} aria-hidden="true" />
-                    <span>Сбросить</span>
-                </button>
+            <div className="notes-page__header">
+                <h2 className="title is-2">Заметки</h2>
+                <p className="notes-page__intro">
+                    Мысли, наблюдения и маленькие советы. Заметка может со временем перерасти в статью.
+                </p>
             </div>
+
+            <PublicationListToolbar
+                mobileLabel="Сортировка"
+                sortValue={sort}
+                sortOptions={noteSortOptions}
+                onSortChange={selectSort}
+                pageSizeLabel="Заметок на странице:"
+                pageSize={pageSize}
+                pageSizeOptions={pageSizeOptions}
+                onPageSizeChange={selectPageSize}
+                onReset={() => selectSort("newest")}
+                resetDisabled={sort === "newest"}
+            />
 
             <div ref={listRef} className="notes-grid">
                 {pagedNotes.map((note, index) => (

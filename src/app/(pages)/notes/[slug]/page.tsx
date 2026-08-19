@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { formatDate } from "@bodynarf/utils/date/format";
 
 import ArticleRenderer from "@/components/articleRenderer";
+import PublicationNavigation from "@/components/publicationNavigation";
 import JsonLd from "@/components/jsonLd";
+import PublicationHeader from "@/components/publicationHeader";
 import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 import { createArticleMetadata } from "@/shared/metadata";
 import { createPublicationStructuredData } from "@/shared/structuredData";
+import { getPublicationNavigation } from "@/shared/utils/publicationNavigation";
 import {
     getEditableNoteBySlug,
     getEditableNoteRedirectBySlug,
@@ -63,12 +65,13 @@ export default async function EditableNotePage(
     if (noteRedirect) return <LegacyArticleRedirect href={noteRedirect.redirectTo} />;
     const note = await getEditableNoteBySlug(slug);
     if (!note) notFound();
-    const publishDate = new Date(note.publishDate);
-    const updatedDate = new Date(note.updatedAt);
-    const wasUpdated = formatDate(publishDate, "yyyy-MM-dd") !== formatDate(updatedDate, "yyyy-MM-dd");
-
+    const notes = await getEditableNotes();
+    const navigation = getPublicationNavigation(
+        notes.map(item => ({ title: item.title, link: `/notes/${item.slug}` })),
+        `/notes/${note.slug}`
+    );
     return (
-        <main className="note-detail">
+        <div className="note-detail publication-page">
             <JsonLd data={createPublicationStructuredData({
                 title: note.title,
                 description: note.description,
@@ -79,25 +82,18 @@ export default async function EditableNotePage(
                 updatedAt: note.updatedAt,
             })} />
             <article className="note-detail__content publication-content content">
-                <h1 className="title is-2">{note.title}</h1>
-                <div className="note-detail__meta">
-                    <time dateTime={note.publishDate} title="Дата первой публикации">
-                        Опубликовано: {formatDate(publishDate, "dd.MM.yyyy")}
-                    </time>
-                    {wasUpdated ? (
-                        <time dateTime={note.updatedAt} title="Дата последнего редактирования">
-                            Обновлено: {formatDate(updatedDate, "dd.MM.yyyy")}
-                        </time>
-                    ) : null}
-                </div>
+                <PublicationHeader
+                    kind="note"
+                    title={note.title}
+                    description={note.description}
+                    publishDate={note.publishDate}
+                    updatedAt={note.updatedAt}
+                />
                 <div className="note-detail__body">
-                    {note.blocks?.length ? (
-                        <ArticleRenderer blocks={note.blocks} />
-                    ) : (
-                        <div dangerouslySetInnerHTML={{ __html: note.html }} />
-                    )}
+                    <ArticleRenderer blocks={note.blocks} />
                 </div>
             </article>
-        </main>
+            <PublicationNavigation {...navigation} itemName="заметка" />
+        </div>
     );
 }

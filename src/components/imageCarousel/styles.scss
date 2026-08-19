@@ -21,7 +21,7 @@
         justify-content: center;
         align-items: center;
 
-		html.is-mobile & {
+		@media screen and (max-width: 767.98px) {
 			height: auto;
 			min-height: 0;
 		}
@@ -37,7 +37,7 @@
         display: block;
         margin: 0 auto;
 
-		html.is-mobile & {
+		@media screen and (max-width: 767.98px) {
 			width: auto;
 			height: auto;
 			max-height: 70vh;
@@ -66,7 +66,7 @@
         justify-content: center;
         z-index: 2;
 
-		html.is-mobile & {
+		@media screen and (max-width: 767.98px) {
 			width: 2.25rem;
 			height: 2.25rem;
 
@@ -83,7 +83,7 @@
         &--prev {
             left: 1rem;
 
-			html.is-mobile & {
+			@media screen and (max-width: 767.98px) {
 				left: 0.35rem;
 			}
         }
@@ -91,7 +91,7 @@
         &--next {
             right: 1rem;
 
-			html.is-mobile & {
+			@media screen and (max-width: 767.98px) {
 				right: 0.35rem;
 			}
         }
@@ -103,7 +103,7 @@
         margin-top: 1rem;
         justify-content: center;
 
-		html.is-mobile & {
+		@media screen and (max-width: 767.98px) {
 			margin-top: 0.65rem;
 		}
     }
@@ -127,17 +127,6 @@
         }
     }
 
-    &__caption {
-        margin-top: 0.5rem;
-        font-size: 0.875rem;
-        color: $text-muted;
-        font-style: italic;
-        text-align: center;
-
-        .source-link {
-            cursor: pointer;
-        }
-    }
 }
 
 .image-modal {

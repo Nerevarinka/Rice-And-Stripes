@@ -8,7 +8,6 @@ import VideoWithCaption from "@/components/videoWithCaption";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 import { sanitizeInlineHtml } from "@/shared/utils/sanitizeInlineHtml";
 import { getVideoEmbedUrl } from "@/shared/utils/videoEmbedUrl";
-import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 import { withBasePathIfInternal } from "@/shared/utils/withBasePath";
 
 import type { EditableArticleBlock, EditableArticleMessageContent, EditableArticleMessageMedia, EditableArticleVideoBlock, EmbeddedNoteSummary } from "@/models/editableArticle";
@@ -68,7 +67,8 @@ function MessageMediaView({ media }: { media: EditableArticleMessageMedia }) {
     return <ImageWithCaption
         image={normalizeEditableArticleAssetUrl(media.imageUrl)}
         alt={media.alt}
-        caption={<>{media.caption ? <FormattedCaption html={media.caption} /> : null}{media.source ? <>{media.caption ? <br /> : null}<a href={normalizeExternalUrl(media.source)} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
+        caption={media.caption ? <FormattedCaption html={media.caption} /> : undefined}
+        source={media.source}
         size={media.size}
         spoiler={media.spoiler}
         expandable={media.expandable}
@@ -90,7 +90,7 @@ function getMessageContent(block: Extract<EditableArticleBlock, { type: "message
 }
 
 function cleanHtml(html: string) {
-    return sanitizeHtml(html, {
+    const sanitizedHtml = sanitizeHtml(html, {
         allowedTags: [
             "p",
             "br",
@@ -141,6 +141,10 @@ function cleanHtml(html: string) {
             }),
         },
     });
+
+    return sanitizedHtml
+        .replace(/<table\b([^>]*)>/gi, '<div class="publication-table-scroll"><table$1>')
+        .replace(/<\/table>/gi, "</table></div>");
 }
 
 export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleRendererProps) {
@@ -172,19 +176,8 @@ export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleR
                                 key={block.id}
                                 image={normalizeEditableArticleAssetUrl(block.imageUrl)}
                                 alt={block.alt}
-                                caption={
-                                    <>
-                                        <FormattedCaption html={block.caption} />
-                                        {block.source ? (
-                                            <>
-                                                {block.caption ? <br /> : null}
-                                                <a href={normalizeExternalUrl(block.source)} target="_blank" rel="noopener noreferrer" className="source-link">
-                                                    Источник
-                                                </a>
-                                            </>
-                                        ) : null}
-                                    </>
-                                }
+                                caption={block.caption ? <FormattedCaption html={block.caption} /> : undefined}
+                                source={block.source}
                                 size={block.size}
                                 spoiler={block.spoiler}
                                 expandable={block.expandable}

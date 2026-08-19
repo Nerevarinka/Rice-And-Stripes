@@ -1,30 +1,45 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Clock3 } from "lucide-react";
-import { formatDate } from "@bodynarf/utils/date/format";
 
 import TableOfContents from "@/components/tableOfContents";
-import ArticleNavigation from "@/components/articleNavigation";
+import PublicationNavigation from "@/components/publicationNavigation";
 import ArticleRenderer from "@/components/articleRenderer";
 import JsonLd from "@/components/jsonLd";
+import PublicationHeader from "@/components/publicationHeader";
+import LegacyArticleRedirect from "@/components/legacyArticleRedirect";
 import { createArticleMetadata } from "@/shared/metadata";
 import { createPublicationStructuredData } from "@/shared/structuredData";
 import { getEditableArticles, getEditableArticleBySlug } from "@/shared/editableArticles";
 import { editableNoteToEmbedSummary, getEditableNotes } from "@/shared/editableNotes";
-import { extractTocItemsFromHtml } from "@/shared/utils/extractTocItemsFromHtml";
+import { createTocItemsFromBlocks } from "@/shared/utils/extractTocItemsFromHtml";
 import { getEditableArticleNavigation } from "@/shared/utils/editableArticleNavigation";
-import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/readingTime";
+import { calculateReadingTimeMinutes } from "@/shared/utils/readingTime";
+import { getLegacyArticleRedirect, legacyArticleSlugs } from "@/shared/legacyArticleRedirects";
+
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
     const articles = await getEditableArticles();
 
-    return articles.map(article => ({ slug: article.slug }));
+    return Array.from(new Set([
+        ...articles.map(article => article.slug),
+        ...legacyArticleSlugs,
+    ])).map(slug => ({ slug }));
 }
 
 export async function generateMetadata(
     { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
     const { slug } = await params;
+    const redirectTo = getLegacyArticleRedirect(slug);
+
+    if (redirectTo) {
+        return {
+            alternates: { canonical: redirectTo },
+            robots: { index: false, follow: true },
+        };
+    }
     const article = await getEditableArticleBySlug(slug);
 
     if (!article) {
@@ -48,6 +63,11 @@ export default async function EditableArticlePage(
     { params }: { params: Promise<{ slug: string }> }
 ) {
     const { slug } = await params;
+    const redirectTo = getLegacyArticleRedirect(slug);
+
+    if (redirectTo) {
+        return <LegacyArticleRedirect href={redirectTo} />;
+    }
     const article = await getEditableArticleBySlug(slug);
 
     if (!article) {
@@ -60,13 +80,9 @@ export default async function EditableArticlePage(
     ]);
     const tocItems = article.tocItems?.length
         ? article.tocItems
-        : extractTocItemsFromHtml(article.html ?? "");
+        : createTocItemsFromBlocks(article.blocks);
     const readingTimeMinutes = article.readingTimeMinutes
         ?? calculateReadingTimeMinutes(article.blocks ?? []);
-    const publishDate = new Date(article.publishDate);
-    const updatedDate = new Date(article.updatedAt);
-    const wasUpdated = formatDate(publishDate, "yyyy-MM-dd") !== formatDate(updatedDate, "yyyy-MM-dd");
-
     return (
         <TableOfContents items={tocItems}>
             <JsonLd data={createPublicationStructuredData({
@@ -79,32 +95,19 @@ export default async function EditableArticlePage(
                 updatedAt: article.updatedAt,
                 tags: article.tags,
             })} />
-            <div className="article-content-wrapper">
+            <div className="article-content-wrapper publication-page">
                 <div className="article-content publication-content content">
-                    <h1 className="title is-2">{article.title}</h1>
-                    <div className="article-meta article-meta--lead">
-                        <span className="article-reading-time" title="Ориентировочное время чтения">
-                            <Clock3 size={17} />
-                            {formatReadingTime(readingTimeMinutes)}
-                        </span>
-                        <span className="article-date-group">
-                            <time dateTime={article.publishDate} title="Дата первой публикации">
-                                Опубликовано: {formatDate(publishDate, "dd.MM.yyyy")}
-                            </time>
-                            {wasUpdated ? (
-                                <time dateTime={article.updatedAt} title="Дата последнего редактирования">
-                                    Обновлено: {formatDate(updatedDate, "dd.MM.yyyy")}
-                                </time>
-                            ) : null}
-                        </span>
-                    </div>
-                    {article.blocks?.length ? (
-                        <ArticleRenderer blocks={article.blocks} embeddedNotes={embeddedNotes} />
-                    ) : (
-                        <div dangerouslySetInnerHTML={{ __html: article.html }} />
-                    )}
+                    <PublicationHeader
+                        kind="article"
+                        title={article.title}
+                        description={article.description}
+                        publishDate={article.publishDate}
+                        updatedAt={article.updatedAt}
+                        readingTimeMinutes={readingTimeMinutes}
+                    />
+                    <ArticleRenderer blocks={article.blocks} embeddedNotes={embeddedNotes} />
                 </div>
-                <ArticleNavigation {...navigation} />
+                <PublicationNavigation {...navigation} />
             </div>
         </TableOfContents>
     );

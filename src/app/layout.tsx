@@ -45,14 +45,9 @@ export default async function RootLayout({
 	const menuItems = await getAllSidebarItems();
 
 	return (
-		<html lang="ru" className="is-clipped" data-theme="light" suppressHydrationWarning>
+		<html lang="ru" className="is-clipped" data-theme="light">
 			<head>
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `(function(){if(window.matchMedia("(max-width: 767.98px), (hover: none) and (pointer: coarse)").matches){document.documentElement.classList.add("is-mobile");}})();`,
-					}}
-				/>
 			</head>
 			<body className="antialiased is-clipped">
 				<JsonLd data={createSiteStructuredData()} />

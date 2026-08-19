@@ -73,7 +73,6 @@ import type {
 } from "@/models/editableArticle";
 import { MediaItemTagColors, type MediaItemTag } from "@/models/mediaItemTag";
 import { createTocItemsFromBlocks } from "@/shared/utils/extractTocItemsFromHtml";
-import { serializeEditableArticleBlocksToHtml } from "@/shared/utils/editableArticleHtml";
 import { normalizeBlockExternalUrls } from "@/shared/utils/normalizeExternalUrl";
 import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/readingTime";
 import { withBasePath } from "@/shared/utils/withBasePath";
@@ -1033,10 +1032,6 @@ function NoteEmbedSelector({ notes, value, onChange }: {
             .slice(0, 12);
     }, [query, sortedNotes]);
 
-    useEffect(() => {
-        if (selectedNote) setQuery(selectedNote.title);
-    }, [selectedNote?.title]);
-
     return (
         <div className="article-studio__note-search">
             <input
@@ -1247,6 +1242,7 @@ function BlockCard({
                         <div className="field">
                             <label className="label">Заметка</label>
                             <NoteEmbedSelector
+                                key={`${block.id}:${block.noteSlug}`}
                                 notes={notes}
                                 value={block.noteSlug}
                                 onChange={noteSlug => onChange({ ...block, noteSlug })}
@@ -2036,7 +2032,6 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                 ? Array.from(new Set([...redirectFrom, sourceNotePath]))
                 : redirectFrom;
             const normalizedBlocks = normalizeBlockExternalUrls(blocks);
-            const html = serializeEditableArticleBlocksToHtml(normalizedBlocks);
             const commonPayload = {
                 schemaVersion: 2,
                 id: articleId,
@@ -2048,7 +2043,6 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                 updatedAt: now,
                 status: "published",
                 blocks: normalizedBlocks,
-                html,
                 tocItems,
                 readingTimeMinutes,
             };
@@ -2440,6 +2434,17 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                             <p className="is-size-7 has-text-grey">Добавьте блоки «Заголовок раздела» H2, H3 или H4.</p>
                         )}
                     </div>
+
+                    <button
+                        type="button"
+                        className="button is-primary article-studio__sidebar-save"
+                        onClick={saveContent}
+                        title={`Сохранить ${contentLabelAccusative}`}
+                        aria-label={`Сохранить ${contentLabelAccusative}`}
+                    >
+                        <Save size={20} />
+                        <span>Сохранить</span>
+                    </button>
                 </aside>
             </div>
 
@@ -2449,17 +2454,6 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                     <button type="button" className="delete" onClick={() => setStatusMessage("")} aria-label="Закрыть уведомление" />
                 </div>
             ) : null}
-
-            <button
-                type="button"
-                className="button is-primary article-studio__floating-save"
-                onClick={saveContent}
-                title={`Сохранить ${contentLabelAccusative}`}
-                aria-label={`Сохранить ${contentLabelAccusative}`}
-            >
-                <Save size={20} />
-                <span>Сохранить</span>
-            </button>
 
             {deletedBlock ? (
                 <div className="article-studio__undo notification is-dark">
