@@ -4,6 +4,7 @@ import { useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import { withBasePath } from "@/shared/utils/withBasePath";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 
 import "./styles.scss";
 
@@ -116,7 +117,7 @@ const VideoWithCaption: FC<VideoWithCaptionProps> = ({
                 {source && (
                     <>
                         {caption ? <br /> : null}
-                        <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">   
+                        <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">   
                             Оригинал
                         </a>
                     </>

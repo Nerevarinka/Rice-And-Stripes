@@ -74,7 +74,7 @@ export default function NotesContainer({ notes }: { notes: Note[] }) {
         <section className="notes-page mx-4">
             <h2 className="title is-2">Заметки</h2>
             <p className="notes-page__intro">
-                Короткие заметки, наблюдения и маленькие советы. Заметка может перерасти в статью.
+                Мысли, наблюдения и маленькие советы. Заметка может со временем перерасти в статью.
             </p>
 
             <button

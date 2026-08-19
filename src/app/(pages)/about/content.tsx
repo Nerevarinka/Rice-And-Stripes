@@ -2,7 +2,7 @@
 
 export default function About() {
 	return (
-		<div className="container p-5 about-page">
+		<div className="about-page mx-4">
 			<h1 className="title is-2">
 				Об авторе
 			</h1>

@@ -1,18 +1,21 @@
 import sanitizeHtml from "sanitize-html";
 
 import EmbeddedVideo from "@/components/embeddedVideo";
+import EmbeddedNote from "@/components/embeddedNote";
 import ImageCarousel from "@/components/imageCarousel";
 import ImageWithCaption from "@/components/imageWithCaption";
 import VideoWithCaption from "@/components/videoWithCaption";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 import { sanitizeInlineHtml } from "@/shared/utils/sanitizeInlineHtml";
 import { getVideoEmbedUrl } from "@/shared/utils/videoEmbedUrl";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 import { withBasePathIfInternal } from "@/shared/utils/withBasePath";
 
-import type { EditableArticleBlock, EditableArticleMessageContent, EditableArticleMessageMedia, EditableArticleVideoBlock } from "@/models/editableArticle";
+import type { EditableArticleBlock, EditableArticleMessageContent, EditableArticleMessageMedia, EditableArticleVideoBlock, EmbeddedNoteSummary } from "@/models/editableArticle";
 
 type ArticleRendererProps = {
     blocks: EditableArticleBlock[];
+    embeddedNotes?: EmbeddedNoteSummary[];
 };
 
 function FormattedCaption({ html }: { html?: string }) {
@@ -58,14 +61,14 @@ function MessageMediaView({ media }: { media: EditableArticleMessageMedia }) {
         return <ImageCarousel images={media.images.map(image => ({
             src: normalizeEditableArticleAssetUrl(image.imageUrl),
             alt: image.alt,
-            caption: <FormattedCaption html={image.caption} />,
+            caption: image.caption ? <FormattedCaption html={image.caption} /> : undefined,
             source: image.source,
         }))} />;
     }
     return <ImageWithCaption
         image={normalizeEditableArticleAssetUrl(media.imageUrl)}
         alt={media.alt}
-        caption={<><FormattedCaption html={media.caption} />{media.source ? <><br /><a href={media.source} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
+        caption={<>{media.caption ? <FormattedCaption html={media.caption} /> : null}{media.source ? <>{media.caption ? <br /> : null}<a href={normalizeExternalUrl(media.source)} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
         size={media.size}
         spoiler={media.spoiler}
         expandable={media.expandable}
@@ -140,7 +143,9 @@ function cleanHtml(html: string) {
     });
 }
 
-export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
+export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleRendererProps) {
+    const notesBySlug = new Map(embeddedNotes.map(note => [note.slug, note]));
+
     return (
         <>
             {blocks.map(block => {
@@ -156,7 +161,7 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                     case "heading": {
                         const Tag = `h${block.level}` as "h2" | "h3" | "h4";
                         return (
-                            <Tag key={block.id} id={block.id} className={`title is-${block.level}`}>
+                            <Tag key={block.id} id={block.id} className={`title is-${block.level + 1}`}>
                                 {block.text}
                             </Tag>
                         );
@@ -172,8 +177,8 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                         <FormattedCaption html={block.caption} />
                                         {block.source ? (
                                             <>
-                                                <br />
-                                                <a href={block.source} target="_blank" rel="noopener noreferrer" className="source-link">
+                                                {block.caption ? <br /> : null}
+                                                <a href={normalizeExternalUrl(block.source)} target="_blank" rel="noopener noreferrer" className="source-link">
                                                     Источник
                                                 </a>
                                             </>
@@ -192,7 +197,7 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                 images={block.images.map(image => ({
                                     src: normalizeEditableArticleAssetUrl(image.imageUrl),
                                     alt: image.alt,
-                                    caption: <FormattedCaption html={image.caption} />,
+                                    caption: image.caption ? <FormattedCaption html={image.caption} /> : undefined,
                                     source: image.source,
                                 }))}
                             />
@@ -225,6 +230,14 @@ export default function ArticleRenderer({ blocks }: ArticleRendererProps) {
                                 <div className="content mt-4" dangerouslySetInnerHTML={{ __html: cleanHtml(block.bodyHtml) }} />
                             </details>
                         );
+                    case "noteEmbed": {
+                        const note = notesBySlug.get(block.noteSlug);
+                        return note ? <EmbeddedNote key={block.id} note={note} /> : (
+                            <aside key={block.id} className="notification is-warning is-light">
+                                Встроенная заметка «{block.noteSlug}» не найдена.
+                            </aside>
+                        );
+                    }
                     default:
                         return null;
                 }

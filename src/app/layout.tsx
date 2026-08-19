@@ -28,7 +28,7 @@ export default async function RootLayout({
 	const menuItems = await getAllSidebarItems();
 
 	return (
-		<html lang="ru" className="is-clipped" data-theme="light">
+		<html lang="ru" className="is-clipped" data-theme="light" suppressHydrationWarning>
 			<head>
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<script

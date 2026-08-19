@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUp } from "lucide-react";
 
@@ -21,7 +21,7 @@ export default function ScrollProgress() {
         localPathname.startsWith("/notes/");
     const shouldShowScrollToTop = shouldShowProgress || localPathname === "/articles" || localPathname === "/notes";
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!shouldShowScrollToTop) return;
 
         const progress = progressRef.current;
@@ -31,7 +31,7 @@ export default function ScrollProgress() {
         const updateProgress = () => {
             const scrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
             const ratio = scrollableHeight > 0 ? scrollContainer.scrollTop / scrollableHeight : 0;
-            if (progress) progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+            if (progress) progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
             const distanceToBottom = scrollableHeight - scrollContainer.scrollTop;
 
             if (isScrollingToTopRef.current) {
@@ -82,8 +82,26 @@ export default function ScrollProgress() {
         <>
             <span ref={anchorRef} className="scroll-progress-anchor" aria-hidden="true" />
             {shouldShowProgress ? (
-                <div className="scroll-progress" aria-hidden="true">
-                    <div ref={progressRef} className="scroll-progress__value" />
+                <div
+                    className="scroll-progress"
+                    aria-hidden="true"
+                    style={{
+                        position: "fixed",
+                        inset: "0 0 auto",
+                        height: 3,
+                        zIndex: 1000,
+                        pointerEvents: "none",
+                    }}
+                >
+                    <div
+                        ref={progressRef}
+                        className="scroll-progress__value"
+                        style={{
+                            width: 0,
+                            height: "100%",
+                            backgroundColor: "#753105",
+                        }}
+                    />
                 </div>
             ) : null}
             <button

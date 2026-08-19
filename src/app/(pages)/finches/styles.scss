@@ -1,7 +1,5 @@
 .finches-page {
-	max-width: 70rem;
-	margin: 0 auto;
-	padding: 2rem 1.5rem 4rem 0;
+	padding-bottom: 4rem;
 }
 
 .finches-page__header {
@@ -17,5 +15,5 @@
 }
 
 html.is-mobile .finches-page {
-	padding: 1.25rem 1rem 3rem 0;
+	padding-bottom: 3rem;
 }

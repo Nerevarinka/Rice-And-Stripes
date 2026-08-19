@@ -4,4 +4,5 @@ export type SearchItem = {
     link: string;
     kind: "Статья" | "Заметка" | "Раздел";
     searchText: string;
+    publishDate?: string;
 };

@@ -25,6 +25,8 @@ function getBlockText(block: EditableArticleBlock) {
             return [block.title, htmlToText(block.bodyHtml)].filter(Boolean).join(" ");
         case "spoiler":
             return [block.summary, htmlToText(block.bodyHtml)].join(" ");
+        case "noteEmbed":
+            return "";
         default:
             return "";
     }

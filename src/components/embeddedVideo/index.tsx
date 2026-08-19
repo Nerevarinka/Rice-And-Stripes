@@ -2,6 +2,9 @@
 
 import { useState, type ReactNode } from "react";
 import { AlertTriangle, Info } from "lucide-react";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
+
+import "../videoWithCaption/styles.scss";
 
 type EmbeddedVideoProps = {
     src: string;
@@ -52,25 +55,23 @@ export default function EmbeddedVideo({
                 ) : null}
             </div>
             <div className="video-with-caption__caption">
-                {caption}
-                {source ? (
-                    <>
-                        {caption ? <br /> : null}
-                        <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">
+                {caption ? <div className="video-with-caption__caption-text">{caption}</div> : null}
+                {(source || troubleshooting) ? (
+                    <div className="embedded-video__meta">
+                        {source ? (
+                        <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">
                             Оригинал
                         </a>
-                    </>
-                ) : null}
-                {troubleshooting ? (
-                    <>
-                        {source ? <span className="embedded-video__help-separator" aria-hidden="true">·</span> : null}
+                        ) : null}
+                        {source && troubleshooting ? <span className="embedded-video__help-separator" aria-hidden="true">·</span> : null}
+                        {troubleshooting ? (
                         <span
                             className="embedded-video__troubleshooting"
                             tabIndex={0}
                             aria-label="Подсказка, если видео не загрузилось"
                         >
                             <span className="embedded-video__help-label">Не загрузилось?</span>
-                            <Info size={14} aria-hidden="true" />
+                            <Info size={12} aria-hidden="true" />
                             <span className="embedded-video__help-tooltip" role="tooltip">
                                 Загрузка с {troubleshooting.provider} иногда задерживается. Если видео долго не появляется,
                                 обновите страницу, проверьте VPN или блокировщик либо {" "}
@@ -79,7 +80,8 @@ export default function EmbeddedVideo({
                                 </a>.
                             </span>
                         </span>
-                    </>
+                        ) : null}
+                    </div>
                 ) : null}
             </div>
         </div>

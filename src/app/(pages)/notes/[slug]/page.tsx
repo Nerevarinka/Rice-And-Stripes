@@ -78,7 +78,7 @@ export default async function EditableNotePage(
                 publishDate: note.publishDate,
                 updatedAt: note.updatedAt,
             })} />
-            <article className="note-detail__content content">
+            <article className="note-detail__content publication-content content">
                 <h1 className="title is-2">{note.title}</h1>
                 <div className="note-detail__meta">
                     <time dateTime={note.publishDate} title="Дата первой публикации">
