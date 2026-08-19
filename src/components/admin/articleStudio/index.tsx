@@ -74,6 +74,7 @@ import type {
 import { MediaItemTagColors, type MediaItemTag } from "@/models/mediaItemTag";
 import { createTocItemsFromBlocks } from "@/shared/utils/extractTocItemsFromHtml";
 import { serializeEditableArticleBlocksToHtml } from "@/shared/utils/editableArticleHtml";
+import { normalizeBlockExternalUrls } from "@/shared/utils/normalizeExternalUrl";
 import { calculateReadingTimeMinutes, formatReadingTime } from "@/shared/utils/readingTime";
 import { withBasePath } from "@/shared/utils/withBasePath";
 
@@ -948,7 +949,7 @@ function NestedImageEditor({ image, repoRoot, assetFolder, onChange, onDelete, s
         if (!file) return;
         const imageUrl = await uploadAssetUrl(repoRoot, assetFolder, file, setUploadMessage);
         if (!imageUrl) return;
-        onChange({ ...image, imageUrl, alt: image.alt || file.name });
+        onChange({ ...image, imageUrl });
     };
 
     return (
@@ -989,7 +990,7 @@ function NestedCarouselEditor({ carousel, repoRoot, assetFolder, onChange, onDel
         });
         if (!imageUrl) return;
         const images = [...carousel.images];
-        images[index] = { ...images[index], imageUrl, alt: images[index].alt || file.name };
+        images[index] = { ...images[index], imageUrl };
         onChange({ ...carousel, images });
     };
     const updateImage = (index: number, nextImage: EditableArticleCarouselImage) => {
@@ -1009,6 +1010,73 @@ function NestedCarouselEditor({ carousel, repoRoot, assetFolder, onChange, onDel
                 <div className="columns is-multiline"><div className="column is-half"><label className="label">Alt</label><input className="input" value={image.alt} onChange={event => updateImage(index, { ...image, alt: event.target.value })} /></div><div className="column is-half"><label className="label">Источник</label><input className="input" value={image.source ?? ""} onChange={event => updateImage(index, { ...image, source: event.target.value })} /></div><div className="column is-full"><label className="label">Подпись</label><InlineTextEditor value={image.caption ?? ""} onChange={caption => updateImage(index, { ...image, caption })} defaultItalic /></div></div>
             </div>)}
             <button type="button" className="button is-light article-studio__nested-carousel-add" onClick={() => onChange({ ...carousel, images: [...carousel.images, { imageUrl: "", alt: "", caption: "", source: "" }] })}><Plus size={16} /><span>Добавить картинку</span></button>
+        </div>
+    );
+}
+
+function NoteEmbedSelector({ notes, value, onChange }: {
+    notes: EmbeddedNoteSummary[];
+    value: string;
+    onChange: (noteSlug: string) => void;
+}) {
+    const selectedNote = notes.find(note => note.slug === value);
+    const [query, setQuery] = useState(selectedNote?.title ?? "");
+    const [isOpen, setIsOpen] = useState(false);
+    const sortedNotes = useMemo(
+        () => [...notes].sort((left, right) => left.title.localeCompare(right.title, "ru", { sensitivity: "base" })),
+        [notes]
+    );
+    const filteredNotes = useMemo(() => {
+        const normalizedQuery = query.trim().toLocaleLowerCase("ru");
+        return sortedNotes
+            .filter(note => !normalizedQuery || note.title.toLocaleLowerCase("ru").includes(normalizedQuery))
+            .slice(0, 12);
+    }, [query, sortedNotes]);
+
+    useEffect(() => {
+        if (selectedNote) setQuery(selectedNote.title);
+    }, [selectedNote?.title]);
+
+    return (
+        <div className="article-studio__note-search">
+            <input
+                className="input"
+                type="search"
+                value={query}
+                placeholder="Начните вводить название заметки"
+                autoComplete="off"
+                onFocus={() => setIsOpen(true)}
+                onBlur={() => setIsOpen(false)}
+                onChange={event => {
+                    setQuery(event.target.value);
+                    setIsOpen(true);
+                    if (value) onChange("");
+                }}
+                aria-label="Поиск заметки по названию"
+                aria-expanded={isOpen}
+            />
+            {isOpen ? (
+                <div className="article-studio__note-search-results" role="listbox" aria-label="Найденные заметки">
+                    {filteredNotes.length ? filteredNotes.map(note => (
+                        <button
+                            key={note.slug}
+                            type="button"
+                            className={`article-studio__note-search-option${note.slug === value ? " is-selected" : ""}`}
+                            onMouseDown={event => event.preventDefault()}
+                            onClick={() => {
+                                onChange(note.slug);
+                                setQuery(note.title);
+                                setIsOpen(false);
+                            }}
+                            role="option"
+                            aria-selected={note.slug === value}
+                        >
+                            <strong>{note.title}</strong>
+                            <span>{formatDateInputValue(note.publishDate.slice(0, 10))}</span>
+                        </button>
+                    )) : <p className="article-studio__note-search-empty">Заметок с таким названием нет</p>}
+                </div>
+            ) : null}
         </div>
     );
 }
@@ -1095,7 +1163,7 @@ function BlockCard({
             nextImages[carouselImageIndex] = {
                 ...currentImage,
                 imageUrl,
-                alt: currentImage.alt || file.name,
+                alt: currentImage.alt,
             };
             onChange({ ...block, images: nextImages });
         }
@@ -1178,17 +1246,11 @@ function BlockCard({
                     <div className="article-studio__block-form article-studio__note-embed-editor">
                         <div className="field">
                             <label className="label">Заметка</label>
-                            <div className="select is-fullwidth">
-                                <select
-                                    value={block.noteSlug}
-                                    onChange={event => onChange({ ...block, noteSlug: event.target.value })}
-                                >
-                                    <option value="">Выберите заметку…</option>
-                                    {notes.map(note => (
-                                        <option key={note.slug} value={note.slug}>{note.title}</option>
-                                    ))}
-                                </select>
-                            </div>
+                            <NoteEmbedSelector
+                                notes={notes}
+                                value={block.noteSlug}
+                                onChange={noteSlug => onChange({ ...block, noteSlug })}
+                            />
                             <p className="help">Карточка будет брать актуальные заголовок, описание, дату и обложку из оригинала.</p>
                         </div>
                         {(() => {
@@ -1973,7 +2035,8 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
             const nextRedirectFrom = sourceNotePath
                 ? Array.from(new Set([...redirectFrom, sourceNotePath]))
                 : redirectFrom;
-            const html = serializeEditableArticleBlocksToHtml(blocks);
+            const normalizedBlocks = normalizeBlockExternalUrls(blocks);
+            const html = serializeEditableArticleBlocksToHtml(normalizedBlocks);
             const commonPayload = {
                 schemaVersion: 2,
                 id: articleId,
@@ -1984,7 +2047,7 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                 publishDate: new Date(`${publishDate}T12:00:00`).toISOString(),
                 updatedAt: now,
                 status: "published",
-                blocks,
+                blocks: normalizedBlocks,
                 html,
                 tocItems,
                 readingTimeMinutes,
@@ -1995,6 +2058,7 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
 
             const nextFileName = `${safeSlug}.json`;
             await writeTextFile(repoRoot, `data/${collectionName}/${nextFileName}`, `${JSON.stringify(payload, null, 2)}\n`);
+            setBlocks(normalizedBlocks);
 
             if (contentType === "article") {
                 for (const legacyPath of nextRedirectFrom) {

@@ -8,6 +8,7 @@ import VideoWithCaption from "@/components/videoWithCaption";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 import { sanitizeInlineHtml } from "@/shared/utils/sanitizeInlineHtml";
 import { getVideoEmbedUrl } from "@/shared/utils/videoEmbedUrl";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 import { withBasePathIfInternal } from "@/shared/utils/withBasePath";
 
 import type { EditableArticleBlock, EditableArticleMessageContent, EditableArticleMessageMedia, EditableArticleVideoBlock, EmbeddedNoteSummary } from "@/models/editableArticle";
@@ -60,14 +61,14 @@ function MessageMediaView({ media }: { media: EditableArticleMessageMedia }) {
         return <ImageCarousel images={media.images.map(image => ({
             src: normalizeEditableArticleAssetUrl(image.imageUrl),
             alt: image.alt,
-            caption: <FormattedCaption html={image.caption} />,
+            caption: image.caption ? <FormattedCaption html={image.caption} /> : undefined,
             source: image.source,
         }))} />;
     }
     return <ImageWithCaption
         image={normalizeEditableArticleAssetUrl(media.imageUrl)}
         alt={media.alt}
-        caption={<><FormattedCaption html={media.caption} />{media.source ? <><br /><a href={media.source} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
+        caption={<>{media.caption ? <FormattedCaption html={media.caption} /> : null}{media.source ? <>{media.caption ? <br /> : null}<a href={normalizeExternalUrl(media.source)} target="_blank" rel="noopener noreferrer" className="source-link">Источник</a></> : null}</>}
         size={media.size}
         spoiler={media.spoiler}
         expandable={media.expandable}
@@ -176,8 +177,8 @@ export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleR
                                         <FormattedCaption html={block.caption} />
                                         {block.source ? (
                                             <>
-                                                <br />
-                                                <a href={block.source} target="_blank" rel="noopener noreferrer" className="source-link">
+                                                {block.caption ? <br /> : null}
+                                                <a href={normalizeExternalUrl(block.source)} target="_blank" rel="noopener noreferrer" className="source-link">
                                                     Источник
                                                 </a>
                                             </>
@@ -196,7 +197,7 @@ export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleR
                                 images={block.images.map(image => ({
                                     src: normalizeEditableArticleAssetUrl(image.imageUrl),
                                     alt: image.alt,
-                                    caption: <FormattedCaption html={image.caption} />,
+                                    caption: image.caption ? <FormattedCaption html={image.caption} /> : undefined,
                                     source: image.source,
                                 }))}
                             />

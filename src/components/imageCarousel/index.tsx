@@ -5,6 +5,7 @@ import { useCallback, useState, useEffect, type FC, type ReactNode } from "react
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 import "./styles.scss";
 
 export type CarouselImage = {
@@ -200,13 +201,13 @@ const ImageCarousel: FC<ImageCarouselProps> = ({
                         </div>
                     )}
                 </div>
-                {currentCaption && (
+                {(currentCaption || currentSource) && (
                     <div className="image-carousel__caption">
                         {currentCaption}
                         {currentSource && (
                             <>
-                                <br />
-                                <a href={currentSource} target="_blank" rel="noopener noreferrer" className="source-link">
+                                {currentCaption ? <br /> : null}
+                                <a href={normalizeExternalUrl(currentSource)} target="_blank" rel="noopener noreferrer" className="source-link">
                                     Источник
                                 </a>
                             </>

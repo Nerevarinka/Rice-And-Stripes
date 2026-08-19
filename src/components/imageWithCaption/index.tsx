@@ -5,6 +5,7 @@ import { useEffect, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 import "./styles.scss";
 
 export type ImagePosition = "left" | "center" | "right";
@@ -158,7 +159,7 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
                     {source && (
                         <>
                             <br />
-                            <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">
+                            <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">
                                 Источник
                             </a>
                         </>

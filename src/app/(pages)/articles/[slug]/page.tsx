@@ -80,7 +80,7 @@ export default async function EditableArticlePage(
                 tags: article.tags,
             })} />
             <div className="article-content-wrapper">
-                <div className="article-content content">
+                <div className="article-content publication-content content">
                     <h1 className="title is-2">{article.title}</h1>
                     <div className="article-meta article-meta--lead">
                         <span className="article-reading-time" title="Ориентировочное время чтения">

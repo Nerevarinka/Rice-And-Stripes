@@ -1,6 +1,7 @@
 import { withBasePath } from "./withBasePath";
 import { getVideoEmbedUrl } from "./videoEmbedUrl";
 import { sanitizeInlineHtml } from "./sanitizeInlineHtml";
+import { normalizeExternalUrl } from "./normalizeExternalUrl";
 
 import type {
     EditableArticleBlock,
@@ -55,7 +56,7 @@ function renderHeadingBlock(block: EditableArticleHeadingBlock) {
 
 function renderImageBlock(block: EditableArticleImageBlock) {
     const src = normalizeUrl(block.imageUrl);
-    const source = block.source ? `<br /><a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Источник</a>` : "";
+    const source = block.source ? `<br /><a href="${escapeHtml(normalizeExternalUrl(block.source))}" target="_blank" rel="noopener noreferrer" class="source-link">Источник</a>` : "";
     const spoiler = block.spoiler
         ? `<div class="image-with-caption__spoiler"><div class="image-with-caption__spoiler-content"><div class="image-with-caption__spoiler-text">${escapeHtml(block.spoiler)}</div></div></div>`
         : "";
@@ -93,7 +94,7 @@ function renderCarouselBlock(block: EditableArticleImageCarouselBlock) {
         return "";
     }
 
-    const source = first.source ? `<br /><a href="${escapeHtml(first.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Источник</a>` : "";
+    const source = first.source ? `<br /><a href="${escapeHtml(normalizeExternalUrl(first.source))}" target="_blank" rel="noopener noreferrer" class="source-link">Источник</a>` : "";
 
     return `
         <div class="image-carousel">
@@ -123,13 +124,13 @@ function renderVideoBlock(block: EditableArticleVideoBlock) {
                 ></iframe>
                 <div class="video-with-caption__caption">
                     ${sanitizeInlineHtml(block.caption)}
-                    ${block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : ""}
+                    ${block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(normalizeExternalUrl(block.source))}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : ""}
                 </div>
             </div>
         `;
     }
 
-    const source = block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(block.source)}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : "";
+    const source = block.source ? `${block.caption ? "<br />" : ""}<a href="${escapeHtml(normalizeExternalUrl(block.source))}" target="_blank" rel="noopener noreferrer" class="source-link">Оригинал</a>` : "";
     const videoAttributes = block.gifLike
         ? "autoplay loop muted playsinline preload=\"auto\""
         : "controls preload=\"metadata\"";

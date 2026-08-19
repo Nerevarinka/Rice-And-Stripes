@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { AlertTriangle, Info } from "lucide-react";
+import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
 
 import "../videoWithCaption/styles.scss";
 
@@ -58,7 +59,7 @@ export default function EmbeddedVideo({
                 {(source || troubleshooting) ? (
                     <div className="embedded-video__meta">
                         {source ? (
-                        <a href={source} target="_blank" rel="noopener noreferrer" className="source-link">
+                        <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">
                             Оригинал
                         </a>
                         ) : null}

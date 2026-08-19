@@ -680,11 +680,6 @@ html.is-mobile .article-content {
 	margin-top: 0;
 }
 
-.message-body > :is(.image-with-caption, .image-carousel, .video-with-caption, .embedded-video):last-child,
-.message-body > :last-child > :is(.video-with-caption, .embedded-video):last-child {
-	margin-bottom: 0;
-}
-
 .article-reading-time {
 	display: inline-flex;
 	align-items: center;
@@ -809,14 +804,6 @@ html.is-mobile .article-content {
 	margin-left: 0.25rem;
 	@extend .link-default;
 	cursor: pointer;
-}
-
-.article-content :is(
-	.image-with-caption__caption,
-	.image-carousel__caption,
-	.video-with-caption__caption
-) [data-caption-normal] {
-	font-style: normal;
 }
 
 .article-block--richtext [data-display-heading],
