@@ -101,7 +101,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
         }
     };
 
-    const containerClassName = ["content-with-toc", "mr-4", className]
+    const containerClassName = ["content-with-toc", className]
         .filter(Boolean)
         .join(" ");
 
@@ -110,7 +110,7 @@ const TableOfContents: FC<TableOfContentsProps> = ({ items, children, className 
             {hasItems && (
                 <button
                     ref={toggleRef}
-                    className={`toc-toggle${isMobileMenuOpen ? ' is-open' : ''}`}
+                    className={`toc-toggle mobile-edge-control mobile-edge-control--right${isMobileMenuOpen ? ' is-open' : ''}`}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     aria-label={isMobileMenuOpen ? "Закрыть оглавление" : "Открыть оглавление"}
                     aria-expanded={isMobileMenuOpen}

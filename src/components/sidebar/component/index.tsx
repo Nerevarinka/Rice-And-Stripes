@@ -108,7 +108,7 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 		<>
 			<button
 				ref={toggleRef}
-				className={`sidebar-burger${isMobileMenuOpen ? ' sidebar-burger--open' : ''}`}
+				className={`sidebar-burger mobile-edge-control mobile-edge-control--left${isMobileMenuOpen ? ' sidebar-burger--open is-open' : ''}`}
 				onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 				aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
 				aria-expanded={isMobileMenuOpen}

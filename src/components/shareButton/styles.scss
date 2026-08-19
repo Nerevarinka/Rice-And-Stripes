@@ -1,0 +1,99 @@
+@use "../../shared/styles/variables" as *;
+
+.publication-share {
+    position: relative;
+    display: inline-flex;
+}
+
+.publication-share-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    color: #4a4a4a;
+    background-color: #f5f5f5;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+        color: $link-color;
+        background-color: $background-beige;
+        border-color: rgba($primary-brown, 0.5);
+    }
+
+    &:focus-visible {
+        outline: 2px solid rgba($primary-brown, 0.55);
+        outline-offset: 2px;
+    }
+
+    &.is-active {
+        color: $link-color;
+        background-color: $background-beige;
+        border-color: rgba($primary-brown, 0.5);
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 1.85rem;
+        height: 1.85rem;
+    }
+}
+
+.publication-share-menu {
+    display: block;
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    right: 0;
+    z-index: 40;
+    width: max-content;
+    min-width: 12rem;
+    padding: 0.35rem;
+    background: #fffdf9;
+    border: 1px solid rgba($primary-brown, 0.25);
+    border-radius: 7px;
+    box-shadow: 0 6px 18px rgba(67, 44, 27, 0.14);
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        width: 100%;
+        min-height: 2.35rem;
+        padding: 0.45rem 0.6rem;
+        color: var(--bulma-text);
+        background: transparent;
+        border: 0;
+        border-radius: 5px;
+        font: inherit;
+        font-size: 0.9rem;
+        text-align: left;
+        text-decoration: none !important;
+        cursor: pointer;
+
+        svg {
+            flex: 0 0 auto;
+            width: 1.05rem;
+            height: 1.05rem;
+            fill: currentColor;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: $link-color;
+            background-color: $background-beige;
+            outline: none;
+        }
+
+        &.is-copied {
+            color: #276749;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        min-width: 11.5rem;
+    }
+}

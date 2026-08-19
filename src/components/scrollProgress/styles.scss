@@ -62,3 +62,11 @@
 		bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
 	}
 }
+
+@media screen and (min-width: 1200px) {
+	.main-content:has(.content-with-toc .table-of-contents) .scroll-to-top {
+		right: calc(22rem + 1rem);
+		background-color: #fffaf2;
+		border-color: rgba($primary-brown, 0.38);
+	}
+}

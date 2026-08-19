@@ -8,7 +8,7 @@
     &--left {
         align-items: flex-start;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             align-items: center;
         }
     }
@@ -20,7 +20,7 @@
     &--right {
         align-items: flex-end;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             align-items: center;
         }
     }
@@ -51,7 +51,7 @@
             max-width: 50rem;
         }
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             display: block;
             width: 100%;
         }
@@ -77,26 +77,9 @@
             max-width: min(50rem, 100%);
         }
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             width: 100%;
             height: auto !important;
-        }
-    }
-
-    &__caption {
-        margin-top: 0.5rem;
-        font-size: 0.875rem;
-        color: $text-muted;
-        font-style: italic;
-        text-align: center;
-
-        html.is-mobile & {
-            display: block;
-            width: 100%;
-        }
-
-        .source-link {
-            cursor: pointer;
         }
     }
 
@@ -133,7 +116,7 @@
         padding: 2rem;
         color: #ffffff;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             padding: 1rem;
         }
 
@@ -156,7 +139,7 @@
         margin-bottom: 0;
         animation: pulse 2s ease-in-out infinite;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -165,7 +148,7 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 1.75rem;
                 margin-bottom: 0.5rem;
             }
@@ -175,7 +158,7 @@
             font-size: 3rem;
             margin-bottom: 1.25rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 2rem;
                 margin-bottom: 0.75rem;
             }
@@ -190,7 +173,7 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
         }
@@ -199,7 +182,7 @@
             font-size: 1.125rem;
             margin-bottom: 1rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 0.875rem;
                 margin-bottom: 0.5rem;
             }
@@ -209,7 +192,7 @@
             font-size: 1.25rem;
             margin-bottom: 1.25rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 1rem;
                 margin-bottom: 0.5rem;
             }
@@ -224,7 +207,7 @@
         display: inline-block;
         transition: all 0.2s ease;
 
-        html.is-mobile & {
+        @media screen and (max-width: 767.98px) {
             font-size: 0.625rem;
             padding: 0.3rem 0.6rem;
         }
@@ -233,7 +216,7 @@
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 0.75rem;
                 padding: 0.4rem 0.8rem;
             }
@@ -243,7 +226,7 @@
             font-size: 1rem;
             padding: 0.6rem 1.2rem;
 
-            html.is-mobile & {
+            @media screen and (max-width: 767.98px) {
                 font-size: 0.875rem;
                 padding: 0.5rem 1rem;
             }
@@ -316,13 +299,6 @@
 	}
 }
 
-.embedded-video__meta {
-	display: flex;
-	align-items: baseline;
-	justify-content: center;
-	margin-top: 0.2rem;
-}
-
 .embedded-video__help-label {
 	color: #767676;
 	text-decoration: none;
@@ -348,11 +324,6 @@
 .embedded-video__troubleshooting:focus .embedded-video__help-tooltip,
 .embedded-video__troubleshooting:focus-within .embedded-video__help-tooltip {
 	display: block;
-}
-
-.embedded-video__help-separator {
-	margin: 0 0.4rem;
-	font-style: normal;
 }
 
 @keyframes pulse {

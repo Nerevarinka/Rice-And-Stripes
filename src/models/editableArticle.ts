@@ -145,7 +145,6 @@ export type EditableArticle = {
     status: EditableArticleStatus;
     tags: MediaItemTag[];
     blocks: EditableArticleBlock[];
-    html: string;
     tocItems?: EditableArticleTocItem[];
     readingTimeMinutes?: number;
     redirectFrom?: string[];

@@ -1,0 +1,22 @@
+.publication-page {
+    padding-bottom: 3rem;
+}
+
+@media screen and (max-width: 767.98px) {
+    .main-content:has(.publication-page) {
+        padding-right: 1.75rem !important;
+        padding-bottom: 0 !important;
+        padding-left: 1.75rem !important;
+        scrollbar-width: thin;
+    }
+
+    .main-content:has(.publication-page)::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .publication-page {
+        padding-right: 0;
+        padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+        padding-left: 0;
+    }
+}

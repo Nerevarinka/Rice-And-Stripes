@@ -3,15 +3,16 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Clock3, Grid2X2, List, RotateCcw, SlidersHorizontal } from "lucide-react";
+import { ChevronDown, Clock3, Grid2X2, List } from "lucide-react";
 
 import { formatDate } from "@bodynarf/utils/date/format";
 
 import type { Article, MediaItemTag } from "@/models";
 import { MediaItemTagColors } from "@/models";
 import TagComponent from "@/components/tag";
-import SortControl, { type SortOption } from "@/components/sortControl";
+import type { SortOption } from "@/components/sortControl";
 import ContentPagination from "@/components/contentPagination";
+import PublicationListToolbar from "@/components/publicationListToolbar";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 import "./styles.scss";
@@ -129,7 +130,7 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
     };
 
     return (
-        <section className="mx-4 is-h-100">
+        <section className="articles-page mx-4">
             <div className="articles-header mb-4">
                 <h2 className={`title ${isMobile ? "is-3" : "is-2"}`}>
                     Статьи для владельцев
@@ -149,7 +150,7 @@ export default function ArticlesContainer({ articles }: ArticlesContainerProps) 
                 onPageSizeChange={selectPageSize}
             />
 
-            <div ref={listRef} className={`card-group card-group--${effectiveView} py-4 pr-3 mt-2 mb-4 pl-1`}>
+            <div ref={listRef} className={`card-group card-group--${effectiveView} py-4 mt-2 mb-4`}>
                 {pagedArticles.map(x =>
                     <div key={x.link} className="card-wrapper">
                         <Link href={x.link}>
@@ -248,7 +249,6 @@ function TagFilterPanel({
     onPageSizeChange,
 }: TagFilterPanelProps) {
     const [isOpen, setIsOpen] = useState(false);
-    const [isMobilePanelOpen, setIsMobilePanelOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const unselectedTags = availableTags.filter(tag => !selectedTags.includes(tag));
 
@@ -267,23 +267,10 @@ function TagFilterPanel({
         };
     }, []);
 
-    return (
-        <div className="field pb-4 mb-0 search-field">
-            <button
-                type="button"
-                className="articles-tools-toggle"
-                onClick={() => setIsMobilePanelOpen(current => !current)}
-                aria-expanded={isMobilePanelOpen}
-            >
-                <SlidersHorizontal size={18} aria-hidden="true" />
-                <span>Фильтры и сортировка</span>
-                <ChevronDown size={18} aria-hidden="true" />
-            </button>
-            <div className={`articles-tools${isMobilePanelOpen ? " is-mobile-open" : ""}`}>
-                <div className="articles-tools__filter">
-                    <div className="articles-tools__filter-row">
-                        <label className="label mb-0">Фильтр по тегам:</label>
-                        <div ref={dropdownRef} className={`tag-filter-select${isOpen ? " is-open" : ""}`}>
+    const filter = (
+        <>
+            <label className="label mb-0">Фильтр по тегам:</label>
+            <div ref={dropdownRef} className={`tag-filter-select${isOpen ? " is-open" : ""}`}>
                         <button
                             type="button"
                             className="tag-filter-select__trigger"
@@ -315,69 +302,60 @@ function TagFilterPanel({
                                 )}
                             </div>
                         ) : null}
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </>
+    );
 
-                <div className="articles-tools__control">
-                    <span className="label mb-0">Сортировка:</span>
-                    <SortControl value={sort} options={articleSortOptions} onChange={onSortChange} />
-                </div>
-
-                <div className="articles-tools__control articles-tools__control--page-size">
-                    <span className="label mb-0">Статей на странице:</span>
-                    <SortControl value={String(pageSize)} options={pageSizeOptions} onChange={onPageSizeChange} showSortIcon={false} />
-                </div>
-
-                {showViewToggle ? (
-                    <div className="articles-tools__control">
-                        <span className="label mb-0">Вид:</span>
-                        <div className="articles-view-toggle" role="group" aria-label="Способ отображения статей">
+    const viewControl = showViewToggle ? (
+        <>
+            <span className="label mb-0">Вид:</span>
+            <div className="articles-view-toggle" role="group" aria-label="Способ отображения статей">
                             <button type="button" className={view === "grid" ? "is-active" : ""} onClick={() => onViewChange("grid")} title="Плитка" aria-label="Показать статьи плиткой" aria-pressed={view === "grid"}>
                                 <Grid2X2 size={18} />
                             </button>
                             <button type="button" className={view === "list" ? "is-active" : ""} onClick={() => onViewChange("list")} title="Список" aria-label="Показать статьи списком" aria-pressed={view === "list"}>
                                 <List size={19} />
                             </button>
-                        </div>
-                    </div>
-                ) : null}
-
-                <button
-                    type="button"
-                    className="articles-tools__reset"
-                    onClick={() => {
-                        setSelectedTags([]);
-                        onSortChange("newest");
-                    }}
-                    disabled={selectedTags.length === 0 && sort === "newest"}
-                >
-                    <RotateCcw size={16} aria-hidden="true" />
-                    <span>Сбросить</span>
-                </button>
-
-                {selectedTags.length > 0 && (
-                    <div className="articles-tools__selected-tags">
-                        {selectedTags.map(tag => (
-                            <span
-                                key={tag}
-                                className="tag is-medium"
-                                style={{
-                                    backgroundColor: MediaItemTagColors[tag].background,
-                                    color: MediaItemTagColors[tag].text
-                                }}
-                            >
-                                {tag}
-                                <button
-                                    className="delete is-small ml-2"
-                                    onClick={() => setSelectedTags(prev => prev.filter(t => t !== tag))}
-                                />
-                            </span>
-                        ))}
-                    </div>
-                )}
-
             </div>
-        </div>
+        </>
+    ) : undefined;
+
+    const selectedFilters = selectedTags.length ? selectedTags.map(tag => (
+        <span
+            key={tag}
+            className="tag is-medium"
+            style={{
+                backgroundColor: MediaItemTagColors[tag].background,
+                color: MediaItemTagColors[tag].text,
+            }}
+        >
+            {tag}
+            <button
+                className="delete is-small ml-2"
+                onClick={() => setSelectedTags(prev => prev.filter(item => item !== tag))}
+                aria-label={`Убрать тег ${tag}`}
+            />
+        </span>
+    )) : undefined;
+
+    return (
+        <PublicationListToolbar
+            mobileLabel="Фильтры и сортировка"
+            sortValue={sort}
+            sortOptions={articleSortOptions}
+            onSortChange={onSortChange}
+            pageSizeLabel="Статей на странице:"
+            pageSize={pageSize}
+            pageSizeOptions={pageSizeOptions}
+            onPageSizeChange={onPageSizeChange}
+            onReset={() => {
+                setSelectedTags([]);
+                onSortChange("newest");
+            }}
+            resetDisabled={selectedTags.length === 0 && sort === "newest"}
+            filter={filter}
+            selectedFilters={selectedFilters}
+            viewControl={viewControl}
+        />
     );
 }

@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { AlertTriangle, Info } from "lucide-react";
-import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
+import MediaCaption from "@/components/mediaCaption";
 
 import "../videoWithCaption/styles.scss";
 
@@ -54,17 +54,12 @@ export default function EmbeddedVideo({
                     </button>
                 ) : null}
             </div>
-            <div className="video-with-caption__caption">
-                {caption ? <div className="video-with-caption__caption-text">{caption}</div> : null}
-                {(source || troubleshooting) ? (
-                    <div className="embedded-video__meta">
-                        {source ? (
-                        <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">
-                            Оригинал
-                        </a>
-                        ) : null}
-                        {source && troubleshooting ? <span className="embedded-video__help-separator" aria-hidden="true">·</span> : null}
-                        {troubleshooting ? (
+            <MediaCaption
+                className="video-with-caption__caption"
+                caption={caption}
+                source={source}
+                sourceLabel="Оригинал"
+                secondary={troubleshooting ? (
                         <span
                             className="embedded-video__troubleshooting"
                             tabIndex={0}
@@ -80,10 +75,8 @@ export default function EmbeddedVideo({
                                 </a>.
                             </span>
                         </span>
-                        ) : null}
-                    </div>
-                ) : null}
-            </div>
+                ) : undefined}
+            />
         </div>
     );
 }

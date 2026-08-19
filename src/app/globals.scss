@@ -1,5 +1,8 @@
 // Импорт готового CSS файла Bulma
 @use "../shared/styles/variables" as *;
+@use "../shared/styles/publication-content";
+@use "../shared/styles/publication-layout";
+@use "../shared/styles/mobile-edge-control";
 
 @import "bulma/css/bulma.css";
 
@@ -7,52 +10,6 @@ html,
 body {
 	height: 100%;
 	margin: 0;
-}
-
-// Shared article/note typography. Media captions use italics by default;
-// the editor adds this marker only to fragments explicitly made regular.
-.publication-content :is(
-	.image-with-caption__caption,
-	.image-carousel__caption,
-	.video-with-caption__caption
-) [data-caption-normal] {
-	font-style: normal;
-}
-
-.publication-content :is(
-	.image-with-caption__caption,
-	.image-carousel__caption,
-	.video-with-caption__caption
-) a,
-.publication-content .source-link {
-	color: $link-color !important;
-	text-decoration: underline;
-	text-underline-offset: 0.12em;
-	cursor: pointer;
-}
-
-.publication-content :is(
-	.image-with-caption__caption,
-	.image-carousel__caption,
-	.video-with-caption__caption
-) a:hover,
-.publication-content .source-link:hover {
-	color: $link-in-text-color !important;
-}
-
-.publication-content .message-body > :is(
-	.image-with-caption,
-	.image-carousel,
-	.video-with-caption,
-	.embedded-video
-):last-child,
-.publication-content .message-body > :last-child > :is(
-	.image-with-caption,
-	.image-carousel,
-	.video-with-caption,
-	.embedded-video
-):last-child {
-	margin-bottom: 0;
 }
 
 .site-shell {
@@ -68,20 +25,20 @@ body {
 }
 
 .main-content {
-	html.is-mobile & {
+	@media screen and (max-width: 767.98px) {
 		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 }
 
 .container {
-	html.is-mobile & {
+	@media screen and (max-width: 767.98px) {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 	}
 }
 
 .content {
-	html.is-mobile & {
+	@media screen and (max-width: 767.98px) {
 		font-size: 0.95rem;
 
 		h3.title {
@@ -120,11 +77,22 @@ body {
 	border: 0;
 }
 
+.about-page {
+	width: 100%;
+	max-width: 92.5rem;
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
 @media screen and (max-width: 767.98px) {
 	.main-content {
 		width: 100%;
 		min-width: 0;
 		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
+	}
+
+	.main-content:has(.notes-page) {
+		padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
 	.site-search-page__heading > .title,
@@ -133,5 +101,12 @@ body {
 	.about-page > .title {
 		font-size: 2rem !important;
 		line-height: 1.15;
+	}
+
+	.finches-page,
+	.about-page {
+		box-sizing: border-box;
+		padding-right: 0.75rem;
+		padding-left: 0.75rem;
 	}
 }

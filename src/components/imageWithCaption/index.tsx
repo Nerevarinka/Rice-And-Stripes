@@ -5,7 +5,7 @@ import { useEffect, useState, type FC } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { normalizeExternalUrl } from "@/shared/utils/normalizeExternalUrl";
+import MediaCaption from "@/components/mediaCaption";
 import "./styles.scss";
 
 export type ImagePosition = "left" | "center" | "right";
@@ -154,17 +154,11 @@ const ImageWithCaption: FC<ImageWithCaptionProps> = ({
                         </div>
                     )}
                 </div>
-                <div className="image-with-caption__caption">
-                    {caption}
-                    {source && (
-                        <>
-                            <br />
-                            <a href={normalizeExternalUrl(source)} target="_blank" rel="noopener noreferrer" className="source-link">
-                                Источник
-                            </a>
-                        </>
-                    )}
-                </div>
+                <MediaCaption
+                    className="image-with-caption__caption"
+                    caption={caption}
+                    source={source}
+                />
             </div>
 
             {isModalOpen && expandable && (

@@ -8,7 +8,6 @@ const basePath = "/Rice-And-Stripes";
 const errors = [];
 const warnings = [];
 const slugs = new Map();
-let legacyHtmlFiles = 0;
 
 function report(target, file, message) {
     target.push(`${file}: ${message}`);
@@ -70,6 +69,7 @@ async function validateFile(directory, fileName) {
             if (typeof value[field] !== "string" || !value[field].trim()) report(errors, relativeFile, `не заполнено поле ${field}`);
         }
         if (!Array.isArray(value.blocks)) report(errors, relativeFile, "blocks должен быть массивом");
+        if (Object.hasOwn(value, "html")) report(errors, relativeFile, "корневое поле html устарело; содержимое должно храниться только в blocks");
     }
 
     if (typeof value.slug === "string") {
@@ -81,8 +81,7 @@ async function validateFile(directory, fileName) {
         else slugs.set(value.slug, relativeFile);
     }
 
-    const { html: legacyHtml, ...sourceContent } = value;
-    const urls = extractUrls(sourceContent);
+    const urls = extractUrls(value);
     for (const url of urls) {
         if (url.startsWith(`${siteOrigin}/`) && url !== `${siteOrigin}${basePath}` && !url.startsWith(`${siteOrigin}${basePath}/`)) {
             report(errors, relativeFile, `внутренняя ссылка потеряла ${basePath}: ${url}`);
@@ -90,9 +89,6 @@ async function validateFile(directory, fileName) {
         await validateLocalAsset(url, relativeFile);
     }
 
-    if (typeof legacyHtml === "string" && legacyHtml.length > 0) {
-        legacyHtmlFiles += 1;
-    }
 }
 
 for (const directory of contentDirectories) {
@@ -108,10 +104,6 @@ for (const directory of contentDirectories) {
 if (warnings.length) {
     console.log(`Предупреждения (${warnings.length}):`);
     warnings.forEach(message => console.log(`  - ${message}`));
-}
-
-if (legacyHtmlFiles > 0) {
-    console.log(`Совместимость: ${legacyHtmlFiles} файлов пока содержат дублирующее поле html.`);
 }
 
 if (errors.length) {
