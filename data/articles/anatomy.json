@@ -6,7 +6,7 @@
   "description": "Как птицы дышат на выдохе, почему их нельзя долго держать в руке и как они держатся на жердочках - обо всем этом и многом другом можно узнать тут",
   "coverUrl": "/uploads/articles/anatomy/lesson.webp",
   "publishDate": "2025-03-24T09:00:00.000Z",
-  "updatedAt": "2026-08-19T20:38:15.766Z",
+  "updatedAt": "2026-08-19T23:13:31.994Z",
   "status": "published",
   "blocks": [
     {
@@ -266,12 +266,12 @@
     {
       "id": "anatomy-text-34",
       "type": "richText",
-      "html": "<p>В заключение этой части рассмотрим, как птицы удерживаются на жердочке. Это происходит автоматически и обеспечивается двумя механизмами.</p>"
+      "html": "<p>В заключение этой части рассмотрим, как птицы удерживаются на жердочке. </p><p></p><p>Долгое время это объясняли следующими двумя двумя механизмами.</p>"
     },
     {
       "id": "anatomy-text-35",
       "type": "richText",
-      "html": "<ul><li><p><strong>Автоматическое сгибание пальцев.</strong> Когда птица садится на ветку, сгибается межплюсневый сустав (аналог нашей лодыжки). Это натягивает сухожилия сгибателей пальцев. В итоге пальцы ног сгибаются и охватывают опору. Этот процесс <strong>не требует сознательного усилия</strong> - движение происходит пассивно, за счёт натяжения сухожилий.</p></li></ul>"
+      "html": "<p><strong>1) Автоматическое сгибание пальцев.</strong> Когда птица садится на ветку, сгибается межплюсневый сустав (аналог нашей лодыжки). Это натягивает сухожилия сгибателей пальцев. В итоге пальцы ног сгибаются и охватывают опору. Этот процесс <strong>не требует сознательного усилия</strong> - движение происходит пассивно, за счёт натяжения сухожилий.</p>"
     },
     {
       "id": "anatomy-image-36",
@@ -296,7 +296,7 @@
     {
       "id": "anatomy-text-38",
       "type": "richText",
-      "html": "<ul><li><p><strong>Блокировка сухожилий.</strong> После сгибания пальцев в работу включается второй механизм. На сухожилиях сгибателей находятся выросты (\"зубчики\"), которые сцепляются со складками оболочки, окружающей сухожилие. В результате пальцы как бы \"защёлкиваются\" в сжатом положении.</p></li></ul>"
+      "html": "<p><strong>2) Блокировка сухожилий.</strong> После сгибания пальцев в работу включается второй механизм. На сухожилиях сгибателей находятся выросты (\"зубчики\"), которые сцепляются со складками оболочки, окружающей сухожилие. В результате пальцы как бы \"защёлкиваются\" в сжатом положении.</p>"
     },
     {
       "id": "anatomy-image-39",
@@ -312,23 +312,77 @@
     {
       "id": "anatomy-text-40",
       "type": "richText",
-      "html": "<p>Заметили интересный момент? <strong>Мышцы тут вообще не задействованы!</strong> Фиксация механическая, поэтому птицы не устают и не тратят энергию, сидя всю ночь на жердочке, и вообще не думают о хвате. Действительно, было бы нелогично держать так долго мышцы в напряжении.</p>"
+      "html": "<p>Считалось, что сгибание пальцев и фиксация  - процессы чисто механические (мышцы не задействованы), поэтому птицы не устают и не тратят энергию, сидя всю ночь на жердочке, и вообще не думают о хвате. </p><p></p><p>Однако, эксперименты не подтверждают это. На скворцах показали, что пассивное сгибание ног не приводило к автоматическому сгибанию пальцев, а анестезированные птицы не могли удерживаться на жердочке. Вы сами можете заметить на своих питомцах, что они далеко не всегдя стремятся полностью обхватить жердочку, часто пальцы лежат свободно, лишь слегка сгибаясь. Оказывается, для них важнее сохранять равновесие (подробнее см. ниже).</p><p></p><p>А вот механизм фиксации сухожилий (\"замок\") действительно существует. Он помогает удерживать пальцы в согнутом положении.</p>"
     },
     {
-      "id": "anatomy-text-41",
-      "type": "richText",
-      "html": "<p>Хорошо, с захватом разобрались. А как раскрыть этот замок, когда пора лететь? Вот тут уже птице надо поднапрячься - разогнуть межплюсневый сустав (выпрямить ногу) и, как следствие, разжать пальцы. Для этого используются мышцы-разгибатели. То есть захват жерди - пассивное движение, а здесь - активное.</p>"
+      "id": "8d4665df-54bb-4221-bdda-5f564a94edc6",
+      "type": "message",
+      "variant": "info",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "64179383-9e9c-4c15-bdd0-d69fabe6d633",
+          "type": "richText",
+          "html": "<p>Хорошо, а как птица разжимает пальцы, чтобы улететь? Здесь уже работают мышцы-разгибатели: они позволяют активно распрямлять пальцы и отпускать опору. Но как именно при этом выключается сухожильный \"замок\", изучено значительно хуже. И хотя есть распространенное объяснение \"птица выпрямляет ногу -&gt; замок автоматически открывается\", его пока лучше не воспринимать как достоверный механизм.</p>"
+        }
+      ]
     },
     {
       "id": "anatomy-image-42",
       "type": "image",
       "imageUrl": "/uploads/articles/anatomy/17.webp",
       "alt": "Пингвинчик стоит на одной ножке",
-      "caption": "Птицы любят отдыхать и спать на одной ножке",
+      "caption": "Птицы любят отдыхать и спать на одной ножке. Для них такое положение удобно: центр тяжести птиц находится под коленом (как в позиции в присяде), а бедренный сустав не дает ноге уйти выше. Вытянутая нога при этом стоит так, что стопа оказывается прямо под телом, и оно всей массой упирается на нее.",
       "source": "",
       "size": "small",
       "spoiler": "",
       "expandable": true
+    },
+    {
+      "id": "3f5ff3e2-a183-43ae-ac09-c445dffd905d",
+      "type": "message",
+      "variant": "success",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "059db9a7-9993-4c8b-b0ea-a6f7ab0860f3",
+          "type": "richText",
+          "html": "<p>Для очень тонких жердочках коготков и механизма сжатия пальцев и фиксации сухожилий было бы в любом случае недостаточно. Необходимо также чувство равновесия, и у птиц оно развито превосходно. Помимо вестибулярного аппарата во внутреннем ухе, как у человека, у птиц описывают <strong>дополнительную систему, связанную с поддержанием равновесия. </strong>Ее структуры расположены в пояснично-крестцовой области позвоночника, рядом с местом прикрепления задних конечностей.</p>"
+        },
+        {
+          "id": "7b47cd4f-e477-4bdf-b03c-cb043d51378d",
+          "type": "image",
+          "imageUrl": "/uploads/articles/anatomy/1787178856368.webp",
+          "alt": "Центр тяжести в теле птиц",
+          "caption": "Расположение центра тяжести в теле птицы. [8]",
+          "source": "",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        },
+        {
+          "id": "7e61a825-ed74-42bf-80a5-50dbd975a6ff",
+          "type": "richText",
+          "html": "<p>Сочетание этих механизмов позволяет амадинам уверенно удерживаться даже на тонкой проволоке. Хвост также помогает им балансировать. </p>"
+        },
+        {
+          "id": "f32041ad-f966-473a-a95e-f56d7bb658ce",
+          "type": "image",
+          "imageUrl": "/uploads/articles/anatomy/1787181005387.webp",
+          "alt": "",
+          "caption": "Положение птицы в активном (слева) и спящем положении. [8] Обратите внимание: спящая птица не впивается когтями в веточку, а ее туловище больше смещается вперед.",
+          "source": "",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        }
+      ]
     },
     {
       "id": "anatomy-text-43",
@@ -1060,7 +1114,7 @@
       "id": "8ec14a48-adaa-4408-8fc6-45cc2c7b7872",
       "type": "spoiler",
       "summary": "📚 Использованная литература",
-      "bodyHtml": "<p>[1] König, H. E., Korbel, R., &amp; Liebich, H.-G. (2016). Avian anatomy: Textbook and colour atlas (2nd ed.). Schattauer.</p><p></p><p>[2] Ritchie, B. W., Harrison, G. J., &amp; Harrison, L. R. (Eds.). (1994). Avian medicine: Principles and application. Wingers Publishing.</p><p></p><p>[3] Barske, J.; Eghbali, M.; Kosarussavadi, S.; Choi, E.; Schlinger, B.A. . (2018). The heart of an acrobatic bird. Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology, (), S1095643318302514–. doi:10.1016/j.cbpa.2018.10.010</p><p></p><p>[4] Skadhauge, E; Bradshaw, SD . (1974). Saline drinking and cloacal excretion of salt and water in the zebra finch. American Journal of Physiology-Legacy Content, 227(6), 1263–1267. doi:10.1152/ajplegacy.1974.227.6.1263</p><p></p><p>[5] Zann, R; Rossetto, M . (1991). Zebra Finch Incubation: Brood Patch, Egg Temperature and Thermal Properties of the Nest. Emu, 91(2), 107–. doi:10.1071/MU9910107</p><p></p><p>[6] Noam Leader; Fernando Nottebohm. (2006). Delayed plumage maturation in socially isolated juvenile zebra finches, Taeniopygia guttata. , 72(1), 113–121. doi:10.1016/j.anbehav.2005.09.013</p><p></p><p>[7] Kumar, P., Redel, U., Lang, T., Korsching, S. I., &amp; Behrens, M. (2023). Bitter taste receptors of the zebra finch (Taeniopygia guttata). Frontiers in Physiology, 13, 1233711. doi: 10.3389/fphys.2023.1233711</p>",
+      "bodyHtml": "<p>[1] König, H. E., Korbel, R., &amp; Liebich, H.-G. (2016). Avian anatomy: Textbook and colour atlas (2nd ed.). Schattauer.</p><p></p><p>[2] Ritchie, B. W., Harrison, G. J., &amp; Harrison, L. R. (Eds.). (1994). Avian medicine: Principles and application. Wingers Publishing.</p><p></p><p>[3] Barske, J.; Eghbali, M.; Kosarussavadi, S.; Choi, E.; Schlinger, B.A. . (2018). The heart of an acrobatic bird. Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology, (), S1095643318302514–. doi:10.1016/j.cbpa.2018.10.010</p><p></p><p>[4] Skadhauge, E; Bradshaw, SD . (1974). Saline drinking and cloacal excretion of salt and water in the zebra finch. American Journal of Physiology-Legacy Content, 227(6), 1263–1267. doi:10.1152/ajplegacy.1974.227.6.1263</p><p></p><p>[5] Zann, R; Rossetto, M . (1991). Zebra Finch Incubation: Brood Patch, Egg Temperature and Thermal Properties of the Nest. Emu, 91(2), 107–. doi:10.1071/MU9910107</p><p></p><p>[6] Noam Leader; Fernando Nottebohm. (2006). Delayed plumage maturation in socially isolated juvenile zebra finches, Taeniopygia guttata. , 72(1), 113–121. doi:10.1016/j.anbehav.2005.09.013</p><p></p><p>[7] Kumar, P., Redel, U., Lang, T., Korsching, S. I., &amp; Behrens, M. (2023). Bitter taste receptors of the zebra finch (Taeniopygia guttata). Frontiers in Physiology, 13, 1233711. doi: 10.3389/fphys.2023.1233711</p><p></p><p>[8] Сибли, Д. (2022). \"Каково быть птицей\"</p><p></p><p>[9] Galton, P. Shepherd, J. (2012). Experimental analysis of perching in the European starling (Sturnus vulgaris: Passeriformes; Passeres), and the automatic perching mechanism of birds. doi: 10.1002/jez.1714</p>",
       "defaultOpen": false
     }
   ],
@@ -1131,7 +1185,7 @@
       "level": 3
     }
   ],
-  "readingTimeMinutes": 21,
+  "readingTimeMinutes": 22,
   "contentType": "article",
   "tags": [
     "познавательное",
