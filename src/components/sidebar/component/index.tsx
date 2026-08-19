@@ -137,7 +137,7 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 								width={160}
 								height={160}
 								className="sidebar-logo is-flex is-flex-direction-column"
-								title="Rice & Stripes"
+								title="Два чудика смотрят друг на друга"
 							/>
 						</Link>
 					</div>
@@ -162,7 +162,7 @@ export default function Sidebar({ menuItems }: SidebarProps) {
 
 					<footer className="sidebar-footer is-flex is-flex-direction-column is-align-items-center is-justify-content-center has-text-centered mb-5 mt-3">
 						<div>
-							© 2025
+							© 2025 - 2026
 							<br />
 							Rice & Stripes
 						</div>

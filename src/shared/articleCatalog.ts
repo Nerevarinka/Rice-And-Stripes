@@ -114,7 +114,7 @@ export async function getSiteSearchItems(): Promise<SearchItem[]> {
             description: "Фотографии и истории птиц, которые живут или жили со мной.",
             link: "/finches",
             kind: "Раздел",
-            searchText: "мои амадины птицы фотографии истории характеры привычки",
+            searchText: "мои амадины птицы фотографии истории характеры привычки блог об амадинах",
         },
         {
             title: "Об авторе",

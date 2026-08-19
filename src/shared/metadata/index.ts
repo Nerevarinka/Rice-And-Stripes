@@ -2,7 +2,15 @@ import { Metadata } from "next";
 
 import { Article } from "@/models";
 import packageJson from "../../../package.json";
-import { absoluteSiteUrl } from "@/shared/siteConfig";
+import { absoluteSiteUrl, siteConfig } from "@/shared/siteConfig";
+
+export const DEFAULT_SOCIAL_IMAGE = {
+    url: absoluteSiteUrl(siteConfig.socialImage),
+    width: 600,
+    height: 600,
+    type: "image/jpeg",
+    alt: "Логотип Rice & Stripes",
+} as const;
 
 /**
  * Общие настройки метаданных для статей
@@ -42,6 +50,16 @@ export const createCommonMetadata = (
     openGraph: {
         locale: COMMON_ARTICLE_METADATA.locale,
         siteName: COMMON_ARTICLE_METADATA.siteName,
+        title,
+        description,
+        type: "website",
+        images: [DEFAULT_SOCIAL_IMAGE],
+    },
+    twitter: {
+        card: "summary",
+        title,
+        description,
+        images: [DEFAULT_SOCIAL_IMAGE.url],
     },
     robots: COMMON_ARTICLE_METADATA.robots,
 });
@@ -58,10 +76,13 @@ export function createArticleMetadata(
 ): Metadata {
     const articleUrl = absoluteSiteUrl(articleInfo.link);
     const coverUrl = typeof articleInfo.cover === "string"
-            ? absoluteSiteUrl(articleInfo.cover)
+            ? articleInfo.cover.trim()
+                ? absoluteSiteUrl(articleInfo.cover)
+                : DEFAULT_SOCIAL_IMAGE.url
         : "src" in articleInfo.cover
             ? articleInfo.cover.src
             : articleInfo.cover.default.src;
+    const hasCover = typeof articleInfo.cover !== "string" || Boolean(articleInfo.cover.trim());
 
     const baseMetadata = createCommonMetadata(
         articleInfo.caption,
@@ -77,22 +98,20 @@ export function createArticleMetadata(
             description: articleInfo.description,
             type: "article",
             url: articleUrl,
-            images: coverUrl
-                ? [
+            images: [
                     {
                         url: coverUrl,
-                        width: 1200,
-                        height: 630,
+                        width: hasCover ? 1200 : DEFAULT_SOCIAL_IMAGE.width,
+                        height: hasCover ? 630 : DEFAULT_SOCIAL_IMAGE.height,
                         alt: articleInfo.caption,
                     },
-                ]
-                : [],
+                ],
         },
         twitter: {
             card: "summary_large_image",
             title: articleInfo.caption,
             description: articleInfo.description,
-            images: coverUrl ? [coverUrl] : [],
+            images: [coverUrl],
         },
         alternates: {
             canonical: articleUrl,

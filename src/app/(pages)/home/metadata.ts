@@ -1,11 +1,10 @@
-import { createCommonMetadata } from "@/shared/metadata";
-import { withBasePath } from "@/shared/utils/withBasePath";
+import { createCommonMetadata, DEFAULT_SOCIAL_IMAGE } from "@/shared/metadata";
+import { absoluteSiteUrl } from "@/shared/siteConfig";
 import type { Metadata } from "next";
 
 const title = "Rice & Stripes - Блог о жизни амадин";
 const description = "Блог о жизни амадин: уход, наблюдения, наука";
-const homeUrl = withBasePath("/");
-const logoUrl = withBasePath("/logoV2-preview-v2.jpg");
+const homeUrl = absoluteSiteUrl("/");
 
 const baseMetadata = createCommonMetadata(
 	title,
@@ -27,19 +26,13 @@ export const metadata: Metadata = {
 		description,
 		type: "website",
 		url: homeUrl,
-		images: [{
-			url: logoUrl,
-			width: 600,
-			height: 600,
-			type: "image/jpeg",
-			alt: "Rice & Stripes",
-		}],
+		images: [DEFAULT_SOCIAL_IMAGE],
 	},
 	twitter: {
 		card: "summary",
 		title,
 		description,
-		images: [logoUrl],
+		images: [DEFAULT_SOCIAL_IMAGE.url],
 	},
 	alternates: {
 		canonical: homeUrl,

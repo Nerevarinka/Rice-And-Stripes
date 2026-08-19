@@ -8,10 +8,27 @@ import ScrollProgress from "@/components/scrollProgress";
 import JsonLd from "@/components/jsonLd";
 import { getAllSidebarItems } from "@/shared/articleCatalog";
 import { createSiteStructuredData } from "@/shared/structuredData";
-import { siteUrl } from "@/shared/siteConfig";
+import { siteConfig, siteUrl } from "@/shared/siteConfig";
+import { DEFAULT_SOCIAL_IMAGE } from "@/shared/metadata";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
+	title: siteConfig.name,
+	description: siteConfig.description,
+	openGraph: {
+		title: siteConfig.name,
+		description: siteConfig.description,
+		type: "website",
+		siteName: siteConfig.name,
+		locale: "ru_RU",
+		images: [DEFAULT_SOCIAL_IMAGE],
+	},
+	twitter: {
+		card: "summary",
+		title: siteConfig.name,
+		description: siteConfig.description,
+		images: [DEFAULT_SOCIAL_IMAGE.url],
+	},
 };
 
 export const viewport: Viewport = {
