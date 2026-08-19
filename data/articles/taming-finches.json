@@ -6,7 +6,7 @@
   "description": "Разбираем причины возникновения мифа и разрушаем его",
   "coverUrl": "/uploads/articles/taming-finches/cover.webp",
   "publishDate": "2025-03-23T09:00:00.000Z",
-  "updatedAt": "2026-08-10T09:00:00.000Z",
+  "updatedAt": "2026-08-19T21:07:52.774Z",
   "status": "published",
   "blocks": [
     {
@@ -195,11 +195,11 @@
     {
       "id": "taming-finches-video-37",
       "type": "video",
-      "kind": "file",
-      "src": "/uploads/articles/taming-finches/10.mp4",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239074",
       "caption": "Источник: reddit.com, автор - xPeepTastic",
       "source": "",
-      "size": "small",
+      "size": "big",
       "title": "",
       "spoiler": "",
       "spoilerEnabled": false,
@@ -299,7 +299,7 @@
       "src": "https://vkvideo.ru/video-140742106_456239105",
       "caption": "",
       "source": "https://vkvideo.ru/video-140742106_456239105",
-      "size": "medium",
+      "size": "big",
       "title": "",
       "spoiler": "",
       "spoilerEnabled": false
@@ -332,11 +332,11 @@
     {
       "id": "taming-finches-video-68",
       "type": "video",
-      "kind": "file",
-      "src": "/uploads/articles/taming-finches/14.mp4",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239089",
       "caption": "Источник: 📸 tomoko.k.viola",
       "source": "",
-      "size": "small",
+      "size": "big",
       "title": "",
       "spoiler": "",
       "spoilerEnabled": false,
@@ -351,8 +351,8 @@
     {
       "id": "taming-finches-video-70",
       "type": "video",
-      "kind": "file",
-      "src": "/uploads/articles/taming-finches/15.mp4",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239078",
       "caption": "Источник: ютуб-канал LenaV",
       "source": "",
       "size": "big",
@@ -370,8 +370,8 @@
     {
       "id": "taming-finches-video-72",
       "type": "video",
-      "kind": "file",
-      "src": "/uploads/articles/taming-finches/16.mp4",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239088",
       "caption": "Источник: 📸 bunsisters",
       "source": "",
       "size": "big",
@@ -389,8 +389,8 @@
     {
       "id": "taming-finches-video-74",
       "type": "video",
-      "kind": "file",
-      "src": "/uploads/articles/taming-finches/17.mp4",
+      "kind": "vk",
+      "src": "https://vkvideo.ru/video-229064209_456239079",
       "caption": "Источник: ютуб-канал guntaakuzim5707",
       "source": "",
       "size": "big",
@@ -541,5 +541,6 @@
   "contentType": "article",
   "tags": [
     "содержание"
-  ]
+  ],
+  "redirectFrom": []
 }
