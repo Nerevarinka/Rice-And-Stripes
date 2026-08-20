@@ -27,15 +27,17 @@ export default function ScrollProgress() {
         const progress = progressRef.current;
         const scrollContainer = anchorRef.current?.closest("main");
         if (!(scrollContainer instanceof HTMLElement)) return;
+		const usesDocumentScroll = window.matchMedia("(max-width: 767.98px)").matches;
+		const scrollElement = usesDocumentScroll ? document.documentElement : scrollContainer;
 
         const updateProgress = () => {
-            const scrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-            const ratio = scrollableHeight > 0 ? scrollContainer.scrollTop / scrollableHeight : 0;
+			const scrollableHeight = scrollElement.scrollHeight - scrollElement.clientHeight;
+			const ratio = scrollableHeight > 0 ? scrollElement.scrollTop / scrollableHeight : 0;
             if (progress) progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
-            const distanceToBottom = scrollableHeight - scrollContainer.scrollTop;
+			const distanceToBottom = scrollableHeight - scrollElement.scrollTop;
 
             if (isScrollingToTopRef.current) {
-                if (scrollContainer.scrollTop <= 1) {
+				if (scrollElement.scrollTop <= 1) {
                     isScrollingToTopRef.current = false;
                     setShowScrollToTop(false);
                 } else {
@@ -45,17 +47,18 @@ export default function ScrollProgress() {
             }
 
             setShowScrollToTop(
-                scrollContainer.scrollTop > 500 && (!shouldShowProgress || distanceToBottom > 240)
+				scrollElement.scrollTop > 500 && (!shouldShowProgress || distanceToBottom > 240)
             );
         };
 
         updateProgress();
-        scrollContainer.addEventListener("scroll", updateProgress, { passive: true });
+		const scrollTarget: Window | HTMLElement = usesDocumentScroll ? window : scrollContainer;
+		scrollTarget.addEventListener("scroll", updateProgress, { passive: true });
         const resizeObserver = new ResizeObserver(updateProgress);
-        resizeObserver.observe(scrollContainer);
+		resizeObserver.observe(scrollElement);
 
         return () => {
-            scrollContainer.removeEventListener("scroll", updateProgress);
+			scrollTarget.removeEventListener("scroll", updateProgress);
             resizeObserver.disconnect();
             if (scrollResetTimerRef.current) clearTimeout(scrollResetTimerRef.current);
         };
@@ -66,15 +69,21 @@ export default function ScrollProgress() {
     const scrollToTop = () => {
         const scrollContainer = anchorRef.current?.closest("main");
         if (!(scrollContainer instanceof HTMLElement)) return;
+		const usesDocumentScroll = window.matchMedia("(max-width: 767.98px)").matches;
+		const scrollElement = usesDocumentScroll ? document.documentElement : scrollContainer;
 
         if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
         isScrollingToTopRef.current = true;
-        scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+		if (usesDocumentScroll) {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		} else {
+			scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
+		}
 
         if (scrollResetTimerRef.current) clearTimeout(scrollResetTimerRef.current);
         scrollResetTimerRef.current = setTimeout(() => {
             isScrollingToTopRef.current = false;
-            setShowScrollToTop(scrollContainer.scrollTop > 500);
+			setShowScrollToTop(scrollElement.scrollTop > 500);
         }, 2000);
     };
 
