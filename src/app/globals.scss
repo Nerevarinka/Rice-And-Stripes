@@ -85,9 +85,25 @@ body {
 }
 
 @media screen and (max-width: 767.98px) {
+	html.is-clipped,
+	body.is-clipped {
+		height: auto;
+		min-height: 100%;
+		overflow-x: hidden !important;
+		overflow-y: auto !important;
+	}
+
+	.site-shell.is-clipped {
+		height: auto;
+		min-height: 100dvh;
+		overflow: visible !important;
+	}
+
 	.main-content {
 		width: 100%;
 		min-width: 0;
+		min-height: 100dvh;
+		overflow: visible !important;
 		padding: 1rem 0.75rem calc(2.25rem + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
