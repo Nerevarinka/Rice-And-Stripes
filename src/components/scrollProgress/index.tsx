@@ -4,6 +4,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUp } from "lucide-react";
 
+import { getPageScrollElement, scrollPageToTop, usesDocumentScroll } from "@/shared/utils/pageScroll";
+
 import "./styles.scss";
 
 export default function ScrollProgress() {
@@ -27,8 +29,8 @@ export default function ScrollProgress() {
         const progress = progressRef.current;
         const scrollContainer = anchorRef.current?.closest("main");
         if (!(scrollContainer instanceof HTMLElement)) return;
-		const usesDocumentScroll = window.matchMedia("(max-width: 767.98px)").matches;
-		const scrollElement = usesDocumentScroll ? document.documentElement : scrollContainer;
+		const documentScroll = usesDocumentScroll();
+		const scrollElement = getPageScrollElement(scrollContainer);
 
         const updateProgress = () => {
 			const scrollableHeight = scrollElement.scrollHeight - scrollElement.clientHeight;
@@ -52,7 +54,7 @@ export default function ScrollProgress() {
         };
 
         updateProgress();
-		const scrollTarget: Window | HTMLElement = usesDocumentScroll ? window : scrollContainer;
+		const scrollTarget: Window | HTMLElement = documentScroll ? window : scrollContainer;
 		scrollTarget.addEventListener("scroll", updateProgress, { passive: true });
         const resizeObserver = new ResizeObserver(updateProgress);
 		resizeObserver.observe(scrollElement);
@@ -69,16 +71,11 @@ export default function ScrollProgress() {
     const scrollToTop = () => {
         const scrollContainer = anchorRef.current?.closest("main");
         if (!(scrollContainer instanceof HTMLElement)) return;
-		const usesDocumentScroll = window.matchMedia("(max-width: 767.98px)").matches;
-		const scrollElement = usesDocumentScroll ? document.documentElement : scrollContainer;
+		const scrollElement = getPageScrollElement(scrollContainer);
 
         if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
         isScrollingToTopRef.current = true;
-		if (usesDocumentScroll) {
-			window.scrollTo({ top: 0, behavior: "smooth" });
-		} else {
-			scrollContainer.scrollTo({ top: 0, behavior: "smooth" });
-		}
+		scrollPageToTop(scrollContainer);
 
         if (scrollResetTimerRef.current) clearTimeout(scrollResetTimerRef.current);
         scrollResetTimerRef.current = setTimeout(() => {

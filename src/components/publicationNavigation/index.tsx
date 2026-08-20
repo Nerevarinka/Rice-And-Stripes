@@ -4,6 +4,8 @@ import { FC, useCallback } from "react";
 import { ArrowUp } from "lucide-react";
 import Link from "next/link";
 
+import { scrollPageToTop } from "@/shared/utils/pageScroll";
+
 import "./styles.scss";
 
 export type PublicationNavigationProps = {
@@ -22,7 +24,10 @@ export type PublicationNavigationProps = {
 };
 
 const PublicationNavigation: FC<PublicationNavigationProps> = ({ previousItem, nextItem, itemName = "статья" }) => {
-    const scrollToTop = useCallback(() => document.querySelector("main")?.scrollTo({ top: 0, behavior: "smooth" }), []);
+    const scrollToTop = useCallback(() => {
+        const scrollContainer = document.querySelector("main");
+        if (scrollContainer instanceof HTMLElement) scrollPageToTop(scrollContainer);
+    }, []);
 
     return (
         <div className="publication-navigation">
