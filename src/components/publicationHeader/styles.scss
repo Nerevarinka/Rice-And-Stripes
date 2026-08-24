@@ -95,6 +95,11 @@
             line-height: 1.15;
         }
 
+        // Keep a wrapped share button visually separated from the title line above.
+        &__title .publication-share {
+            margin-top: 0.35rem;
+        }
+
         &__primary { gap: 0.45rem; }
         &__dates { margin-left: auto; }
     }
