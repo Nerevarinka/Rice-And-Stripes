@@ -51,11 +51,17 @@
     z-index: 40;
     width: max-content;
     min-width: 12rem;
+    max-width: calc(100vw - 1rem);
     padding: 0.35rem;
     background: #fffdf9;
     border: 1px solid rgba($primary-brown, 0.25);
     border-radius: 7px;
     box-shadow: 0 6px 18px rgba(67, 44, 27, 0.14);
+
+    &--left {
+        right: auto;
+        left: 0;
+    }
 
     &__item {
         display: flex;
@@ -72,6 +78,7 @@
         font-size: 0.9rem;
         text-align: left;
         text-decoration: none !important;
+        overflow-wrap: anywhere;
         cursor: pointer;
 
         svg {

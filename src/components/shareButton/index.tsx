@@ -13,6 +13,7 @@ type ShareButtonProps = {
 
 export default function ShareButton({ title, text }: ShareButtonProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [menuPlacement, setMenuPlacement] = useState<"left" | "right">("right");
     const [copied, setCopied] = useState(false);
     const menuId = useId();
     const rootRef = useRef<HTMLSpanElement>(null);
@@ -72,12 +73,25 @@ export default function ShareButton({ title, text }: ShareButtonProps) {
         };
     };
 
+    const toggleMenu = () => {
+        if (!isOpen && rootRef.current) {
+            const { left, right } = rootRef.current.getBoundingClientRect();
+            const menuWidth = 192;
+            const edgePadding = 8;
+            const canOpenToRight = window.innerWidth - left >= menuWidth + edgePadding;
+            const canOpenToLeft = right >= menuWidth + edgePadding;
+
+            setMenuPlacement(canOpenToLeft || !canOpenToRight ? "right" : "left");
+        }
+        setIsOpen(open => !open);
+    };
+
     return (
         <span className="publication-share" ref={rootRef}>
             <button
                 type="button"
                 className={`publication-share-button${isOpen ? " is-active" : ""}`}
-                onClick={() => setIsOpen(open => !open)}
+                onClick={toggleMenu}
                 title="Поделиться публикацией"
                 aria-label="Поделиться публикацией"
                 aria-expanded={isOpen}
@@ -86,7 +100,7 @@ export default function ShareButton({ title, text }: ShareButtonProps) {
                 <Forward size={17} aria-hidden="true" />
             </button>
             {isOpen ? (
-                <span className="publication-share-menu" id={menuId} role="menu">
+                <span className={`publication-share-menu publication-share-menu--${menuPlacement}`} id={menuId} role="menu">
                     <a
                         href={getShareLinks().vk}
                         className="publication-share-menu__item"

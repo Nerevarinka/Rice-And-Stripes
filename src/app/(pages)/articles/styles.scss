@@ -151,6 +151,12 @@
 	}
 }
 
+@media screen and (min-width: 768px) and (max-width: 1500px) {
+	.card-group {
+		justify-content: center;
+	}
+}
+
 .m-card {
 	transition-duration: var(--bulma-duration);
 	transition-property: box-shadow, transform;
