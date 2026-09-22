@@ -523,6 +523,8 @@ function getBlockLabel(block: EditableArticleBlock) {
             return `Сообщение (${block.variant})`;
         case "noteEmbed":
             return "Встроенная заметка";
+        case "quiz":
+            return "Интерактивный тест";
         case "spoiler":
             return "Спойлер";
         default:
@@ -1265,6 +1267,19 @@ function BlockCard({
                     </div>
                 ) : null}
 
+                {block.type === "quiz" ? (
+                    <div className="article-studio__block-form">
+                        <div className="notification is-info is-light mb-0">
+                            <strong>Готовый интерактивный тест</strong>
+                            <p className="mt-2 mb-0">
+                                В этом блоке {block.questions.length} вопросов и {block.results.length} результатов.
+                                Он сохраняется как часть заметки и работает без базы данных. Для изменения самих вопросов
+                                понадобится обновить данные блока в JSON-файле заметки.
+                            </p>
+                        </div>
+                    </div>
+                ) : null}
+
                 {block.type === "image" ? (
                     <div className="article-studio__block-form">
                         <div className={`article-studio__asset-preview article-studio__asset-preview--${block.size}${block.imageUrl ? "" : " article-studio__asset-preview--empty"}`}>
@@ -1764,6 +1779,7 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
     const [palette, setPalette] = useState<BlockPaletteState | null>(null);
     const [deletedBlock, setDeletedBlock] = useState<{ block: EditableArticleBlock; index: number } | null>(null);
     const deleteUndoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const publishDatePickerRef = useRef<HTMLInputElement | null>(null);
     const normalizedSlug = slug.trim();
     const isSlugValid = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(normalizedSlug);
     const collectionName = contentType === "article" ? "articles" : "notes";
@@ -1800,6 +1816,22 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
             setPublishDateText(formatDateInputValue(publishDate));
             setStatusMessage("Введите корректную дату в формате дд.мм.гггг.");
         }
+    };
+
+    const openPublishDatePicker = () => {
+        const picker = publishDatePickerRef.current as (HTMLInputElement & { showPicker?: () => void }) | null;
+        if (!picker) return;
+
+        if (picker.showPicker) {
+            try {
+                picker.showPicker();
+                return;
+            } catch {
+                // Fall back to the native input click for browsers that restrict showPicker().
+            }
+        }
+
+        picker.click();
     };
 
     const connectRepoFolder = async () => {
@@ -2258,6 +2290,7 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                             <input
                                 id="article-publish-date-picker"
                                 className="article-studio__native-date"
+                                ref={publishDatePickerRef}
                                 type="date"
                                 value={publishDate}
                                 onChange={event => {
@@ -2267,7 +2300,15 @@ export default function ArticleStudio({ notes }: { notes: EmbeddedNoteSummary[] 
                                 aria-label="Выбрать дату публикации"
                                 required
                             />
-                            <CalendarDays size={18} aria-hidden="true" />
+                            <button
+                                type="button"
+                                className="article-studio__date-trigger"
+                                onClick={openPublishDatePicker}
+                                aria-label="Открыть календарь"
+                                title="Открыть календарь"
+                            >
+                                <CalendarDays size={18} aria-hidden="true" />
+                            </button>
                         </div>
                         <p id="publish-date-help" className="help">Для перенесённых материалов можно указать дату первоначальной публикации.</p>
                     </div>

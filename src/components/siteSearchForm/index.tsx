@@ -15,7 +15,7 @@ export default function SiteSearchForm({ onNavigate }: { onNavigate?: () => void
                 title="Поиск по сайту"
                 aria-label="Поиск по сайту"
             >
-                <span className="site-search-link__icon" aria-hidden="true"><Search size={20} /></span>
+                <span className="site-search-link__icon" aria-hidden="true"><Search size={18} strokeWidth={1.8} /></span>
                 <span>Поиск</span>
             </Link>
         </div>

@@ -8,7 +8,7 @@ import ScrollProgress from "@/components/scrollProgress";
 import JsonLd from "@/components/jsonLd";
 import { getAllSidebarItems } from "@/shared/articleCatalog";
 import { createSiteStructuredData } from "@/shared/structuredData";
-import { siteConfig, siteUrl } from "@/shared/siteConfig";
+import { absoluteSiteUrl, siteConfig, siteUrl } from "@/shared/siteConfig";
 import { DEFAULT_SOCIAL_IMAGE } from "@/shared/metadata";
 
 export const metadata: Metadata = {
@@ -22,6 +22,10 @@ export const metadata: Metadata = {
 		siteName: siteConfig.name,
 		locale: "ru_RU",
 		images: [DEFAULT_SOCIAL_IMAGE],
+	},
+	icons: {
+		icon: absoluteSiteUrl("/favicon.ico"),
+		shortcut: absoluteSiteUrl("/favicon.ico"),
 	},
 	twitter: {
 		card: "summary",

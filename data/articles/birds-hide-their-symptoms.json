@@ -1,0 +1,834 @@
+{
+  "schemaVersion": 2,
+  "id": "ec7e0e46-f8fb-4442-9a42-a965e2f86162",
+  "slug": "birds-hide-their-symptoms",
+  "title": "Птицы скрывают болезни. А мы уверены?",
+  "description": "Большой разбор: \"Маскинг\" у птиц - факт или удобная гипотеза? Эксперименты, хищники, больные сородичи и альтернативные объяснения.",
+  "coverUrl": "/uploads/articles/birds-hide-their-symptoms/ChatGPT Image 18 сент. 2026 г., 03_15_41.webp",
+  "publishDate": "2026-09-22T09:00:00.000Z",
+  "updatedAt": "2026-09-21T21:09:18.243Z",
+  "status": "published",
+  "blocks": [
+    {
+      "id": "a5d11141-2828-4102-91f2-8d0fb8f5593c",
+      "type": "message",
+      "variant": "warning",
+      "title": "",
+      "bodyHtml": "<p>[1] Harrison, G. J., &amp; Lightfoot, T. (eds.). <em>Clinical Avian Medicine</em>.</p>\n<p>[2] LafeberVet. <em>Signs of Illness in Companion Birds</em>. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.lafeber.com/vet/wp-content/uploads/Signs_of_Illness.pdf\">https://www.lafeber.com/vet/wp-content/uploads/Signs_of_Illness.pdf</a></p>\n<p>[3] Lopes, P. C., Adelman, J., Wingfield, J. C., &amp; Bentley, G. E. (2012). Social context modulates sickness behavior. <em>Behavioral Ecology and Sociobiology, 66</em>, 1421–1428. doi:<a href=\"https://doi.org/10.1007/s00265-012-1397-1\">10.1007/s00265-012-1397-1</a></p>\n<p>[4] Lopes, P. C., Faber-Hammond, J. J., Siemonsma, C., Patel, S., &amp; Renn, S. C. P. (2023). The social environment alters neural responses to a lipopolysaccharide challenge. <em>Brain, Behavior, and Immunity, 110</em>, 162–174. doi:<a href=\"https://doi.org/10.1016/j.bbi.2023.03.004\">10.1016/j.bbi.2023.03.004</a></p>\n<p>[5] Langager, M. M., Adelman, J. S., &amp; Hawley, D. M. (2023). Let's stick together: Infection enhances preferences for social grouping in a songbird species. <em>Ecology and Evolution, 13</em>(10), e10627. doi:<a href=\"https://doi.org/10.1002/ece3.10627\">10.1002/ece3.10627</a></p>\n<p>[6] Bouwman, K. M., &amp; Hawley, D. M. (2010). Sickness behaviour acting as an evolutionary trap? Male house finches preferentially feed near diseased conspecifics. <em>Biology Letters, 6</em>(4), 462–465. doi:<a href=\"https://doi.org/10.1098/rsbl.2010.0020\">10.1098/rsbl.2010.0020</a></p>\n<p>[7] Zilberberg, M., Klasing, K. C., &amp; Hahn, T. P. (2013). House finches (Carpodacus mexicanus) balance investment in behavioural and immunological defences against pathogens. <em>Biology Letters, 9</em>(1), 20120856. doi:<a href=\"https://doi.org/10.1098/rsbl.2012.0856\">10.1098/rsbl.2012.0856</a></p>\n<p>[8] Love, A. C., Grisham, K., Krall, J. B., Goodchild, C. G., &amp; DuRant, S. E. (2021). Perception of infection: disease-related social cues influence immunity in songbirds. <em>Biology Letters, 17</em>(6), 20210125. doi:<a href=\"https://doi.org/10.1098/rsbl.2021.0125\">10.1098/rsbl.2021.0125</a></p>\n<p>[9] Genovart, M., Negre, N., Tavecchia, G., Bistuer, A., Parpal, L., &amp; Oro, D. (2010). The young, the weak and the sick: Evidence of natural selection by predation. <em>PLoS ONE, 5</em>(3), e9774. doi:<a href=\"https://doi.org/10.1371/journal.pone.0009774\">10.1371/journal.pone.0009774</a></p>\n<p>[10] Adelman, J. S., Mayer, C., &amp; Hawley, D. M. (2016). Infection reduces anti-predator behaviors in house finches. <em>Journal of Avian Biology</em>. doi:<a href=\"https://doi.org/10.1111/jav.01058\">10.1111/jav.01058</a></p>\n<p>[11] Langager, M. M., Arneson, A. G., &amp; Hawley, D. M. (2025). In sickness and in health: Group-living augments behavioural responses to food and predation risk for sick house finches (<em>Haemorhous mexicanus</em>). <em>Royal Society Open Science, 12</em>(11), 251715. doi:<a href=\"https://doi.org/10.1098/rsos.251715\">10.1098/rsos.251715</a></p>\n<p>[12] Cain, K. E., Hall, M. L., Medina, I., Leitao, A. V., Delhey, K., Brouwer, L., Peters, A., Pruett-Jones, S., Webster, M. S., Langmore, N. E., &amp; Mulder, R. A. (2019). Conspicuous plumage does not increase predation risk: A continent-wide test using model songbirds. <em>The American Naturalist, 193</em>(3), 359–372. doi:<a href=\"https://doi.org/10.1086/701632\">10.1086/701632</a></p>\n<p>[13] Götmark, F. (1992). Anti-predator effect of conspicuous plumage in a male bird. <em>Animal Behaviour, 44</em>(1), 51–55. doi:<a href=\"https://doi.org/10.1016/S0003-3472(05)80753-5\">10.1016/S0003-3472(05)80753-5</a></p>\n<p>[14] Ruiz-Rodríguez, M., Avilés, J. M., Cuervo, J. J., Parejo, D., Ruano, F., Zamora-Muñoz, C., Sergio, F., López-Jiménez, L., Tanferna, A., &amp; Martín-Vivaldi, M. (2013). Does avian conspicuous colouration increase or reduce predation risk? <em>Oecologia, 173</em>(1), 83–93. doi:<a href=\"https://doi.org/10.1007/s00442-013-2599-6\">10.1007/s00442-013-2599-6</a></p>\n<p>[15] Marples, N. M., Roper, T. J., &amp; Harper, D. G. C. (1998). Responses of wild birds to novel prey: Evidence of dietary conservatism. <em>Oikos, 83</em>(1), 161–165. doi:<a href=\"https://doi.org/10.2307/3546557\">10.2307/3546557</a></p>\n<p>[16] Marples, N. M., &amp; Mappes, J. (2011). Can the dietary conservatism of predators compensate for positive frequency dependent selection against rare, conspicuous prey? <em>Evolutionary Ecology, 25</em>(4), 737–749. doi:<a href=\"https://doi.org/10.1007/s10682-010-9434-x\">10.1007/s10682-010-9434-x</a></p>\n<p>[17] Rutz, C., et al. (2012). Predator fitness increases with selectivity for odd prey. <em>Current Biology, 22</em>(9), 820–824. doi:<a href=\"https://doi.org/10.1016/j.cub.2012.03.028\">10.1016/j.cub.2012.03.028</a></p>\n<p>[18] Palleroni, A., Miller, C. T., Hauser, M., &amp; Marler, P. (2005). Prey plumage adaptation against falcon attack. <em>Nature, 434</em>, 973–974. doi:<a href=\"https://doi.org/10.1038/434973b\">10.1038/434973b</a></p>\n<p>[19] Paul-Murphy, J., Brunson, D. B., &amp; Miletić, V. (1999). A technique for evaluating analgesia in conscious perching birds. <em>American Journal of Veterinary Research, 60</em>(10), 1213–1216. doi:<a href=\"https://doi.org/10.2460/ajvr.1999.60.10.1213\">10.2460/ajvr.1999.60.10.1213</a></p>\n<p>[20] Ghannouchi, I., Speyer, R., Doma, K., Cordier, R., &amp; Verin, E. (2016). Swallowing function and chronic respiratory diseases: Systematic review. <em>Respiratory Medicine, 117</em>, 54–64. doi:<a href=\"https://doi.org/10.1016/j.rmed.2016.05.024\">10.1016/j.rmed.2016.05.024</a></p>\n<p>[21] Nicol, C. J. (2025). Behavioural indicators of infectious disease in managed animals. <em>Applied Animal Behaviour Science, 285</em>, 106573. doi:<a href=\"https://doi.org/10.1016/j.applanim.2025.106573\">10.1016/j.applanim.2025.106573</a></p>\n<p>[22] Maina, J. N. (2006). Structure, function and evolution of the gas exchangers: Comparative perspectives. <em>Advances in Anatomy, Embryology and Cell Biology, 186</em>. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC1570919/\">PMC1570919</a></p>\n<p>[23] Sakoda, Y., et al. (2021). First outbreak of an H5N8 highly pathogenic avian influenza virus on a chicken farm in Japan in 2020. <em>Journal of Veterinary Medical Science</em>. <a href=\"https://pubmed.ncbi.nlm.nih.gov/33809529/\">PubMed 33809529</a></p>\n<p>[24] Silvano, F. D., Yoshikawa, M., Shimada, A., Otsuki, K., &amp; Umemura, T. (1997). Enhanced neuropathogenicity of avian influenza A virus by passages through air sac and brain of chicks. <em>The Journal of Veterinary Medical Science, 59</em>(3), 143–148. doi:<a href=\"https://doi.org/10.1292/jvms.59.143\">10.1292/jvms.59.143</a></p>\n<p>[25] Payne, S., et al. (2017). Plasma protein, haematologic and blood chemistry changes in African grey parrots (<em>Psittacus erithacus</em>) experimentally infected with bornavirus. <em>Avian Pathology</em>. doi:<a href=\"https://doi.org/10.1080/03079457.2017.1325442\">10.1080/03079457.2017.1325442</a></p>\n<p>[26] Gillooly, J. F., McCoy, M. W., &amp; Allen, A. P. (2007). The allometry of host-pathogen interactions. <em>PLoS ONE, 2</em>(11), e1130. doi:<a href=\"https://doi.org/10.1371/journal.pone.0001130\">10.1371/journal.pone.0001130</a></p>\n<p>[27] Morrison, J. H., et al. (2017). Modelling the effects of phylogeny and body size on within-host pathogen replication and immune response. <em>Journal of The Royal Society Interface, 14</em>, 20170479. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5721155/\">PMC5721155</a></p>\n<p>[28] Grabow, M., Ullmann, W., Landgraf, C., Sollmann, R., Scholz, C., Nathan, R., Toledo, S., Lühken, R., Fickel, J., Jeltsch, F., Blaum, N., Radchuk, V., Tiedemann, R., &amp; Kramer-Schadt, S. (2024). Sick without signs. Subclinical infections reduce local movements, alter habitat selection, and cause demographic shifts. <em>Communications Biology, 7</em>, 1426. doi:<a href=\"https://doi.org/10.1038/s42003-024-07114-4\">10.1038/s42003-024-07114-4</a></p>\n<p>[29] World Health Organization. (2020). Transmission of SARS-CoV-2: Implications for infection prevention precautions. <a href=\"https://www.who.int/news-room/commentaries/detail/transmission-of-sars-cov-2-implications-for-infection-prevention-precautions\">WHO</a></p>\n<p>[30] Jones, B. C., Smith, A. D., Bebus, S. E., &amp; Schoech, S. J. (2016). Two seconds is all it takes: European starlings (Sturnus vulgaris) increase levels of circulating glucocorticoids after witnessing a brief raptor attack. <em>Hormones and Behavior, 78</em>, 72?78. doi:<a href=\"https://doi.org/10.1016/j.yhbeh.2015.10.017\">10.1016/j.yhbeh.2015.10.017</a></p>\n<p>[31] Cresswell, W. (2010). Predator-hunting success and prey vulnerability: Quantifying the spatial scale over which lethal and non-lethal effects of predation occur. <em>Journal of Animal Ecology, 79</em>(4), 814–822. doi:<a href=\"https://doi.org/10.1111/j.1365-2656.2010.01691.x\">10.1111/j.1365-2656.2010.01691.x</a></p>\n<p>[32] Kullberg, C., &amp; Jakobsson, S. (1998). Predator-induced take-off strategy in great tits (<em>Parus major</em>). <em>Proceedings of the Royal Society B: Biological Sciences, 265</em>(1406), 1659–1664. doi:<a href=\"https://doi.org/10.1098/rspb.1998.0485\">10.1098/rspb.1998.0485</a></p>\n<p>[33] Santos, C. D., Cramer, J. F., Pârâu, L. G., Miranda, A. C., Wikelski, M., &amp; Dechmann, D. K. N. (2015). Personality and morphological traits affect pigeon survival from raptor attacks. <em>Scientific Reports, 5</em>, 15490. doi:<a href=\"https://doi.org/10.1038/srep15490\">10.1038/srep15490</a></p>\n<p>[34] Carbone, L. (2020). <em>Do “Prey Species” Hide Their Pain? Implications for Ethical Care and Use of Laboratory Animals</em>. <em>Journal of Applied Animal Ethics Research, 2</em>(2), 216–236. doi:<a href=\"https://doi.org/10.1163/25889567-BJA10001\">10.1163/25889567-BJA10001</a></p>\n<p>[35] Mills, D. S., Demontigny-Bédard, I., Gruen, M., Klinck, M. P., McPeake, K. J., Barcelos, A. M., et al. (2020). Pain and problem behavior in cats and dogs. <em>Animals, 10</em>(2), 318. doi:<a href=\"https://doi.org/10.3390/ani10020318\">10.3390/ani10020318</a></p>\n<p>[36] Vetstreet. Why does my pet misbehave at the veterinary clinic? <a href=\"https://www.vetstreet.com/our-pet-experts/why-does-my-pet-misbehave-at-the-veterinary-clinic\">Vetstreet</a></p>\n<p>[37] Today's Veterinary Nurse. Managing chronic feline pain. <a href=\"https://todaysveterinarynurse.com/pain-management/managing-chronic-feline-pain\">Today's Veterinary Nurse</a></p>\n<p>[38] Carbone, L. (2020). Do “Prey Species” Hide Their Pain? Implications for Ethical Care and Use of Laboratory Animals. <em>Journal of Applied Animal Ethics Research, 2</em>(2), 216–236. doi:<a href=\"https://doi.org/10.1163/25889567-BJA10001\">10.1163/25889567-BJA10001</a></p>",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "b204029f-6c0b-4778-972b-f2c748629660",
+          "type": "richText",
+          "html": "<p>Это большой научно-популярный разбор для тех, кому интересно разобраться в теме глубже, здесь не будет общих советов по уходу и инструкций.</p>"
+        }
+      ]
+    },
+    {
+      "id": "49fa8c48-5264-482a-bab6-f2db9f5f38aa",
+      "type": "richText",
+      "html": "<p>\"Птицы скрывают болезни\". Мы часто слышим эту фразу в контексте содержания амадин и других пернатых. Под ней подразумевают, что начало заболевания остается незамеченным хозяином, а когда признаки появляются, помочь часто слишком поздно.</p><p></p><p>В этой статье я разбираю, что об этом говорят ветеринарно-практические и научные источники. </p>"
+    },
+    {
+      "id": "b91f57af-93d5-4a6e-afab-3de2e2a216e1",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/ChatGPT Image 18 сент. 2026 г., 03_15_41.webp",
+      "alt": "Амадина за работой",
+      "caption": "Эта амадина изо всех сил старается показать, что она хороший работник, чтобы ее не сократили",
+      "source": "",
+      "size": "big",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "97d43c9f-b608-4c36-b504-5b91b9653e74",
+      "type": "heading",
+      "level": 2,
+      "text": "1. Сводка из медицины"
+    },
+    {
+      "id": "cc8761c6-6679-409e-a882-8892a7fa712a",
+      "type": "richText",
+      "html": "<p>Вот, что об этом феномене написано в книге <em>Clinical Avian Medicine (Harrison G.J. and Lightfoot T.) [1]</em>:</p>"
+    },
+    {
+      "id": "a289ab61-9224-421e-9938-41a581acc18a",
+      "type": "message",
+      "variant": "info",
+      "title": "Вольная цитата-перевод",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "a58157bb-ce0b-4886-8141-004de98f1ba6",
+          "type": "richText",
+          "html": "<p>Многие владельцы птиц и ветеринары ошибочно полагают, что птицы не отличаются высокой устойчивостью к болезням. Новичку часто кажется, что сегодня у птицы проявляются признаки недомогания, завтра она уже лежит на дне клетки, а еще через день — погибает. Это заблуждение возникло по двум причинам:</p><p></p><p><strong>1) Птицы, которых мы держим дома, в естественной среде – жертвы.</strong> Тот, кто отличается от стаи (слабостью, хромотой или просто цветом), более заметен, а значит, его легче поймать. Больная птица будет изо всех сил стараться выглядеть здоровой, даже если поблизости нет хищников. Классический \"больной вид\", который мы обычно ассоциируем с заболеванием - взъерошенные перья, закрытые глаза, вялость, - проявляется лишь тогда, когда птица уже не в состоянии скрывать эти признаки.</p><p></p><p>В результате многие пациенты попадают к ветеринару уже после того, как начальная стадия болезни миновала и состояние птицы начинает стремительно ухудшаться (наступает декомпенсация).</p>"
+        },
+        {
+          "id": "fe9abd60-d19c-407a-8fe9-9e38ac4bcda7",
+          "type": "image",
+          "imageUrl": "/uploads/articles/birds-hide-their-symptoms/unnamed.webp",
+          "alt": "Мертвая канарейка",
+          "caption": "Наблюдение за птицей в клетке - искусство, которое стоит отточить. Эта канарейка внешне казалась здоровой владельцу, который отнес ее к ветеринару. Птица умерла через несколько мгновений после осмотра.",
+          "source": "",
+          "size": "small",
+          "spoiler": "",
+          "expandable": true
+        },
+        {
+          "id": "9a00520a-ce14-4fe7-bb9b-2ba99bd04dd5",
+          "type": "richText",
+          "html": "<p><strong>2) Из-за недостатка опыта большинство владельцев и многие ветеринары могут пропустить незначительные изменения</strong> в поведении или внешнем виде птицы, которые указывают на проблемы со здоровьем. Игнорирование этих ранних признаков в сочетании с попытками птицы замаскировать очевидные клинические признаки неизбежно приводит к задержке в обнаружении болезни и к тому, что птица оказывается в критическом состоянии. </p>"
+        }
+      ]
+    },
+    {
+      "id": "c8982590-e4f0-4148-adb9-bccec9efdc95",
+      "type": "richText",
+      "html": "<p>В английской литературе такое свойство птиц, когда они скрывают проявления болезни, называют \"<strong>маскингом</strong>\" (калька с англ. \"<em>masking\"</em>). Для людей этот термин тоже применяется, но немного в другом контексте. Мне кажется, это очень удачное слово.</p><p></p><p>Но надо уточнить, что птицы, конечно, намеренно ничего не делают. Они не думают: \"притворюсь-ка я нормальной, чтобы никто не заподозрил, что со мной что-то не так\". Это явление должно быть эволюционным и давать какое-то преимущество.</p><p></p><p>Еще одна форма поведения, которое приписывают маскингу – <strong>мнимое кормление</strong>. Врачи характеризуют это так: птицы копаются в кормушке, могут шелушить зерно, но ничего не едят. В результате хозяину кажется, что питомец ест, а на самом деле он уже истощен.</p><p></p><p>Из просветительского материала для владельцев на сайте <em>LafeberVet</em> [2]:</p>"
+    },
+    {
+      "id": "920b1b69-621c-4f55-a87e-e6af21395bca",
+      "type": "message",
+      "variant": "info",
+      "title": "Цитата-перевод",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "ea8eab06-bbbe-4e12-b7ec-e4354042285e",
+          "type": "richText",
+          "html": "<p>В присутствии членов своей \"стаи\" (вас и вашей семьи) больная домашняя птица делает вид, что чувствует себя хорошо. Она приглаживает перья, выпрямляется, может вяло поклевать игрушку и даже <strong>делает вид, что ест</strong>: подходит к кормушке и раскалывает семена или крошит гранулы.</p>"
+        }
+      ]
+    },
+    {
+      "id": "5ef6d088-1951-4e79-9e29-75f3fa35cc70",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/01313370.webp",
+      "alt": "Больной зяблик",
+      "caption": "Очевидно больной зяблик пытается есть.",
+      "source": "https://www.naturepl.com/stock-photo-sick-male-chaffinch-fringilla-colebs-attempting-to-feed-from-bird-nature-image01313370.html?srsltid=AfmBOortA48unigdci8CMdj0gJjOPB3yxerb862I3gCBSf1lOe6xWMSK",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "ceb14ec3-a723-4cf2-8aac-dfafe0adb317",
+      "type": "richText",
+      "html": "<p>Далее мы рассмотрим, что говорит о маскинге наука. Экспериментальные данные об особенностях поведения больных птиц действительно существуют. И даже по амадинам парочка есть! Их я рассмотрю в самом начале, чтобы не томить.</p>"
+    },
+    {
+      "id": "67e3a4c3-4326-4795-b782-10a1ac79b743",
+      "type": "heading",
+      "level": 2,
+      "text": "2. Научные статьи"
+    },
+    {
+      "id": "323043d6-18aa-4380-b230-189a449f4861",
+      "type": "heading",
+      "level": 3,
+      "text": "Больная птица и стая"
+    },
+    {
+      "id": "fc7044bb-b715-4731-9678-450f9cfb1c85",
+      "type": "richText",
+      "html": "<p>В одном исследовании зебровым амадинам вводили компонент клеточной стенки бактерий. [3] Это не приводит к настоящей инфекции, но временно вызывает у организма реакцию воспаления. И вот, что обнаружили: <strong>в одиночестве</strong> (они могли видеть и слышать стаю, но были отделены от нее) <strong>птицы заметно меньше двигались и больше отдыхали, а в стае эти изменения сходили на нет</strong>. При этом лабораторные показатели для амадин обеих групп были одинаковыми, то есть выраженность воспаления была на схожем уровне.</p><p></p><p>Авторы объясняют это следующим. Если организму нужно бороться с инфекцией, ресурсы ограничены. Больному организму выгодно экономить силы, поэтому птица меньше двигается и взаимодействует с сородичами, но больше отдыхает. Однако, снижение активности имеет свою цену – меньший репродуктивный успех. <strong>Птица \"вне коллектива\" теряет статус в иерархии, может лишиться партнера и территории</strong>. Поэтому у амадин остается мотивация сохранять активность на публику.</p>"
+    },
+    {
+      "id": "afbd0fb7-728d-49ab-b025-0029bf78fc19",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/494586678_18121100722449738_7280871940694052767_n.webp",
+      "alt": "",
+      "caption": "Зебровые амадины - очень социальные птицы. На фото они уютно расположились на вершине термитника.",
+      "source": "https://www.instagram.com/p/DJIIGmnzHvB/",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "8e92f24f-1bd0-4286-8cd5-0ad12e6969c6",
+      "type": "richText",
+      "html": "<p>Более поздняя работа тех же ученых показала, что если ввести ту же бактериальную частицу самцу, то он <strong>становился активнее при появлении рядом с ним знакомой самки</strong>. [4] А при появлении незнакомки – еще активнее (усиливалась мотивация к размножению). В этот раз сравнивали не только поведение, но и активность работы генов в мозге. Подтвердилось, что социальная ситуация действительно перестраивала то, как мозг реагирует на воспалительный сигнал. Еще раз подчеркну: работа мозга, а, следовательно, поведение, менялось, а измеренный уровень воспаления оставался таким же.</p><p></p><p>Точные механизмы такой регуляции, однако, остаются пока неизвестными. Кроме того, был измерен и сравнен только один маркер воспаления, а организме десятки веществ, участвующих в иммунном ответе. Поэтому разница в реакции могла быть рассмотрена не полностью. Это ограничение признают сами авторы.</p><p></p><p>Эти два исследования показывают, что <strong>социальная обстановка может менять то, насколько сильно птица проявляет поведенческие признаки воспаления, при этом само воспаление никуда не исчезает</strong>.</p>"
+    },
+    {
+      "id": "4f7e6e0f-411b-476e-96e3-cb6a04765e01",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/randomly-sick-dying-zebra-finch-v0-jkkpn3jgh4yf1.webp",
+      "alt": "",
+      "caption": "Владелец рассказывал, что его амадина еще вчера выглядела совершенно здоровой - ела, пила, чирикала и была активной, а сегодня она сидит на дне клетки. К сожалению, птичка вскоре погибла.",
+      "source": "https://www.reddit.com/r/Finches/comments/1ojhvuf/randomly_sickdying_zebra_finch/",
+      "size": "small",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "5adfef64-9665-4299-8581-19ed59facbc7",
+      "type": "richText",
+      "html": "<p><strong>Ниже рассмотрим наблюдения и опыты за другими видами.</strong></p><p></p><p>Чечевиц заражали микоплазмой. Эта бактерия часто приводит к конъюнктивиту, сильно снижая выживаемость в природе, но не в неволе. Было показано, что <strong>зараженные птицы проводят значительно больше времени рядом со стаей</strong> (и, в частности, кормятся вблизи нее) по сравнению с контрольной (здоровой) группой. [5] Интересно, что в одном эксперименте <strong>незараженные чечевицы не избегали сородичей с внешними признаками болезни</strong>. [6] При этом у самок предпочтений в соседях не было, а <strong>самцы... предпочитали кормиться поближе к больным</strong>!</p>"
+    },
+    {
+      "id": "225a4a13-9a66-4258-8f07-3297ab9d507e",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1787569015329.webp",
+      "alt": "Конъюнктивит у чечевицы",
+      "caption": "Конъюнктивит у чечевицы. Иллюстрация из книги Д. Сибли \"Каково быть птицей?\"",
+      "source": "",
+      "size": "small",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "bb35efe6-21a0-43dd-a7ad-29beec9926fe",
+      "type": "richText",
+      "html": "<p>Предположительно, для самцов чечевиц было важно, чтобы соседи не были агрессивными, тем самым <strong>уменьшалась вероятность поражения в стычках</strong> за еду. Но это имеет свою цену – риск заболеть. Авторы назвали это явление <strong>\"эволюционной ловушкой\"</strong>.</p><p></p><p>Но это не значит, что здоровые птицы всегда будут держаться ближе к больным. Так, в одном эксперименте здоровой птице давали возможность проводить время рядом с такой же здоровой или с больной (точнее, имевшей симптомы воспаления, которое вызвали искусственно, не заражая птиц реальным патогеном). [7] Результаты показали, что <strong>здоровые чечевицы в среднем проводили меньше времени рядом с больной</strong>.</p><p></p><p>В то же время проявлялась сильная индивидуальная вариабельность: <strong>некоторые особи избегали больных гораздо сильнее других</strong>. Отмечалось, что чечевицы с более крепким врожденным иммунитетом (у кого выше уровень антител и других показателей) меньше избегали больных, как бы полагаясь на свой крепкий организм.</p><p></p><p>Таким образом, <strong>реакция избегания или приближения к больным особям зависят от контекста</strong>.</p>"
+    },
+    {
+      "id": "d7a5d1a2-3fa4-43f6-ac4e-b9c93b1327ea",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/ece310627-fig-0001-m.webp",
+      "alt": "",
+      "caption": "Две молодые чечевицы на кормушке. У птицы слева видны признаки микоплазмоза (покраснение и отек конъюнктивы). У птицы справа признаков инфекции нет. Источник: [5]",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "9045dba7-4ff0-4d58-a2c2-3fe3c8840fed",
+      "type": "richText",
+      "html": "<p>Больные сородичи не только отталкивают здоровых своим видом и поведением. Более того, <strong>у наблюдающих за ними здоровых птиц изменяется иммунный профиль</strong>. [8] На этот раз участниками эксперимента были канарейки, но заражали их той же микоплазмой. По некоторым показателям иммунный ответ усилился у птиц контрольной группы, которые через прозрачный экран видели сородичей с внешними признаками заболевания, и чем более выраженными были симптомы, тем более сильным был ответ. Организм птиц, так сказать, готовился к возможной встрече с инфекцией. Когда же сородичи выздоравливали, эти показатели возвращались в обычное состояние у канареек контрольной группы.</p><p></p><p>Авторы предполагают, что для изменения иммунных реакций могут быть важны не только визуальные проявления болезни, но и изменение вокализации и запахов.</p><p></p><p>Итак, исследования подтверждают, что <strong>в социальном аспекте маскинг, похоже, действительно существует</strong>: больные птицы в стае могут становится бодрее, а здоровые могут как избегать контакта с больными, так и наоборот, в зависимости от ситуации. Но что насчет хищников, роль которых особенно подчеркивается? Есть ли доказанные случаи маскинга, которые помогали больным птицам уцелеть?</p>"
+    },
+    {
+      "id": "9f0075d3-4c66-4424-ad20-6f47baa45ed8",
+      "type": "heading",
+      "level": 3,
+      "text": "Болезнь и риск быть съеденным"
+    },
+    {
+      "id": "ec1f3de7-891a-4dd3-94af-2f4334da64fe",
+      "type": "richText",
+      "html": "<p><strong>Статистически хищники убивают в значительной доле молодых, больных и слабых физически птиц</strong>. [9] Развитость мышц оказалась очень значимым фактором для чаек, но не так, как можно было подумать: <strong>быть \"качком\" невыгодно</strong>. Предположительно, большая масса при сопоставимых размерах крыла означает большую удельную нагрузку на крыло, и это ухудшает маневренность. Что же касается демонстрации болезненного поведения как триггера для атаки, то в исследовании отмечается, что как легкое, так и выраженное проявление болезни увеличивало риск нападения.</p>"
+    },
+    {
+      "id": "60fb324f-75d0-4304-b80e-e087eb8e3237",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1789592160888.webp",
+      "alt": "",
+      "caption": "<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.independent.co.uk/news/world/middle-east/seagulls-fat-obese-overweight-bahrain-fast-food-b1803408.html\">\"Ожиревшие от фастфуда чайки потеряли способность летать\"</a>. Отличные мишени для хищника, если получится унести.",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "1eb91137-7e1a-4f89-b52b-150db1271f70",
+      "type": "richText",
+      "html": "<p>И снова исследование на чечевицах, зараженных микоплазмой, вызывающей конъюнктивит. <strong>Больные птицы оказались более уязвимы к нападениям</strong>. [10] Сначала может показаться, что это исследование от Капитана Очевидности: зрение подводит птиц, поэтому их проще поймать хищникам. Но результаты здесь более интересные.</p><p></p><p><strong>Само поведение птиц изменялось еще до того, как появлялись внешние признаки болезни и проблемы со зрением.</strong> В качестве хищника им предлагали чучело ястреба, и больные птицы не пытались уйти в дальнюю от него часть клетки так же стремительно, как здоровые. И хотя больные реагировали на приближение человека так же активно, как здоровые, но поймать их было легче. Это может быть как следствие физической слабости, так и сниженной мотивации скрываться от опасности.</p>"
+    },
+    {
+      "id": "7747e286-addc-4675-91bb-00509fa770d3",
+      "type": "message",
+      "variant": "link",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "ad9c559e-5cc6-48ef-a0be-29a962ee145b",
+          "type": "richText",
+          "html": "<p>Тут вспоминаются истории про находки \"ручных птиц\" на улице. Человек встречает дрозда, воробья или даже сову, которые не убегают и даются в руки. Нашедший считает, что у кого-то сбежал питомец, тогда как птице просто было очень плохо.</p>"
+        },
+        {
+          "id": "4fd306d1-518d-4b23-af32-66b37613b2c0",
+          "type": "image",
+          "imageUrl": "/uploads/articles/birds-hide-their-symptoms/ggpgpcbmcmsa1.webp",
+          "alt": "Королек на руке",
+          "caption": "На первый взгляд - милое фото, крохотная птичка сидит на руке. \"Наверно, еще птенец\", - пишет автор. А потом оказывается, что королька нашли на дороге. Это взрослая птица, которая не смогла сопротивляться и улететь.",
+          "source": "https://www.reddit.com/r/birdpics/comments/12f9k1x/does_anyone_know_what_kind_of_bird_this_is",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        }
+      ]
+    },
+    {
+      "id": "7431fd85-3204-47d9-8f39-63c3ac96eb6d",
+      "type": "richText",
+      "html": "<p>В ходе еще одного исследования на чечевицах установили, что <strong>больные птицы, находившиеся в одиночестве, реагировали на угрозу значительно медленнее, тогда как в группе реагировали примерно так же, как здоровые особи</strong>. [11] Авторы предполагают, что больная птица может ориентироваться на сигналы от других сородичей. В одиночестве зараженные были более вялыми, а в стае становились активнее – так же, как в истории с зебровыми амадинами.</p>"
+    },
+    {
+      "id": "37bd0607-1bc2-4c22-a260-f490d83ef4b5",
+      "type": "heading",
+      "level": 3,
+      "text": "О выборе хищников: будь как все или выделяйся?"
+    },
+    {
+      "id": "7f8b581b-d70e-497c-883b-140882561cf1",
+      "type": "richText",
+      "html": "<p><strong>Концепция маскинга предполагает, что птица должна стараться выглядеть, как все остальные, чтобы не привлечь хищника.</strong> И хотя нет полноценных работ, посвященных выбору хищниками птиц, которые показывают симптомы болезни, мы можем посмотреть зависимости по другому фактору – цвету оперения. Ожидается, что яркие птицы, какими часто бывают самцы, должны чаще подвергаться нападениям хищников, поскольку привлекательная окраска делает их более заметными.</p><p></p><p>Но <strong>не всегда быть заметным – значит быть съеденным</strong>. В одной очень интересной работе исследовали модели птиц разной окраски в Австралии. [12] Предполагалось, что более заметные птицы будут чаще атаковаться хищниками. Однако яркие и тусклые модели атаковали примерно с одинаковой частотой. Примечательно, что контраст окраски на окружающем фоне вообще не предсказывал вероятность нападения. Авторы прямо заключили, что сама по себе заметность оперения не обязательно увеличивает риск хищничества.</p>"
+    },
+    {
+      "id": "cd0562bc-083a-4e38-8fe9-23cb3e247357",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1788826167039.webp",
+      "alt": "Модели птиц",
+      "caption": "Модели расписных малюров двух видов, использованных в эксперименте. Источник: [12]",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "512df21a-c757-4c1d-a858-f3eef0377ae5",
+      "type": "richText",
+      "html": "<p>Еще более неожиданные результаты получили в 1992 году. Для этого исследования изготовили чучела мухоловок и позволили атаковать их ястребами-перепелятниками. И хищники<strong> чаще атаковали тускло окрашенных самок, а не заметных самцов</strong>. Автор строит много гипотез, объясняющих результаты, но вопрос, почему хищники делали такой выбор, остался открытым. [13]</p>"
+    },
+    {
+      "id": "4267166f-8649-4112-b41e-ef0f33511528",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/images (5).jpg",
+      "alt": "Мухоловки-пеструшки",
+      "caption": "У мухоловки-пеструшки хорошо выражен половой диморфизм. Самец слева.",
+      "source": "https://www.acopiancenter.am/boa.asp?id=304",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "fd6d2993-3ce1-4b2f-84e3-d27f6141480a",
+      "type": "richText",
+      "html": "<p>Возможно, ястребы не хотят связываться с жертвами, имеющими неординарный окрас? В конце концов, существует предупреждающая окраска, как черно-желтые полосы у ос. То есть яркое, пестрое оперение может отпугивать хищников. Даже у птиц есть несколько таких примеров – это виды, накапливающие в своем теле ядовитые вещества: птицы рода <em>Pitohui</em>, <em>Ifrita </em>и <em>Cardellina</em>. [14]</p>"
+    },
+    {
+      "id": "22679cab-3538-4009-ae58-d69d4cd5815b",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1789676876647.webp",
+      "alt": "Ядовитые птицы",
+      "caption": "Слева направо: двуцветный питоху, изменчивый питоху и синешапочная ифрита. Как видите, не все ядовитые птицы окрашены констрастно.",
+      "source": "https://www.sciencedirect.com/science/article/abs/pii/S0041010115000884",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "fbf05348-59f8-49a0-8951-68a1da299f2b",
+      "type": "richText",
+      "html": "<p>Впрочем, <strong>необязательно быть ярким и ядовитым, достаточно быть невкусным или вонючим</strong>, как удоды и золотистые щурки. [14] Для удода и представителей отряда ракшеобразных тоже были сделаны модели двух типов: заметной окраски и покровительственной (криптической). И если удода почти никто не пытался атаковать ни в какой обертке, то для других птиц выявили интересные закономерности:</p><ul><li><p>Яркая модель сизоворонки подвергалась атакам значимо чаще, чем криптическая.</p></li><li><p>У зимородка намечалась такая же тенденция.</p></li><li><p>У золотистой щурки разницы между двумя моделями не выявили.</p></li></ul><p>Какой следует вывод: <strong>сама по себе заметность не предсказывает вероятность нападения</strong>. Это подтверждает и содержимое желудков коршунов (именно эти хищники чаще всего атаковали чучела) - реальная диета не показала простого предпочтения птиц с ярким оперением.</p>"
+    },
+    {
+      "id": "9f2e1b2a-77bf-40bc-8379-c077e227f3af",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/abubilla.webp",
+      "alt": "Модель птицы",
+      "caption": "Подобные модели (на фото - удод) были изготовлены для проведения эксперимента.",
+      "source": "https://www.replica-animal.com/es/replicas-realizadas/aves-posadas",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "f23d598a-2f8e-4c41-8db9-67d055d49330",
+      "type": "richText",
+      "html": "<p>В действительности <strong>хищники могут избегать то, что отличается от привычного</strong>. Это проявление \"пищевого консерватизма\". [15] В отличие от обычной неофобии (боязни нового), консерватизм сохраняется намного дольше. Среди одного вида есть особи, которые сразу же попробуют незнакомую еду, но кому-то нужно сначала увидеть ее более сотни раз. Консерватизм - это та сила, которая может позволить новому заметному фенотипу выжить и закрепиться.</p>"
+    },
+    {
+      "id": "a42a29b5-3417-45bc-b32a-602d63d480b1",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/Great_tit_eating_walnut_in_Botevgrad,_Bulgaria_012.webp",
+      "alt": "Птица и орех грецкий",
+      "caption": "В природе синички вскрывают орехи и панцири насекомых, чтобы добраться до вкусной начинки. В опыте же съедобную часть (орешек) заворачивали в раскрашенную бумагу. Синицы оказались намного больше открыты новому, чем зарянки из другого эксперимента (для них готовили цветные полоски из теста). [16]",
+      "source": "https://commons.wikimedia.org/wiki/File:Great_tit_eating_walnut_in_Botevgrad,_Bulgaria_01.jpg",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "d69a90f9-29c3-490a-9ef4-ae1aad6d3909",
+      "type": "richText",
+      "html": "<p>А что, если у вида-жертвы в популяции уже имеется несколько устоявшихся фенотипов? Для ястреба-тетеревятника было показано, что он <strong>выбирает редкие цветовые морфы сизых голубей</strong>. [17] Автор интерпретирует это так: необычную особь в однородной стае легче атаковать (в противном случае глазу не за что зацепиться).</p>"
+    },
+    {
+      "id": "7b531351-3b8e-4fab-bfb9-965b0d03f8ed",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/490303991_9138836169578361_3397782542883607689_n.webp",
+      "alt": "Голубь",
+      "caption": "У этого дикого голубя хорошо заметна белая поясница. В одном наблюдении показали, что такие птицы имеют больше шансов спастись от атаки сапсана (в отличие от тех, у кого сплошная серая спина). [18] Хищник пикирует сверху, ориентируясь на белое пятно, но тут голубь делает резкий маневр, подставляя серые крылья и тело и скрывая пятно. Сокол теряет фокус. Однако, белая поясница может иметь противоположный эффект для голубей в лесах. ",
+      "source": "https://www.facebook.com/photo/?fbid=6202912886504052&set=gm.10160199449317946&idorvanity=5831057945",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "0ba0adec-0fc3-46d9-9203-03f3c7cfb754",
+      "type": "message",
+      "variant": "link",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "b5f9e98f-6cf4-4427-88d6-5cc478f5b133",
+          "type": "richText",
+          "html": "<p>Все эти работы важны для темы статьи, потому что показывают: <strong>хищничество – не простой механизм</strong>. Перед обычным ястребом или даже насекомоядной птицей всегда открывается выбор, какую жертву атаковать, и причины их решений остаются не всегда понятными. Как было указано в начале этой части, маскинг как механизм защиты от хищников – это гипотеза, она звучит очень разумно, но пока, к сожалению, существование данного явления экспериментально не доказана.</p><p></p><p>И провести полноценное исследование было бы очень сложно. Возьмем, к примеру, большую стаю диких волнистых попугайчиков. Все они имеют зеленый окрас. Предположим, случилась редкая ситуация: в ней вырос голубой попугайчик. С одной стороны, на фоне зеленой массы хищнику было бы проще за ним следить (и очень вероятно, что так и произошло бы), но с другой - мы уже знаем, что птицам свойственен диетический консерватизм, и какому-нибудь ястребу, возможно, не захотелось бы тратить энергию на попытку поймать странную жертву, которую он раньше не видел – вдруг она окажется ядовитой или невкусной.</p>"
+        },
+        {
+          "id": "801fc147-992f-47d5-b244-ee9410aa3d84",
+          "type": "image",
+          "imageUrl": "/uploads/articles/birds-hide-their-symptoms/p028p49k.webp",
+          "alt": "Стая попугаев",
+          "caption": "80 000 волнистых попугайчиков собрались на водопой...",
+          "source": "https://www.bbc.co.uk/programmes/p028p51f/p028p49k",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        },
+        {
+          "id": "0601a854-bd80-4476-a9dd-f545d80254a2",
+          "type": "richText",
+          "html": "<p>Но, допустим, ястреб был любопытен и молод, и попугайчика он поймал. Если откинуть составление статистики (нельзя судить по одному случаю), может все равно остаться как минимум один вопрос к интерпретации: <strong>что, если причина была не в самом редком цвете?</strong> Возможно, вместе с мутацией генов пигментов пострадали другие части организма, и птица выросла более слабой физически. Изменение могло проявиться в фенотипе благодаря близкородственному скрещиванию. Сама по себе голубая окраска - результат очень точечной мутации, но инбридинг мог заодно повысить вероятность проявления и других мутаций, несущих риски для здоровья.</p><p></p><p>Кстати, в упомянутом выше исследовании на голубях решили подобную проблему очень изящно: у птиц с белой и серой поясницей сделали \"пересадку\" перьев в этом участке. [18] Результаты подтвердили гипотезу о преимуществе белого пятна на спине.</p><p></p><p>Этим вымышленным примером я хотела показать, как, казалось бы, очевидный признак может скрывать за собой и другие аспекты. А ведь доказать, что птицы способны притворяться здоровыми перед хищником – еще более сложная задача. </p>"
+        },
+        {
+          "id": "7c4572c9-1f7b-459c-b7cb-6d16b2d51b6d",
+          "type": "image",
+          "imageUrl": "/uploads/articles/birds-hide-their-symptoms/p028p4dq.webp",
+          "alt": "Охотник в небе",
+          "caption": "...Но такие стаи - настоящий подарок для хищников.",
+          "source": "https://www.bbc.co.uk/programmes/p028p51f/p028p49k",
+          "size": "medium",
+          "spoiler": "",
+          "expandable": true
+        }
+      ]
+    },
+    {
+      "id": "21a6a811-d1f0-4cd8-acd5-deb59d8d6095",
+      "type": "richText",
+      "html": "<p>В следующей части я хочу порассуждать, какие сложности могут возникнуть в интерпретации поведения больных птиц и чем на самом деле может оказываться маскинг.</p>"
+    },
+    {
+      "id": "fbc34181-85bf-4e8e-811d-9a97f1bc834b",
+      "type": "heading",
+      "level": 2,
+      "text": "3. Альтернативы маскингу"
+    },
+    {
+      "id": "78892ac8-1e96-4e1f-ba07-df391eda6ece",
+      "type": "richText",
+      "html": "<p>Здесь я постараюсь по пунктам изложить свои мысли. Что может быть принято за маскинг и как по-другому можно интерпретировать наблюдения?</p><p></p><p><strong><span data-display-heading=\"3\">1. У птиц есть специфические проявления недомогания и боли.</span></strong></p><p>В первой части статьи я изложила цитаты из ветеринарного руководства про невнимательность врачей и владельцев. На мой взгляд, именно это чаще всего принимают за \"скрытое течение\" болезни.</p><p></p><p><strong>Скрытое течение болезни не всегда буквально таковым является.</strong> Признаки могут быть, но неопытный владелец их не заметит. Более того, он может не знать, как ведет себя здоровая птица. Он может считать, что малоподвижная амадина – это норма, потому что он видел только таких представителей. Много историй есть про птиц, которые \"зевают\" или \"проталкивают зернышко в горле\", хотя это оказывалось тошнотой. Перерастающий клюв, самоощип в скрытых участках тела – это легко не увидеть или списать на что-то безобидное.</p>"
+    },
+    {
+      "id": "ede5b261-5f01-4bee-be40-6c5753ace7bf",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/unnamed (1).webp",
+      "alt": "",
+      "caption": "<em>Из-за перьев похудение птицы может остаться незамеченным, и только после смерти выясняется, что птица была крайне истощена. Для контроля упитанности больную птицу надо не только взвешивать, но и прощупывать грудные мышцы. Атрофия мышц и обострение киля – тревожный знак. Источник: [1]</em>",
+      "source": "",
+      "size": "small",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "ce748176-7ac8-45d4-bda3-b4cb3b6d6aa0",
+      "type": "richText",
+      "html": "<p>При этом птица, на первый взгляд, выглядит здоровой: она летает, хорошо ест, общается с сородичами, может даже успешно размножаться. И лишь некоторые изменения поведения могут стать индикатором проблем. Например, взмахи крыльями на месте или частое трение головы о жердочку.</p><p></p><p>Пока что мы может просто слишком плохо знать птиц, чтобы быстро выявлять такие неявные признаки. Возможно, вы будете удивлены, но даже способность птиц чувствовать боль, как мы, не всегда была очевидной. Отчасти – из-за другого анатомического строения мозга, отчасти – от самой реакции птиц на боль. А на боль они могут реагировать замиранием, а не активным сопротивлением и криками. <strong>Поведение может быть неправильно интерпретировано</strong>: самоощип нередко считается признаком скуки, тогда как чаще всего это выражение боли. Птица может выдергивать перья в месте, часто напрямую связанном с областью дискомфорта.</p><p></p><p>На самом деле, все еще более запутанно: <strong>разные особи одного вида могут реагировать на одинаковый болевой стимул по-разному</strong>. В одном опыте на жердочку подавали ток, и большая часть жако при этом поднимали лапу, но но некоторые взмахивали крыльями,  продолжая обхватывать присаду ногами. [19]</p>"
+    },
+    {
+      "id": "70872c03-ff66-4939-82bb-13ebe8a239a4",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1789246464709.webp",
+      "alt": "Схема эксперимента",
+      "caption": "Эксперимент с жако на жердочке использовался для изучения анальгетиков. [19] На одну часть присады подавали ток, на другую - тепло. Реакция на горячую поверхность была очень плохо воспроизводима даже у одних особей, в отличие от тока.",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "908cfd62-f542-4631-bfaf-eb4d556ae6f9",
+      "type": "richText",
+      "html": "<p>Здесь же хочу поднять тему <strong>\"больная птица притворяется, что ест\"</strong>. Такое поведение могут считать маскингом для обмана хищника – попытка быть как все, имитация нормального состояния. Но это интерпретация, а не доказанный факт. И я отношусь к этой гипотезе несколько скептически. Мне кажется, для маскировки избыточно притворяться, что ешь, достаточно нормальной позы и активности. И, конечно, важно быстро улететь при накале обстановки.</p><p></p><p>Шелушение семян – довольно сложный для такой цели процесс. Возможно, ослабленная птица действительно чувствует голод и пытается поесть, но по каким-то причинам не может проглотить еду или удержать ее в клюве.</p><p></p><p>Думаю, это становится особенно сложно для птицы, если у нее проблемы с дыханием, ведь при глотании нужно скоординировать дыхательный цикл (у птиц, как и у нас, на момент глотания перекрывается вход в дыхательные пути, только разными механизмами). Кстати, у людей с некоторыми респираторными заболеваниями описано прямо подобное явление: нарушение координации дыхательного цикла с глотанием. [20] Это ведет к риску аспирации (попаданию инородных тел в дыхательные пути).</p>"
+    },
+    {
+      "id": "a603cb2d-22a6-4337-9ad7-9dddb2e1c61f",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/468748758_18047830793482551_2299761884607851946_n.webp",
+      "alt": "Большой земляной вьюрок шелушит семя",
+      "caption": "Лопать семечки не так-то просто. Нужно не просто надавить посильнее, а скоординировать работу челюстей и языка, приложить силу в нужную точку. На фото - большой земляной вьюрок.",
+      "source": "https://www.instagram.com/p/DAI3ZCVxL7G/?img_index=1",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "dc63d4fd-81b1-42d4-b3be-12d372e14802",
+      "type": "message",
+      "variant": "warning",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "3ccafca0-ec83-4dec-831d-773ac531827b",
+          "type": "richText",
+          "html": "<p>Один свежий (2025 г.) обзор поведенческих маркеров инфекции прямо подчеркивает, что то, как проявляется болезнь, зависит от конкурирующих мотиваций - голода, боли, социального окружения, заботы о потомстве и других приоритетов. Поэтому <strong>поведение больного животного не обязано быть постоянным и одинаковым во всех ситуациях</strong>. [21]</p><p></p><p>Я подчеркну, что в обзоре речь идет о совершенно разных животных, не только о птицах. <em>Это мини-затравочка на будущее.</em></p>"
+        }
+      ]
+    },
+    {
+      "id": "ee7aff5b-4494-4486-9c27-ba1aac2a6ffa",
+      "type": "richText",
+      "html": "<p>C другой стороны, мы уже видели, что больные птицы могут менять поведение в зависимости от своего состояния. Может ли \"мнимое кормление\" служить не защитой от хищников, а для сохранения социального статуса? Будет ли больная птица \"притворяются\" в одиночестве?</p><p></p><p>Но это уже мои гипотезы. Возможно, в будущем станет больше известно, почему больные птицы \"делают вид, что едят\".</p><p></p><p><strong><span data-display-heading=\"3\">2. У птиц могут быть хорошо развиты компенсаторные механизмы.</span></strong></p><p>В цитате из книги <em>Clinical Avian Medicine </em>(см. 1-ю часть статьи)<em> </em>говорилось о компенсации: на начальных стадиях болезнь протекает незаметно, но затем происходит резкое ухудшение (декомпенсация). Я бы сравнила это с непрозрачным сосудом, в который капает вода. В роли сосуда – организм птицы, в роли болезни – вода. Мы не видим, насколько сосуд наполнен, но в какой-то момент падает последняя капля, и вода начинает выливаться через край.</p><p></p><p>Отбор хищниками мог идти не в сторону тех, кто может хорошо \"скрывать\" болезнь, а в сторону тех, кто может дольше функционировать и успевает оставить потомство до того, как организм ослабнет и его легко поймают. Предполагаю, что у птиц организм особенно хорошо может компенсировать повреждения дыхательной системы, поскольку она устроена очень эффективно. </p>"
+    },
+    {
+      "id": "e5d3773d-7dd6-4a44-8ec7-534bbdcbea44",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/bird-respiratory-system.webp",
+      "alt": "Дыхательная система птиц",
+      "caption": "Респираторная система птиц: легкие и воздушные мешки (перевод подписей с англ.).",
+      "source": "https://www.birdfact.com/",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "fb017a5c-ad71-4ceb-aad1-487749f2e762",
+      "type": "richText",
+      "html": "<p>В одном обзоре прямо указывают, что она обладает <strong>большим функциональным резервом</strong>, и в качестве примера цитируют статью, где у кур оставили всего около 30% исходного объема воздушных мешков. [22] Хотя птицы испытывали гипоксемию (сниженное давление кислорода в крови), воздух продолжал двигаться в их легких однонаправленно (как и должно быть), и они сохраняли способность бегать. Только дышали курицы чаще и поверхностно.</p><p></p><p>Из этого вытекает следующий тезис.</p><p></p><p><strong><span data-display-heading=\"3\">3. Домашние птицы не получают нагрузки, при которой признаки болезни были бы заметны.</span></strong></p><p>В неволе птицы не испытывают таких же нагрузок, как в природе. Летая в клетке или по комнате, задействуется лишь часть возможностей дыхательной системы, поэтому разница между больными и здоровыми заметна слабее. Но дайте пролететь птицам марафон хотя бы в 500 метров – разница станет очевидной. В результате мы рискуем заметить проблему на последних стадиях, когда даже дыхание в покое дается с трудом, и питомец сидит с открытым клювом.</p>"
+    },
+    {
+      "id": "90a96463-a529-4247-8da7-a741a6243565",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/553572385_18135240223449738_4292407699414826496_n.webp",
+      "alt": "Манникины в полете",
+      "caption": "Амадины - кочующие птицы, они не пролетают сотни километров за день к местам зимовки. Тем не менее, в течение суток им часто приходится перемещаться к кормовым точкам, и в неблагоприятное время года они могут оказаться довольно далеко друг от друга.",
+      "source": "https://www.instagram.com/p/DPCaELak6gi/",
+      "size": "big",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "5af644dc-89c6-4fe7-b952-18efd0debb62",
+      "type": "richText",
+      "html": "<p>Из этого напрашивается вывод, что в неволе птицы могут жить дольше, но с хроническими болезнями. В природе такие особи быстро отбракуются естественным отбором, а в клетке могут дать потомство и бонусом передать недуг следующему поколению.</p><p></p><p><strong><span data-display-heading=\"3\">4. Инфекции могут протекать молниеносно.</span></strong></p><p>Если птица умерла в краткие сроки после появления симптомов, это не всегда значит, что она давно болела. Так, у экспериментально зараженных кур H5N8 (вирус птичьего гриппа) выделение инфекционных частиц начиналось уже на вторые сутки, причем до появления клинических признаков. [23] В другом эксперименте цыплят заражали опасным штаммом H5N3 (другая разновидность гриппа). Уже через 18 часов на вскрытии обнаруживали гистологические изменения тканей, а через 1-2 суток – некротический энцефалит. [24]</p>"
+    },
+    {
+      "id": "418e4176-ee1e-4eef-88d8-3e3f53d90396",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/6744b272997d81a989e2e406_6744af7497a3908ade83baad_MasthBChner20Bodenhaltung.webp",
+      "alt": "Промышленный курятник",
+      "caption": "H5N8 - это подтип вируса гриппа А, вызывающий птичий грипп. Он крайне опасен для диких и сельскохозяйственных птиц.",
+      "source": "https://www.expertiseforanimals.com/informationen-artikel-en/chickens-in-agriculture",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "bc7a7774-7d5e-4381-83ca-209f39468a93",
+      "type": "richText",
+      "html": "<p>Еще один интересный пример: жако, зараженные борнавирусом. [25] У части птиц клинические признаки появились раньше, чем выраженные гематологические/биохимические изменения. Эти птицы тяжело заболели и погибли до того, как были обнаружены существенные изменения крови. У других выздоровление сопровождалось последующими выраженными иммунологическими изменениями.</p><p></p><p>Помимо специфики некоторых болезней, <strong>не стоит забывать о быстром метаболизме птиц</strong>. Обычные нужды организма и сам иммунный ответ энергозатратны, а маленький размер птиц играет против них. В одном обзоре при анализе нескольких видов животных и патогенов обнаружили закономерность: <strong>время от появления симптомов до смерти растет с увеличением размера хозяина.</strong> [26] А для птиц, зараженных лихорадкой Западного Нила, выявили, что скорость производства вирусных частиц снижалась с увеличением массы тела (то есть чем птица крупнее, тем вирус медленнее размножается). [27] Эти эффекты, вероятно, связаны с более быстрыми биохимическими процессами у мелких животных.</p><p></p><p><strong><span data-display-heading=\"3\">5. Болезни могут иметь длительный латентный период или не иметь признаков.</span></strong></p><p>Ранняя стадия инфекции может протекать с очень слабыми внешними признаками. Например, у городских и деревенских ласточек субклинические паразитарные инфекции не вызывали очевидного \"больного вида\". [28] Тем не менее, заражение незаметно влияло на поведение птиц. Они искали корм на меньшей площади и чаще кормились в менее предпочтительных для здоровых птиц участках. Выживаемость таких птиц была снижена.</p>"
+    },
+    {
+      "id": "14cc5e60-6b11-41e7-86d4-cdce1c7a2712",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/IMG_7412-copia.webp",
+      "alt": "Два вида ласточек",
+      "caption": "Деревенская ласточка среди городских.",
+      "source": "https://dakhla-rovers.com/nature/img_7412-copia/",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "ae2d37f8-cc5b-4be3-8ced-e965dba79a0e",
+      "type": "richText",
+      "html": "<p>Иными словами, <strong>отсутствие заметной вялости не означало отсутствия физиологических последствий</strong>. Авторы предполагают, что хроническая инфекция постоянно расходует энергию организма на иммунную защиту, оставляя меньше ресурсов для поиска пищи и других функций.</p><p></p><p>Как известно, опухоли обычно не имеют симптомов на ранней стадии, а для инфекций характерен инкубационный период. Это показано и для нас: человек, зараженный SARS-CoV-2, может не иметь симптомов и субъективно хорошо себя чувствовать, но уже выделять патоген. [29] Но это не значит, что период затишья при раке или вирусах появился в ходе эволюции, чтобы люди скрыли болезнь от волков. Это просто независимое от хищничества явление.</p><p></p><p><strong><span data-display-heading=\"3\">6. Мобилизация сил при остром стрессе не значит маскинг.</span></strong></p><p>Борьба с болезнью требует перераспределения ресурсов для борьбы с ней. Малоподвижность и нахохленность птицы – признаки экономии энергии. Когда птицу привозят к ветеринару, она может стать активной и прижать перья к телу, если силы позволяют, но это может означать банальный страх в незнакомой обстановке. Животное мобилизует силы, потому что прямо сейчас ей важнее улететь, и это еще не значит, что она пытается \"притвориться\" здоровой.</p>"
+    },
+    {
+      "id": "a71c9252-2333-47ac-b474-907cb0dbda51",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/stock-photo-white-rumped-munia-bird (1).webp",
+      "alt": "Напуганная муния",
+      "caption": "Эта амадина выглядит очень напуганной. При испуге, а также на жаре птицы начинают часто дышать с открытым клювом, но то же можно наблюдать и у больных особей.",
+      "source": "https://create.vista.com/ru/unlimited/stock-photos/64034087/stock-photo-white-rumped-munia-bird/",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "c8e425cf-a1bc-41a4-9dcd-2e2ac38699c4",
+      "type": "richText",
+      "html": "<p>Птице достаточно увидеть хищника всего на пару секунд, чтобы у нее повысился уровень кортикостерона (гормон стрессового ответа, помогающий мобилизовать энергию в экстренных ситуациях). [30]</p><p></p><p>В целом такое поведение ожидаемо и для по-настоящему здоровой птицы. Во время отдыха она может присесть на жердочке, слегка распушившись, но при неожиданном громком звуке широко откроет глаза и вытянется в струнку, потому что сгруппировалась и готова удрать. Учтем также, что клеточные птицы не имеют такой долгой истории одомашнивания, как собаки и кошки. Они в среднем более пугливы и не любят физического контакта даже с хозяевами, поэтому реакция избегания может быть выражена у них ярче.</p><p></p><p><strong><span data-display-heading=\"3\">7. Быть пойманным – не обязательно выглядеть больным.</span></strong></p><p>Мы можем обнаружить, что среди добычи больше больных птиц, но это еще не означает, что хищник распознает именно болезнь. В качестве примера возьмем статью про травников и ястребов. [31] Кулики обитают на открытой местности, тогда как перепелятники – засадные охотники. </p>"
+    },
+    {
+      "id": "153c56c6-49b5-4870-acf7-0bd5b41c9e92",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/514404967_10162743094930180_7076003754825060236_n.webp",
+      "alt": "Ястреб-перепелятник поймал травника",
+      "caption": "Ястреб-перепелятник поймал травника.",
+      "source": "https://www.facebook.com/photo/?fbid=10160624756190180&set=gm.6582520645167697&idorvanity=741298672623286",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "1da3c8f6-2819-4af8-8aac-57c12569706c",
+      "type": "richText",
+      "html": "<p>Наблюдения установили, что <strong>чем ближе травники оказываются к укрытиям хищника, тем выше вероятность, что охота закончится успешно</strong>. При этом жертвы старались держаться подальше от таких потенциально опасных мест, и лишь в холодную погоду, когда энергетические затраты выше, они чаще шли на риск и перемещались туда. В то же время сами ястребы чаще атаковали в момент, когда кулики оказывались ближе к их укрытию, и предпочитали атаковать небольшие стаи.</p><p></p><p>Другой пример, на больших синицах, демонстрирует, что <strong>критически важен для выживания взлет при атаке</strong>. [32] Жертва должна учесть, по какой траектории приближается хищник, и выбрать оптимальный угол подъема с земли.</p>"
+    },
+    {
+      "id": "1426a820-d369-42ab-a014-aff3d58901d8",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1789503523033.webp",
+      "alt": "",
+      "caption": "Средний угол взлета синиц, атакованных с a) 45°, b) 15°. c) Угол взлета птиц, которых никто не атаковал. Источник: []",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "783401f0-d985-496c-82aa-b4541b39031a",
+      "type": "richText",
+      "html": "<p>Еще одна интересная работа посвящена голубям. [33] Оказывается, <strong>даже личностные характеристики важны для выживания</strong>, причем та или иная особенность может становиться полезной, по мнению авторов, в зависимости от контекста:</p><ul><li><p>Тот, кто замирает (\"притворяется мертвым\"), когда его поймали, имеет шанс вырваться, когда хищник решит ослабить хватку (в то время как активная борьба спровоцирует смертельный удар);</p></li><li><p>Тот, кто раньше начинает убегать от приближающегося человека, более вероятно уцелеет от преследования, так как держит расстояние перед хищником: это может быть полезно против ястреба – относительно медленного охотника;</p></li><li><p>Тот, кто быстрее может сбежать из замкнутого пространства, имеет больше шансов спастись от сапсана: предположительно, голубь может скрыться от сокола, атакующего на открытых участках, в лесу, хотя там его может поджидать ястреб, от которого тоже нужно поскорее скрыться.</p></li></ul>"
+    },
+    {
+      "id": "f9a76f63-9255-4cb7-8ca0-f3ff051e0c78",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/Ez1u_TqXEAY1v42.webp",
+      "alt": "Чайка пугает сокола",
+      "caption": "И кто здесь настоящий хищник?",
+      "source": "https://x.com/Telegraph/status/1386386296197820416",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "fbd86ebc-3b6d-40a7-9718-36b9c591ec63",
+      "type": "richText",
+      "html": "<p>Это показывает, что <strong>различия в уязвимости могут возникать из условий атаки, и исход может зависеть даже от везения и особенностей поведения жертвы</strong>. Достаточно оказаться с краю стаи [34], чуть позже взлететь, хуже сманеврировать в какой-то момент или быть более упитанным. И тут, конечно, играет роль здоровье птицы. У больной особи будет хуже реакция, она позже заметит хищника, она полетит медленнее. Мы видели это в истории про чечевиц. Но это скорее говорит о том, что болезнь снижает шансы спастись, а не то, что хищник специально выслеживает нахохленную птицу.</p>"
+    },
+    {
+      "id": "74aa68f4-f647-48b5-97b6-a964dc6d3ea7",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/Leach's_Storm_Petrel_escapes_Merlin_1.webp",
+      "alt": "",
+      "caption": "Этой северной качурке повезло: ей удалось увернуться от нескольких атак дербника. После неудачных попыток хищник прекратил преследования.",
+      "source": "https://commons.wikimedia.org/wiki/File%3ALeach%27s_Storm_Petrel_escapes_Merlin_1.jpg",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "b3f5c975-b1d4-40f6-a84c-472140f8d178",
+      "type": "richText",
+      "html": "<p>К сожалению, пока что найти подтверждение того, что у птиц существует маскинг, помогающий избегать хищников, не получается. Скорее наоборот: больная птица, даже не имея видимых признаков болезни, становится более уязвимой. Но, может, это описано у других животных?</p>"
+    },
+    {
+      "id": "dafea9fb-5a7b-4ae2-94d4-e0f9ed2577db",
+      "type": "heading",
+      "level": 2,
+      "text": "4. Есть ли маскинг у других животных?"
+    },
+    {
+      "id": "9d13fdc6-b4d2-4277-9c56-bfff3ca5d292",
+      "type": "richText",
+      "html": "<p>Не только птицы \"что-то скрывают от нас\". Как человек, имеющий очень скудное представление о поведении и лечении кошек и собак, я очень удивилась, прочитав такие строки из статей и ветеринарных руководств:</p>"
+    },
+    {
+      "id": "d01bee46-ed8b-4599-8f9c-0bfd96d1a827",
+      "type": "message",
+      "variant": "info",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "0ebf577e-4a5c-4ecf-bfae-7e2e48efafe9",
+          "type": "richText",
+          "html": "<p>Многие собаки могут подавлять или маскировать свое поведение в состоянии стресса, поэтому за короткий прием у ветеринара проявляют мало признаков. При более длительном наблюдении могут быть выявлены более явные признаки. Для врача один из способов решения проблемы - просьба к владельцу снять собаку на видео дома, чтобы можно было тщательно оценить ее походку. [35]</p>"
+        }
+      ]
+    },
+    {
+      "id": "56b4d0e8-7213-4670-9d8a-ef659d15e97c",
+      "type": "message",
+      "variant": "info",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "fb82a089-0cf6-4357-9da3-42fd493bb2ae",
+          "type": "richText",
+          "html": "<p>Распространенная жалоба, которую я слышу от пациентов: их собаки вели себя больными дома, но как только попадали в клинику, вообще переставали такими выглядеть! Страх иногда может маскировать признаки болезни. [36]</p>"
+        }
+      ]
+    },
+    {
+      "id": "9bfd8189-b7ba-462f-a500-f098962f3a1b",
+      "type": "message",
+      "variant": "info",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "0bb36326-ee22-48ad-8e96-e0b7f8c60332",
+          "type": "richText",
+          "html": "<p>Кошки часто пытаются скрывать боль, особенно в присутствии людей и других животных. Клинические признаки и изменения в поведении, связанные с хронической болью у кошек, могут быть едва заметными и часто ошибочно приписываются их возрасту. [37]</p>"
+        }
+      ]
+    },
+    {
+      "id": "b816570f-5126-46c8-9788-c2484cc41f5a",
+      "type": "richText",
+      "html": "<p>Звучит подозрительно знакомо, не правда ли?</p><p></p><p>Далее я хочу обратиться к рукописи 2020 г. ветеринарного врача <em>Larry Carbone</em> \"Скрывают ли боль \"животные-жертвы\"?\". [38] В своей статье доктор обеспокоен этической стороной использования лабораторных животных и поднимает вопрос:</p>"
+    },
+    {
+      "id": "8ff2c41e-6d9b-4fc0-b844-8c1523ac5aac",
+      "type": "message",
+      "variant": "success",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "adb409df-797f-4059-a5c0-31e9b41ce204",
+          "type": "richText",
+          "html": "<p>Идея о том, что грызуны как животные-жертвы активно скрывают боль, широко распространена в ветеринарной литературе, литературе по благополучию животных и биологии боли. Но правда ли это?</p>"
+        }
+      ]
+    },
+    {
+      "id": "9a877014-8c1f-4497-9490-07c372be5889",
+      "type": "richText",
+      "html": "<p>В своем исследовании он, ссылаясь на другого автора, приходит к такому же заключению, к каким пришла я относительно птиц:</p>"
+    },
+    {
+      "id": "9085b21a-aa12-4cdf-a5f9-da1ad6222e95",
+      "type": "message",
+      "variant": "success",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "3ea095d6-5b71-40fc-b121-7a72cc31e7aa",
+          "type": "richText",
+          "html": "<p>Нет никаких фактических данных, демонстрирующих различия в готовности проявлять поведение, явно связанное с болью, у видов-жертв и видов-хищников.</p>"
+        }
+      ]
+    },
+    {
+      "id": "72626f5b-2822-4d6d-965a-5bc90f7e2011",
+      "type": "richText",
+      "html": "<p><strong>Занимательный факт:</strong> <em>Carbone </em>просил авторов, использующих утверждение про скрывающих боль животных, предоставить ссылку на соответствующие первичные данные, пытаясь найти первоисточник. Это приводило к тому, что рукописи возвращались уже с удаленным утверждением о видах-жертвах, а не с подтверждающей его ссылкой.</p><p></p><p><strong>Получается, утверждение о маскинге активно циркулирует по литературе (не только о птицах), но оно не подкреплено фактами.</strong> Carbone, тем не менее, считает, что проверить гипотезу можно. Надо показать, с одной стороны, что испытывающие боль животные-жертвы начинают вести себя более обычно и демонстрировать меньше признаков боли в присутствии человека, а с другой, что \"не-жертвы\" этого не делают.</p><p></p><p>Он также приводит в пример эксперимент на овцах. На нижнюю часть ноги животных воздействовали механическим давлением и постепенно увеличивали его. Измеряли порог реакции - то есть насколько долго овца терпела давление, прежде чем отдернуть ногу. При этом рядом с ними находилась либо собака (в роли хищника), либо коза (неопасное животное). Рядом с собакой овцы переносили большее давление, прежде чем отреагировать, чем при козе.</p><p></p><p>Казалось бы - вот оно, подтверждение маскинга! Рядом с хищником жертва не хочет показывать слабость! Но не все так идеально... Дело в том, что для измерения болевого порога экспериментатор должен был непосредственно работать с овцой. Но для овцы человек тоже мог быть воспринят как потенциальная угроза. Как пояснил <em>Carbone </em>- <strong>\"Сам процесс оценки искажает поведение, которое оценивается\"</strong>. То есть, если вы подходите к птице, чтобы зафиксировать уровень ее боли, само ваше приближение может изменить ее поведение, и результаты будут искажены.</p><p></p><p>Альтернативное объяснение результатов - анальгезия (обезболивание), запускающаяся при стрессе. <em>Carbone</em> упоминает исследование на мышах: во время стресса подавляется само ощущение боли благодаря реакции организма.</p>"
+    },
+    {
+      "id": "8209785c-045b-4f31-abdc-2a598581f3b7",
+      "type": "message",
+      "variant": "link",
+      "title": "",
+      "bodyHtml": "",
+      "collapsible": false,
+      "defaultOpen": false,
+      "content": [
+        {
+          "id": "3aa35007-3fb7-49af-bd50-ed6d8a7d8488",
+          "type": "richText",
+          "html": "<p>От себя добавлю. В статье доктора в основном рассматривается именно проявление боли у животных, а не просто любого недомогания, например, слабости. Это первый момент. А второй - в примерах на мышах и овцах показана реакция животных на непосредственное наблюдение за хищником. Но птиц, да и других животных тоже, могут атаковать из засады. Это значит, жертвам было бы выгоднее всегда проявлять маскинг (если таковой действительно существует), чтобы не привлечь к себе внимание. Это, в свою очередь, потребует энергию, которую можно было бы тратить на выздоровление). Когда хищник уже мчится за тобой, важнее собраться с силами и бежать, а не делать вид, что ешь или строишь гнездо.</p>"
+        }
+      ]
+    },
+    {
+      "id": "2884fdb6-98c5-4731-bd83-20edf085763a",
+      "type": "heading",
+      "level": 2,
+      "text": "Заключение"
+    },
+    {
+      "id": "1c3159cc-021d-48d1-983a-0be65514a751",
+      "type": "richText",
+      "html": "<p>Итак, птицы действительно могут выглядеть внешне здоровыми даже тогда, когда болезнь уже развивается. Однако <strong>называть это полноценным \"маскингом\" в строгом научном смысле пока не совсем корректно из-за крайне слабой доказательной базы</strong>. Лично у меня сложилось впечатление, что скрытие болезни больше находит подтверждение в контексте социальных отношений птиц, а не хищничества.  Как выяснилось, больные птицы способны менять поведение в зависимости от того, есть ли рядом с ними члены стаи. А здоровым, в свою очередь, не все равно на больных соседей рядом.</p><p></p><p><strong>Фразу \"птицы скрывают болезни, чтобы их не заметили хищники и не отвергли сородичи\" можно считать логичной гипотезой. Но превращать ее в универсальное объяснение каждого внезапного ухудшения не стоит.</strong></p><p></p><p>Однако независимо от того, существует ли такой эволюционный механизм на самом деле, это не меняет факт: <strong>птицы остаются питомцами, чьи заболевания особенно трудно распознавать и лечить</strong>. Владельцам необходимо проявлять внимание к ним, замечать небольшие изменения в поведении и обращаться к врачу, не дожидаясь прогрессирования.</p>"
+    },
+    {
+      "id": "41965d91-7968-4509-8db7-cc96726b5112",
+      "type": "image",
+      "imageUrl": "/uploads/articles/birds-hide-their-symptoms/1603282808157414893.webp",
+      "alt": "Комикс про птиц за окном",
+      "caption": "А это можно считать маскингом? :)",
+      "source": "",
+      "size": "medium",
+      "spoiler": "",
+      "expandable": true
+    },
+    {
+      "id": "6178a885-f998-4bdf-ad9d-9e2ec728e347",
+      "type": "spoiler",
+      "summary": "📚 Список литературы",
+      "bodyHtml": "<p>[1] Harrison, G. J., &amp; Lightfoot, T. (2006). <em>Clinical Avian Medicine</em>.</p><p>[2] LafeberVet. <em>Signs of Illness in Companion Birds</em>. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.lafeber.com/vet/wp-content/uploads/Signs_of_Illness.pdf\">https://www.lafeber.com/vet/wp-content/uploads/Signs_of_Illness.pdf</a></p><p>[3] Lopes, P. C., Adelman, J., Wingfield, J. C., &amp; Bentley, G. E. (2012). Social context modulates sickness behavior. <em>Behavioral Ecology and Sociobiology, 66</em>, 1421–1428. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1007/s00265-012-1397-1\">10.1007/s00265-012-1397-1</a></p><p>[4] Lopes, P. C. et al.(2023). The social environment alters neural responses to a lipopolysaccharide challenge. <em>Brain, Behavior, and Immunity, 110</em>, 162–174. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/j.bbi.2023.03.004\">10.1016/j.bbi.2023.03.004</a></p><p>[5] Langager, M. M. et al. (2023). Let's stick together: Infection enhances preferences for social grouping in a songbird species. <em>Ecology and Evolution, 13</em>(10), e10627. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1002/ece3.10627\">10.1002/ece3.10627</a></p><p>[6] Bouwman, K. M., &amp; Hawley, D. M. (2010). Sickness behaviour acting as an evolutionary trap? Male house finches preferentially feed near diseased conspecifics. <em>Biology Letters, 6</em>(4), 462–465. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1098/rsbl.2010.0020\">10.1098/rsbl.2010.0020</a></p><p>[7] Zilberberg, M. et al. (2013). House finches (<em>Carpodacus mexicanus</em>) balance investment in behavioural and immunological defences against pathogens. <em>Biology Letters, 9</em>(1), 20120856. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1098/rsbl.2012.0856\">10.1098/rsbl.2012.0856</a></p><p>[8] Love, A. C. et al. (2021). Perception of infection: disease-related social cues influence immunity in songbirds. <em>Biology Letters, 17</em>(6), 20210125. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1098/rsbl.2021.0125\">10.1098/rsbl.2021.0125</a></p><p>[9] Genovart, M. et al. (2010). The young, the weak and the sick: Evidence of natural selection by predation. <em>PLoS ONE, 5</em>(3), e9774. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1371/journal.pone.0009774\">10.1371/journal.pone.0009774</a></p><p>[10] Adelman, J. S. et al. (2016). Infection reduces anti-predator behaviors in house finches. <em>Journal of Avian Biology</em>. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1111/jav.01058\">10.1111/jav.01058</a></p><p>[11] Langager, M. M. et al. (2025). In sickness and in health: Group-living augments behavioural responses to food and predation risk for sick house finches (<em>Haemorhous mexicanus</em>). <em>Royal Society Open Science, 12</em>(11), 251715. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1098/rsos.251715\">10.1098/rsos.251715</a></p><p>[12] Cain, K. E. et al. (2019). Conspicuous plumage does not increase predation risk: A continent-wide test using model songbirds. <em>The American Naturalist, 193</em>(3), 359–372. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1086/701632\">10.1086/701632</a></p><p>[13] Götmark, F. (1992). Anti-predator effect of conspicuous plumage in a male bird. <em>Animal Behaviour, 44</em>(1), 51–55. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/S0003-3472(05)80753-5\">10.1016/S0003-3472(05)80753-5</a></p><p>[14] Ruiz-Rodríguez, M. et al. (2013). Does avian conspicuous colouration increase or reduce predation risk? <em>Oecologia, 173</em>(1), 83–93. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1007/s00442-013-2599-6\">10.1007/s00442-013-2599-6</a></p><p>[15] Marples, N. M. et al. (1998). Responses of wild birds to novel prey: Evidence of dietary conservatism. <em>Oikos, 83</em>(1), 161–165. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.2307/3546557\">10.2307/3546557</a></p><p>[16] Marples, N. M., &amp; Mappes, J. (2011). Can the dietary conservatism of predators compensate for positive frequency dependent selection against rare, conspicuous prey? <em>Evolutionary Ecology, 25</em>(4), 737–749. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1007/s10682-010-9434-x\">10.1007/s10682-010-9434-x</a></p><p>[17] Rutz, C., et al. (2012). Predator fitness increases with selectivity for odd prey. <em>Current Biology, 22</em>(9), 820–824. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/j.cub.2012.03.028\">10.1016/j.cub.2012.03.028</a></p><p>[18] Palleroni, A. et al. (2005). Prey plumage adaptation against falcon attack. <em>Nature, 434</em>, 973–974. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1038/434973b\">10.1038/434973b</a></p><p>[19] Paul-Murphy, J. et al. (1999). A technique for evaluating analgesia in conscious perching birds. <em>American Journal of Veterinary Research, 60</em>(10), 1213–1216. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.2460/ajvr.1999.60.10.1213\">10.2460/ajvr.1999.60.10.1213</a></p><p>[20] Ghannouchi, I. et al. (2016). Swallowing function and chronic respiratory diseases: Systematic review. <em>Respiratory Medicine, 117</em>, 54–64. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/j.rmed.2016.05.024\">10.1016/j.rmed.2016.05.024</a></p><p>[21] Nicol, C. J. (2025). Behavioural indicators of infectious disease in managed animals. <em>Applied Animal Behaviour Science, 285</em>, 106573. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/j.applanim.2025.106573\">10.1016/j.applanim.2025.106573</a></p><p>[22] Maina, J. N. (2006). Structure, function and evolution of the gas exchangers: Comparative perspectives. <em>Advances in Anatomy, Embryology and Cell Biology, 186</em>. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC1570919/\">PMC1570919</a></p><p>[23] Sakoda, Y., et al. (2021). First outbreak of an H5N8 highly pathogenic avian influenza virus on a chicken farm in Japan in 2020. <em>Journal of Veterinary Medical Science</em>. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://pubmed.ncbi.nlm.nih.gov/33809529/\">PubMed 33809529</a></p><p>[24] Silvano, F. D. et al. (1997). Enhanced neuropathogenicity of avian influenza A virus by passages through air sac and brain of chicks. <em>The Journal of Veterinary Medical Science, 59</em>(3), 143–148. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1292/jvms.59.143\">10.1292/jvms.59.143</a></p><p>[25] Payne, S., et al. (2017). Plasma protein, haematologic and blood chemistry changes in African grey parrots (<em>Psittacus erithacus</em>) experimentally infected with bornavirus. <em>Avian Pathology</em>. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1080/03079457.2017.1325442\">10.1080/03079457.2017.1325442</a></p><p>[26] Gillooly, J. F. et al. (2007). The allometry of host-pathogen interactions. <em>PLoS ONE, 2</em>(11), e1130. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1371/journal.pone.0001130\">10.1371/journal.pone.0001130</a></p><p>[27] Morrison, J. H., et al. (2017). Modelling the effects of phylogeny and body size on within-host pathogen replication and immune response. <em>Journal of The Royal Society Interface, 14</em>, 20170479. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5721155/\">PMC5721155</a></p><p>[28] Grabow, M. et al. (2024). Sick without signs. Subclinical infections reduce local movements, alter habitat selection, and cause demographic shifts. <em>Communications Biology, 7</em>, 1426. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1038/s42003-024-07114-4\">10.1038/s42003-024-07114-4</a></p><p>[29] World Health Organization. (2020). Transmission of SARS-CoV-2: Implications for infection prevention precautions. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.who.int/news-room/commentaries/detail/transmission-of-sars-cov-2-implications-for-infection-prevention-precautions\">WHO</a></p><p>[30] Hope, S., et al. (2016). Stress-induced corticosterone levels are related to behavioral resilience to nest disturbance in a precocial bird. <em>General and Comparative Endocrinology, 295</em>, 113489. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1016/j.ygcen.2016.09.006\">10.1016/j.ygcen.2016.09.006</a></p><p>[31] Cresswell, W. (2010). Predator-hunting success and prey vulnerability: Quantifying the spatial scale over which lethal and non-lethal effects of predation occur. <em>Journal of Animal Ecology, 79</em>(4), 814–822. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1111/j.1365-2656.2010.01691.x\">10.1111/j.1365-2656.2010.01691.x</a></p><p>[32] Kullberg, C., &amp; Jakobsson, S. (1998). Predator-induced take-off strategy in great tits (<em>Parus major</em>). <em>Proceedings of the Royal Society B: Biological Sciences, 265</em>(1406), 1659–1664. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1098/rspb.1998.0485\">10.1098/rspb.1998.0485</a></p><p>[33] Santos, C. D., et al. (2015). Personality and morphological traits affect pigeon survival from raptor attacks. <em>Scientific Reports, 5</em>, 15490. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1038/srep15490\">10.1038/srep15490</a></p><p>[34] Krause, J. , Ruxton, G. D. (2002). <em>Living in Groups</em></p><p>[35] Mills, D. S. et al. (2020). Pain and problem behavior in cats and dogs. <em>Animals, 10</em>(2), 318. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.3390/ani10020318\">10.3390/ani10020318</a></p><p>[36] Vetstreet. Why does my pet misbehave at the veterinary clinic? <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.vetstreet.com/our-pet-experts/why-does-my-pet-misbehave-at-the-veterinary-clinic\">https://www.vetstreet.com/our-pet-experts/why-does-my-pet-misbehave-at-the-veterinary-clinic</a></p><p>[37] Today's Veterinary Nurse. Managing chronic feline pain. <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://todaysveterinarynurse.com/pain-management/managing-chronic-feline-pain\">https://todaysveterinarynurse.com/pain-management/managing-chronic-feline-pain</a></p><p>[38] Carbone, L. (2020). Do “Prey Species” Hide Their Pain? Implications for Ethical Care and Use of Laboratory Animals. <em>Journal of Applied Animal Ethics Research, 2</em>(2), 216–236. doi:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://doi.org/10.1163/25889567-BJA10001\">10.1163/25889567-BJA10001</a></p>",
+      "defaultOpen": false
+    }
+  ],
+  "tocItems": [
+    {
+      "caption": "1. Сводка из медицины",
+      "elementId": "97d43c9f-b608-4c36-b504-5b91b9653e74",
+      "level": 2
+    },
+    {
+      "caption": "2. Научные статьи",
+      "elementId": "67e3a4c3-4326-4795-b782-10a1ac79b743",
+      "level": 2
+    },
+    {
+      "caption": "Больная птица и стая",
+      "elementId": "323043d6-18aa-4380-b230-189a449f4861",
+      "level": 3
+    },
+    {
+      "caption": "Болезнь и риск быть съеденным",
+      "elementId": "9f0075d3-4c66-4424-ad20-6f47baa45ed8",
+      "level": 3
+    },
+    {
+      "caption": "О выборе хищников: будь как все или выделяйся?",
+      "elementId": "37bd0607-1bc2-4c22-a260-f490d83ef4b5",
+      "level": 3
+    },
+    {
+      "caption": "3. Альтернативы маскингу",
+      "elementId": "fbc34181-85bf-4e8e-811d-9a97f1bc834b",
+      "level": 2
+    },
+    {
+      "caption": "4. Есть ли маскинг у других животных?",
+      "elementId": "dafea9fb-5a7b-4ae2-94d4-e0f9ed2577db",
+      "level": 2
+    },
+    {
+      "caption": "Заключение",
+      "elementId": "2884fdb6-98c5-4731-bd83-20edf085763a",
+      "level": 2
+    }
+  ],
+  "readingTimeMinutes": 32,
+  "contentType": "article",
+  "tags": [
+    "познавательное",
+    "здоровье"
+  ],
+  "redirectFrom": []
+}

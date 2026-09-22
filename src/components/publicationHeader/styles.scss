@@ -38,7 +38,7 @@
         margin-bottom: 0.75rem;
 
         .publication-share {
-            vertical-align: 0.08em;
+            vertical-align: 0.02em;
         }
     }
 
@@ -93,11 +93,6 @@
         &__title {
             font-size: 1.8rem !important;
             line-height: 1.15;
-        }
-
-        // Keep a wrapped share button visually separated from the title line above.
-        &__title .publication-share {
-            margin-top: 0.35rem;
         }
 
         &__primary { gap: 0.45rem; }

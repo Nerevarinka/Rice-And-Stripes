@@ -4,6 +4,7 @@ import EmbeddedVideo from "@/components/embeddedVideo";
 import EmbeddedNote from "@/components/embeddedNote";
 import ImageCarousel from "@/components/imageCarousel";
 import ImageWithCaption from "@/components/imageWithCaption";
+import Quiz from "@/components/quiz";
 import VideoWithCaption from "@/components/videoWithCaption";
 import { normalizeEditableArticleAssetUrl } from "@/shared/editableArticles";
 import { sanitizeInlineHtml } from "@/shared/utils/sanitizeInlineHtml";
@@ -231,6 +232,8 @@ export default function ArticleRenderer({ blocks, embeddedNotes = [] }: ArticleR
                             </aside>
                         );
                     }
+                    case "quiz":
+                        return <Quiz key={block.id} block={block} />;
                     default:
                         return null;
                 }
