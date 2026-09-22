@@ -114,6 +114,39 @@ export type EditableArticleNoteEmbedBlock = {
     noteSlug: string;
 };
 
+export type EditableArticleQuizOption = {
+    id: string;
+    text: string;
+    resultId: string;
+};
+
+export type EditableArticleQuizQuestion = {
+    id: string;
+    text: string;
+    options: EditableArticleQuizOption[];
+    imageUrl?: string;
+    imageAlt?: string;
+};
+
+export type EditableArticleQuizResult = {
+    id: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+    alt: string;
+};
+
+export type EditableArticleQuizBlock = {
+    id: string;
+    type: "quiz";
+    intro?: string;
+    introImageUrl?: string;
+    introImageAlt?: string;
+    questions: EditableArticleQuizQuestion[];
+    results: EditableArticleQuizResult[];
+    tieBreaker?: EditableArticleQuizQuestion;
+};
+
 export type EmbeddedNoteSummary = {
     slug: string;
     title: string;
@@ -130,7 +163,8 @@ export type EditableArticleBlock =
     | EditableArticleVideoBlock
     | EditableArticleMessageBlock
     | EditableArticleSpoilerBlock
-    | EditableArticleNoteEmbedBlock;
+    | EditableArticleNoteEmbedBlock
+    | EditableArticleQuizBlock;
 
 export type EditableArticle = {
     schemaVersion: 2;
